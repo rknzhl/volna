@@ -1,0 +1,10 @@
+old/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+waves/real/data/
+waves/synthetic/data/
+CLAUDE.md
+waves/notebooks/*.gif
