@@ -7,4 +7,3 @@ __pycache__/
 waves/real/data/
 waves/synthetic/data/
 CLAUDE.md
-waves/notebooks/*.gif
