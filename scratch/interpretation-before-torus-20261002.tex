@@ -1,0 +1,254 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T2A]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else
+  \usepackage{fontspec}
+  \setmainfont{cmunrm.otf}[BoldFont=cmunbx.otf,
+    ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf]
+\fi
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[unicode,hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\begin{document}
+\begin{center}
+{\large\bfseries Топологический анализ спектра\\
+пространственно-временных рядов}
+\end{center}
+
+\section*{1. Данные и задача}
+Даны $q$ рядов, измеренных датчиками в точках $s_i$:
+\[
+ Y_{in}=x(s_i,t_n),\qquad t_n=n\Delta t,\quad
+ 1\leq i\leq q,\quad 0\leq n<N.
+\]
+
+\section*{2. SSA: разложение одного ряда}
+SSA состоит из построения матрицы окон,
+ее сингулярного разложения и восстановления выбранных компонент.
+Для ряда $y_0,\ldots,y_{N-1}$ выбираем длину окна $1<L<N$,
+полагаем $K=N-L+1$ и записываем
+\[
+ H=\begin{pmatrix}
+ y_0&y_1&\cdots&y_{K-1}\\
+ y_1&y_2&\cdots&y_K\\
+ \vdots&\vdots&&\vdots\\
+ y_{L-1}&y_L&\cdots&y_{N-1}
+ \end{pmatrix}\in\mathbb R^{L\times K}.
+\]
+Столбец $b$ есть окно $(y_b,\ldots,y_{b+L-1})^T$.
+
+Для любой вещественной матрицы ранга $R$ существует SVD:
+\[
+ H=U\Sigma V^T=\sum_{r=1}^{R}H_r,\qquad
+ H_r=\sigma_ru_rv_r^T,\quad \sigma_1\geq\cdots\geq\sigma_R>0.
+\]
+$u_r\in\mathbb R^L$, $v_r\in\mathbb R^K$ --- единичные векторы;
+наборы $u_r$ и $v_r$ ортонормированы. $\sigma_r$ --- сингулярные числа.
+
+\textbf{Что выбирается при восстановлении?}
+$G\subseteq\{1,\ldots,R\}$ --- множество номеров сохраняемых слагаемых:
+\[
+ \widetilde H=\sum_{r\in G}H_r.
+\]
+Например, $G=\{1,\ldots,d\}$ сохраняет первые $d$ слагаемых;
+$G=\{r_1,r_2\}$ сохраняет выбранную пару. SVD не определяет,
+какая группа соответствует конкретному колебанию.
+
+В исходной матрице все элементы с $a+b=n$ равны $y_n$.
+После отбора слагаемых они могут различаться, поэтому берем их среднее:
+\[
+ \widetilde y_n=\frac1{w_n}\sum_{a+b=n}\widetilde H_{ab}.
+\]
+Здесь $w_n$ --- число пар $(a,b)$ в пределах матрицы с $a+b=n$.
+Это диагональное усреднение, завершающее SSA.
+
+\section*{3. MSSA: совместное разложение нескольких рядов}
+MSSA (Multichannel Singular Spectrum Analysis) применяет одно SVD
+к матрицам окон всех $q$ рядов. Алгоритм описан в
+\cite[раздел 1.1, с.~294--295]{mssa}.
+Для каждого ряда $Y_{i0},\ldots,Y_{i,N-1}$ строим
+\[
+ (H_i)_{ab}=Y_{i,a+b},\qquad
+ 0\leq a<L,\quad 0\leq b<K,\quad K=N-L+1.
+\]
+В горизонтальной MSSA эти матрицы ставятся рядом:
+\[
+ \mathcal H=[H_1\ \cdots\ H_q]
+ =\left(\begin{array}{cccc|c|cccc}
+ Y_{1,0}&Y_{1,1}&\cdots&Y_{1,K-1}&\cdots&
+ Y_{q,0}&Y_{q,1}&\cdots&Y_{q,K-1}\\
+ Y_{1,1}&Y_{1,2}&\cdots&Y_{1,K}&\cdots&
+ Y_{q,1}&Y_{q,2}&\cdots&Y_{q,K}\\
+ \vdots&\vdots&&\vdots&&\vdots&\vdots&&\vdots\\
+ Y_{1,L-1}&Y_{1,L}&\cdots&Y_{1,N-1}&\cdots&
+ Y_{q,L-1}&Y_{q,L}&\cdots&Y_{q,N-1}
+ \end{array}\right)
+ \in\mathbb R^{L\times qK}.
+\]
+Каждый блок содержит $K$ окон одного датчика; строки задают позиции
+отсчетов внутри окна. SVD вычисляется для всей $\mathcal H$:
+\[
+ \mathcal H=U\Sigma V^T,\qquad
+ \mathcal H\mathcal H^T=\sum_{i=1}^qH_iH_i^T.
+\]
+Левые сингулярные векторы $u_r\in\mathbb R^L$ выбираются совместно
+по всем рядам. Для выбранных номеров $G$ получаем
+\begin{gather*}
+ P_G=\sum_{r\in G}u_ru_r^T,\\
+ \widetilde{\mathcal H}=P_G\mathcal H
+ =[P_GH_1\ \cdots\ P_GH_q],\qquad
+ \widetilde H_i=P_GH_i.
+\end{gather*}
+В каждом блоке отдельно усредняем элементы с $a+b=n$:
+\[
+ \widetilde Y_{in}
+ =\frac1{w_n}\sum_{\substack{a+b=n\\0\leq a<L,\;0\leq b<K}}
+ (\widetilde H_i)_{ab},\qquad 0\leq n<N.
+\]
+Получаем $q$ восстановленных рядов с одним общим проектором $P_G$.
+При отдельных SSA каждый ряд имел бы свой проектор.
+Координаты датчиков $s_i$ в построение $\mathcal H$ не входят.
+
+\section*{4. Ранг гармоники}
+Рассмотрим гармонику с амплитудой $A$ и начальной фазой $\alpha$:
+\[
+ y_n=A\cos(\phi n+\alpha),\qquad A\ne0,\quad \phi=\omega\Delta t.
+\]
+По формуле косинуса суммы
+\begin{align*}
+ y_{a+b}
+ &=A\cos\bigl(\phi a+(\phi b+\alpha)\bigr)\\
+ &=A\cos(\phi b+\alpha)\cos(\phi a)
+   -A\sin(\phi b+\alpha)\sin(\phi a).
+\end{align*}
+Определим два фиксированных вектора длины $L$:
+\begin{align*}
+ c&=(1,\cos\phi,\ldots,\cos((L-1)\phi))^T,\\
+ s&=(0,\sin\phi,\ldots,\sin((L-1)\phi))^T.
+\end{align*}
+Тогда каждый столбец матрицы окон имеет вид
+\[
+ H_{:,b}=A\cos(\phi b+\alpha)c-A\sin(\phi b+\alpha)s.
+\]
+Все столбцы лежат в пространстве $\operatorname{span}\{c,s\}$,
+поэтому $\operatorname{rank}H\leq2$.
+При $L,K\geq2$ первые две строки и два столбца дают определитель
+\[
+ A^2\det\begin{pmatrix}
+ \cos\alpha&\cos(\alpha+\phi)\\
+ \cos(\alpha+\phi)&\cos(\alpha+2\phi)
+ \end{pmatrix}=-A^2\sin^2\phi.
+\]
+Если $0<\phi<\pi$, он ненулевой, значит ранг не меньше двух.
+Вместе с предыдущей оценкой получаем $\operatorname{rank}H=2$.
+
+\textbf{Одна гармоника занимает два направления SVD.}
+Одно слагаемое ранга один обычно не восстанавливает ее целиком.
+Для суммы $h$ гармоник все столбцы лежат в пространстве $h$ косинусных
+и $h$ синусных векторов, поэтому ранг не больше $2h$.
+
+При нескольких гармониках SVD может смешивать разные частоты в одной
+компоненте. Поэтому пара компонент SVD не всегда соответствует
+одной гармонике.
+
+\section*{5. Пространственные фазы и траектория измерений}
+Для одной частоты два датчика дают
+\begin{align*}
+ x_1&=a_1\cos\theta,\qquad \theta=\omega t,\quad a_1,a_2>0,\\
+ x_2&=a_2\cos(\theta+\delta)
+     =a_2\cos\delta\cos\theta-a_2\sin\delta\sin\theta.
+\end{align*}
+$\delta$ --- фазовый сдвиг между датчиками; начало времени выбрано
+по первому датчику. Объединяем показания:
+\[
+ X=\begin{pmatrix}x_1\\x_2\end{pmatrix}
+ =\underbrace{\begin{pmatrix}a_1&0\\a_2\cos\delta&-a_2\sin\delta\end{pmatrix}}_B
+ \begin{pmatrix}\cos\theta\\\sin\theta\end{pmatrix},\qquad
+ \det B=-a_1a_2\sin\delta.
+\]
+При $\sin\delta\ne0$ матрица обратима: окружность переходит в эллипс,
+а фаза определяется по $X$ однозначно по модулю $2\pi$.
+При $\sin\delta=0$ получается отрезок, и $\theta,-\theta$
+дают одинаковые показания.
+
+Для нескольких частот принимаем модель с постоянными амплитудами и фазами:
+\begin{align*}
+ x_i(t)&=\sum_{j=1}^h a_{ij}\cos(\omega_jt+\varphi_{ij})\\
+ &=\sum_{j=1}^h\left[
+ a_{ij}\cos\varphi_{ij}\cos\theta_j
+ -a_{ij}\sin\varphi_{ij}\sin\theta_j\right],\qquad \theta_j=\omega_jt.
+\end{align*}
+Коэффициенты при косинусе и синусе частоты $j$ образуют столбцы
+$2j-1$ и $2j$ матрицы $B$:
+\begin{gather*}
+ p=(\cos\theta_1,\sin\theta_1,\ldots,\cos\theta_h,\sin\theta_h)^T,\\
+ B_{i,2j-1}=a_{ij}\cos\varphi_{ij},\qquad
+ B_{i,2j}=-a_{ij}\sin\varphi_{ij},\\
+ X=Bp.
+\end{gather*}
+Каждая пара координат $p$ лежит на окружности. Все возможные фазы
+образуют произведение $h$ окружностей, тор $\mathbb T^h$.
+Условие $\operatorname{rank}B=2h$ позволяет восстановить $p$ по $X$
+и сохраняет различимость всех точек этого тора.
+
+При $\omega_2=2\omega_1$ имеем $\theta_2=2\theta_1\pmod{2\pi}$:
+свободная фаза одна, и фазовое замыкание есть окружность.
+При иррациональном $\omega_2/\omega_1$ замыкание непрерывной траектории
+есть $\mathbb T^2$ \cite[следствие 2.3]{torus}.
+Число спектральных линий может превышать число независимых фаз.
+Дискретизация и конечная запись могут ограничивать покрытие фаз.
+
+Задержка $\tau$ заменяет фазовый сдвиг $\varphi_{ij}$ на
+$\varphi_{ij}-\omega_j\tau$ и добавляет строку в матрицу наблюдения:
+\[
+ x_i(t-\tau)=\sum_j a_{ij}\left[
+ \cos(\varphi_{ij}-\omega_j\tau)\cos\theta_j
+ -\sin(\varphi_{ij}-\omega_j\tau)\sin\theta_j\right].
+\]
+Для одной частоты пара $(x_1(t),x_1(t-\tau))$ сохраняет фазу
+при $\sin(\omega\tau)\ne0$.
+
+\section*{6. Ошибка ряда и ошибка матрицы}
+Для ошибки $e_n=y_n-\widetilde y_n$ унитарное преобразование Фурье дает
+\[
+ \widehat e_k=\frac1{\sqrt N}\sum_{n=0}^{N-1}e_ne^{-2\pi ikn/N},\qquad
+ \sum_{n=0}^{N-1}|e_n|^2=\sum_{k=0}^{N-1}|\widehat e_k|^2.
+\]
+Это равенство Парсеваля: сумма квадратов сохраняется при смене
+ортонормированного базиса. Оно действует для полного комплексного
+спектра. Для нескольких датчиков равенства складываются.
+
+В матрице SSA отсчет $y_n$ повторяется $w_n$ раз, поэтому
+\[
+ \|H\|_F^2=\sum_nw_ny_n^2=\sum_{r=1}^R\sigma_r^2,\qquad
+ \|H-\widetilde H\|_F^2=\sum_{r\notin G}\sigma_r^2.
+\]
+$\|M\|_F^2$ обозначает сумму квадратов элементов матрицы $M$.
+Ошибка матрицы SSA и ошибка восстановленного ряда различаются;
+последнюю считаем после диагонального усреднения.
+
+\paragraph{Граница выводов.}
+SSA/MSSA определены для произвольных данных. Выводы о фазовых окружностях
+и торах относятся к точной сумме стационарных гармоник.
+Оценка ошибки разделения частот при шуме здесь не выведена,
+поэтому устойчивость восстановленной фазовой геометрии пока не обоснована.
+
+\begin{thebibliography}{2}
+\bibitem{mssa}
+N.~Golyandina, D.~Stepanov.
+\emph{SSA-based approaches to analysis and forecast of multidimensional
+ time series}. Proceedings of the 5th St. Petersburg Workshop on
+Simulation, 2005, с.~293--298; алгоритм: раздел 1.1, с.~294--295.
+\url{https://www.gistatgroup.com/gus/mssa2.pdf}.
+\bibitem{torus}
+H.~Gakhar, J.~A.~Perea.
+\emph{Sliding window persistence of quasiperiodic functions}.
+arXiv:2103.04540v3, раздел 2.1.
+\url{https://arxiv.org/html/2103.04540v3}.
+\end{thebibliography}
+\end{document}

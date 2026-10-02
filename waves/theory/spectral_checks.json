@@ -1,0 +1,84 @@
+{
+  "weighted_parseval_error": 0.0,
+  "fft2_singular_value_error": 2.6645352591003757e-15,
+  "hankel_weight_identity_error": 2.2737367544323206e-13,
+  "rank3_errors": {
+    "matrix": 707.1726052117835,
+    "svd_tail": 707.172605211784,
+    "weighted_series": 586.4373994777097,
+    "series": 90.25734091816335
+  },
+  "exact_separation": {
+    "left_cross_norm": 5.301622594058594e-13,
+    "right_cross_norm": 5.301622594058594e-13,
+    "singular_values": [
+      29.999999999999993,
+      29.999999999999993,
+      18.000000000000007,
+      17.999999999999993
+    ],
+    "first_group_relative_error": 1.6455272296240739e-15
+  },
+  "close_frequency_pair_mixing": [
+    {
+      "bin_gap": 6.0,
+      "relative_group_error": 1.6455272296240739e-15
+    },
+    {
+      "bin_gap": 1.0,
+      "relative_group_error": 1.5876681542586407e-15
+    },
+    {
+      "bin_gap": 0.4,
+      "relative_group_error": 0.47508073593007155
+    },
+    {
+      "bin_gap": 0.1,
+      "relative_group_error": 0.6000310045450885
+    }
+  ],
+  "same_mssa_spectrum_different_geometry": [
+    {
+      "phase": 0,
+      "mssa_pair": [
+        67.08203932499366,
+        67.08203932499364
+      ],
+      "instantaneous_phase_map_singular_values": [
+        2.23606797749979,
+        0.0
+      ]
+    },
+    {
+      "phase": 1.5707963267948966,
+      "mssa_pair": [
+        67.0820393249937,
+        67.08203932499367
+      ],
+      "instantaneous_phase_map_singular_values": [
+        2.0,
+        1.0
+      ]
+    }
+  ],
+  "embedding_chord_bound": {
+    "sigma_min": 0.427475253198932,
+    "sigma_max": 4.024566556346961,
+    "sampled_min": 0.4582115217488899,
+    "sampled_max": 4.01728000160873
+  },
+  "ellipse_whitening_radius_error": 1.1102230246251565e-15,
+  "signed_factorization_error": 4.813487355734894e-14,
+  "signed_gram_identity_error": 4.050201017047171e-14,
+  "fixed_frequency_certificate": {
+    "coefficient_matrix_error": 0.003510691592545643,
+    "error_bound": 0.006956076071004124,
+    "perturbed_sigma_min": 0.4271219875510115,
+    "lower_bound": 0.42396456160638635
+  },
+  "rank_deficient_collision_error": 1.0068810866857322e-15,
+  "phase_error_bound_max_ratio": 0.9999986458227332,
+  "seed": 7,
+  "numpy": "2.0.2",
+  "matrix_products": "numpy.einsum, optimize=False"
+}

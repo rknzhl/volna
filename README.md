@@ -8,6 +8,7 @@
 - `02_models`: прогноз записей датчиков.
 - `03_the_well`: акустика по данным [The Well](https://polymathic-ai.org/the_well/).
 - `04_tides`: прилив в реке Делавэр по данным [NOAA](https://tidesandcurrents.noaa.gov/).
+- `05_approximation`: MLP для поправки к физическому расчёту и прямой аппроксимации данных The Well.
 
 ## Запуск
 
@@ -16,4 +17,16 @@ Python 3.9:
 ```
 pip install numpy scipy matplotlib plotly torch h5py huggingface_hub pillow ipykernel
 python waves/real/fetch_tides.py
+```
+
+## Исследовательские заметки
+
+Рабочий текст: [research/interpretation.tex](research/interpretation.tex).
+PDF: [research/interpretation.pdf](research/interpretation.pdf).
+Копия в `old/waves_old/` архивная.
+
+Сборка всех `.tex` в `research` через XeLaTeX и latexmk:
+
+```
+make -C research
 ```

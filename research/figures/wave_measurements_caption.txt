@@ -1,0 +1,64 @@
+RU
+Пересекающиеся волны и распределённые измерения. Две гармонические волны
+распространяются в разных направлениях. Датчики S1–S3 регистрируют высоту
+свободной поверхности; донные приборы D1 и D2 измеряют горизонтальную
+скорость воды непосредственно над дном. Скорость ветра обозначена vw;
+ветровая нагрузка может способствовать горизонтальному дрейфу буйка.
+Круглый буёк дрейфует и совершает
+вертикальные колебания. Стрелка vb обозначает его горизонтальную скорость,
+двусторонняя вертикальная стрелка обозначает колебание по высоте.
+Передняя часть водного объёма показана прозрачной, чтобы открыть вид на
+горизонтальное дно и крепление приборов. Цвета датчиков и сигналов совпадают.
+Ряды уровня показаны в общем масштабе с вертикальными сдвигами;
+ux обозначает полную горизонтальную скорость воды, включая среднее течение.
+Рисунок является иллюстрацией постановки, а не результатом реального опыта.
+Геометрия волн и размеры приборов показаны условно; динамика корпуса буйка
+и его след не рассчитываются. Три коротких гребня за буйком схематически
+показывают возмущение воды при его движении и колебаниях. Они не задают
+рассчитанный стационарный след пассивного буйка в равномерном течении.
+Высота поверхности и скорость воды рассчитаны из одной
+линейной модели волн конечной глубины с равномерным течением.
+Ветровая нагрузка и количественная связь скорости ветра с дрейфом буйка
+показаны концептуально и в расчёт волн не входят.
+
+EN
+Crossing waves and distributed measurements. Two harmonic waves propagate
+in different directions. Gauges S1–S3 record free-surface elevation, while
+bottom-mounted instruments D1 and D2 sample horizontal water velocity just
+above the bed. Wind velocity is denoted by vw; wind loading can contribute to
+horizontal buoy drift. A spherical buoy drifts and oscillates vertically. The arrow
+vb denotes its horizontal velocity; the vertical double arrow denotes heave.
+The front water volume is made transparent to expose the horizontal bed and
+instrument mounts. Sensor and signal colours match. Elevation records share
+a common scale and are vertically offset; ux is the full horizontal water
+velocity, including the mean current. This is a conceptual
+illustration, not experimental data. Wave height and instrument sizes are
+schematic; buoy-body dynamics and its wake are not simulated. The three short
+crests behind the buoy schematically indicate water disturbance caused by its
+motion and oscillation; they do not represent a calculated steady wake of a
+passive buoy advected with a uniform current. Water elevation and velocity
+are calculated from one linear finite-depth wave model with a uniform current.
+Wind loading and the quantitative relation between wind and buoy drift are
+shown conceptually and are not included in the wave calculation.
+
+Model and reproduction
+Run: .venv/bin/python research/figures/crossing_waves.py
+Outputs: output/pdf/wave_measurements_{ru,en}.{pdf,svg,png}
+Domain: 18 by 14 m; water depth: 3 m; mean current: 0.08 m/s along x.
+Frequencies: 0.55 Hz and 0.55 sqrt(2) Hz. Amplitudes: 1.5 and 1.0 cm.
+Propagation angles: 24 and -58 degrees. Snapshot: 5 s.
+Intrinsic frequencies satisfy (omega - k U cos(alpha))^2 = g k tanh(k h).
+Bed-mounted velocity samples are evaluated 0.2 m above the bed.
+The instantaneous surface projection is vertically exaggerated for clarity.
+The code checks dispersion and recovers the prescribed amplitudes and phases
+from all gauge records by a joint sine/cosine least-squares fit.
+
+Quality review, 2026-10-02
+An independent critic inspected the illustration and the PDF raster proof
+at a width equivalent to approximately 180 mm. Initial concerns about faceted
+water, dry-looking bottom sensors, an unimmersed buoy and a misleading wave
+arrow were corrected. The second review found no substantial visual obstacles
+for a conceptual journal illustration and required the wake caveat above.
+Label sizes were subsequently increased for print reduction; no scene content
+was changed. The PDF uses native vector gradients; the editable SVG embeds
+only the smooth water shading as a high-resolution image to keep its size small.

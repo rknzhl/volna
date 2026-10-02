@@ -1,0 +1,16 @@
+{
+  "seed": 20261002,
+  "harmonic_determinant_max_error": 5.10702591327572e-15,
+  "mssa_gram_error": 4.302712266742077e-14,
+  "hankel_weight_error": 0.0,
+  "svd_tail_error": 1.1368683772161603e-13,
+  "averaging_errors": {
+    "weighted_series": 376.16962453195777,
+    "matrix": 568.1467253939318
+  },
+  "parseval_error": 7.105427357601002e-15,
+  "delay_matrix_error": 3.5638159090467525e-14,
+  "rank_deficient_collision_max_error": 6.061294862213985e-16,
+  "chord_unit_circle_max_error": 3.3306690738754696e-16,
+  "first_phase_count": 50
+}
