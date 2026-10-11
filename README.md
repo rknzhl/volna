@@ -1,24 +1,15 @@
 # Пространственно-временные ряды и SSA
 
-![Волна в 2D и 3D](results/notebooks/propagation.gif)
+## Основные файлы
 
-## Структура
+| Файл | Содержание |
+|---|---|
+| [Описание метода — PDF](research/phase_ssa_method.pdf) · [LaTeX](research/phase_ssa_method.tex) | Восстановление фаз и показаний через перенос между окнами. |
+| [Ноутбук 06](notebooks/06_phase_ssa.ipynb) | Поиск циклов и построение углов по показаниям датчиков. |
+| [Ноутбук 07](notebooks/07_tangent_overlap.ipynb) | Пример из PDF: две распространяющиеся волны, касательный перенос и обратное восстановление. |
+| [Спектральный конспект](research/interpretation.pdf) | Связь SSA/MSSA, гармоник и фазового пространства. |
 
-```text
-notebooks/         ноутбуки 01–07: поля, данные и методы
-code/
-  waves/           физические модели, загрузка данных и проверки
-  lag_ssa/         методы SSA и исследовательские эксперименты
-  figures/         построение иллюстраций
-  checks/          проверки математических формул
-  build/           сборка документов
-data/              исходные данные The Well и NOAA
-results/           результаты экспериментов и иллюстрации ноутбуков
-research/          математические тексты, заметки и исходники LaTeX
-output/            временные файлы сборки
-old/               прежние версии и отложенные концепции
-scratch/           резервные копии и рабочие заметки
-```
+[Все ноутбуки](notebooks/) · [Код и эксперименты](code/README.md) · [Результаты](results/)
 
 ## Запуск
 
@@ -26,18 +17,7 @@ scratch/           резервные копии и рабочие заметк�
 
 ```bash
 jupyter lab notebooks
-python code/waves/real/fetch_tides.py
-```
-
-Описание методов и примеры запуска: [code/README.md](code/README.md).
-
-## Математические тексты
-
-- Фазовая реконструкция: [PDF](research/phase_ssa_method.pdf), [LaTeX](research/phase_ssa_method.tex).
-- Спектральный конспект: [PDF](research/interpretation.pdf), [LaTeX](research/interpretation.tex).
-
-Сборка через XeLaTeX и latexmk:
-
-```bash
 make -f code/build/research.mk
 ```
+
+Для сборки PDF нужны XeLaTeX и latexmk.
