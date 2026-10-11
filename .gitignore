@@ -4,6 +4,6 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .DS_Store
-waves/real/data/
-waves/synthetic/data/
+data/
+output/
 CLAUDE.md

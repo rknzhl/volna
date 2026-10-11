@@ -1,0 +1,2735 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T2A]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else
+  \usepackage{fontspec}
+  \IfFileExists{cmunrm.otf}{%
+    \setmainfont{cmunrm.otf}[BoldFont=cmunbx.otf,
+      ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf]
+  }{%
+    \setmainfont{Times New Roman}
+  }
+\fi
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{Алгоритм}
+\algrenewcommand\algorithmicrequire{\textbf{Вход:}}
+\algrenewcommand\algorithmicensure{\textbf{Выход:}}
+\usepackage[unicode,hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{3em}
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-2ex \@plus -.5ex \@minus -.2ex}%
+  {.7ex \@plus .2ex}{\normalfont\Large\bfseries}}
+\makeatother
+\begin{document}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{5pt}
+\begin{center}
+{\large\bfseries Фазовая реконструкция пространственного поля\\
+через перенос между окнами}
+\end{center}
+
+\section*{1. Наблюдения и время}
+Датчики расположены в точках $s_i\in\Omega\subset\mathbb R^d$,
+$i=1,\ldots,m$. Они наблюдают одно поле $u(s,t)$:
+\begin{equation}
+Y_{i,n}=u(s_i,t_n)+\varepsilon_{i,n},\qquad
+ t_n=t_0+n\Delta t,\quad n=0,\ldots,N-1.
+\label{eq:observations}
+\end{equation}
+$t_0$ --- начальный момент, $\Delta t>0$ --- шаг времени,
+$\varepsilon_{i,n}$ --- ошибка измерения.
+Рассматриваем фазовую модель
+\begin{equation}
+u(s,t)=F(s,\theta(t)),\qquad
+\theta(t)=\theta_0+\omega(t-t_0)\pmod{2\pi},\qquad
+\mathbb T^r=(\mathbb R/2\pi\mathbb Z)^r.
+\label{eq:phase-model}
+\end{equation}
+Здесь $\theta_0\in\mathbb T^r$ --- начальная фаза,
+$\omega\in\mathbb R^r$ --- вектор угловых частот,
+$F:\Omega\times\mathbb T^r\to\mathbb R$ --- отклик поля на фазы.
+Предполагаем $F(s_i,\cdot)\in C^2(\mathbb T^r)$ для каждого датчика.
+Число фаз $r$, вектор $\omega$ и $F$ неизвестны.
+В дискретной записи $\theta_n=\theta(t_n)$ и $\alpha=\Delta t\,\omega$,
+поэтому $\theta_n=\theta_0+n\alpha\pmod{2\pi}$.
+Время входит через $\theta(t)$; пространственная размерность $d$ и число фаз $r$
+не обязаны совпадать. Общая конструкция ниже использует $\varepsilon_{i,n}=0$.
+Число гармоник $F$ не ограничивается.
+При одной фазе составляющие $\cos(k\theta)$ и $\sin(k\theta)$
+с $k=1$ называют основной гармоникой, а с $k\ge2$ --- обертонами.
+При нескольких фазах гармонические составляющие имеют вид
+$\cos(k^\top\theta)$ и $\sin(k^\top\theta)$, $k\in\mathbb Z^r$,
+с временными частотами $k^\top\omega$.
+Добавление таких составляющих может увеличивать ранг матрицы совместных окон,
+сохраняя число независимых фаз $r$.
+
+\section*{2. Совместные окна}
+Один снимок поля объединяет все датчики.
+Пусть $L$ --- число последовательных снимков в одном окне, $1<L<N$.
+Число окон равно $K=N-L+1$. Введём
+\begin{equation}
+y_n=\begin{pmatrix}Y_{1,n}\\ \vdots\\ Y_{m,n}\end{pmatrix}\in\mathbb R^m,
+\qquad
+x_n=\begin{pmatrix}y_n\\ y_{n+1}\\ \vdots\\ y_{n+L-1}\end{pmatrix}
+\in\mathbb R^{mL}.
+\label{eq:joint-windows}
+\end{equation}
+Матрица всей записи содержит снимки поля по столбцам:
+$$
+Y=[y_0,\ldots,y_{N-1}]\in\mathbb R^{m\times N}.
+$$
+Матрица совместных окон имеет явный блочный вид:
+\begin{equation}
+H=[x_0,\ldots,x_{K-1}]=
+\begin{pmatrix}
+y_0&y_1&\cdots&y_{K-1}\\
+y_1&y_2&\cdots&y_K\\
+\vdots&\vdots&&\vdots\\
+y_{L-1}&y_L&\cdots&y_{N-1}
+\end{pmatrix}\in\mathbb R^{mL\times K}.
+\label{eq:joint-H}
+\end{equation}
+Каждый блок $y_n$ содержит показания всех $m$ датчиков в момент $t_n$;
+каждый столбец $H$ содержит $L$ последовательных снимков поля.
+
+Матрицы удаления крайних блоков равны
+$$
+\begin{aligned}
+P_0&=\begin{pmatrix}I_{m(L-1)}&0_{m(L-1)\times m}\end{pmatrix},\\
+P_1&=\begin{pmatrix}0_{m(L-1)\times m}&I_{m(L-1)}\end{pmatrix}.
+\end{aligned}
+$$
+Здесь $I_p$ --- единичная матрица размера $p$.
+$P_0$ удаляет последний снимок, $P_1$ --- первый.
+Перекрытие соседних окон записывается как
+\begin{equation}
+P_1x_n=
+\begin{pmatrix}y_{n+1}\\ \vdots\\ y_{n+L-1}\end{pmatrix}
+=P_0x_{n+1},\qquad n=0,\ldots,K-2.
+\label{eq:window-overlap}
+\end{equation}
+Переход между этими окнами соответствует времени $\Delta t$.
+
+\textbf{Геометрия окон.} Пусть $\theta$ --- фаза в начале окна.
+Вектор $g(\theta)=(F(s_1,\theta),\ldots,F(s_m,\theta))^\top$
+содержит показания всех датчиков при этой фазе.
+Матрица соответствующего окна равна
+$$
+\mathcal X_L(\theta)=
+\begin{pmatrix}
+F(s_1,\theta)&F(s_1,\theta+\alpha)&\cdots&F(s_1,\theta+(L-1)\alpha)\\
+\vdots&\vdots&&\vdots\\
+F(s_m,\theta)&F(s_m,\theta+\alpha)&\cdots&F(s_m,\theta+(L-1)\alpha)
+\end{pmatrix}
+\in\mathbb R^{m\times L}.
+$$
+Строки соответствуют датчикам, столбцы --- последовательным моментам
+$t,t+\Delta t,\ldots,t+(L-1)\Delta t$, если $\theta=\theta(t)$.
+Объединяя столбцы матрицы в один вектор, получаем
+\begin{equation}
+h_L(\theta)=
+\bigl(g(\theta)^\top,g(\theta+\alpha)^\top,\ldots,
+g(\theta+(L-1)\alpha)^\top\bigr)^\top
+\in\mathbb R^{mL}.
+\label{eq:window-map}
+\end{equation}
+Вектор $h_L(\theta)$ содержит $L$ снимков поля, начиная с фазы $\theta$.
+При $\theta=\theta(t_n)$ получаем окно из измерений:
+$$
+h_L(\theta(t_n))=x_n,\qquad n=0,\ldots,K-1.
+$$
+
+\textbf{Наблюдаемость.} Предполагаем, что разные фазы дают разные окна:
+$h_L(\theta)=h_L(\theta')$ только при $\theta=\theta'$ на $\mathbb T^r$.
+Кроме того, при каждой фазе
+\begin{equation}
+\operatorname{rank}Dh_L(\theta)=r,\qquad
+\operatorname{rank}D(P_0h_L)(\theta)=r.
+\label{eq:observability}
+\end{equation}
+\begin{itemize}
+\setlength{\itemsep}{2pt}
+\item Инъективность и $\operatorname{rank}Dh_L=r$ при компактности $\mathbb T^r$
+делают $h_L:\mathbb T^r\to M=h_L(\mathbb T^r)$ $C^2$-диффеоморфизмом.
+\item $\operatorname{rank}D(P_0h_L)=r$: удаление последнего снимка
+сохраняет все касательные направления и обеспечивает единственность
+переноса \eqref{eq:tangent-transfer}.
+\end{itemize}
+
+Далее рассматриваем снимки $y_n$ при всех $n\ge0$.
+Матрицы $Y,H$ относятся к первым $N$ снимкам.
+
+\textbf{Временная динамика.} Предполагаем отсутствие целочисленных резонансов:
+$k^\top\alpha\notin2\pi\mathbb Z$ для каждого ненулевого $k\in\mathbb Z^r$.
+Тогда последовательность фаз плотна на торе.
+Через $\mathcal T$ обозначаем сдвиг окна за время $\Delta t$:
+$$
+\mathcal T(h_L(\theta(t)))=h_L(\theta(t+\Delta t))
+=h_L(\theta(t)+\alpha),\qquad \alpha=\omega\Delta t.
+$$
+В моменты измерений $t_n=t_0+n\Delta t$ это даёт
+$$
+\mathcal T(x_n)=x_{n+1}.
+$$
+При фиксированном числе снимков $L$ рассмотрим любое окно $z=h_L(\theta)\in M$.
+Плотность фаз позволяет выбрать последовательность
+$\theta(t_{n_k})\to\theta$. По непрерывности $h_L$
+$$
+x_{n_k}=h_L(\theta(t_{n_k}))\longrightarrow h_L(\theta)=z.
+$$
+Поскольку $M=h_L(\mathbb T^r)$ компактно,
+$$
+\overline{\{x_n:n\ge0\}}=M.
+$$
+Порядок окон определяет непрерывный сдвиг $\mathcal T$ на всём $M$.
+
+\section*{3. Перенос касательных векторов}
+При изменении фаз окно движется по $M$.
+Касательное пространство $T_zM\subset\mathbb R^{mL}$ состоит из возможных
+скоростей этого движения в окне $z$. Нижний индекс указывает окно,
+в котором рассматриваем изменение. Формально
+$$
+T_zM=\{\sigma'(0):\sigma\in C^1((-1,1),M),\ \sigma(0)=z\}.
+$$
+Если $z=h_L(\theta)$, то направление изменения фаз $c\in\mathbb R^r$
+даёт скорость изменения окна $Dh_L(\theta)c$. Поэтому
+$$
+T_zM=\{Dh_L(\theta)c:c\in\mathbb R^r\},\qquad
+z=h_L(\theta),\qquad \dim T_zM=r.
+$$
+При переносе будем искать допустимое изменение следующего окна,
+согласованное с общими блоками.
+Из плотной последовательности окон получаем $T_zM$ по направлениям хорд:
+\begin{equation}
+T_zM=\operatorname{lin}\left\{
+\lim_{k\to\infty}\frac{x_{n_k}-z}{\|x_{n_k}-z\|}:
+x_{n_k}\to z,\ x_{n_k}\ne z,\ \text{предел существует}
+\right\}.
+\label{eq:tangent-secants}
+\end{equation}
+Гладкость $M$ и плотность окон обеспечивают получение всех касательных направлений.
+Выбираем $r$ независимых направлений из \eqref{eq:tangent-secants}
+и ортонормируем их. Полученные векторы $q_1(z),\ldots,q_r(z)$
+составляют столбцы матрицы
+\begin{equation}
+Q(z)=[q_1(z),\ldots,q_r(z)]\in\mathbb R^{mL\times r},\qquad
+Q(z)^\top Q(z)=I_r.
+\label{eq:tangent-basis}
+\end{equation}
+
+Следующее окно равно $\mathcal T(z)$, а его касательное пространство
+обозначается $T_{\mathcal T(z)}M$.
+Производная сдвига переносит вектор из пространства текущего окна
+в пространство следующего:
+$$
+D\mathcal T_z:T_zM\longrightarrow T_{\mathcal T(z)}M.
+$$
+Дифференцирование перекрытия вдоль кривой со скоростью $v\in T_zM$ даёт
+\begin{equation}
+P_0\mathcal T(z)=P_1z
+\quad\Longrightarrow\quad P_0D\mathcal T_zv=P_1v.
+\label{eq:tangent-overlap}
+\end{equation}
+Вектор $v$ содержит изменения $L$ снимков в текущем окне.
+В следующем окне первые $L-1$ изменений уже известны: это последние
+$L-1$ блоков $v$. Неизвестный вектор $v'$ должен удовлетворять двум условиям:
+$$
+P_0v'=P_1v,\qquad v'\in T_{\mathcal T(z)}M.
+$$
+Первое сохраняет изменения общих измерений; второе требует, чтобы $v'$
+был допустимой скоростью изменения окна $\mathcal T(z)$.
+Чтобы выполнить второе условие, записываем $v'=Q(\mathcal T(z))a$.
+Тогда остаётся линейная система на $r$ коэффициентов $a$:
+$$
+J(z)a=P_1v,\qquad
+J(z)=P_0Q(\mathcal T(z))\in\mathbb R^{m(L-1)\times r}.
+$$
+Условие наблюдаемости \eqref{eq:observability} означает: первые $L-1$ блоков
+однозначно определяют касательное изменение всего окна.
+Поэтому система имеет не более одного решения.
+Вектор $D\mathcal T_zv$ удовлетворяет обоим условиям по \eqref{eq:tangent-overlap},
+поэтому система совместна. Столбцы $J(z)$ независимы,
+поэтому $J(z)^\top J(z)$ обратима.
+Умножая систему слева на $J(z)^\top$, находим
+$$
+a=\bigl(J(z)^\top J(z)\bigr)^{-1}J(z)^\top P_1v.
+$$
+Подставляя эти коэффициенты в $v'=Q(\mathcal T(z))a$, получаем
+\begin{equation}
+D\mathcal T_zv=Q(\mathcal T(z))
+\bigl(J(z)^\top J(z)\bigr)^{-1}J(z)^\top P_1v.
+\label{eq:tangent-transfer}
+\end{equation}
+\section*{4. Независимые фазовые направления}
+Базисы $Q(z)$ из \eqref{eq:tangent-basis} выбраны независимо
+и могут поворачиваться от окна к окну.
+Чтобы согласовать направления, переносим один начальный базис $W_0=Q(x_0)$:
+\begin{equation}
+W_{n+1}=Q(x_{n+1})
+\bigl(J(x_n)^\top J(x_n)\bigr)^{-1}J(x_n)^\top P_1W_n.
+\label{eq:frame-transport}
+\end{equation}
+Пусть $c\in\mathbb R^r$ задаёт малое изменение фаз:
+$\theta\mapsto\theta+\eta c$. Изменение окна при $\eta=0$ равно $Dh_L(\theta)c$.
+Через один шаг обе фазы получают одинаковую прибавку $\alpha$:
+$\theta+\eta c\mapsto\theta+\alpha+\eta c$. Поэтому коэффициенты $c$
+сохраняются, а изменение следующего окна равно $Dh_L(\theta+\alpha)c$:
+$$
+D\mathcal T_{h_L(\theta)}\bigl(Dh_L(\theta)c\bigr)
+=Dh_L(\theta+\alpha)c.
+$$
+В опорном окне $x_0=h_L(\theta_0)$ матрица $Dh_L(\theta_0)$ имеет ранг $r$:
+её столбцы образуют базис $T_{x_0}M$.
+Столбцы $W_0=Q(x_0)$ лежат в этом же пространстве, поэтому
+$$
+(W_0)_{:,j}=Dh_L(\theta_0)b_j,\qquad b_j\in\mathbb R^r,\quad j=1,\ldots,r.
+$$
+Здесь $b_j$ --- вектор коэффициентов $j$-го столбца $W_0$ в этом базисе.
+Соберём эти коэффициенты в матрицу $B=[b_1,\ldots,b_r]$.
+При переносе каждый $b_j$ сохраняется, поэтому
+$$
+W_n=Dh_L(\theta_n)B.
+$$
+Матрица $B$ обратима, поскольку столбцы $W_0$ образуют базис.
+Для интегрирования по замкнутым обходам нужны значения поля на всём $M$.
+Плотность траектории и непрерывность $Dh_L$ задают единственное продолжение:
+\begin{equation}
+W(z)=\lim_{x_{n_k}\to z}W_{n_k},\qquad
+W(h_L(\theta))=Dh_L(\theta)B,\qquad \det B\ne0.
+\label{eq:invariant-frame}
+\end{equation}
+Столбцы $W$ --- инвариантные поля: их значения сохраняются при переносе,
+\begin{equation}
+W(\mathcal T(z))=D\mathcal T_zW(z).
+\label{eq:invariant-kernel}
+\end{equation}
+Они задают $r$ независимых направлений изменения фаз.
+
+\section*{5. От направлений к углам}
+\textbf{Коэффициенты движения.}
+Форма $\beta_z:T_zM\to\mathbb R^r$ возвращает коэффициенты касательного вектора
+в базисе $W(z)$. Из разложения $v=W(z)a$ получаем
+$$
+W(z)^\top v=W(z)^\top W(z)a.
+$$
+Столбцы $W(z)$ независимы, поэтому $W(z)^\top W(z)$ обратима.
+Умножая на её обратную матрицу, находим
+\begin{equation}
+a=\beta_z(v)=(W(z)^\top W(z))^{-1}W(z)^\top v,
+\qquad \beta_zW(z)=I_r.
+\label{eq:dual-form}
+\end{equation}
+Подставляя $W=Dh_LB$ из \eqref{eq:invariant-frame} в $\beta W=I_r$, получаем
+$$
+\beta_{h_L(\theta)}Dh_L(\theta)B=I_r
+\quad\Longrightarrow\quad
+\beta_{h_L(\theta)}Dh_L(\theta)=B^{-1}.
+$$
+Значит, в фазовых координатах $\beta=B^{-1}d\theta$ и $d\beta=0$.
+Для кусочно гладкого пути $\gamma:[0,1]\to M$ накопленное перемещение равно
+$$
+\int_\gamma\beta=\int_0^1\beta_{\gamma(\eta)}(\gamma'(\eta))\,d\eta.
+$$
+\begin{samepage}
+\textbf{Базис обходов.}
+Класс обхода объединяет замкнутые пути с одинаковым числом оборотов
+по каждому из $r$ направлений тора. Обратные обороты считаем со знаком минус.
+Группа этих классов --- первая группа гомологий:
+$$
+H_1(M;\mathbb Z)\simeq\mathbb Z^r.
+$$
+\end{samepage}
+Выбираем $r$ обходов $\gamma_j$, из повторений которых получается любой
+набор чисел оборотов; числа повторений должны определяться однозначно.
+Такие обходы задают \emph{целочисленный базис}.
+При $r=2$ класс задаётся парой чисел оборотов. Берём один оборот вокруг
+отверстия и один вокруг трубки:
+$$
+(p,q)=p(1,0)+q(0,1),\qquad p,q\in\mathbb Z.
+$$
+Отрицательное число означает движение в обратную сторону.
+Матрица полных периодов равна
+\begin{equation}
+\Pi=\left[\oint_{\gamma_1}\beta,\ldots,\oint_{\gamma_r}\beta\right],
+\qquad \Pi\in\mathbb R^{r\times r}.
+\label{eq:period-matrix}
+\end{equation}
+Матрица $B$ из \eqref{eq:invariant-frame} переводит коэффициенты в базисе $W$
+в изменения исходных фаз. Обратный переход даёт $\beta=B^{-1}d\theta$.
+Столбец $\Gamma_{:,j}$ содержит целые числа оборотов исходных фаз вдоль $\gamma_j$.
+За этот обход их суммарное изменение равно $2\pi\Gamma_{:,j}$, поэтому
+$$
+\oint_{\gamma_j}\beta
+=B^{-1}\oint_{\gamma_j}d\theta
+=2\pi B^{-1}\Gamma_{:,j}.
+$$
+Собирая эти столбцы, получаем
+\begin{equation}
+\Pi=2\pi B^{-1}\Gamma,\qquad
+\Gamma\in G
+=\{C\in\mathbb Z^{r\times r}:\det C=\pm1\}.
+\label{eq:period-frame}
+\end{equation}
+Поэтому $\Pi$ обратима.
+
+\textbf{Углы.}
+Опорному окну $z_*$ назначаем нулевые углы. Для любого окна $z$:
+\begin{enumerate}
+\setlength{\itemsep}{1pt}
+\item Интегрируем $\beta$ вдоль пути от $z_*$ до $z$:
+получаем накопленное перемещение в базисе $W$.
+\item Умножаем на $\Pi^{-1}$: выражаем перемещение в единицах полных оборотов.
+\item Умножаем на $2\pi$: переводим обороты в радианы.
+\end{enumerate}
+\begin{equation}
+\Phi(z)=2\pi\Pi^{-1}\int_{z_*}^{z}\beta\pmod{2\pi},
+\qquad \varphi_n=\Phi(x_n)\in\mathbb T^r.
+\label{eq:phase-map}
+\end{equation}
+На обходе $\gamma_j$ только $j$-й угол меняется на $2\pi$.
+Изменение пути добавляет целые обороты, поэтому результат по модулю $2\pi$ одинаков.
+Если $z_*=h_L(\theta_*)$, то
+$$
+\Phi(h_L(\theta))=\Gamma^{-1}(\theta-\theta_*)\pmod{2\pi}.
+$$
+Полученные углы отличаются от исходных фаз обратимой целочисленной заменой
+координат и выбором нуля. Поэтому $\Phi:M\to\mathbb T^r$ --- диффеоморфизм.
+
+\section*{6. Снижение размерности и тор}
+Окно содержит $mL$ показаний, а восстановленные фазы образуют пространство размерности $r$:
+$$
+\theta\in\mathbb T^r
+\ \xrightarrow{\ h_L\ }\ z\in M\subset\mathbb R^{mL}
+\ \xrightarrow{\ \Phi\ }\ \varphi\in\mathbb T^r,
+\qquad \dim M=\dim\mathbb T^r=r.
+$$
+Ранг $H$ равен размерности линейной оболочки наблюдаемых окон.
+Он может расти с числом гармоник при неизменном $r$.
+
+Для представления фаз используем точки окружностей:
+\begin{equation}
+\chi(\varphi)=(\cos\varphi_1,\sin\varphi_1,\ldots,
+\cos\varphi_r,\sin\varphi_r)\in\mathbb R^{2r}.
+\label{eq:circle-coordinates}
+\end{equation}
+Это $2r$ координат многообразия размерности $r$.
+При $r=2$ изображаем результат тором в $\mathbb R^3$:
+\begin{equation}
+g(\varphi_1,\varphi_2)=
+\bigl((R+\rho\cos\varphi_2)\cos\varphi_1,
+(R+\rho\cos\varphi_2)\sin\varphi_1,\rho\sin\varphi_2\bigr),\quad R>\rho>0.
+\label{eq:torus-embedding}
+\end{equation}
+Радиусы $R,\rho$ задают вид изображения.
+Точки $\zeta_n=g(\varphi_n)$ и времена $t_n$ задают фазовую траекторию.
+
+\section*{7. Восстановление показаний из углов}
+Даны углы $\varphi\in\mathbb T^r$. Нужно восстановить соответствующее
+окно $z\in M\subset\mathbb R^{mL}$. Начнём с опорного окна $z_*$,
+у которого все углы равны нулю, и по очереди изменим каждый угол до нужного значения.
+
+Для этого найдём направление $E_j(z)$, движение по которому меняет
+только $j$-й угол. Вектор $a\in\mathbb R^r$ задаёт коэффициенты
+скорости окна в базисе $W(z)$. Вдоль пути $z(s)$ углы равны
+$\varphi(s)=\Phi(z(s))$. Дифференцируя \eqref{eq:phase-map}
+и используя $\beta_zW(z)=I_r$, получаем
+$$
+\begin{aligned}
+\frac{dz}{ds}&=W(z)a,\\[3pt]
+\frac{d\varphi}{ds}&=D\Phi_zW(z)a
+=2\pi\Pi^{-1}\beta_zW(z)a
+=2\pi\Pi^{-1}a.
+\end{aligned}
+$$
+Требуем, чтобы $j$-й угол увеличивался со скоростью $1$, а остальные не менялись:
+$$
+\begin{cases}
+d\varphi_j/ds=1,\\
+d\varphi_k/ds=0,\quad k\ne j
+\end{cases}
+\quad\Longleftrightarrow\quad
+2\pi\Pi^{-1}a=e_j
+\quad\Longrightarrow\quad
+a=\frac{1}{2\pi}\Pi e_j.
+$$
+Здесь $e_j$ --- $j$-й единичный вектор в $\mathbb R^r$.
+Подставляя найденные коэффициенты в $W(z)a$, получаем
+\begin{equation}
+E_j(z)=\frac{1}{2\pi}W(z)\Pi e_j,
+\qquad [E_1(z),\ldots,E_r(z)]=\frac{1}{2\pi}W(z)\Pi.
+\label{eq:phase-fields}
+\end{equation}
+
+Обозначим через $u_j\in M$ окно после изменения первых $j$ углов;
+$u_0=z_*$. На шаге $j$ решаем систему из $mL$ дифференциальных уравнений
+для пути $w_j(s)\in M$:
+\begin{equation}
+\begin{cases}
+\displaystyle\frac{dw_j}{ds}=E_j(w_j(s)),\\[3pt]
+w_j(0)=u_{j-1},
+\end{cases}
+\qquad
+u_j=w_j(\varphi_j),\quad j=1,\ldots,r,
+\qquad \Psi(\varphi)=u_r.
+\label{eq:phase-decoder}
+\end{equation}
+Параметр $s$ --- приращение $j$-го угла в радианах.
+За этот шаг $j$-й угол становится равен $\varphi_j$, остальные не меняются.
+После $r$ шагов получаем нужное окно, то есть $\Psi=\Phi^{-1}$.
+Для всех отсчётов:
+\begin{equation}
+\widehat x_n=\Psi(\varphi_n).
+\label{eq:measurement-decoder}
+\end{equation}
+Чтобы получить всю запись, усредняем копии одного отсчёта в перекрывающихся окнах:
+$$
+\widehat y_n=\frac{1}{d_n}
+\sum_{\substack{0\le j<K,\ 0\le\ell<L\\j+\ell=n}}\widehat x_j^{(\ell)},\qquad
+ d_n=\#\{(j,\ell):0\le j<K,\ 0\le\ell<L,\ j+\ell=n\}.
+$$
+Здесь $\widehat x_j^{(\ell)}\in\mathbb R^m$ --- снимок с задержкой $\ell$;
+$n=0,\ldots,N-1$. Обозначим эту операцию через
+\begin{equation}
+\widehat Y=\operatorname{fold}_L([\widehat x_0,\ldots,\widehat x_{K-1}]).
+\label{eq:folding}
+\end{equation}
+В точной модели $\widehat Y=Y$.
+
+\noindent\begin{minipage}{\textwidth}
+\section*{8. Точная конструкция через касательный перенос}
+Ниже дана точная конструкция для бесконечной записи без шума
+при условиях наблюдаемости \eqref{eq:observability} и отсутствия целочисленных резонансов.
+Для восстановления первых $N$ снимков используем $K=N-L+1$ окон.
+
+\begin{algorithm}[H]
+\caption{Фазовая реконструкция по переносу совместных окон}
+\label{alg:phase-transfer}
+\small
+\textbf{Вход:} точные показания $\{y_n\}_{n\ge0}$, времена $t_n$, длина окна $L$.\par
+\textbf{Выход:} число фаз $r$, углы $\varphi_n$, фазовый базис $E_j$
+и восстановленная запись $\widehat Y$.
+\begin{enumerate}
+\setlength{\itemsep}{4pt}
+\setlength{\parskip}{0pt}
+\item \textbf{Совместные окна.} Построить $x_n$ и матрицу $H$ по \eqref{eq:joint-windows}, \eqref{eq:joint-H}.
+Определить многообразие и временной сдвиг:
+$$
+M=\overline{\{x_n:n\ge0\}},\qquad \mathcal T(x_n)=x_{n+1}.
+$$
+\item \textbf{Касательные пространства.} Определить $T_zM$ по пределам секущих
+из \eqref{eq:tangent-secants} и выбрать
+ортонормированные базисы $Q(z)$:
+$$
+r=\dim T_zM,\qquad Q(z)\in\mathbb R^{mL\times r},\qquad Q(z)^\top Q(z)=I_r.
+$$
+\item \textbf{Касательный перенос.} По \eqref{eq:tangent-transfer} переносить вектор $v\in T_zM$:
+$$
+\begin{aligned}
+J(z)&=P_0Q(\mathcal T(z)),\\
+D\mathcal T_zv&=Q(\mathcal T(z))
+\bigl(J(z)^\top J(z)\bigr)^{-1}J(z)^\top P_1v.
+\end{aligned}
+$$
+\item \textbf{Инвариантный базис.} Перенести начальный базис вдоль траектории:
+$$
+\begin{aligned}
+W_0&=Q(x_0),\\
+W_{n+1}&=Q(x_{n+1})
+\bigl(J(x_n)^\top J(x_n)\bigr)^{-1}J(x_n)^\top P_1W_n.
+\end{aligned}
+$$
+Продолжить $W_n$ на $M$ по непрерывности.
+Столбцы $W$ задают независимые фазовые направления по \eqref{eq:invariant-frame}.
+\item \textbf{Полные периоды.} Вычислить форму $\beta$ по \eqref{eq:dual-form}.
+Выбрать $r$ замкнутых путей, классы которых образуют целочисленный базис
+$H_1(M;\mathbb Z)$. Их периоды составляют матрицу $\Pi$ по \eqref{eq:period-matrix}.
+\item \textbf{Независимые углы.} Положить $z_*=x_0$ и вычислить
+$$
+\varphi_n=2\pi\Pi^{-1}\int_{x_0}^{x_n}\beta\pmod{2\pi}.
+$$
+\item \textbf{Представление фаз и траектории.} Представить состояния координатами
+$\chi(\varphi_n)$ из \eqref{eq:circle-coordinates}. При $r=2$ построить тор и временную траекторию:
+$$
+\zeta_n=g(\varphi_n),\qquad (t_n,\zeta_n).
+$$
+\item \textbf{Обратное восстановление.} Построить поля $E_j$ и обратное
+отображение $\Psi$ их потоками по \eqref{eq:phase-fields}, \eqref{eq:phase-decoder}. Восстановить первые $N$ отсчётов:
+$$
+[E_1,\ldots,E_r]=\frac{1}{2\pi}W\Pi,\qquad
+\widehat Y=\operatorname{fold}_L
+\bigl([\Psi(\varphi_0),\ldots,\Psi(\varphi_{K-1})]\bigr),\quad K=N-L+1.
+$$
+\end{enumerate}
+\end{algorithm}
+
+\end{minipage}
+
+\newpage
+\section*{9. Пример: две распространяющиеся волны 2D}
+Двенадцать датчиков в квадрате $[0,1]^2$ измеряют две волны:
+$$
+u(s,t_n)=\cos(\theta_{1,n}-\mathbf k_1^\top s)
++0.6\cos(\theta_{2,n}-\mathbf k_2^\top s).
+$$
+Здесь $s\in[0,1]^2$ --- положение датчика, $\theta_{j,n}$ --- фаза волны $j$,
+$\mathbf k_j\in\mathbb R^2$ --- её волновой вектор. В примере задаём две независимые фазы, поэтому ожидаем $r=2$.
+В шаге 2 проверяем это по размерности касательного пространства.
+Алгоритм получает показания и порядок отсчётов.
+
+\textbf{1. Совместные окна.}
+Из $2048$ снимков при $L=24$ получаем $2025$ окон $x_n\in\mathbb R^{288}$.
+В этом примере матрица окон $H$ имеет ранг $4$. Показания линейно выражаются через
+$\cos\theta_1,\sin\theta_1,\cos\theta_2,\sin\theta_2$.
+SVD даёт четыре координаты без потери информации:
+$$
+\widetilde x_n=U_4^\top x_n\in\mathbb R^4,\qquad
+x_n=U_4\widetilde x_n,\qquad U_4\in\mathbb R^{288\times4}.
+$$
+
+Поверхность окон в четырёх координатах обозначим $M_4=U_4^\top M$.
+
+\textbf{2. Касательные пространства.}
+После смешивания координат два уравнения окружностей
+$\cos^2\theta_j+\sin^2\theta_j=1$ становятся квадратичными.
+Координаты окон $\widetilde x_n$ известны, коэффициенты $C,b$ неизвестны.
+Решаем линейную по этим коэффициентам систему
+$$
+\widetilde x_n^\top C\widetilde x_n=b,\quad n=0,\ldots,2024,
+\qquad C=C^\top\in\mathbb R^{4\times4},\quad b\in\mathbb R.
+$$
+SVD даёт два независимых решения $(C_1,b_1)$ и $(C_2,b_2)$ ---
+два уравнения поверхности окон.
+Для пути $\widetilde x(s)$ на этой поверхности ($s$ --- параметр пути)
+правая часть каждого уравнения постоянна. Поэтому скорость $\widetilde v=\widetilde x'(s)$ удовлетворяет
+$$
+0=\frac{d}{ds}(\widetilde x^\top C_j\widetilde x)
+=2(C_j\widetilde x)^\top\widetilde v,\qquad j=1,2.
+$$
+В точке $\widetilde x_n$ получаем касательное пространство как ядро:
+$$
+T_{\widetilde x_n}M_4=
+\ker\begin{pmatrix}(C_1\widetilde x_n)^\top\\(C_2\widetilde x_n)^\top\end{pmatrix}.
+$$
+Две строки независимы: четыре компоненты скорости минус два ограничения
+дают $r=4-2=2$. Ортонормированный базис ядра
+$\widetilde Q_n\in\mathbb R^{4\times2}$ находим через SVD;
+в полных координатах $Q(x_n)=U_4\widetilde Q_n$.
+
+\textbf{3. Касательный перенос.}
+$$
+\begin{aligned}
+U_0&=P_0U_4,\qquad U_1=P_1U_4,\qquad U_0,U_1\in\mathbb R^{276\times4},\\
+U_0\widetilde v'&=U_1\widetilde v,\\
+J_n&=J(x_n)=U_0\widetilde Q_{n+1}\in\mathbb R^{276\times2},\\
+\widetilde v'&=\widetilde Q_{n+1}
+\bigl(J_n^\top J_n\bigr)^{-1}J_n^\top U_1\widetilde v.
+\end{aligned}
+$$
+
+\textbf{4. Инвариантный базис.}
+Начинаем с $W_0=Q(x_0)$ и переносим оба столбца по \eqref{eq:frame-transport}.
+Для интегрирования нужны значения базиса между наблюдениями.
+В этом примере его столбцы линейны по четырём координатам окна:
+$$
+F_j\widetilde x_n=U_4^\top(W_n)_{:,j},\qquad F_j\in\mathbb R^{4\times4}.
+$$
+Эти равенства определяют две постоянные матрицы $F_1,F_2$.
+
+\textbf{5. Полные периоды.}
+Коэффициенты скорости в перенесённом базисе вычисляем по
+$$
+\beta_z(v)=(W(z)^\top W(z))^{-1}W(z)^\top v.
+$$
+Для двухволнового примера строим обходы в координатах двух окружностей.
+Из уравнений шага 2 находим две комбинации ранга $2$ и нормируем их:
+$$
+\operatorname{rank}(C_1-\lambda_jC_2)=2,\qquad
+R_j=\frac{C_1-\lambda_jC_2}{b_1-\lambda_jb_2}=S_j^\top S_j,
+\quad S_j\in\mathbb R^{2\times4}.
+$$
+Здесь $\lambda_j$ --- искомые числа. Два собственных вектора $R_j$
+с положительными собственными значениями умножаем на корни этих значений
+и записываем строками $S_j$.
+Матрица $S=\begin{pmatrix}S_1\\S_2\end{pmatrix}$ переводит окно в две пары
+координат единичных окружностей.
+
+Пусть \mbox{$p_0=S\widetilde x_0=(p_{0,1},p_{0,2},p_{0,3},p_{0,4})^\top$} ---
+координаты опорного окна. При $0\le s\le1$ задаём пути
+$\gamma_j:[0,1]\to M$:
+$$
+\begin{aligned}
+\gamma_1(s)&=U_4S^{-1}
+\begin{pmatrix}
+p_{0,1}\cos(2\pi s)-p_{0,2}\sin(2\pi s)\\
+p_{0,1}\sin(2\pi s)+p_{0,2}\cos(2\pi s)\\
+p_{0,3}\\p_{0,4}
+\end{pmatrix},\\[4pt]
+\gamma_2(s)&=U_4S^{-1}
+\begin{pmatrix}
+p_{0,1}\\p_{0,2}\\
+p_{0,3}\cos(2\pi s)-p_{0,4}\sin(2\pi s)\\
+p_{0,3}\sin(2\pi s)+p_{0,4}\cos(2\pi s)
+\end{pmatrix}.
+\end{aligned}
+$$
+Первый путь вращает только первую окружность, второй --- только вторую.
+Оба начинаются и заканчиваются в $x_0$; их числа оборотов $(1,0)$ и $(0,1)$
+образуют базис обходов тора. Вычисляем
+$$
+\Pi=\left[\oint_{\gamma_1}\beta,\ \oint_{\gamma_2}\beta\right]
+\in\mathbb R^{2\times2}.
+$$
+
+\textbf{6. Независимые углы.}
+Опорному окну $x_0$ назначаем углы $(0,0)$. Для каждого окна:
+$$
+\varphi_n=2\pi\Pi^{-1}\int_{x_0}^{x_n}\beta\pmod{2\pi}.
+$$
+
+\textbf{7. Представление фаз и траектории.}
+Представляем найденные углы координатами окружностей
+\eqref{eq:circle-coordinates} и изображаем тором по \eqref{eq:torus-embedding}.
+Порядок наблюдений задаёт временную траекторию.
+
+\noindent\begin{minipage}{\textwidth}
+\textbf{8. Обратное восстановление.}
+В четырёх координатах поля из \eqref{eq:phase-fields} заданы матрицами
+$$
+\mathsf E_j=\frac{\Pi_{1j}F_1+\Pi_{2j}F_2}{2\pi}.
+$$
+Начинаем с $\widetilde x_0$, последовательно меняем первый и второй углы
+и возвращаемся к полным окнам:
+$$
+\widehat x_n=U_4\exp(\varphi_{2,n}\mathsf E_2)
+\exp(\varphi_{1,n}\mathsf E_1)\widetilde x_0.
+$$
+Усреднение перекрывающихся окон по \eqref{eq:folding} даёт показания $\widehat Y$.
+Относительная ошибка восстановления равна $2.00\cdot10^{-14}$.
+
+% Embedded diagram%
+\begin{center}%
+\setlength{\unitlength}{1pt}%
+\begin{picture}(440,150)%
+\put(105,140){\makebox(0,0){\small Три координаты окна}}%
+\put(335,140){\makebox(0,0){\small Восстановленные углы}}%
+\put(100.67,124.29){\color{blue!55!black}\circle*{.8}}%
+\put(19.88,90.87){\color{blue!55!black}\circle*{.8}}%
+\put(32.16,30.52){\color{blue!55!black}\circle*{.8}}%
+\put(125.57,13.78){\color{blue!55!black}\circle*{.8}}%
+\put(197.07,58.99){\color{blue!55!black}\circle*{.8}}%
+\put(166.84,112.08){\color{blue!55!black}\circle*{.8}}%
+\put(67.98,111.52){\color{blue!55!black}\circle*{.8}}%
+\put(10.07,60.03){\color{blue!55!black}\circle*{.8}}%
+\put(56.93,19.14){\color{blue!55!black}\circle*{.8}}%
+\put(155.93,35.34){\color{blue!55!black}\circle*{.8}}%
+\put(197.43,86.87){\color{blue!55!black}\circle*{.8}}%
+\put(136.99,112.45){\color{blue!55!black}\circle*{.8}}%
+\put(43.10,84.45){\color{blue!55!black}\circle*{.8}}%
+\put(19.04,38.89){\color{blue!55!black}\circle*{.8}}%
+\put(88.63,29.42){\color{blue!55!black}\circle*{.8}}%
+\put(172.99,63.85){\color{blue!55!black}\circle*{.8}}%
+\put(180.53,98.53){\color{blue!55!black}\circle*{.8}}%
+\put(106.88,93.48){\color{blue!55!black}\circle*{.8}}%
+\put(35.09,58.73){\color{blue!55!black}\circle*{.8}}%
+\put(41.37,38.01){\color{blue!55!black}\circle*{.8}}%
+\put(114.01,53.85){\color{blue!55!black}\circle*{.8}}%
+\put(172.00,83.00){\color{blue!55!black}\circle*{.8}}%
+\put(155.93,88.99){\color{blue!55!black}\circle*{.8}}%
+\put(88.59,67.65){\color{blue!55!black}\circle*{.8}}%
+\put(43.73,48.89){\color{blue!55!black}\circle*{.8}}%
+\put(64.86,56.04){\color{blue!55!black}\circle*{.8}}%
+\put(123.97,76.86){\color{blue!55!black}\circle*{.8}}%
+\put(158.13,82.24){\color{blue!55!black}\circle*{.8}}%
+\put(136.65,65.69){\color{blue!55!black}\circle*{.8}}%
+\put(86.93,51.21){\color{blue!55!black}\circle*{.8}}%
+\put(59.72,59.90){\color{blue!55!black}\circle*{.8}}%
+\put(77.60,80.56){\color{blue!55!black}\circle*{.8}}%
+\put(118.66,83.99){\color{blue!55!black}\circle*{.8}}%
+\put(143.35,62.92){\color{blue!55!black}\circle*{.8}}%
+\put(131.66,44.16){\color{blue!55!black}\circle*{.8}}%
+\put(96.83,54.67){\color{blue!55!black}\circle*{.8}}%
+\put(70.26,84.30){\color{blue!55!black}\circle*{.8}}%
+\put(74.90,95.35){\color{blue!55!black}\circle*{.8}}%
+\put(107.25,70.31){\color{blue!55!black}\circle*{.8}}%
+\put(139.32,37.49){\color{blue!55!black}\circle*{.8}}%
+\put(140.70,38.84){\color{blue!55!black}\circle*{.8}}%
+\put(106.45,76.63){\color{blue!55!black}\circle*{.8}}%
+\put(66.60,106.55){\color{blue!55!black}\circle*{.8}}%
+\put(61.92,89.92){\color{blue!55!black}\circle*{.8}}%
+\put(102.42,43.31){\color{blue!55!black}\circle*{.8}}%
+\put(150.55,22.18){\color{blue!55!black}\circle*{.8}}%
+\put(154.52,54.65){\color{blue!55!black}\circle*{.8}}%
+\put(104.24,104.62){\color{blue!55!black}\circle*{.8}}%
+\put(49.21,112.17){\color{blue!55!black}\circle*{.8}}%
+\put(50.58,65.68){\color{blue!55!black}\circle*{.8}}%
+\put(112.80,18.58){\color{blue!55!black}\circle*{.8}}%
+\put(171.65,27.54){\color{blue!55!black}\circle*{.8}}%
+\put(160.37,84.07){\color{blue!55!black}\circle*{.8}}%
+\put(85.86,122.30){\color{blue!55!black}\circle*{.8}}%
+\put(27.55,96.19){\color{blue!55!black}\circle*{.8}}%
+\put(52.49,35.15){\color{blue!55!black}\circle*{.8}}%
+\put(137.75,10.70){\color{blue!55!black}\circle*{.8}}%
+\put(190.50,52.19){\color{blue!55!black}\circle*{.8}}%
+\put(149.57,111.45){\color{blue!55!black}\circle*{.8}}%
+\put(56.83,119.05){\color{blue!55!black}\circle*{.8}}%
+\put(14.58,66.11){\color{blue!55!black}\circle*{.8}}%
+\put(72.02,14.73){\color{blue!55!black}\circle*{.8}}%
+\put(167.64,24.74){\color{blue!55!black}\circle*{.8}}%
+\put(195.28,83.62){\color{blue!55!black}\circle*{.8}}%
+\put(122.74,122.13){\color{blue!55!black}\circle*{.8}}%
+\put(29.51,96.15){\color{blue!55!black}\circle*{.8}}%
+\put(19.19,37.59){\color{blue!55!black}\circle*{.8}}%
+\put(103.64,15.14){\color{blue!55!black}\circle*{.8}}%
+\put(189.26,53.27){\color{blue!55!black}\circle*{.8}}%
+\put(181.38,105.42){\color{blue!55!black}\circle*{.8}}%
+\put(89.55,110.93){\color{blue!55!black}\circle*{.8}}%
+\put(15.96,66.04){\color{blue!55!black}\circle*{.8}}%
+\put(40.98,25.33){\color{blue!55!black}\circle*{.8}}%
+\put(134.94,35.23){\color{blue!55!black}\circle*{.8}}%
+\put(193.49,80.71){\color{blue!55!black}\circle*{.8}}%
+\put(154.18,106.78){\color{blue!55!black}\circle*{.8}}%
+\put(63.29,85.15){\color{blue!55!black}\circle*{.8}}%
+\put(21.03,45.09){\color{blue!55!black}\circle*{.8}}%
+\put(70.41,34.59){\color{blue!55!black}\circle*{.8}}%
+\put(153.75,62.66){\color{blue!55!black}\circle*{.8}}%
+\put(180.44,92.35){\color{blue!55!black}\circle*{.8}}%
+\put(125.93,88.77){\color{blue!55!black}\circle*{.8}}%
+\put(53.25,60.31){\color{blue!55!black}\circle*{.8}}%
+\put(39.64,44.13){\color{blue!55!black}\circle*{.8}}%
+\put(94.32,58.16){\color{blue!55!black}\circle*{.8}}%
+\put(155.02,81.11){\color{blue!55!black}\circle*{.8}}%
+\put(159.38,82.92){\color{blue!55!black}\circle*{.8}}%
+\put(108.76,63.66){\color{blue!55!black}\circle*{.8}}%
+\put(59.48,51.04){\color{blue!55!black}\circle*{.8}}%
+\put(59.77,62.08){\color{blue!55!black}\circle*{.8}}%
+\put(103.45,80.59){\color{blue!55!black}\circle*{.8}}%
+\put(143.64,79.83){\color{blue!55!black}\circle*{.8}}%
+\put(143.27,59.61){\color{blue!55!black}\circle*{.8}}%
+\put(107.68,47.70){\color{blue!55!black}\circle*{.8}}%
+\put(72.93,62.60){\color{blue!55!black}\circle*{.8}}%
+\put(69.52,86.74){\color{blue!55!black}\circle*{.8}}%
+\put(97.75,87.29){\color{blue!55!black}\circle*{.8}}%
+\put(131.44,59.87){\color{blue!55!black}\circle*{.8}}%
+\put(141.16,37.83){\color{blue!55!black}\circle*{.8}}%
+\put(117.82,51.61){\color{blue!55!black}\circle*{.8}}%
+\put(80.85,87.77){\color{blue!55!black}\circle*{.8}}%
+\put(64.03,101.85){\color{blue!55!black}\circle*{.8}}%
+\put(86.23,73.06){\color{blue!55!black}\circle*{.8}}%
+\put(130.10,33.51){\color{blue!55!black}\circle*{.8}}%
+\put(152.94,32.18){\color{blue!55!black}\circle*{.8}}%
+\put(127.42,74.28){\color{blue!55!black}\circle*{.8}}%
+\put(74.39,111.09){\color{blue!55!black}\circle*{.8}}%
+\put(48.33,96.69){\color{blue!55!black}\circle*{.8}}%
+\put(81.58,45.14){\color{blue!55!black}\circle*{.8}}%
+\put(144.27,17.03){\color{blue!55!black}\circle*{.8}}%
+\put(169.46,47.88){\color{blue!55!black}\circle*{.8}}%
+\put(124.84,103.42){\color{blue!55!black}\circle*{.8}}%
+\put(53.87,117.92){\color{blue!55!black}\circle*{.8}}%
+\put(34.33,72.35){\color{blue!55!black}\circle*{.8}}%
+\put(92.59,19.05){\color{blue!55!black}\circle*{.8}}%
+\put(168.72,21.23){\color{blue!55!black}\circle*{.8}}%
+\put(177.89,77.66){\color{blue!55!black}\circle*{.8}}%
+\put(105.50,122.63){\color{blue!55!black}\circle*{.8}}%
+\put(28.65,102.96){\color{blue!55!black}\circle*{.8}}%
+\put(33.80,41.17){\color{blue!55!black}\circle*{.8}}%
+\put(118.86,9.53){\color{blue!55!black}\circle*{.8}}%
+\put(191.31,45.07){\color{blue!55!black}\circle*{.8}}%
+\put(169.30,105.97){\color{blue!55!black}\circle*{.8}}%
+\put(74.77,121.04){\color{blue!55!black}\circle*{.8}}%
+\put(11.81,73.43){\color{blue!55!black}\circle*{.8}}%
+\put(51.41,19.57){\color{blue!55!black}\circle*{.8}}%
+\put(150.87,21.99){\color{blue!55!black}\circle*{.8}}%
+\put(200.02,76.26){\color{blue!55!black}\circle*{.8}}%
+\put(144.02,117.99){\color{blue!55!black}\circle*{.8}}%
+\put(44.93,99.57){\color{blue!55!black}\circle*{.8}}%
+\put(12.51,44.85){\color{blue!55!black}\circle*{.8}}%
+\put(81.90,18.55){\color{blue!55!black}\circle*{.8}}%
+\put(175.36,49.31){\color{blue!55!black}\circle*{.8}}%
+\put(189.92,98.37){\color{blue!55!black}\circle*{.8}}%
+\put(111.51,108.22){\color{blue!55!black}\circle*{.8}}%
+\put(28.22,70.41){\color{blue!55!black}\circle*{.8}}%
+\put(30.69,32.08){\color{blue!55!black}\circle*{.8}}%
+\put(112.99,37.29){\color{blue!55!black}\circle*{.8}}%
+\put(182.95,76.05){\color{blue!55!black}\circle*{.8}}%
+\put(166.06,100.37){\color{blue!55!black}\circle*{.8}}%
+\put(85.04,83.66){\color{blue!55!black}\circle*{.8}}%
+\put(29.80,49.95){\color{blue!55!black}\circle*{.8}}%
+\put(57.09,40.66){\color{blue!55!black}\circle*{.8}}%
+\put(132.39,63.68){\color{blue!55!black}\circle*{.8}}%
+\put(173.43,87.37){\color{blue!55!black}\circle*{.8}}%
+\put(140.52,83.00){\color{blue!55!black}\circle*{.8}}%
+\put(74.07,59.67){\color{blue!55!black}\circle*{.8}}%
+\put(44.91,49.20){\color{blue!55!black}\circle*{.8}}%
+\put(78.62,63.68){\color{blue!55!black}\circle*{.8}}%
+\put(134.85,81.43){\color{blue!55!black}\circle*{.8}}%
+\put(155.81,77.74){\color{blue!55!black}\circle*{.8}}%
+\put(125.43,58.32){\color{blue!55!black}\circle*{.8}}%
+\put(78.92,51.02){\color{blue!55!black}\circle*{.8}}%
+\put(61.71,67.41){\color{blue!55!black}\circle*{.8}}%
+\put(85.92,85.81){\color{blue!55!black}\circle*{.8}}%
+\put(124.99,79.56){\color{blue!55!black}\circle*{.8}}%
+\put(142.94,54.08){\color{blue!55!black}\circle*{.8}}%
+\put(125.98,42.57){\color{blue!55!black}\circle*{.8}}%
+\put(90.75,63.21){\color{blue!55!black}\circle*{.8}}%
+\put(68.28,92.55){\color{blue!55!black}\circle*{.8}}%
+\put(78.74,92.33){\color{blue!55!black}\circle*{.8}}%
+\put(114.49,58.86){\color{blue!55!black}\circle*{.8}}%
+\put(143.96,31.70){\color{blue!55!black}\circle*{.8}}%
+\put(137.48,46.70){\color{blue!55!black}\circle*{.8}}%
+\put(96.86,89.29){\color{blue!55!black}\circle*{.8}}%
+\put(59.66,108.34){\color{blue!55!black}\circle*{.8}}%
+\put(65.98,77.76){\color{blue!55!black}\circle*{.8}}%
+\put(115.10,31.40){\color{blue!55!black}\circle*{.8}}%
+\put(158.92,25.35){\color{blue!55!black}\circle*{.8}}%
+\put(148.20,69.90){\color{blue!55!black}\circle*{.8}}%
+\put(88.27,113.88){\color{blue!55!black}\circle*{.8}}%
+\put(40.72,103.81){\color{blue!55!black}\circle*{.8}}%
+\put(60.35,49.08){\color{blue!55!black}\circle*{.8}}%
+\put(131.63,13.53){\color{blue!55!black}\circle*{.8}}%
+\put(178.74,40.56){\color{blue!55!black}\circle*{.8}}%
+\put(146.39,100.05){\color{blue!55!black}\circle*{.8}}%
+\put(65.11,122.16){\color{blue!55!black}\circle*{.8}}%
+\put(23.37,79.74){\color{blue!55!black}\circle*{.8}}%
+\put(70.85,21.72){\color{blue!55!black}\circle*{.8}}%
+\put(159.01,16.30){\color{blue!55!black}\circle*{.8}}%
+\put(190.50,70.34){\color{blue!55!black}\circle*{.8}}%
+\put(127.25,120.74){\color{blue!55!black}\circle*{.8}}%
+\put(36.67,108.52){\color{blue!55!black}\circle*{.8}}%
+\put(19.58,48.25){\color{blue!55!black}\circle*{.8}}%
+\put(97.31,10.60){\color{blue!55!black}\circle*{.8}}%
+\put(185.11,39.01){\color{blue!55!black}\circle*{.8}}%
+\put(185.03,99.26){\color{blue!55!black}\circle*{.8}}%
+\put(95.89,120.81){\color{blue!55!black}\circle*{.8}}%
+\put(16.09,79.86){\color{blue!55!black}\circle*{.8}}%
+\put(34.32,25.80){\color{blue!55!black}\circle*{.8}}%
+\put(130.39,21.44){\color{blue!55!black}\circle*{.8}}%
+\put(197.72,69.61){\color{blue!55!black}\circle*{.8}}%
+\put(162.31,112.33){\color{blue!55!black}\circle*{.8}}%
+\put(64.54,100.83){\color{blue!55!black}\circle*{.8}}%
+\put(12.81,51.58){\color{blue!55!black}\circle*{.8}}%
+\put(62.62,23.61){\color{blue!55!black}\circle*{.8}}%
+\put(156.81,47.45){\color{blue!55!black}\circle*{.8}}%
+\put(191.59,91.67){\color{blue!55!black}\circle*{.8}}%
+\put(131.58,103.75){\color{blue!55!black}\circle*{.8}}%
+\put(45.55,72.76){\color{blue!55!black}\circle*{.8}}%
+\put(27.12,38.66){\color{blue!55!black}\circle*{.8}}%
+\put(92.36,41.22){\color{blue!55!black}\circle*{.8}}%
+\put(166.96,73.32){\color{blue!55!black}\circle*{.8}}%
+\put(171.43,93.94){\color{blue!55!black}\circle*{.8}}%
+\put(106.04,80.21){\color{blue!55!black}\circle*{.8}}%
+\put(44.38,52.96){\color{blue!55!black}\circle*{.8}}%
+\put(50.04,46.93){\color{blue!55!black}\circle*{.8}}%
+\put(111.20,66.74){\color{blue!55!black}\circle*{.8}}%
+\put(160.31,84.13){\color{blue!55!black}\circle*{.8}}%
+\put(149.13,76.86){\color{blue!55!black}\circle*{.8}}%
+\put(95.30,56.94){\color{blue!55!black}\circle*{.8}}%
+\put(56.55,52.66){\color{blue!55!black}\circle*{.8}}%
+\put(68.57,69.76){\color{blue!55!black}\circle*{.8}}%
+\put(113.68,83.89){\color{blue!55!black}\circle*{.8}}%
+\put(145.64,74.05){\color{blue!55!black}\circle*{.8}}%
+\put(136.82,52.25){\color{blue!55!black}\circle*{.8}}%
+\put(99.93,48.81){\color{blue!55!black}\circle*{.8}}%
+\put(70.41,71.39){\color{blue!55!black}\circle*{.8}}%
+\put(73.27,91.92){\color{blue!55!black}\circle*{.8}}%
+\put(104.20,81.50){\color{blue!55!black}\circle*{.8}}%
+\put(135.70,49.75){\color{blue!55!black}\circle*{.8}}%
+\put(139.84,36.38){\color{blue!55!black}\circle*{.8}}%
+\put(111.25,61.60){\color{blue!55!black}\circle*{.8}}%
+\put(74.03,97.30){\color{blue!55!black}\circle*{.8}}%
+\put(63.72,98.58){\color{blue!55!black}\circle*{.8}}%
+\put(94.34,60.05){\color{blue!55!black}\circle*{.8}}%
+\put(139.73,26.46){\color{blue!55!black}\circle*{.8}}%
+\put(153.63,40.43){\color{blue!55!black}\circle*{.8}}%
+\put(116.57,88.61){\color{blue!55!black}\circle*{.8}}%
+\put(62.30,114.10){\color{blue!55!black}\circle*{.8}}%
+\put(48.71,83.96){\color{blue!55!black}\circle*{.8}}%
+\put(95.92,31.45){\color{blue!55!black}\circle*{.8}}%
+\put(157.93,19.07){\color{blue!55!black}\circle*{.8}}%
+\put(166.53,63.88){\color{blue!55!black}\circle*{.8}}%
+\put(106.79,114.55){\color{blue!55!black}\circle*{.8}}%
+\put(39.97,110.56){\color{blue!55!black}\circle*{.8}}%
+\put(41.02,54.77){\color{blue!55!black}\circle*{.8}}%
+\put(113.94,12.07){\color{blue!55!black}\circle*{.8}}%
+\put(181.30,33.42){\color{blue!55!black}\circle*{.8}}%
+\put(166.63,94.82){\color{blue!55!black}\circle*{.8}}%
+\put(81.81,124.43){\color{blue!55!black}\circle*{.8}}%
+\put(18.94,87.13){\color{blue!55!black}\circle*{.8}}%
+\put(49.85,26.36){\color{blue!55!black}\circle*{.8}}%
+\put(143.51,13.23){\color{blue!55!black}\circle*{.8}}%
+\put(196.84,62.84){\color{blue!55!black}\circle*{.8}}%
+\put(148.83,116.80){\color{blue!55!black}\circle*{.8}}%
+\put(50.80,112.32){\color{blue!55!black}\circle*{.8}}%
+\put(11.35,55.71){\color{blue!55!black}\circle*{.8}}%
+\put(75.34,13.78){\color{blue!55!black}\circle*{.8}}%
+\put(172.53,34.58){\color{blue!55!black}\circle*{.8}}%
+\put(195.10,91.98){\color{blue!55!black}\circle*{.8}}%
+\put(118.02,118.40){\color{blue!55!black}\circle*{.8}}%
+\put(26.98,84.79){\color{blue!55!black}\circle*{.8}}%
+\put(22.51,32.76){\color{blue!55!black}\circle*{.8}}%
+\put(108.34,23.09){\color{blue!55!black}\circle*{.8}}%
+\put(188.64,64.31){\color{blue!55!black}\circle*{.8}}%
+\put(175.72,105.76){\color{blue!55!black}\circle*{.8}}%
+\put(86.29,99.86){\color{blue!55!black}\circle*{.8}}%
+\put(20.03,57.12){\color{blue!55!black}\circle*{.8}}%
+\put(47.78,29.75){\color{blue!55!black}\circle*{.8}}%
+\put(135.57,47.82){\color{blue!55!black}\circle*{.8}}%
+\put(186.26,86.01){\color{blue!55!black}\circle*{.8}}%
+\put(147.67,98.05){\color{blue!55!black}\circle*{.8}}%
+\put(66.10,72.89){\color{blue!55!black}\circle*{.8}}%
+\put(30.59,44.38){\color{blue!55!black}\circle*{.8}}%
+\put(75.20,46.52){\color{blue!55!black}\circle*{.8}}%
+\put(147.23,72.78){\color{blue!55!black}\circle*{.8}}%
+\put(169.78,88.21){\color{blue!55!black}\circle*{.8}}%
+\put(124.08,75.24){\color{blue!55!black}\circle*{.8}}%
+\put(63.16,53.83){\color{blue!55!black}\circle*{.8}}%
+\put(49.94,52.68){\color{blue!55!black}\circle*{.8}}%
+\put(92.43,71.43){\color{blue!55!black}\circle*{.8}}%
+\put(142.54,82.97){\color{blue!55!black}\circle*{.8}}%
+\put(150.90,71.06){\color{blue!55!black}\circle*{.8}}%
+\put(114.68,52.46){\color{blue!55!black}\circle*{.8}}%
+\put(73.27,54.09){\color{blue!55!black}\circle*{.8}}%
+\put(65.21,75.66){\color{blue!55!black}\circle*{.8}}%
+\put(93.81,88.21){\color{blue!55!black}\circle*{.8}}%
+\put(130.02,72.30){\color{blue!55!black}\circle*{.8}}%
+\put(141.73,46.17){\color{blue!55!black}\circle*{.8}}%
+\put(120.22,44.66){\color{blue!55!black}\circle*{.8}}%
+\put(84.91,73.51){\color{blue!55!black}\circle*{.8}}%
+\put(66.87,98.22){\color{blue!55!black}\circle*{.8}}%
+\put(83.57,85.46){\color{blue!55!black}\circle*{.8}}%
+\put(122.36,47.17){\color{blue!55!black}\circle*{.8}}%
+\put(147.73,29.83){\color{blue!55!black}\circle*{.8}}%
+\put(132.17,57.90){\color{blue!55!black}\circle*{.8}}%
+\put(86.15,100.42){\color{blue!55!black}\circle*{.8}}%
+\put(54.34,105.38){\color{blue!55!black}\circle*{.8}}%
+\put(73.20,63.40){\color{blue!55!black}\circle*{.8}}%
+\put(128.91,22.73){\color{blue!55!black}\circle*{.8}}%
+\put(164.52,33.43){\color{blue!55!black}\circle*{.8}}%
+\put(137.86,85.74){\color{blue!55!black}\circle*{.8}}%
+\put(71.72,118.49){\color{blue!55!black}\circle*{.8}}%
+\put(36.32,91.06){\color{blue!55!black}\circle*{.8}}%
+\put(74.61,33.72){\color{blue!55!black}\circle*{.8}}%
+\put(150.03,14.01){\color{blue!55!black}\circle*{.8}}%
+\put(180.43,56.80){\color{blue!55!black}\circle*{.8}}%
+\put(127.99,112.99){\color{blue!55!black}\circle*{.8}}%
+\put(46.22,116.25){\color{blue!55!black}\circle*{.8}}%
+\put(25.67,61.70){\color{blue!55!black}\circle*{.8}}%
+\put(93.03,12.83){\color{blue!55!black}\circle*{.8}}%
+\put(176.83,27.18){\color{blue!55!black}\circle*{.8}}%
+\put(183.37,88.20){\color{blue!55!black}\circle*{.8}}%
+\put(102.23,124.50){\color{blue!55!black}\circle*{.8}}%
+\put(21.53,93.81){\color{blue!55!black}\circle*{.8}}%
+\put(31.82,32.53){\color{blue!55!black}\circle*{.8}}%
+\put(123.79,12.32){\color{blue!55!black}\circle*{.8}}%
+\put(196.20,55.86){\color{blue!55!black}\circle*{.8}}%
+\put(167.99,111.19){\color{blue!55!black}\circle*{.8}}%
+\put(69.60,114.01){\color{blue!55!black}\circle*{.8}}%
+\put(9.98,62.83){\color{blue!55!black}\circle*{.8}}%
+\put(55.24,18.75){\color{blue!55!black}\circle*{.8}}%
+\put(154.86,32.19){\color{blue!55!black}\circle*{.8}}%
+\put(198.46,84.86){\color{blue!55!black}\circle*{.8}}%
+\put(138.85,114.11){\color{blue!55!black}\circle*{.8}}%
+\put(43.34,87.78){\color{blue!55!black}\circle*{.8}}%
+\put(17.21,39.76){\color{blue!55!black}\circle*{.8}}%
+\put(87.00,26.72){\color{blue!55!black}\circle*{.8}}%
+\put(173.72,60.86){\color{blue!55!black}\circle*{.8}}%
+\put(182.87,98.96){\color{blue!55!black}\circle*{.8}}%
+\put(107.91,96.85){\color{blue!55!black}\circle*{.8}}%
+\put(33.38,60.92){\color{blue!55!black}\circle*{.8}}%
+\put(38.90,36.29){\color{blue!55!black}\circle*{.8}}%
+\put(113.87,50.29){\color{blue!55!black}\circle*{.8}}%
+\put(174.53,81.96){\color{blue!55!black}\circle*{.8}}%
+\put(158.13,91.77){\color{blue!55!black}\circle*{.8}}%
+\put(87.69,70.88){\color{blue!55!black}\circle*{.8}}%
+\put(40.67,48.62){\color{blue!55!black}\circle*{.8}}%
+\put(63.30,52.57){\color{blue!55!black}\circle*{.8}}%
+\put(125.90,74.43){\color{blue!55!black}\circle*{.8}}%
+\put(161.35,83.82){\color{blue!55!black}\circle*{.8}}%
+\put(137.27,69.37){\color{blue!55!black}\circle*{.8}}%
+\put(84.11,52.50){\color{blue!55!black}\circle*{.8}}%
+\put(56.76,57.24){\color{blue!55!black}\circle*{.8}}%
+\put(78.07,77.20){\color{blue!55!black}\circle*{.8}}%
+\put(122.06,84.02){\color{blue!55!black}\circle*{.8}}%
+\put(145.67,66.29){\color{blue!55!black}\circle*{.8}}%
+\put(130.11,46.75){\color{blue!55!black}\circle*{.8}}%
+\put(93.22,53.33){\color{blue!55!black}\circle*{.8}}%
+\put(68.87,80.70){\color{blue!55!black}\circle*{.8}}%
+\put(77.39,93.89){\color{blue!55!black}\circle*{.8}}%
+\put(110.66,72.73){\color{blue!55!black}\circle*{.8}}%
+\put(139.62,40.80){\color{blue!55!black}\circle*{.8}}%
+\put(137.56,38.99){\color{blue!55!black}\circle*{.8}}%
+\put(103.63,73.49){\color{blue!55!black}\circle*{.8}}%
+\put(67.41,103.99){\color{blue!55!black}\circle*{.8}}%
+\put(65.34,91.06){\color{blue!55!black}\circle*{.8}}%
+\put(104.36,46.69){\color{blue!55!black}\circle*{.8}}%
+\put(148.78,23.64){\color{blue!55!black}\circle*{.8}}%
+\put(151.25,52.43){\color{blue!55!black}\circle*{.8}}%
+\put(103.35,101.51){\color{blue!55!black}\circle*{.8}}%
+\put(51.64,112.00){\color{blue!55!black}\circle*{.8}}%
+\put(53.33,68.61){\color{blue!55!black}\circle*{.8}}%
+\put(112.62,20.94){\color{blue!55!black}\circle*{.8}}%
+\put(168.91,26.43){\color{blue!55!black}\circle*{.8}}%
+\put(158.44,80.91){\color{blue!55!black}\circle*{.8}}%
+\put(86.96,121.03){\color{blue!55!black}\circle*{.8}}%
+\put(30.18,98.36){\color{blue!55!black}\circle*{.8}}%
+\put(53.43,38.04){\color{blue!55!black}\circle*{.8}}%
+\put(136.01,10.70){\color{blue!55!black}\circle*{.8}}%
+\put(188.35,49.33){\color{blue!55!black}\circle*{.8}}%
+\put(149.63,109.31){\color{blue!55!black}\circle*{.8}}%
+\put(58.86,120.31){\color{blue!55!black}\circle*{.8}}%
+\put(15.95,69.20){\color{blue!55!black}\circle*{.8}}%
+\put(71.09,15.77){\color{blue!55!black}\circle*{.8}}%
+\put(165.73,22.43){\color{blue!55!black}\circle*{.8}}%
+\put(194.85,80.84){\color{blue!55!black}\circle*{.8}}%
+\put(124.25,122.36){\color{blue!55!black}\circle*{.8}}%
+\put(30.92,99.14){\color{blue!55!black}\circle*{.8}}%
+\put(18.66,39.62){\color{blue!55!black}\circle*{.8}}%
+\put(101.90,13.65){\color{blue!55!black}\circle*{.8}}%
+\put(188.64,50.08){\color{blue!55!black}\circle*{.8}}%
+\put(182.73,104.50){\color{blue!55!black}\circle*{.8}}%
+\put(91.11,113.47){\color{blue!55!black}\circle*{.8}}%
+\put(15.63,68.92){\color{blue!55!black}\circle*{.8}}%
+\put(39.09,24.96){\color{blue!55!black}\circle*{.8}}%
+\put(133.93,32.01){\color{blue!55!black}\circle*{.8}}%
+\put(194.77,78.60){\color{blue!55!black}\circle*{.8}}%
+\put(156.23,108.43){\color{blue!55!black}\circle*{.8}}%
+\put(63.47,88.58){\color{blue!55!black}\circle*{.8}}%
+\put(18.94,46.08){\color{blue!55!black}\circle*{.8}}%
+\put(68.59,31.88){\color{blue!55!black}\circle*{.8}}%
+\put(154.57,59.55){\color{blue!55!black}\circle*{.8}}%
+\put(183.06,92.68){\color{blue!55!black}\circle*{.8}}%
+\put(127.15,92.18){\color{blue!55!black}\circle*{.8}}%
+\put(51.42,62.64){\color{blue!55!black}\circle*{.8}}%
+\put(36.87,42.50){\color{blue!55!black}\circle*{.8}}%
+\put(94.00,54.53){\color{blue!55!black}\circle*{.8}}%
+\put(157.69,79.91){\color{blue!55!black}\circle*{.8}}%
+\put(161.91,85.64){\color{blue!55!black}\circle*{.8}}%
+\put(108.02,66.99){\color{blue!55!black}\circle*{.8}}%
+\put(56.24,50.92){\color{blue!55!black}\circle*{.8}}%
+\put(57.88,58.65){\color{blue!55!black}\circle*{.8}}%
+\put(105.26,78.03){\color{blue!55!black}\circle*{.8}}%
+\put(147.08,81.26){\color{blue!55!black}\circle*{.8}}%
+\put(144.24,63.28){\color{blue!55!black}\circle*{.8}}%
+\put(104.96,49.13){\color{blue!55!black}\circle*{.8}}%
+\put(69.71,60.07){\color{blue!55!black}\circle*{.8}}%
+\put(69.64,83.35){\color{blue!55!black}\circle*{.8}}%
+\put(101.10,87.17){\color{blue!55!black}\circle*{.8}}%
+\put(134.05,63.14){\color{blue!55!black}\circle*{.8}}%
+\put(139.93,40.48){\color{blue!55!black}\circle*{.8}}%
+\put(114.22,50.42){\color{blue!55!black}\circle*{.8}}%
+\put(79.15,84.24){\color{blue!55!black}\circle*{.8}}%
+\put(66.22,100.31){\color{blue!55!black}\circle*{.8}}%
+\put(89.68,75.35){\color{blue!55!black}\circle*{.8}}%
+\put(130.73,36.78){\color{blue!55!black}\circle*{.8}}%
+\put(150.07,32.43){\color{blue!55!black}\circle*{.8}}%
+\put(124.52,71.26){\color{blue!55!black}\circle*{.8}}%
+\put(74.86,108.55){\color{blue!55!black}\circle*{.8}}%
+\put(51.51,97.73){\color{blue!55!black}\circle*{.8}}%
+\put(83.64,48.42){\color{blue!55!black}\circle*{.8}}%
+\put(142.84,18.49){\color{blue!55!black}\circle*{.8}}%
+\put(166.38,45.74){\color{blue!55!black}\circle*{.8}}%
+\put(123.80,100.38){\color{blue!55!black}\circle*{.8}}%
+\put(55.98,117.74){\color{blue!55!black}\circle*{.8}}%
+\put(36.92,75.21){\color{blue!55!black}\circle*{.8}}%
+\put(92.58,21.36){\color{blue!55!black}\circle*{.8}}%
+\put(166.29,20.14){\color{blue!55!black}\circle*{.8}}%
+\put(176.08,74.55){\color{blue!55!black}\circle*{.8}}%
+\put(106.42,121.40){\color{blue!55!black}\circle*{.8}}%
+\put(30.99,105.13){\color{blue!55!black}\circle*{.8}}%
+\put(34.64,44.02){\color{blue!55!black}\circle*{.8}}%
+\put(117.30,9.50){\color{blue!55!black}\circle*{.8}}%
+\put(189.43,42.20){\color{blue!55!black}\circle*{.8}}%
+\put(169.45,103.85){\color{blue!55!black}\circle*{.8}}%
+\put(76.61,122.34){\color{blue!55!black}\circle*{.8}}%
+\put(12.92,76.54){\color{blue!55!black}\circle*{.8}}%
+\put(50.42,20.60){\color{blue!55!black}\circle*{.8}}%
+\put(149.15,19.63){\color{blue!55!black}\circle*{.8}}%
+\put(199.84,73.43){\color{blue!55!black}\circle*{.8}}%
+\put(145.59,118.24){\color{blue!55!black}\circle*{.8}}%
+\put(46.15,102.62){\color{blue!55!black}\circle*{.8}}%
+\put(11.73,46.94){\color{blue!55!black}\circle*{.8}}%
+\put(80.11,17.04){\color{blue!55!black}\circle*{.8}}%
+\put(174.93,46.03){\color{blue!55!black}\circle*{.8}}%
+\put(191.52,97.39){\color{blue!55!black}\circle*{.8}}%
+\put(113.12,110.81){\color{blue!55!black}\circle*{.8}}%
+\put(27.69,73.40){\color{blue!55!black}\circle*{.8}}%
+\put(28.55,31.76){\color{blue!55!black}\circle*{.8}}%
+\put(111.94,34.00){\color{blue!55!black}\circle*{.8}}%
+\put(184.45,73.81){\color{blue!55!black}\circle*{.8}}%
+\put(168.38,101.97){\color{blue!55!black}\circle*{.8}}%
+\put(85.24,87.18){\color{blue!55!black}\circle*{.8}}%
+\put(27.47,51.07){\color{blue!55!black}\circle*{.8}}%
+\put(55.00,37.97){\color{blue!55!black}\circle*{.8}}%
+\put(133.21,60.45){\color{blue!55!black}\circle*{.8}}%
+\put(176.32,87.57){\color{blue!55!black}\circle*{.8}}%
+\put(142.00,86.42){\color{blue!55!black}\circle*{.8}}%
+\put(72.22,62.15){\color{blue!55!black}\circle*{.8}}%
+\put(41.84,47.69){\color{blue!55!black}\circle*{.8}}%
+\put(78.04,60.01){\color{blue!55!black}\circle*{.8}}%
+\put(137.58,80.07){\color{blue!55!black}\circle*{.8}}%
+\put(158.65,80.36){\color{blue!55!black}\circle*{.8}}%
+\put(124.94,61.72){\color{blue!55!black}\circle*{.8}}%
+\put(75.58,51.06){\color{blue!55!black}\circle*{.8}}%
+\put(59.47,64.05){\color{blue!55!black}\circle*{.8}}%
+\put(87.50,83.15){\color{blue!55!black}\circle*{.8}}%
+\put(128.56,80.83){\color{blue!55!black}\circle*{.8}}%
+\put(144.26,57.71){\color{blue!55!black}\circle*{.8}}%
+\put(123.45,44.12){\color{blue!55!black}\circle*{.8}}%
+\put(87.36,60.82){\color{blue!55!black}\circle*{.8}}%
+\put(68.05,89.16){\color{blue!55!black}\circle*{.8}}%
+\put(81.94,92.08){\color{blue!55!black}\circle*{.8}}%
+\put(117.32,62.01){\color{blue!55!black}\circle*{.8}}%
+\put(143.08,34.37){\color{blue!55!black}\circle*{.8}}%
+\put(133.98,45.65){\color{blue!55!black}\circle*{.8}}%
+\put(94.91,85.85){\color{blue!55!black}\circle*{.8}}%
+\put(61.51,106.75){\color{blue!55!black}\circle*{.8}}%
+\put(69.37,79.92){\color{blue!55!black}\circle*{.8}}%
+\put(116.00,34.60){\color{blue!55!black}\circle*{.8}}%
+\put(156.36,25.66){\color{blue!55!black}\circle*{.8}}%
+\put(145.32,66.98){\color{blue!55!black}\circle*{.8}}%
+\put(88.46,111.37){\color{blue!55!black}\circle*{.8}}%
+\put(43.61,104.79){\color{blue!55!black}\circle*{.8}}%
+\put(62.43,52.28){\color{blue!55!black}\circle*{.8}}%
+\put(130.50,14.96){\color{blue!55!black}\circle*{.8}}%
+\put(175.91,38.48){\color{blue!55!black}\circle*{.8}}%
+\put(145.31,97.08){\color{blue!55!black}\circle*{.8}}%
+\put(66.94,121.99){\color{blue!55!black}\circle*{.8}}%
+\put(25.74,82.55){\color{blue!55!black}\circle*{.8}}%
+\put(70.90,23.99){\color{blue!55!black}\circle*{.8}}%
+\put(156.86,15.19){\color{blue!55!black}\circle*{.8}}%
+\put(188.89,67.26){\color{blue!55!black}\circle*{.8}}%
+\put(128.09,119.54){\color{blue!55!black}\circle*{.8}}%
+\put(38.74,110.71){\color{blue!55!black}\circle*{.8}}%
+\put(20.24,51.09){\color{blue!55!black}\circle*{.8}}%
+\put(95.84,10.53){\color{blue!55!black}\circle*{.8}}%
+\put(183.50,36.10){\color{blue!55!black}\circle*{.8}}%
+\put(185.34,97.13){\color{blue!55!black}\circle*{.8}}%
+\put(97.64,122.14){\color{blue!55!black}\circle*{.8}}%
+\put(16.94,83.02){\color{blue!55!black}\circle*{.8}}%
+\put(33.17,26.84){\color{blue!55!black}\circle*{.8}}%
+\put(128.77,19.03){\color{blue!55!black}\circle*{.8}}%
+\put(197.80,66.71){\color{blue!55!black}\circle*{.8}}%
+\put(164.03,112.57){\color{blue!55!black}\circle*{.8}}%
+\put(65.65,103.95){\color{blue!55!black}\circle*{.8}}%
+\put(11.77,53.75){\color{blue!55!black}\circle*{.8}}%
+\put(60.68,22.10){\color{blue!55!black}\circle*{.8}}%
+\put(156.50,44.08){\color{blue!55!black}\circle*{.8}}%
+\put(193.46,90.60){\color{blue!55!black}\circle*{.8}}%
+\put(133.33,106.36){\color{blue!55!black}\circle*{.8}}%
+\put(44.88,75.87){\color{blue!55!black}\circle*{.8}}%
+\put(24.70,38.43){\color{blue!55!black}\circle*{.8}}%
+\put(91.16,37.88){\color{blue!55!black}\circle*{.8}}%
+\put(168.61,70.95){\color{blue!55!black}\circle*{.8}}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(100.67,124.29)(88.17,123.11)(75.67,121.92)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(75.67,121.92)(64.20,118.53)(52.74,115.13)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(52.74,115.13)(43.19,109.81)(33.65,104.49)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(33.65,104.49)(26.76,97.68)(19.88,90.87)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(19.88,90.87)(16.20,83.13)(12.52,75.39)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(12.52,75.39)(12.34,67.35)(12.16,59.31)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(12.16,59.31)(15.51,51.62)(18.87,43.94)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(18.87,43.94)(25.51,37.23)(32.16,30.52)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(32.16,30.52)(41.60,25.33)(51.05,20.14)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(51.05,20.14)(62.58,16.87)(74.11,13.61)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(74.11,13.61)(86.86,12.52)(99.60,11.44)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(99.60,11.44)(112.59,12.61)(125.57,13.78)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(125.57,13.78)(137.81,17.10)(150.04,20.42)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(150.04,20.42)(160.58,25.60)(171.13,30.78)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(171.13,30.78)(179.17,37.39)(187.22,44.00)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(187.22,44.00)(192.14,51.50)(197.07,58.99)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(197.07,58.99)(198.49,66.75)(199.90,74.51)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(199.90,74.51)(197.71,81.90)(195.51,89.30)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(195.51,89.30)(189.85,95.73)(184.20,102.17)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(184.20,102.17)(175.52,107.13)(166.84,112.08)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(166.84,112.08)(155.79,115.18)(144.75,118.27)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(144.75,118.27)(132.18,119.27)(119.61,120.26)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(119.61,120.26)(106.49,119.10)(93.36,117.93)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(93.36,117.93)(80.67,114.72)(67.98,111.52)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(67.98,111.52)(56.71,106.55)(45.43,101.58)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(45.43,101.58)(36.43,95.27)(27.43,88.96)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(27.43,88.96)(21.38,81.84)(15.33,74.72)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(15.33,74.72)(12.70,67.38)(10.07,60.03)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(10.07,60.03)(11.04,53.07)(12.02,46.10)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(12.02,46.10)(16.53,40.07)(21.03,34.04)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(21.03,34.04)(28.72,29.43)(36.40,24.82)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(36.40,24.82)(46.67,21.98)(56.93,19.14)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(56.93,19.14)(68.99,18.29)(81.05,17.44)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(81.05,17.44)(93.98,18.61)(106.90,19.78)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(106.90,19.78)(119.71,22.86)(132.51,25.94)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(132.51,25.94)(144.22,30.64)(155.93,35.34)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(155.93,35.34)(165.65,41.26)(175.37,47.18)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(175.37,47.18)(182.37,53.81)(189.38,60.45)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(189.38,60.45)(193.14,67.25)(196.91,74.05)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(196.91,74.05)(197.17,80.46)(197.43,86.87)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(197.43,86.87)(194.17,92.37)(190.92,97.87)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(190.92,97.87)(184.42,102.02)(177.92,106.17)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(177.92,106.17)(168.70,108.66)(159.47,111.15)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(159.47,111.15)(148.23,111.80)(136.99,112.45)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(136.99,112.45)(124.61,111.24)(112.22,110.03)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(112.22,110.03)(99.64,107.09)(87.06,104.16)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(87.06,104.16)(75.24,99.77)(63.43,95.37)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(63.43,95.37)(53.26,89.91)(43.10,84.45)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(43.10,84.45)(35.34,78.39)(27.59,72.34)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(27.59,72.34)(22.82,66.19)(18.05,60.04)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(18.05,60.04)(16.59,54.31)(15.14,48.58)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(15.14,48.58)(17.09,43.73)(19.04,38.89)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(19.04,38.89)(24.20,35.30)(29.37,31.72)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(29.37,31.72)(37.34,29.67)(45.31,27.62)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(45.31,27.62)(55.45,27.24)(65.59,26.86)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(65.59,26.86)(77.11,28.14)(88.63,29.42)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(88.63,29.42)(100.65,32.23)(112.66,35.03)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(112.66,35.03)(124.26,39.09)(135.86,43.15)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(135.86,43.15)(146.17,48.10)(156.48,53.04)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(156.48,53.04)(164.73,58.45)(172.99,63.85)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(172.99,63.85)(178.59,69.25)(184.20,74.65)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(184.20,74.65)(186.76,79.59)(189.31,84.53)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(189.31,84.53)(188.67,88.62)(188.04,92.71)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(188.04,92.71)(184.29,95.62)(180.53,98.53)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(180.53,98.53)(174.00,100.06)(167.46,101.58)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(167.46,101.58)(158.66,101.62)(149.87,101.66)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(149.87,101.66)(139.50,100.26)(129.14,98.86)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(129.14,98.86)(118.01,96.17)(106.88,93.48)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(106.88,93.48)(95.83,89.76)(84.79,86.05)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(84.79,86.05)(74.65,81.65)(64.51,77.25)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(64.51,77.25)(56.02,72.56)(47.53,67.88)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(47.53,67.88)(41.31,63.30)(35.09,58.73)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(35.09,58.73)(31.56,54.66)(28.03,50.59)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(28.03,50.59)(27.42,47.36)(26.81,44.12)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(26.81,44.12)(29.10,41.98)(31.40,39.83)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(31.40,39.83)(36.38,38.92)(41.37,38.01)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(41.37,38.01)(48.63,38.37)(55.88,38.74)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(55.88,38.74)(64.83,40.31)(73.78,41.88)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(73.78,41.88)(83.72,44.49)(93.66,47.09)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(93.66,47.09)(103.84,50.47)(114.01,53.85)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(114.01,53.85)(123.67,57.68)(133.32,61.51)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(133.32,61.51)(141.75,65.44)(150.17,69.37)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(150.17,69.37)(156.77,73.06)(163.37,76.75)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(163.37,76.75)(167.68,79.88)(172.00,83.00)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(172.00,83.00)(173.77,85.31)(175.53,87.61)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(175.53,87.61)(174.67,88.92)(173.81,90.22)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(173.81,90.22)(170.44,90.45)(167.08,90.67)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(167.08,90.67)(161.50,89.83)(155.93,88.99)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(155.93,88.99)(148.61,87.19)(141.29,85.40)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(141.29,85.40)(132.81,82.84)(124.32,80.28)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(124.32,80.28)(115.31,77.23)(106.30,74.17)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(106.30,74.17)(97.44,70.91)(88.59,67.65)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(88.59,67.65)(80.52,64.49)(72.46,61.33)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(72.46,61.33)(65.75,58.56)(59.05,55.79)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(59.05,55.79)(54.16,53.66)(49.27,51.52)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(49.27,51.52)(46.50,50.21)(43.73,48.89)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(43.73,48.89)(43.23,48.49)(42.72,48.09)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(42.72,48.09)(44.47,48.62)(46.21,49.14)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(46.21,49.14)(50.01,50.52)(53.80,51.90)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(53.80,51.90)(59.33,53.97)(64.86,56.04)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(64.86,56.04)(71.67,58.59)(78.48,61.14)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(78.48,61.14)(86.05,63.90)(93.62,66.67)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(93.62,66.67)(101.39,69.38)(109.16,72.09)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(109.16,72.09)(116.56,74.48)(123.97,76.86)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(123.97,76.86)(130.50,78.70)(137.04,80.53)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(137.04,80.53)(142.26,81.65)(147.48,82.76)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(147.48,82.76)(151.06,83.05)(154.65,83.34)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(154.65,83.34)(156.39,82.79)(158.13,82.24)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(158.13,82.24)(157.97,80.91)(157.81,79.59)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(157.81,79.59)(155.82,77.62)(153.82,75.66)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(153.82,75.66)(150.19,73.26)(146.57,70.87)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(146.57,70.87)(141.61,68.28)(136.65,65.69)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(136.65,65.69)(130.74,63.18)(124.84,60.67)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(124.84,60.67)(118.43,58.48)(112.01,56.30)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(112.01,56.30)(105.55,54.66)(99.08,53.03)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(99.08,53.03)(93.00,52.12)(86.93,51.21)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(86.93,51.21)(81.64,51.12)(76.35,51.03)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(76.35,51.03)(72.17,51.78)(67.99,52.53)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(67.99,52.53)(65.18,54.05)(62.36,55.58)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(62.36,55.58)(61.04,57.74)(59.72,59.90)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(59.72,59.90)(59.93,62.49)(60.15,65.08)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(60.15,65.08)(61.83,67.85)(63.51,70.61)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(63.51,70.61)(66.50,73.28)(69.49,75.95)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(69.49,75.95)(73.55,78.26)(77.60,80.56)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(77.60,80.56)(82.43,82.26)(87.26,83.97)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(87.26,83.97)(92.52,84.88)(97.78,85.80)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(97.78,85.80)(103.13,85.81)(108.47,85.82)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(108.47,85.82)(113.57,84.91)(118.66,83.99)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(118.66,83.99)(123.18,82.21)(127.70,80.43)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(127.70,80.43)(131.39,77.92)(135.08,75.42)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(135.08,75.42)(137.73,72.41)(140.38,69.40)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(140.38,69.40)(141.86,66.16)(143.35,62.92)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(143.35,62.92)(143.60,59.75)(143.85,56.58)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(143.85,56.58)(142.90,53.79)(141.94,50.99)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(141.94,50.99)(139.85,48.84)(137.77,46.70)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(137.77,46.70)(134.72,45.43)(131.66,44.16)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(131.66,44.16)(127.83,43.91)(124.00,43.67)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(124.00,43.67)(119.65,44.50)(115.29,45.34)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(115.29,45.34)(110.67,47.22)(106.05,49.10)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(106.05,49.10)(101.44,51.88)(96.83,54.67)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(96.83,54.67)(92.50,58.13)(88.18,61.60)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(88.18,61.60)(84.38,65.45)(80.59,69.30)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(80.59,69.30)(77.55,73.20)(74.50,77.10)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(74.50,77.10)(72.38,80.70)(70.26,84.30)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(70.26,84.30)(69.19,87.25)(68.12,90.21)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(68.12,90.21)(68.16,92.25)(68.19,94.28)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(68.19,94.28)(69.34,95.18)(70.50,96.07)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(70.50,96.07)(72.70,95.71)(74.90,95.35)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(74.90,95.35)(78.04,93.73)(81.18,92.11)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(81.18,92.11)(85.07,89.32)(88.96,86.54)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(88.96,86.54)(93.39,82.81)(97.83,79.07)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(97.83,79.07)(102.54,74.69)(107.25,70.31)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(107.25,70.31)(111.96,65.64)(116.67,60.97)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(116.67,60.97)(121.09,56.42)(125.51,51.86)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(125.51,51.86)(129.37,47.83)(133.23,43.79)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(133.23,43.79)(136.28,40.64)(139.32,37.49)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(139.32,37.49)(141.34,35.52)(143.35,33.55)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(143.35,33.55)(144.19,32.97)(145.02,32.39)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(145.02,32.39)(144.58,33.28)(144.14,34.17)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(144.14,34.17)(142.42,36.51)(140.70,38.84)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(140.70,38.84)(137.77,42.45)(134.84,46.06)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(134.84,46.06)(130.85,50.67)(126.86,55.28)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(126.86,55.28)(122.03,60.52)(117.20,65.76)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(117.20,65.76)(111.82,71.19)(106.45,76.63)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(106.45,76.63)(100.87,81.81)(95.29,86.99)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(95.29,86.99)(89.86,91.46)(84.44,95.93)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(84.44,95.93)(79.54,99.29)(74.64,102.66)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(74.64,102.66)(70.62,104.60)(66.60,106.55)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(66.60,106.55)(63.77,106.88)(60.93,107.21)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(60.93,107.21)(59.51,105.86)(58.09,104.51)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(58.09,104.51)(58.25,101.56)(58.40,98.61)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(58.40,98.61)(60.16,94.27)(61.92,89.92)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(61.92,89.92)(65.23,84.53)(68.54,79.14)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(68.54,79.14)(73.23,73.12)(77.91,67.11)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(77.91,67.11)(83.67,60.96)(89.44,54.82)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(89.44,54.82)(95.93,49.06)(102.42,43.31)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(102.42,43.31)(109.19,38.42)(115.96,33.54)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(115.96,33.54)(122.54,29.96)(129.12,26.38)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(129.12,26.38)(135.03,24.42)(140.95,22.46)}%
+\put(100.67,124.29){\color{black}\circle*{3}}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(415.05,43.34)(414.91,45.22)(414.78,47.10)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(414.78,47.10)(414.38,49.01)(413.98,50.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(413.98,50.92)(413.32,52.82)(412.67,54.71)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(412.67,54.71)(411.78,56.54)(410.88,58.36)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(410.88,58.36)(409.78,60.07)(408.67,61.78)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(408.67,61.78)(407.38,63.33)(406.08,64.88)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(406.08,64.88)(404.64,66.24)(403.19,67.59)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(403.19,67.59)(401.63,68.71)(400.07,69.82)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(400.07,69.82)(398.43,70.68)(396.80,71.53)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(396.80,71.53)(395.13,72.10)(393.46,72.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(393.46,72.67)(391.80,72.93)(390.14,73.20)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(390.14,73.20)(388.54,73.16)(386.94,73.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(386.94,73.12)(385.43,72.78)(383.92,72.43)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(383.92,72.43)(382.54,71.79)(381.17,71.15)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(381.17,71.15)(379.97,70.22)(378.76,69.30)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(378.76,69.30)(377.76,68.12)(376.76,66.94)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(376.76,66.94)(375.98,65.53)(375.20,64.13)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(375.20,64.13)(374.67,62.53)(374.15,60.93)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(374.15,60.93)(373.88,59.19)(373.61,57.45)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(373.61,57.45)(373.61,55.60)(373.61,53.75)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(373.61,53.75)(373.88,51.85)(374.15,49.95)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(374.15,49.95)(374.67,48.04)(375.20,46.13)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(375.20,46.13)(375.98,44.26)(376.76,42.40)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(376.76,42.40)(377.76,40.62)(378.76,38.85)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(378.76,38.85)(379.97,37.21)(381.17,35.58)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(381.17,35.58)(382.54,34.12)(383.92,32.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(383.92,32.66)(385.43,31.43)(386.94,30.19)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(386.94,30.19)(388.54,29.20)(390.14,28.21)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(390.14,28.21)(391.80,27.50)(393.46,26.78)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(393.46,26.78)(395.13,26.36)(396.80,25.95)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(396.80,25.95)(398.43,25.83)(400.07,25.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(400.07,25.72)(401.63,25.91)(403.19,26.10)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(403.19,26.10)(404.64,26.60)(406.08,27.09)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(406.08,27.09)(407.38,27.88)(408.67,28.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(408.67,28.67)(409.78,29.72)(410.88,30.78)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(410.88,30.78)(411.78,32.07)(412.67,33.37)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(412.67,33.37)(413.32,34.88)(413.98,36.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(413.98,36.38)(414.38,38.06)(414.78,39.73)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(414.78,39.73)(414.91,41.54)(415.05,43.34)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(432.70,67.74)(432.54,69.58)(432.37,71.42)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(432.37,71.42)(431.89,73.21)(431.40,75.00)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(431.40,75.00)(430.60,76.70)(429.80,78.39)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(429.80,78.39)(428.71,79.95)(427.62,81.50)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(427.62,81.50)(426.27,82.87)(424.92,84.24)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(424.92,84.24)(423.34,85.40)(421.76,86.56)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(421.76,86.56)(420.00,87.47)(418.23,88.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(418.23,88.38)(416.33,89.02)(414.42,89.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(414.42,89.66)(412.42,90.02)(410.43,90.37)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(410.43,90.37)(408.39,90.43)(406.35,90.49)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(406.35,90.49)(404.33,90.25)(402.31,90.01)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(402.31,90.01)(400.35,89.49)(398.39,88.96)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(398.39,88.96)(396.55,88.15)(394.71,87.35)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(394.71,87.35)(393.03,86.28)(391.35,85.22)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(391.35,85.22)(389.88,83.93)(388.41,82.64)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(388.41,82.64)(387.19,81.16)(385.97,79.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(385.97,79.67)(385.02,78.03)(384.07,76.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(384.07,76.38)(383.43,74.63)(382.78,72.87)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(382.78,72.87)(382.45,71.04)(382.13,69.22)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(382.13,69.22)(382.13,67.37)(382.13,65.52)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(382.13,65.52)(382.45,63.70)(382.78,61.88)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(382.78,61.88)(383.43,60.13)(384.07,58.39)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(384.07,58.39)(385.02,56.76)(385.97,55.13)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(385.97,55.13)(387.19,53.66)(388.41,52.19)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(388.41,52.19)(389.88,50.92)(391.35,49.65)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(391.35,49.65)(393.03,48.62)(394.71,47.58)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(394.71,47.58)(396.55,46.80)(398.39,46.02)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(398.39,46.02)(400.35,45.52)(402.31,45.02)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(402.31,45.02)(404.33,44.82)(406.35,44.61)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(406.35,44.61)(408.39,44.70)(410.43,44.79)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(410.43,44.79)(412.42,45.17)(414.42,45.56)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(414.42,45.56)(416.33,46.22)(418.23,46.89)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(418.23,46.89)(420.00,47.83)(421.76,48.77)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(421.76,48.77)(423.34,49.95)(424.92,51.13)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(424.92,51.13)(426.27,52.52)(427.62,53.91)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(427.62,53.91)(428.71,55.48)(429.80,57.05)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(429.80,57.05)(430.60,58.76)(431.40,60.46)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(431.40,60.46)(431.89,62.26)(432.37,64.06)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(432.37,64.06)(432.54,65.90)(432.70,67.74)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(413.04,91.88)(412.91,93.67)(412.78,95.47)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(412.78,95.47)(412.39,97.14)(412.00,98.81)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(412.00,98.81)(411.36,100.31)(410.72,101.81)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(410.72,101.81)(409.85,103.09)(408.98,104.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(408.98,104.38)(407.90,105.41)(406.82,106.45)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(406.82,106.45)(405.56,107.22)(404.30,107.99)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(404.30,107.99)(402.89,108.46)(401.48,108.94)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(401.48,108.94)(399.96,109.11)(398.44,109.28)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(398.44,109.28)(396.84,109.14)(395.25,109.00)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(395.25,109.00)(393.62,108.56)(391.99,108.11)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(391.99,108.11)(390.38,107.38)(388.76,106.64)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(388.76,106.64)(387.20,105.63)(385.64,104.61)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(385.64,104.61)(384.16,103.35)(382.69,102.09)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(382.69,102.09)(381.35,100.62)(380.01,99.14)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(380.01,99.14)(378.84,97.49)(377.67,95.83)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(377.67,95.83)(376.69,94.05)(375.71,92.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(375.71,92.26)(374.95,90.38)(374.20,88.50)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(374.20,88.50)(373.68,86.59)(373.17,84.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(373.17,84.67)(372.90,82.76)(372.64,80.86)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(372.64,80.86)(372.64,79.01)(372.64,77.16)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(372.64,77.16)(372.90,75.42)(373.17,73.68)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(373.17,73.68)(373.68,72.09)(374.20,70.50)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(374.20,70.50)(374.95,69.11)(375.71,67.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(375.71,67.72)(376.69,66.55)(377.67,65.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(377.67,65.38)(378.84,64.48)(380.01,63.57)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(380.01,63.57)(381.35,62.95)(382.69,62.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(382.69,62.33)(384.16,62.00)(385.64,61.68)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(385.64,61.68)(387.20,61.66)(388.76,61.65)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(388.76,61.65)(390.38,61.94)(391.99,62.23)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(391.99,62.23)(393.62,62.82)(395.25,63.42)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(395.25,63.42)(396.84,64.29)(398.44,65.17)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(398.44,65.17)(399.96,66.31)(401.48,67.45)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(401.48,67.45)(402.89,68.82)(404.30,70.20)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(404.30,70.20)(405.56,71.77)(406.82,73.34)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(406.82,73.34)(407.90,75.06)(408.98,76.79)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(408.98,76.79)(409.85,78.63)(410.72,80.47)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(410.72,80.47)(411.36,82.37)(412.00,84.27)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(412.00,84.27)(412.39,86.19)(412.78,88.11)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(412.78,88.11)(412.91,89.99)(413.04,91.88)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(363.57,106.51)(363.52,108.29)(363.48,110.06)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(363.48,110.06)(363.33,111.66)(363.19,113.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(363.19,113.26)(362.96,114.63)(362.72,116.01)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(362.72,116.01)(362.41,117.13)(362.09,118.25)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(362.09,118.25)(361.69,119.09)(361.30,119.93)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(361.30,119.93)(360.84,120.46)(360.37,120.99)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(360.37,120.99)(359.86,121.20)(359.34,121.41)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(359.34,121.41)(358.78,121.29)(358.23,121.18)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(358.23,121.18)(357.64,120.74)(357.06,120.30)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(357.06,120.30)(356.46,119.55)(355.87,118.80)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(355.87,118.80)(355.28,117.76)(354.68,116.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(354.68,116.72)(354.11,115.42)(353.54,114.11)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(353.54,114.11)(353.00,112.58)(352.46,111.04)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(352.46,111.04)(351.97,109.31)(351.48,107.58)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(351.48,107.58)(351.05,105.71)(350.62,103.84)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(350.62,103.84)(350.26,101.86)(349.91,99.89)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(349.91,99.89)(349.63,97.87)(349.35,95.86)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(349.35,95.86)(349.16,93.84)(348.97,91.83)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(348.97,91.83)(348.88,89.87)(348.78,87.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(348.78,87.92)(348.78,86.07)(348.78,84.22)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(348.78,84.22)(348.88,82.53)(348.97,80.84)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(348.97,80.84)(349.16,79.35)(349.35,77.86)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(349.35,77.86)(349.63,76.60)(349.91,75.35)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(349.91,75.35)(350.26,74.37)(350.62,73.39)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(350.62,73.39)(351.05,72.70)(351.48,72.02)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(351.48,72.02)(351.97,71.64)(352.46,71.27)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(352.46,71.27)(353.00,71.23)(353.54,71.18)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(353.54,71.18)(354.11,71.45)(354.68,71.73)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(354.68,71.73)(355.28,72.33)(355.87,72.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(355.87,72.92)(356.46,73.82)(357.06,74.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(357.06,74.72)(357.64,75.89)(358.23,77.07)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(358.23,77.07)(358.78,78.50)(359.34,79.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(359.34,79.92)(359.86,81.56)(360.37,83.20)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(360.37,83.20)(360.84,85.00)(361.30,86.81)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(361.30,86.81)(361.69,88.74)(362.09,90.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(362.09,90.67)(362.41,92.67)(362.72,94.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(362.72,94.67)(362.96,96.69)(363.19,98.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(363.19,98.72)(363.33,100.71)(363.48,102.70)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(363.48,102.70)(363.52,104.61)(363.57,106.51)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(303.19,106.07)(303.25,107.84)(303.30,109.62)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(303.30,109.62)(303.46,111.22)(303.62,112.82)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(303.62,112.82)(303.88,114.20)(304.14,115.58)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(304.14,115.58)(304.49,116.70)(304.85,117.83)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(304.85,117.83)(305.29,118.67)(305.73,119.52)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(305.73,119.52)(306.24,120.05)(306.75,120.59)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.75,120.59)(307.33,120.81)(307.90,121.03)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(307.90,121.03)(308.52,120.92)(309.15,120.81)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(309.15,120.81)(309.80,120.39)(310.45,119.96)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(310.45,119.96)(311.11,119.22)(311.77,118.48)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(311.77,118.48)(312.43,117.45)(313.09,116.42)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(313.09,116.42)(313.73,115.12)(314.36,113.82)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(314.36,113.82)(314.96,112.30)(315.56,110.77)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(315.56,110.77)(316.11,109.05)(316.66,107.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(316.66,107.33)(317.13,105.46)(317.61,103.59)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(317.61,103.59)(318.01,101.63)(318.41,99.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(318.41,99.66)(318.72,97.65)(319.03,95.63)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(319.03,95.63)(319.24,93.62)(319.45,91.61)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(319.45,91.61)(319.55,89.66)(319.66,87.70)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(319.66,87.70)(319.66,85.86)(319.66,84.01)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(319.66,84.01)(319.55,82.32)(319.45,80.62)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(319.45,80.62)(319.24,79.13)(319.03,77.63)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(319.03,77.63)(318.72,76.38)(318.41,75.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(318.41,75.12)(318.01,74.13)(317.61,73.14)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(317.61,73.14)(317.13,72.45)(316.66,71.76)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(316.66,71.76)(316.11,71.38)(315.56,71.00)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(315.56,71.00)(314.96,70.94)(314.36,70.89)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(314.36,70.89)(313.73,71.16)(313.09,71.43)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(313.09,71.43)(312.43,72.01)(311.77,72.60)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(311.77,72.60)(311.11,73.49)(310.45,74.37)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(310.45,74.37)(309.80,75.54)(309.15,76.71)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(309.15,76.71)(308.52,78.13)(307.90,79.54)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(307.90,79.54)(307.33,81.17)(306.75,82.80)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.75,82.80)(306.24,84.60)(305.73,86.40)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(305.73,86.40)(305.29,88.32)(304.85,90.25)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(304.85,90.25)(304.49,92.24)(304.14,94.24)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(304.14,94.24)(303.88,96.26)(303.62,98.28)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(303.62,98.28)(303.46,100.27)(303.30,102.25)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(303.30,102.25)(303.25,104.16)(303.19,106.07)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(254.96,90.71)(255.10,92.51)(255.23,94.31)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(255.23,94.31)(255.63,95.99)(256.03,97.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(256.03,97.66)(256.69,99.17)(257.34,100.68)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(257.34,100.68)(258.23,101.97)(259.12,103.27)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(259.12,103.27)(260.23,104.33)(261.34,105.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(261.34,105.38)(262.63,106.17)(263.93,106.95)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(263.93,106.95)(265.37,107.45)(266.82,107.94)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(266.82,107.94)(268.38,108.14)(269.94,108.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(269.94,108.33)(271.58,108.21)(273.21,108.10)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(273.21,108.10)(274.88,107.68)(276.55,107.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(276.55,107.26)(278.21,106.55)(279.87,105.84)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(279.87,105.84)(281.47,104.85)(283.07,103.86)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(283.07,103.86)(284.58,102.62)(286.09,101.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(286.09,101.38)(287.46,99.93)(288.84,98.47)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(288.84,98.47)(290.04,96.83)(291.25,95.20)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(291.25,95.20)(292.25,93.42)(293.25,91.65)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(293.25,91.65)(294.03,89.78)(294.81,87.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(294.81,87.92)(295.33,86.01)(295.86,84.10)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(295.86,84.10)(296.13,82.20)(296.40,80.29)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(296.40,80.29)(296.40,78.45)(296.40,76.60)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(296.40,76.60)(296.13,74.86)(295.86,73.11)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(295.86,73.11)(295.33,71.52)(294.81,69.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(294.81,69.92)(294.03,68.51)(293.25,67.11)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(293.25,67.11)(292.25,65.93)(291.25,64.75)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(291.25,64.75)(290.04,63.82)(288.84,62.90)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(288.84,62.90)(287.46,62.26)(286.09,61.61)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(286.09,61.61)(284.58,61.27)(283.07,60.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(283.07,60.92)(281.47,60.88)(279.87,60.84)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(279.87,60.84)(278.21,61.11)(276.55,61.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(276.55,61.38)(274.88,61.95)(273.21,62.52)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(273.21,62.52)(271.58,63.37)(269.94,64.22)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(269.94,64.22)(268.38,65.34)(266.82,66.46)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(266.82,66.46)(265.37,67.81)(263.93,69.16)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(263.93,69.16)(262.63,70.71)(261.34,72.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(261.34,72.26)(260.23,73.97)(259.12,75.68)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(259.12,75.68)(258.23,77.51)(257.34,79.34)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(257.34,79.34)(256.69,81.23)(256.03,83.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(256.03,83.12)(255.63,85.03)(255.23,86.95)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(255.23,86.95)(255.10,88.83)(254.96,90.71)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(237.31,66.30)(237.47,68.14)(237.63,69.99)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(237.63,69.99)(238.12,71.78)(238.61,73.58)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(238.61,73.58)(239.41,75.29)(240.21,76.99)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(240.21,76.99)(241.30,78.56)(242.39,80.13)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(242.39,80.13)(243.74,81.53)(245.09,82.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(245.09,82.92)(246.67,84.10)(248.25,85.28)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(248.25,85.28)(250.01,86.21)(251.78,87.15)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(251.78,87.15)(253.68,87.82)(255.59,88.49)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(255.59,88.49)(257.59,88.87)(259.58,89.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(259.58,89.26)(261.62,89.35)(263.66,89.44)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(263.66,89.44)(265.68,89.23)(267.70,89.02)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(267.70,89.02)(269.66,88.52)(271.62,88.02)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(271.62,88.02)(273.46,87.24)(275.30,86.47)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(275.30,86.47)(276.98,85.43)(278.65,84.39)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(278.65,84.39)(280.12,83.12)(281.59,81.85)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(281.59,81.85)(282.82,80.39)(284.04,78.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(284.04,78.92)(284.99,77.29)(285.94,75.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(285.94,75.66)(286.58,73.91)(287.23,72.17)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(287.23,72.17)(287.56,70.34)(287.88,68.52)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(287.88,68.52)(287.88,66.68)(287.88,64.83)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(287.88,64.83)(287.56,63.00)(287.23,61.18)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(287.23,61.18)(286.58,59.42)(285.94,57.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(285.94,57.66)(284.99,56.02)(284.04,54.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(284.04,54.38)(282.82,52.89)(281.59,51.40)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(281.59,51.40)(280.12,50.11)(278.65,48.82)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(278.65,48.82)(276.98,47.76)(275.30,46.70)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(275.30,46.70)(273.46,45.89)(271.62,45.09)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(271.62,45.09)(269.66,44.56)(267.70,44.03)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(267.70,44.03)(265.68,43.79)(263.66,43.56)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(263.66,43.56)(261.62,43.62)(259.58,43.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(259.58,43.67)(257.59,44.03)(255.59,44.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(255.59,44.38)(253.68,45.03)(251.78,45.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(251.78,45.67)(250.01,46.58)(248.25,47.49)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(248.25,47.49)(246.67,48.64)(245.09,49.80)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(245.09,49.80)(243.74,51.17)(242.39,52.55)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(242.39,52.55)(241.30,54.10)(240.21,55.65)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(240.21,55.65)(239.41,57.35)(238.61,59.04)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(238.61,59.04)(238.12,60.83)(237.63,62.62)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(237.63,62.62)(237.47,64.46)(237.31,66.30)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(256.97,42.17)(257.10,44.05)(257.23,45.94)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(257.23,45.94)(257.62,47.86)(258.01,49.77)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(258.01,49.77)(258.65,51.68)(259.28,53.58)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(259.28,53.58)(260.15,55.42)(261.02,57.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(261.02,57.26)(262.10,58.98)(263.18,60.71)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(263.18,60.71)(264.45,62.28)(265.71,63.85)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(265.71,63.85)(267.12,65.22)(268.53,66.59)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(268.53,66.59)(270.05,67.73)(271.57,68.87)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(271.57,68.87)(273.17,69.75)(274.76,70.63)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(274.76,70.63)(276.39,71.22)(278.01,71.81)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(278.01,71.81)(279.63,72.11)(281.25,72.40)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(281.25,72.40)(282.81,72.38)(284.37,72.37)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(284.37,72.37)(285.84,72.04)(287.32,71.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(287.32,71.72)(288.65,71.10)(289.99,70.47)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(289.99,70.47)(291.17,69.57)(292.34,68.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(292.34,68.66)(293.32,67.50)(294.30,66.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(294.30,66.33)(295.06,64.94)(295.81,63.54)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(295.81,63.54)(296.33,61.95)(296.84,60.36)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(296.84,60.36)(297.10,58.62)(297.37,56.88)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(297.37,56.88)(297.37,55.04)(297.37,53.19)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(297.37,53.19)(297.10,51.28)(296.84,49.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(296.84,49.38)(296.33,47.46)(295.81,45.54)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(295.81,45.54)(295.06,43.67)(294.30,41.79)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(294.30,41.79)(293.32,40.00)(292.34,38.21)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(292.34,38.21)(291.17,36.56)(289.99,34.90)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(289.99,34.90)(288.65,33.43)(287.32,31.95)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(287.32,31.95)(285.84,30.69)(284.37,29.43)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(284.37,29.43)(282.81,28.42)(281.25,27.41)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(281.25,27.41)(279.63,26.67)(278.01,25.93)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(278.01,25.93)(276.39,25.49)(274.76,25.05)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(274.76,25.05)(273.17,24.91)(271.57,24.77)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(271.57,24.77)(270.05,24.94)(268.53,25.11)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(268.53,25.11)(267.12,25.58)(265.71,26.06)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(265.71,26.06)(264.45,26.83)(263.18,27.59)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(263.18,27.59)(262.10,28.63)(261.02,29.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(261.02,29.67)(260.15,30.95)(259.28,32.24)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(259.28,32.24)(258.65,33.74)(258.01,35.23)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(258.01,35.23)(257.62,36.90)(257.23,38.57)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(257.23,38.57)(257.10,40.37)(256.97,42.17)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.44,27.53)(306.48,29.44)(306.53,31.35)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.53,31.35)(306.67,33.34)(306.82,35.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.82,35.33)(307.05,37.35)(307.28,39.37)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(307.28,39.37)(307.60,41.38)(307.92,43.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(307.92,43.38)(308.32,45.31)(308.71,47.24)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(308.71,47.24)(309.17,49.04)(309.64,50.85)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(309.64,50.85)(310.15,52.49)(310.67,54.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(310.67,54.12)(311.22,55.55)(311.78,56.97)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(311.78,56.97)(312.37,58.15)(312.95,59.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(312.95,59.33)(313.55,60.23)(314.14,61.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(314.14,61.12)(314.73,61.72)(315.32,62.31)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(315.32,62.31)(315.90,62.59)(316.47,62.87)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(316.47,62.87)(317.01,62.82)(317.55,62.77)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(317.55,62.77)(318.04,62.40)(318.53,62.03)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(318.53,62.03)(318.96,61.34)(319.39,60.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(319.39,60.66)(319.74,59.68)(320.10,58.69)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(320.10,58.69)(320.38,57.44)(320.66,56.19)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(320.66,56.19)(320.85,54.70)(321.03,53.21)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(321.03,53.21)(321.13,51.51)(321.23,49.82)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(321.23,49.82)(321.23,47.98)(321.23,46.13)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(321.23,46.13)(321.13,44.17)(321.03,42.22)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(321.03,42.22)(320.85,40.20)(320.66,38.19)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(320.66,38.19)(320.38,36.17)(320.10,34.15)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(320.10,34.15)(319.74,32.18)(319.39,30.21)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(319.39,30.21)(318.96,28.34)(318.53,26.46)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(318.53,26.46)(318.04,24.73)(317.55,23.01)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(317.55,23.01)(317.01,21.47)(316.47,19.93)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(316.47,19.93)(315.90,18.63)(315.32,17.32)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(315.32,17.32)(314.73,16.28)(314.14,15.24)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(314.14,15.24)(313.55,14.49)(312.95,13.74)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(312.95,13.74)(312.37,13.31)(311.78,12.87)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(311.78,12.87)(311.22,12.75)(310.67,12.64)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(310.67,12.64)(310.15,12.85)(309.64,13.06)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(309.64,13.06)(309.17,13.59)(308.71,14.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(308.71,14.12)(308.32,14.96)(307.92,15.79)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(307.92,15.79)(307.60,16.91)(307.28,18.04)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(307.28,18.04)(307.05,19.41)(306.82,20.79)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.82,20.79)(306.67,22.39)(306.53,23.98)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.53,23.98)(306.48,25.76)(306.44,27.53)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(366.82,27.98)(366.76,29.88)(366.71,31.79)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(366.71,31.79)(366.55,33.78)(366.39,35.77)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(366.39,35.77)(366.13,37.79)(365.87,39.81)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(365.87,39.81)(365.52,41.80)(365.16,43.80)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(365.16,43.80)(364.72,45.72)(364.28,47.65)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(364.28,47.65)(363.77,49.45)(363.25,51.25)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(363.25,51.25)(362.68,52.87)(362.10,54.50)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(362.10,54.50)(361.48,55.92)(360.86,57.34)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(360.86,57.34)(360.21,58.50)(359.56,59.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(359.56,59.67)(358.90,60.56)(358.24,61.45)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(358.24,61.45)(357.58,62.03)(356.92,62.62)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(356.92,62.62)(356.28,62.89)(355.64,63.16)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(355.64,63.16)(355.04,63.10)(354.45,63.05)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(354.45,63.05)(353.90,62.67)(353.35,62.29)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(353.35,62.29)(352.87,61.59)(352.40,60.90)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(352.40,60.90)(352.00,59.91)(351.60,58.93)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(351.60,58.93)(351.29,57.67)(350.98,56.41)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(350.98,56.41)(350.77,54.92)(350.56,53.42)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(350.56,53.42)(350.45,51.73)(350.35,50.04)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(350.35,50.04)(350.35,48.19)(350.35,46.34)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(350.35,46.34)(350.45,44.39)(350.56,42.43)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(350.56,42.43)(350.77,40.42)(350.98,38.41)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(350.98,38.41)(351.29,36.40)(351.60,34.39)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(351.60,34.39)(352.00,32.42)(352.40,30.45)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(352.40,30.45)(352.87,28.59)(353.35,26.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(353.35,26.72)(353.90,25.00)(354.45,23.28)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(354.45,23.28)(355.04,21.75)(355.64,20.22)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(355.64,20.22)(356.28,18.93)(356.92,17.63)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(356.92,17.63)(357.58,16.60)(358.24,15.57)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(358.24,15.57)(358.90,14.83)(359.56,14.09)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(359.56,14.09)(360.21,13.66)(360.86,13.23)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(360.86,13.23)(361.48,13.12)(362.10,13.02)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(362.10,13.02)(362.68,13.24)(363.25,13.45)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(363.25,13.45)(363.77,13.99)(364.28,14.53)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(364.28,14.53)(364.72,15.37)(365.16,16.21)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(365.16,16.21)(365.52,17.34)(365.87,18.47)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(365.87,18.47)(366.13,19.85)(366.39,21.23)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(366.39,21.23)(366.55,22.83)(366.71,24.43)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(366.71,24.43)(366.76,26.20)(366.82,27.98)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(415.05,43.34)(419.02,46.20)(423.00,49.07)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(423.00,49.07)(425.84,52.17)(428.67,55.27)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(428.67,55.27)(430.30,58.52)(431.92,61.77)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(431.92,61.77)(432.29,65.09)(432.66,68.41)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(432.66,68.41)(431.77,71.71)(430.87,75.01)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(430.87,75.01)(428.73,78.21)(426.60,81.41)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(426.60,81.41)(423.28,84.42)(419.95,87.43)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(419.95,87.43)(415.53,90.18)(411.11,92.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(411.11,92.92)(405.70,95.34)(400.29,97.75)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(400.29,97.75)(394.04,99.76)(387.78,101.78)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(387.78,101.78)(380.84,103.34)(373.91,104.90)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(373.91,104.90)(366.47,105.98)(359.02,107.05)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(359.02,107.05)(351.27,107.61)(343.52,108.16)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(343.52,108.16)(335.66,108.18)(327.80,108.21)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(327.80,108.21)(320.03,107.69)(312.26,107.18)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(312.26,107.18)(304.78,106.15)(297.31,105.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(297.31,105.12)(290.32,103.60)(283.34,102.07)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(283.34,102.07)(277.02,100.09)(270.70,98.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(270.70,98.12)(265.22,95.74)(259.73,93.35)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(259.73,93.35)(255.22,90.63)(250.71,87.91)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(250.71,87.91)(247.29,84.92)(243.88,81.93)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(243.88,81.93)(241.64,78.74)(239.40,75.55)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(239.40,75.55)(238.40,72.26)(237.40,68.96)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(237.40,68.96)(237.66,65.64)(237.93,62.32)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(237.93,62.32)(239.45,59.06)(240.97,55.80)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(240.97,55.80)(243.71,52.69)(246.45,49.57)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(246.45,49.57)(250.33,46.68)(254.22,43.79)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(254.22,43.79)(259.15,41.21)(264.08,38.62)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(264.08,38.62)(269.93,36.40)(275.78,34.18)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(275.78,34.18)(282.40,32.38)(289.02,30.59)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(289.02,30.59)(296.23,29.26)(303.44,27.94)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(303.44,27.94)(311.06,27.12)(318.68,26.31)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(318.68,26.31)(326.52,26.02)(334.35,25.73)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(334.35,25.73)(342.19,25.97)(350.03,26.22)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(350.03,26.22)(357.68,26.99)(365.32,27.77)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(365.32,27.77)(372.58,29.05)(379.83,30.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(379.83,30.33)(386.51,32.09)(393.18,33.84)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(393.18,33.84)(399.10,36.03)(405.02,38.22)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(405.02,38.22)(410.03,40.78)(415.05,43.34)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(404.67,66.29)(408.13,68.79)(411.59,71.28)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(411.59,71.28)(414.06,73.98)(416.53,76.68)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(416.53,76.68)(417.95,79.50)(419.36,82.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(419.36,82.33)(419.68,85.22)(420.00,88.11)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(420.00,88.11)(419.22,90.99)(418.44,93.86)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(418.44,93.86)(416.58,96.64)(414.72,99.43)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(414.72,99.43)(411.83,102.05)(408.94,104.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(408.94,104.67)(405.09,107.06)(401.24,109.45)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(401.24,109.45)(396.53,111.55)(391.83,113.65)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(391.83,113.65)(386.38,115.40)(380.94,117.15)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(380.94,117.15)(374.90,118.52)(368.86,119.88)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(368.86,119.88)(362.39,120.81)(355.91,121.75)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(355.91,121.75)(349.16,122.23)(342.42,122.71)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(342.42,122.71)(335.57,122.73)(328.73,122.75)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(328.73,122.75)(321.97,122.31)(315.21,121.86)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(315.21,121.86)(308.70,120.96)(302.19,120.07)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(302.19,120.07)(296.11,118.74)(290.03,117.41)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(290.03,117.41)(284.54,115.69)(279.04,113.97)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(279.04,113.97)(274.26,111.90)(269.49,109.82)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(269.49,109.82)(265.56,107.46)(261.64,105.09)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(261.64,105.09)(258.66,102.48)(255.69,99.88)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(255.69,99.88)(253.74,97.10)(251.79,94.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(251.79,94.33)(250.92,91.46)(250.05,88.59)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(250.05,88.59)(250.28,85.70)(250.51,82.81)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(250.51,82.81)(251.83,79.98)(253.16,77.14)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(253.16,77.14)(255.54,74.43)(257.93,71.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(257.93,71.72)(261.31,69.20)(264.69,66.69)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(264.69,66.69)(268.98,64.44)(273.27,62.18)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(273.27,62.18)(278.37,60.25)(283.46,58.32)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(283.46,58.32)(289.22,56.76)(294.98,55.19)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(294.98,55.19)(301.25,54.04)(307.53,52.89)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(307.53,52.89)(314.17,52.18)(320.80,51.47)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(320.80,51.47)(327.62,51.22)(334.43,50.97)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(334.43,50.97)(341.26,51.18)(348.08,51.39)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(348.08,51.39)(354.74,52.07)(361.39,52.74)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(361.39,52.74)(367.71,53.85)(374.02,54.97)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(374.02,54.97)(379.83,56.50)(385.64,58.03)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(385.64,58.03)(390.79,59.93)(395.94,61.83)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(395.94,61.83)(400.31,64.06)(404.67,66.29)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(383.92,72.43)(386.35,74.18)(388.78,75.94)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(388.78,75.94)(390.51,77.83)(392.25,79.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(392.25,79.72)(393.24,81.71)(394.23,83.70)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(394.23,83.70)(394.46,85.72)(394.68,87.75)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(394.68,87.75)(394.14,89.77)(393.59,91.79)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(393.59,91.79)(392.28,93.74)(390.98,95.70)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(390.98,95.70)(388.95,97.54)(386.92,99.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(386.92,99.38)(384.21,101.06)(381.51,102.74)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(381.51,102.74)(378.21,104.21)(374.90,105.68)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(374.90,105.68)(371.08,106.91)(367.26,108.14)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(367.26,108.14)(363.02,109.10)(358.78,110.06)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(358.78,110.06)(354.23,110.71)(349.68,111.37)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(349.68,111.37)(344.95,111.71)(340.21,112.05)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(340.21,112.05)(335.40,112.06)(330.60,112.07)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(330.60,112.07)(325.85,111.76)(321.10,111.45)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(321.10,111.45)(316.54,110.82)(311.97,110.19)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(311.97,110.19)(307.70,109.26)(303.43,108.33)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(303.43,108.33)(299.57,107.12)(295.71,105.91)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(295.71,105.91)(292.36,104.45)(289.00,103.00)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(289.00,103.00)(286.25,101.33)(283.49,99.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(283.49,99.67)(281.40,97.84)(279.31,96.01)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(279.31,96.01)(277.95,94.07)(276.58,92.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(276.58,92.12)(275.97,90.11)(275.36,88.09)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(275.36,88.09)(275.52,86.06)(275.68,84.03)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(275.68,84.03)(276.61,82.04)(277.54,80.05)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(277.54,80.05)(279.21,78.14)(280.89,76.24)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(280.89,76.24)(283.26,74.48)(285.63,72.71)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(285.63,72.71)(288.65,71.13)(291.66,69.55)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(291.66,69.55)(295.24,68.19)(298.81,66.83)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(298.81,66.83)(302.86,65.74)(306.90,64.64)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.90,64.64)(311.31,63.83)(315.72,63.02)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(315.72,63.02)(320.37,62.52)(325.03,62.02)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(325.03,62.02)(329.82,61.85)(334.60,61.67)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(334.60,61.67)(339.40,61.82)(344.19,61.97)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(344.19,61.97)(348.86,62.44)(353.53,62.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(353.53,62.92)(357.97,63.70)(362.40,64.48)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(362.40,64.48)(366.48,65.56)(370.56,66.63)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(370.56,66.63)(374.17,67.97)(377.79,69.30)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(377.79,69.30)(380.85,70.87)(383.92,72.43)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(373.54,55.62)(375.46,57.00)(377.37,58.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(377.37,58.38)(378.74,59.87)(380.10,61.36)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(380.10,61.36)(380.89,62.93)(381.67,64.49)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(381.67,64.49)(381.85,66.09)(382.02,67.69)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(382.02,67.69)(381.59,69.28)(381.16,70.87)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(381.16,70.87)(380.13,72.41)(379.11,73.95)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(379.11,73.95)(377.51,75.40)(375.91,76.85)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(375.91,76.85)(373.78,78.17)(371.65,79.49)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(371.65,79.49)(369.04,80.66)(366.44,81.82)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(366.44,81.82)(363.43,82.79)(360.42,83.76)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(360.42,83.76)(357.08,84.51)(353.74,85.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(353.74,85.26)(350.15,85.78)(346.57,86.30)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(346.57,86.30)(342.84,86.56)(339.10,86.83)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(339.10,86.83)(335.32,86.84)(331.53,86.85)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(331.53,86.85)(327.79,86.61)(324.05,86.36)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(324.05,86.36)(320.45,85.86)(316.85,85.37)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(316.85,85.37)(313.49,84.63)(310.13,83.90)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(310.13,83.90)(307.09,82.95)(304.04,81.99)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(304.04,81.99)(301.40,80.85)(298.76,79.70)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(298.76,79.70)(296.59,78.39)(294.42,77.08)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(294.42,77.08)(292.77,75.64)(291.13,74.20)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(291.13,74.20)(290.05,72.66)(288.97,71.13)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(288.97,71.13)(288.49,69.54)(288.01,67.96)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(288.01,67.96)(288.14,66.36)(288.26,64.76)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(288.26,64.76)(289.00,63.19)(289.73,61.62)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(289.73,61.62)(291.05,60.12)(292.37,58.62)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(292.37,58.62)(294.24,57.23)(296.11,55.84)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(296.11,55.84)(298.48,54.59)(300.86,53.35)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(300.86,53.35)(303.67,52.28)(306.49,51.21)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.49,51.21)(309.68,50.34)(312.86,49.48)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(312.86,49.48)(316.33,48.84)(319.81,48.21)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(319.81,48.21)(323.48,47.81)(327.15,47.42)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(327.15,47.42)(330.92,47.28)(334.69,47.14)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(334.69,47.14)(338.46,47.26)(342.24,47.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(342.24,47.38)(345.92,47.75)(349.60,48.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(349.60,48.12)(353.10,48.74)(356.59,49.36)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(356.59,49.36)(359.80,50.20)(363.01,51.05)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(363.01,51.05)(365.86,52.10)(368.72,53.15)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(368.72,53.15)(371.13,54.39)(373.54,55.62)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(383.92,32.66)(386.35,34.42)(388.78,36.17)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(388.78,36.17)(390.51,38.06)(392.25,39.96)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(392.25,39.96)(393.24,41.94)(394.23,43.93)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(394.23,43.93)(394.46,45.96)(394.68,47.99)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(394.68,47.99)(394.14,50.00)(393.59,52.02)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(393.59,52.02)(392.28,53.98)(390.98,55.93)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(390.98,55.93)(388.95,57.77)(386.92,59.61)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(386.92,59.61)(384.21,61.29)(381.51,62.97)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(381.51,62.97)(378.21,64.44)(374.90,65.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(374.90,65.92)(371.08,67.15)(367.26,68.38)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(367.26,68.38)(363.02,69.33)(358.78,70.29)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(358.78,70.29)(354.23,70.95)(349.68,71.60)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(349.68,71.60)(344.95,71.94)(340.21,72.28)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(340.21,72.28)(335.40,72.29)(330.60,72.31)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(330.60,72.31)(325.85,71.99)(321.10,71.68)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(321.10,71.68)(316.54,71.05)(311.97,70.42)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(311.97,70.42)(307.70,69.49)(303.43,68.56)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(303.43,68.56)(299.57,67.35)(295.71,66.14)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(295.71,66.14)(292.36,64.69)(289.00,63.23)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(289.00,63.23)(286.25,61.57)(283.49,59.90)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(283.49,59.90)(281.40,58.08)(279.31,56.25)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(279.31,56.25)(277.95,54.30)(276.58,52.35)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(276.58,52.35)(275.97,50.34)(275.36,48.32)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(275.36,48.32)(275.52,46.30)(275.68,44.27)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(275.68,44.27)(276.61,42.27)(277.54,40.28)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(277.54,40.28)(279.21,38.38)(280.89,36.47)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(280.89,36.47)(283.26,34.71)(285.63,32.94)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(285.63,32.94)(288.65,31.36)(291.66,29.78)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(291.66,29.78)(295.24,28.42)(298.81,27.07)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(298.81,27.07)(302.86,25.97)(306.90,24.87)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(306.90,24.87)(311.31,24.06)(315.72,23.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(315.72,23.26)(320.37,22.76)(325.03,22.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(325.03,22.26)(329.82,22.08)(334.60,21.90)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(334.60,21.90)(339.40,22.05)(344.19,22.20)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(344.19,22.20)(348.86,22.68)(353.53,23.15)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(353.53,23.15)(357.97,23.93)(362.40,24.72)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(362.40,24.72)(366.48,25.79)(370.56,26.86)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(370.56,26.86)(374.17,28.20)(377.79,29.54)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(377.79,29.54)(380.85,31.10)(383.92,32.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(404.67,26.52)(408.13,29.02)(411.59,31.51)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(411.59,31.51)(414.06,34.21)(416.53,36.91)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(416.53,36.91)(417.95,39.74)(419.36,42.57)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(419.36,42.57)(419.68,45.46)(420.00,48.35)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(420.00,48.35)(419.22,51.22)(418.44,54.09)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(418.44,54.09)(416.58,56.88)(414.72,59.66)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(414.72,59.66)(411.83,62.28)(408.94,64.90)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(408.94,64.90)(405.09,67.29)(401.24,69.68)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(401.24,69.68)(396.53,71.78)(391.83,73.88)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(391.83,73.88)(386.38,75.63)(380.94,77.39)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(380.94,77.39)(374.90,78.75)(368.86,80.11)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(368.86,80.11)(362.39,81.04)(355.91,81.98)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(355.91,81.98)(349.16,82.46)(342.42,82.94)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(342.42,82.94)(335.57,82.96)(328.73,82.98)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(328.73,82.98)(321.97,82.54)(315.21,82.09)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(315.21,82.09)(308.70,81.20)(302.19,80.30)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(302.19,80.30)(296.11,78.97)(290.03,77.65)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(290.03,77.65)(284.54,75.92)(279.04,74.20)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(279.04,74.20)(274.26,72.13)(269.49,70.06)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(269.49,70.06)(265.56,67.69)(261.64,65.32)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(261.64,65.32)(258.66,62.71)(255.69,60.11)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(255.69,60.11)(253.74,57.34)(251.79,54.57)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(251.79,54.57)(250.92,51.70)(250.05,48.83)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(250.05,48.83)(250.28,45.94)(250.51,43.05)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(250.51,43.05)(251.83,40.21)(253.16,37.37)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(253.16,37.37)(255.54,34.66)(257.93,31.95)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(257.93,31.95)(261.31,29.44)(264.69,26.92)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(264.69,26.92)(268.98,24.67)(273.27,22.42)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(273.27,22.42)(278.37,20.48)(283.46,18.55)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(283.46,18.55)(289.22,16.99)(294.98,15.43)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(294.98,15.43)(301.25,14.28)(307.53,13.12)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(307.53,13.12)(314.17,12.41)(320.80,11.70)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(320.80,11.70)(327.62,11.45)(334.43,11.20)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(334.43,11.20)(341.26,11.41)(348.08,11.62)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(348.08,11.62)(354.74,12.30)(361.39,12.97)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(361.39,12.97)(367.71,14.09)(374.02,15.20)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(374.02,15.20)(379.83,16.73)(385.64,18.26)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(385.64,18.26)(390.79,20.16)(395.94,22.07)}%
+{\color{gray!35}\linethickness{.5pt}\qbezier(395.94,22.07)(400.31,24.30)(404.67,26.52)}%
+\put(415.05,43.34){\color{blue!55!black}\circle*{.8}}%
+\put(316.75,11.99){\color{blue!55!black}\circle*{.8}}%
+\put(277.38,43.49){\color{blue!55!black}\circle*{.8}}%
+\put(309.64,85.71){\color{blue!55!black}\circle*{.8}}%
+\put(370.62,109.60){\color{blue!55!black}\circle*{.8}}%
+\put(420.89,77.15){\color{blue!55!black}\circle*{.8}}%
+\put(352.09,22.73){\color{blue!55!black}\circle*{.8}}%
+\put(267.12,26.94){\color{blue!55!black}\circle*{.8}}%
+\put(289.70,63.48){\color{blue!55!black}\circle*{.8}}%
+\put(345.23,92.41){\color{blue!55!black}\circle*{.8}}%
+\put(400.14,94.22){\color{blue!55!black}\circle*{.8}}%
+\put(384.17,50.19){\color{blue!55!black}\circle*{.8}}%
+\put(280.04,26.12){\color{blue!55!black}\circle*{.8}}%
+\put(260.22,51.25){\color{blue!55!black}\circle*{.8}}%
+\put(325.69,74.72){\color{blue!55!black}\circle*{.8}}%
+\put(376.37,87.51){\color{blue!55!black}\circle*{.8}}%
+\put(392.79,72.98){\color{blue!55!black}\circle*{.8}}%
+\put(315.22,40.90){\color{blue!55!black}\circle*{.8}}%
+\put(241.88,48.92){\color{blue!55!black}\circle*{.8}}%
+\put(295.78,69.76){\color{blue!55!black}\circle*{.8}}%
+\put(363.49,73.53){\color{blue!55!black}\circle*{.8}}%
+\put(385.05,75.05){\color{blue!55!black}\circle*{.8}}%
+\put(348.43,58.93){\color{blue!55!black}\circle*{.8}}%
+\put(254.74,54.28){\color{blue!55!black}\circle*{.8}}%
+\put(258.97,75.05){\color{blue!55!black}\circle*{.8}}%
+\put(349.26,72.56){\color{blue!55!black}\circle*{.8}}%
+\put(382.61,63.31){\color{blue!55!black}\circle*{.8}}%
+\put(364.26,63.53){\color{blue!55!black}\circle*{.8}}%
+\put(290.45,61.89){\color{blue!55!black}\circle*{.8}}%
+\put(240.18,81.15){\color{blue!55!black}\circle*{.8}}%
+\put(318.66,87.30){\color{blue!55!black}\circle*{.8}}%
+\put(388.76,60.09){\color{blue!55!black}\circle*{.8}}%
+\put(374.08,51.95){\color{blue!55!black}\circle*{.8}}%
+\put(323.25,61.66){\color{blue!55!black}\circle*{.8}}%
+\put(253.82,81.62){\color{blue!55!black}\circle*{.8}}%
+\put(281.68,103.44){\color{blue!55!black}\circle*{.8}}%
+\put(383.67,77.85){\color{blue!55!black}\circle*{.8}}%
+\put(394.00,41.61){\color{blue!55!black}\circle*{.8}}%
+\put(343.71,47.52){\color{blue!55!black}\circle*{.8}}%
+\put(284.48,73.28){\color{blue!55!black}\circle*{.8}}%
+\put(263.74,106.77){\color{blue!55!black}\circle*{.8}}%
+\put(354.95,105.47){\color{blue!55!black}\circle*{.8}}%
+\put(416.07,52.47){\color{blue!55!black}\circle*{.8}}%
+\put(366.13,28.86){\color{blue!55!black}\circle*{.8}}%
+\put(308.34,54.29){\color{blue!55!black}\circle*{.8}}%
+\put(272.14,94.27){\color{blue!55!black}\circle*{.8}}%
+\put(318.22,121.07){\color{blue!55!black}\circle*{.8}}%
+\put(416.00,83.84){\color{blue!55!black}\circle*{.8}}%
+\put(399.99,26.11){\color{blue!55!black}\circle*{.8}}%
+\put(324.16,29.28){\color{blue!55!black}\circle*{.8}}%
+\put(287.43,70.67){\color{blue!55!black}\circle*{.8}}%
+\put(297.44,113.77){\color{blue!55!black}\circle*{.8}}%
+\put(386.81,113.42){\color{blue!55!black}\circle*{.8}}%
+\put(428.61,49.64){\color{blue!55!black}\circle*{.8}}%
+\put(349.12,13.26){\color{blue!55!black}\circle*{.8}}%
+\put(292.34,42.60){\color{blue!55!black}\circle*{.8}}%
+\put(293.46,89.86){\color{blue!55!black}\circle*{.8}}%
+\put(349.46,119.98){\color{blue!55!black}\circle*{.8}}%
+\put(427.96,85.54){\color{blue!55!black}\circle*{.8}}%
+\put(386.67,21.45){\color{blue!55!black}\circle*{.8}}%
+\put(295.78,19.53){\color{blue!55!black}\circle*{.8}}%
+\put(286.83,61.98){\color{blue!55!black}\circle*{.8}}%
+\put(324.93,102.92){\color{blue!55!black}\circle*{.8}}%
+\put(398.83,107.57){\color{blue!55!black}\circle*{.8}}%
+\put(415.00,51.70){\color{blue!55!black}\circle*{.8}}%
+\put(317.07,13.73){\color{blue!55!black}\circle*{.8}}%
+\put(270.17,39.39){\color{blue!55!black}\circle*{.8}}%
+\put(308.51,78.27){\color{blue!55!black}\circle*{.8}}%
+\put(365.77,103.37){\color{blue!55!black}\circle*{.8}}%
+\put(414.12,82.03){\color{blue!55!black}\circle*{.8}}%
+\put(353.94,30.36){\color{blue!55!black}\circle*{.8}}%
+\put(261.92,28.24){\color{blue!55!black}\circle*{.8}}%
+\put(283.35,60.62){\color{blue!55!black}\circle*{.8}}%
+\put(344.19,84.74){\color{blue!55!black}\circle*{.8}}%
+\put(392.47,91.13){\color{blue!55!black}\circle*{.8}}%
+\put(382.02,57.50){\color{blue!55!black}\circle*{.8}}%
+\put(280.81,32.58){\color{blue!55!black}\circle*{.8}}%
+\put(252.24,53.69){\color{blue!55!black}\circle*{.8}}%
+\put(323.50,72.07){\color{blue!55!black}\circle*{.8}}%
+\put(374.15,80.11){\color{blue!55!black}\circle*{.8}}%
+\put(386.88,73.51){\color{blue!55!black}\circle*{.8}}%
+\put(318.07,48.59){\color{blue!55!black}\circle*{.8}}%
+\put(239.58,55.01){\color{blue!55!black}\circle*{.8}}%
+\put(290.05,73.51){\color{blue!55!black}\circle*{.8}}%
+\put(365.48,69.62){\color{blue!55!black}\circle*{.8}}%
+\put(381.97,68.88){\color{blue!55!black}\circle*{.8}}%
+\put(348.20,61.86){\color{blue!55!black}\circle*{.8}}%
+\put(259.50,60.97){\color{blue!55!black}\circle*{.8}}%
+\put(254.67,81.93){\color{blue!55!black}\circle*{.8}}%
+\put(349.53,76.08){\color{blue!55!black}\circle*{.8}}%
+\put(386.27,57.43){\color{blue!55!black}\circle*{.8}}%
+\put(362.59,59.10){\color{blue!55!black}\circle*{.8}}%
+\put(296.25,65.08){\color{blue!55!black}\circle*{.8}}%
+\put(243.04,86.97){\color{blue!55!black}\circle*{.8}}%
+\put(315.93,95.17){\color{blue!55!black}\circle*{.8}}%
+\put(394.81,61.21){\color{blue!55!black}\circle*{.8}}%
+\put(376.82,44.56){\color{blue!55!black}\circle*{.8}}%
+\put(325.39,58.40){\color{blue!55!black}\circle*{.8}}%
+\put(261.97,83.50){\color{blue!55!black}\circle*{.8}}%
+\put(281.23,109.57){\color{blue!55!black}\circle*{.8}}%
+\put(385.63,85.45){\color{blue!55!black}\circle*{.8}}%
+\put(401.90,39.03){\color{blue!55!black}\circle*{.8}}%
+\put(344.87,39.66){\color{blue!55!black}\circle*{.8}}%
+\put(290.53,69.84){\color{blue!55!black}\circle*{.8}}%
+\put(269.13,107.47){\color{blue!55!black}\circle*{.8}}%
+\put(352.97,112.82){\color{blue!55!black}\circle*{.8}}%
+\put(422.55,57.81){\color{blue!55!black}\circle*{.8}}%
+\put(371.14,23.00){\color{blue!55!black}\circle*{.8}}%
+\put(309.12,46.59){\color{blue!55!black}\circle*{.8}}%
+\put(279.05,89.64){\color{blue!55!black}\circle*{.8}}%
+\put(317.95,122.19){\color{blue!55!black}\circle*{.8}}%
+\put(415.54,92.13){\color{blue!55!black}\circle*{.8}}%
+\put(407.19,27.88){\color{blue!55!black}\circle*{.8}}%
+\put(323.99,21.87){\color{blue!55!black}\circle*{.8}}%
+\put(288.98,63.02){\color{blue!55!black}\circle*{.8}}%
+\put(300.77,108.33){\color{blue!55!black}\circle*{.8}}%
+\put(382.02,116.79){\color{blue!55!black}\circle*{.8}}%
+\put(430.99,57.50){\color{blue!55!black}\circle*{.8}}%
+\put(352.21,11.88){\color{blue!55!black}\circle*{.8}}%
+\put(288.31,35.39){\color{blue!55!black}\circle*{.8}}%
+\put(295.20,81.82){\color{blue!55!black}\circle*{.8}}%
+\put(346.61,115.50){\color{blue!55!black}\circle*{.8}}%
+\put(422.65,91.78){\color{blue!55!black}\circle*{.8}}%
+\put(390.08,27.56){\color{blue!55!black}\circle*{.8}}%
+\put(292.45,16.88){\color{blue!55!black}\circle*{.8}}%
+\put(282.23,55.64){\color{blue!55!black}\circle*{.8}}%
+\put(324.77,94.63){\color{blue!55!black}\circle*{.8}}%
+\put(391.20,106.14){\color{blue!55!black}\circle*{.8}}%
+\put(412.74,59.86){\color{blue!55!black}\circle*{.8}}%
+\put(317.99,17.95){\color{blue!55!black}\circle*{.8}}%
+\put(262.38,37.46){\color{blue!55!black}\circle*{.8}}%
+\put(305.87,72.32){\color{blue!55!black}\circle*{.8}}%
+\put(362.12,95.92){\color{blue!55!black}\circle*{.8}}%
+\put(406.40,84.56){\color{blue!55!black}\circle*{.8}}%
+\put(355.22,38.71){\color{blue!55!black}\circle*{.8}}%
+\put(258.27,31.77){\color{blue!55!black}\circle*{.8}}%
+\put(275.95,60.14){\color{blue!55!black}\circle*{.8}}%
+\put(343.64,78.37){\color{blue!55!black}\circle*{.8}}%
+\put(386.27,86.00){\color{blue!55!black}\circle*{.8}}%
+\put(378.91,63.06){\color{blue!55!black}\circle*{.8}}%
+\put(283.11,40.00){\color{blue!55!black}\circle*{.8}}%
+\put(245.50,58.07){\color{blue!55!black}\circle*{.8}}%
+\put(320.76,72.04){\color{blue!55!black}\circle*{.8}}%
+\put(374.15,73.11){\color{blue!55!black}\circle*{.8}}%
+\put(381.68,71.45){\color{blue!55!black}\circle*{.8}}%
+\put(321.00,55.07){\color{blue!55!black}\circle*{.8}}%
+\put(239.93,61.72){\color{blue!55!black}\circle*{.8}}%
+\put(284.58,79.19){\color{blue!55!black}\circle*{.8}}%
+\put(368.28,68.19){\color{blue!55!black}\circle*{.8}}%
+\put(381.42,61.86){\color{blue!55!black}\circle*{.8}}%
+\put(347.81,62.13){\color{blue!55!black}\circle*{.8}}%
+\put(265.81,66.57){\color{blue!55!black}\circle*{.8}}%
+\put(252.47,88.96){\color{blue!55!black}\circle*{.8}}%
+\put(349.42,81.84){\color{blue!55!black}\circle*{.8}}%
+\put(391.95,53.30){\color{blue!55!black}\circle*{.8}}%
+\put(362.17,52.80){\color{blue!55!black}\circle*{.8}}%
+\put(301.68,65.83){\color{blue!55!black}\circle*{.8}}%
+\put(248.20,91.36){\color{blue!55!black}\circle*{.8}}%
+\put(313.54,103.20){\color{blue!55!black}\circle*{.8}}%
+\put(400.68,64.87){\color{blue!55!black}\circle*{.8}}%
+\put(381.60,37.83){\color{blue!55!black}\circle*{.8}}%
+\put(326.93,52.89){\color{blue!55!black}\circle*{.8}}%
+\put(270.31,83.11){\color{blue!55!black}\circle*{.8}}%
+\put(282.30,113.87){\color{blue!55!black}\circle*{.8}}%
+\put(386.24,93.85){\color{blue!55!black}\circle*{.8}}%
+\put(410.28,38.95){\color{blue!55!black}\circle*{.8}}%
+\put(346.65,31.53){\color{blue!55!black}\circle*{.8}}%
+\put(294.85,64.35){\color{blue!55!black}\circle*{.8}}%
+\put(275.28,105.74){\color{blue!55!black}\circle*{.8}}%
+\put(350.58,118.47){\color{blue!55!black}\circle*{.8}}%
+\put(427.16,64.89){\color{blue!55!black}\circle*{.8}}%
+\put(376.88,19.22){\color{blue!55!black}\circle*{.8}}%
+\put(308.49,38.34){\color{blue!55!black}\circle*{.8}}%
+\put(284.42,83.31){\color{blue!55!black}\circle*{.8}}%
+\put(318.18,120.64){\color{blue!55!black}\circle*{.8}}%
+\put(412.85,99.57){\color{blue!55!black}\circle*{.8}}%
+\put(413.27,32.14){\color{blue!55!black}\circle*{.8}}%
+\put(323.86,16.06){\color{blue!55!black}\circle*{.8}}%
+\put(287.91,55.12){\color{blue!55!black}\circle*{.8}}%
+\put(303.63,101.23){\color{blue!55!black}\circle*{.8}}%
+\put(376.62,117.51){\color{blue!55!black}\circle*{.8}}%
+\put(430.70,65.80){\color{blue!55!black}\circle*{.8}}%
+\put(355.35,13.22){\color{blue!55!black}\circle*{.8}}%
+\put(283.06,29.61){\color{blue!55!black}\circle*{.8}}%
+\put(294.76,73.99){\color{blue!55!black}\circle*{.8}}%
+\put(344.21,109.03){\color{blue!55!black}\circle*{.8}}%
+\put(415.57,95.97){\color{blue!55!black}\circle*{.8}}%
+\put(392.04,35.22){\color{blue!55!black}\circle*{.8}}%
+\put(289.74,16.76){\color{blue!55!black}\circle*{.8}}%
+\put(275.66,51.00){\color{blue!55!black}\circle*{.8}}%
+\put(324.18,86.58){\color{blue!55!black}\circle*{.8}}%
+\put(384.08,102.28){\color{blue!55!black}\circle*{.8}}%
+\put(408.56,66.95){\color{blue!55!black}\circle*{.8}}%
+\put(319.48,24.19){\color{blue!55!black}\circle*{.8}}%
+\put(254.89,37.87){\color{blue!55!black}\circle*{.8}}%
+\put(301.81,68.43){\color{blue!55!black}\circle*{.8}}%
+\put(359.86,88.08){\color{blue!55!black}\circle*{.8}}%
+\put(398.57,84.51){\color{blue!55!black}\circle*{.8}}%
+\put(355.85,46.89){\color{blue!55!black}\circle*{.8}}%
+\put(256.58,37.14){\color{blue!55!black}\circle*{.8}}%
+\put(268.21,62.03){\color{blue!55!black}\circle*{.8}}%
+\put(343.40,74.00){\color{blue!55!black}\circle*{.8}}%
+\put(382.16,79.47){\color{blue!55!black}\circle*{.8}}%
+\put(375.26,66.31){\color{blue!55!black}\circle*{.8}}%
+\put(286.72,47.60){\color{blue!55!black}\circle*{.8}}%
+\put(240.69,63.87){\color{blue!55!black}\circle*{.8}}%
+\put(317.58,74.62){\color{blue!55!black}\circle*{.8}}%
+\put(376.25,67.36){\color{blue!55!black}\circle*{.8}}%
+\put(377.87,67.09){\color{blue!55!black}\circle*{.8}}%
+\put(323.80,59.65){\color{blue!55!black}\circle*{.8}}%
+\put(242.90,68.30){\color{blue!55!black}\circle*{.8}}%
+\put(279.87,86.16){\color{blue!55!black}\circle*{.8}}%
+\put(371.41,69.45){\color{blue!55!black}\circle*{.8}}%
+\put(383.51,54.84){\color{blue!55!black}\circle*{.8}}%
+\put(347.46,59.73){\color{blue!55!black}\circle*{.8}}%
+\put(273.05,70.45){\color{blue!55!black}\circle*{.8}}%
+\put(252.58,95.40){\color{blue!55!black}\circle*{.8}}%
+\put(348.80,89.25){\color{blue!55!black}\circle*{.8}}%
+\put(399.02,51.46){\color{blue!55!black}\circle*{.8}}%
+\put(363.28,45.35){\color{blue!55!black}\circle*{.8}}%
+\put(306.31,64.04){\color{blue!55!black}\circle*{.8}}%
+\put(255.07,93.81){\color{blue!55!black}\circle*{.8}}%
+\put(311.69,110.54){\color{blue!55!black}\circle*{.8}}%
+\put(405.65,70.74){\color{blue!55!black}\circle*{.8}}%
+\put(388.05,32.56){\color{blue!55!black}\circle*{.8}}%
+\put(327.96,45.68){\color{blue!55!black}\circle*{.8}}%
+\put(277.98,80.40){\color{blue!55!black}\circle*{.8}}%
+\put(284.71,115.89){\color{blue!55!black}\circle*{.8}}%
+\put(385.40,102.16){\color{blue!55!black}\circle*{.8}}%
+\put(418.27,41.44){\color{blue!55!black}\circle*{.8}}%
+\put(349.10,24.03){\color{blue!55!black}\circle*{.8}}%
+\put(297.10,57.31){\color{blue!55!black}\circle*{.8}}%
+\put(281.46,101.73){\color{blue!55!black}\circle*{.8}}%
+\put(347.97,121.84){\color{blue!55!black}\circle*{.8}}%
+\put(429.41,72.99){\color{blue!55!black}\circle*{.8}}%
+\put(382.88,17.96){\color{blue!55!black}\circle*{.8}}%
+\put(306.75,30.35){\color{blue!55!black}\circle*{.8}}%
+\put(287.62,75.86){\color{blue!55!black}\circle*{.8}}%
+\put(318.79,116.57){\color{blue!55!black}\circle*{.8}}%
+\put(408.19,105.39){\color{blue!55!black}\circle*{.8}}%
+\put(417.64,38.47){\color{blue!55!black}\circle*{.8}}%
+\put(323.97,12.44){\color{blue!55!black}\circle*{.8}}%
+\put(284.39,47.72){\color{blue!55!black}\circle*{.8}}%
+\put(305.53,93.19){\color{blue!55!black}\circle*{.8}}%
+\put(371.11,115.55){\color{blue!55!black}\circle*{.8}}%
+\put(427.78,73.67){\color{blue!55!black}\circle*{.8}}%
+\put(358.30,17.15){\color{blue!55!black}\circle*{.8}}%
+\put(277.27,25.82){\color{blue!55!black}\circle*{.8}}%
+\put(292.04,67.11){\color{blue!55!black}\circle*{.8}}%
+\put(342.31,101.28){\color{blue!55!black}\circle*{.8}}%
+\put(407.44,97.70){\color{blue!55!black}\circle*{.8}}%
+\put(392.40,43.64){\color{blue!55!black}\circle*{.8}}%
+\put(288.04,19.18){\color{blue!55!black}\circle*{.8}}%
+\put(267.77,48.47){\color{blue!55!black}\circle*{.8}}%
+\put(322.98,79.61){\color{blue!55!black}\circle*{.8}}%
+\put(378.13,96.47){\color{blue!55!black}\circle*{.8}}%
+\put(402.94,72.26){\color{blue!55!black}\circle*{.8}}%
+\put(321.43,31.79){\color{blue!55!black}\circle*{.8}}%
+\put(248.53,40.51){\color{blue!55!black}\circle*{.8}}%
+\put(296.58,66.96){\color{blue!55!black}\circle*{.8}}%
+\put(359.03,80.76){\color{blue!55!black}\circle*{.8}}%
+\put(391.52,81.97){\color{blue!55!black}\circle*{.8}}%
+\put(355.81,54.05){\color{blue!55!black}\circle*{.8}}%
+\put(257.08,43.76){\color{blue!55!black}\circle*{.8}}%
+\put(260.87,66.05){\color{blue!55!black}\circle*{.8}}%
+\put(343.26,72.10){\color{blue!55!black}\circle*{.8}}%
+\put(380.53,72.33){\color{blue!55!black}\circle*{.8}}%
+\put(371.59,66.93){\color{blue!55!black}\circle*{.8}}%
+\put(291.29,54.54){\color{blue!55!black}\circle*{.8}}%
+\put(238.32,70.46){\color{blue!55!black}\circle*{.8}}%
+\put(314.15,79.51){\color{blue!55!black}\circle*{.8}}%
+\put(380.06,63.54){\color{blue!55!black}\circle*{.8}}%
+\put(375.98,60.98){\color{blue!55!black}\circle*{.8}}%
+\put(326.29,61.84){\color{blue!55!black}\circle*{.8}}%
+\put(248.19,74.05){\color{blue!55!black}\circle*{.8}}%
+\put(276.35,93.67){\color{blue!55!black}\circle*{.8}}%
+\put(374.40,73.28){\color{blue!55!black}\circle*{.8}}%
+\put(388.04,48.66){\color{blue!55!black}\circle*{.8}}%
+\put(347.42,54.93){\color{blue!55!black}\circle*{.8}}%
+\put(280.51,72.15){\color{blue!55!black}\circle*{.8}}%
+\put(254.95,100.53){\color{blue!55!black}\circle*{.8}}%
+\put(347.67,97.50){\color{blue!55!black}\circle*{.8}}%
+\put(406.65,52.17){\color{blue!55!black}\circle*{.8}}%
+\put(365.98,37.60){\color{blue!55!black}\circle*{.8}}%
+\put(309.82,59.84){\color{blue!55!black}\circle*{.8}}%
+\put(262.92,94.02){\color{blue!55!black}\circle*{.8}}%
+\put(310.53,116.39){\color{blue!55!black}\circle*{.8}}%
+\put(409.13,78.22){\color{blue!55!black}\circle*{.8}}%
+\put(395.58,29.39){\color{blue!55!black}\circle*{.8}}%
+\put(328.61,37.54){\color{blue!55!black}\circle*{.8}}%
+\put(284.20,75.61){\color{blue!55!black}\circle*{.8}}%
+\put(288.15,115.38){\color{blue!55!black}\circle*{.8}}%
+\put(383.14,109.50){\color{blue!55!black}\circle*{.8}}%
+\put(425.02,46.29){\color{blue!55!black}\circle*{.8}}%
+\put(352.15,17.99){\color{blue!55!black}\circle*{.8}}%
+\put(297.19,49.38){\color{blue!55!black}\circle*{.8}}%
+\put(286.89,95.81){\color{blue!55!black}\circle*{.8}}%
+\put(345.36,122.56){\color{blue!55!black}\circle*{.8}}%
+\put(429.03,81.26){\color{blue!55!black}\circle*{.8}}%
+\put(388.59,19.39){\color{blue!55!black}\circle*{.8}}%
+\put(304.26,23.44){\color{blue!55!black}\circle*{.8}}%
+\put(288.28,67.97){\color{blue!55!black}\circle*{.8}}%
+\put(319.54,110.41){\color{blue!55!black}\circle*{.8}}%
+\put(402.01,108.99){\color{blue!55!black}\circle*{.8}}%
+\put(419.86,46.22){\color{blue!55!black}\circle*{.8}}%
+\put(324.45,11.41){\color{blue!55!black}\circle*{.8}}%
+\put(278.85,41.49){\color{blue!55!black}\circle*{.8}}%
+\put(306.08,84.99){\color{blue!55!black}\circle*{.8}}%
+\put(365.95,111.15){\color{blue!55!black}\circle*{.8}}%
+\put(422.55,80.30){\color{blue!55!black}\circle*{.8}}%
+\put(360.81,23.26){\color{blue!55!black}\circle*{.8}}%
+\put(271.67,24.37){\color{blue!55!black}\circle*{.8}}%
+\put(287.22,61.83){\color{blue!55!black}\circle*{.8}}%
+\put(340.90,93.08){\color{blue!55!black}\circle*{.8}}%
+\put(399.13,96.85){\color{blue!55!black}\circle*{.8}}%
+\put(391.15,51.91){\color{blue!55!black}\circle*{.8}}%
+\put(287.60,23.86){\color{blue!55!black}\circle*{.8}}%
+\put(259.40,48.25){\color{blue!55!black}\circle*{.8}}%
+\put(321.05,74.43){\color{blue!55!black}\circle*{.8}}%
+\put(373.86,89.41){\color{blue!55!black}\circle*{.8}}%
+\put(396.54,75.25){\color{blue!55!black}\circle*{.8}}%
+\put(323.68,39.94){\color{blue!55!black}\circle*{.8}}%
+\put(244.00,45.06){\color{blue!55!black}\circle*{.8}}%
+\put(290.58,68.01){\color{blue!55!black}\circle*{.8}}%
+\put(359.50,74.79){\color{blue!55!black}\circle*{.8}}%
+\put(386.02,77.28){\color{blue!55!black}\circle*{.8}}%
+\put(355.20,59.41){\color{blue!55!black}\circle*{.8}}%
+\put(259.74,50.92){\color{blue!55!black}\circle*{.8}}%
+\put(254.67,71.70){\color{blue!55!black}\circle*{.8}}%
+\put(343.03,72.90){\color{blue!55!black}\circle*{.8}}%
+\put(381.49,65.44){\color{blue!55!black}\circle*{.8}}%
+\put(368.44,64.91){\color{blue!55!black}\circle*{.8}}%
+\put(296.42,60.06){\color{blue!55!black}\circle*{.8}}%
+\put(238.64,77.11){\color{blue!55!black}\circle*{.8}}%
+\put(310.72,86.18){\color{blue!55!black}\circle*{.8}}%
+\put(385.05,62.14){\color{blue!55!black}\circle*{.8}}%
+\put(376.33,53.85){\color{blue!55!black}\circle*{.8}}%
+\put(328.38,61.38){\color{blue!55!black}\circle*{.8}}%
+\put(255.24,78.32){\color{blue!55!black}\circle*{.8}}%
+\put(274.37,100.91){\color{blue!55!black}\circle*{.8}}%
+\put(376.78,79.32){\color{blue!55!black}\circle*{.8}}%
+\put(394.58,44.10){\color{blue!55!black}\circle*{.8}}%
+\put(347.92,48.27){\color{blue!55!black}\circle*{.8}}%
+\put(287.48,71.44){\color{blue!55!black}\circle*{.8}}%
+\put(259.31,103.80){\color{blue!55!black}\circle*{.8}}%
+\put(346.08,105.73){\color{blue!55!black}\circle*{.8}}%
+\put(414.00,55.42){\color{blue!55!black}\circle*{.8}}%
+\put(370.19,30.46){\color{blue!55!black}\circle*{.8}}%
+\put(312.02,53.62){\color{blue!55!black}\circle*{.8}}%
+\put(270.86,91.92){\color{blue!55!black}\circle*{.8}}%
+\put(310.14,120.14){\color{blue!55!black}\circle*{.8}}%
+\put(410.69,86.54){\color{blue!55!black}\circle*{.8}}%
+\put(403.46,28.71){\color{blue!55!black}\circle*{.8}}%
+\put(329.07,29.30){\color{blue!55!black}\circle*{.8}}%
+\put(288.36,69.13){\color{blue!55!black}\circle*{.8}}%
+\put(292.14,112.38){\color{blue!55!black}\circle*{.8}}%
+\put(379.66,115.12){\color{blue!55!black}\circle*{.8}}%
+\put(429.83,53.02){\color{blue!55!black}\circle*{.8}}%
+\put(355.67,14.06){\color{blue!55!black}\circle*{.8}}%
+\put(295.26,41.32){\color{blue!55!black}\circle*{.8}}%
+\put(290.90,88.52){\color{blue!55!black}\circle*{.8}}%
+\put(342.92,120.57){\color{blue!55!black}\circle*{.8}}%
+\put(426.06,88.84){\color{blue!55!black}\circle*{.8}}%
+\put(393.49,23.39){\color{blue!55!black}\circle*{.8}}%
+\put(301.47,18.28){\color{blue!55!black}\circle*{.8}}%
+\put(286.28,60.39){\color{blue!55!black}\circle*{.8}}%
+\put(320.18,102.79){\color{blue!55!black}\circle*{.8}}%
+\put(394.94,110.01){\color{blue!55!black}\circle*{.8}}%
+\put(419.70,54.57){\color{blue!55!black}\circle*{.8}}%
+\put(325.36,13.06){\color{blue!55!black}\circle*{.8}}%
+\put(271.95,37.02){\color{blue!55!black}\circle*{.8}}%
+\put(305.02,77.46){\color{blue!55!black}\circle*{.8}}%
+\put(361.55,104.81){\color{blue!55!black}\circle*{.8}}%
+\put(415.58,85.01){\color{blue!55!black}\circle*{.8}}%
+\put(362.66,30.92){\color{blue!55!black}\circle*{.8}}%
+\put(266.94,25.36){\color{blue!55!black}\circle*{.8}}%
+\put(280.69,58.62){\color{blue!55!black}\circle*{.8}}%
+\put(339.90,85.33){\color{blue!55!black}\circle*{.8}}%
+\put(391.46,93.56){\color{blue!55!black}\circle*{.8}}%
+\put(388.47,59.18){\color{blue!55!black}\circle*{.8}}%
+\put(288.52,30.29){\color{blue!55!black}\circle*{.8}}%
+\put(251.41,50.28){\color{blue!55!black}\circle*{.8}}%
+\put(318.37,71.58){\color{blue!55!black}\circle*{.8}}%
+\put(371.59,81.92){\color{blue!55!black}\circle*{.8}}%
+\put(390.12,75.65){\color{blue!55!black}\circle*{.8}}%
+\put(326.05,47.76){\color{blue!55!black}\circle*{.8}}%
+\put(241.82,51.02){\color{blue!55!black}\circle*{.8}}%
+\put(284.32,71.43){\color{blue!55!black}\circle*{.8}}%
+\put(361.00,70.85){\color{blue!55!black}\circle*{.8}}%
+\put(382.70,71.03){\color{blue!55!black}\circle*{.8}}%
+\put(354.22,62.42){\color{blue!55!black}\circle*{.8}}%
+\put(264.31,57.82){\color{blue!55!black}\circle*{.8}}%
+\put(250.24,78.38){\color{blue!55!black}\circle*{.8}}%
+\put(342.54,76.31){\color{blue!55!black}\circle*{.8}}%
+\put(384.88,59.64){\color{blue!55!black}\circle*{.8}}%
+\put(366.31,60.50){\color{blue!55!black}\circle*{.8}}%
+\put(301.64,63.56){\color{blue!55!black}\circle*{.8}}%
+\put(241.61,83.10){\color{blue!55!black}\circle*{.8}}%
+\put(307.55,93.90){\color{blue!55!black}\circle*{.8}}%
+\put(390.55,63.36){\color{blue!55!black}\circle*{.8}}%
+\put(379.02,46.56){\color{blue!55!black}\circle*{.8}}%
+\put(330.03,58.30){\color{blue!55!black}\circle*{.8}}%
+\put(263.32,80.62){\color{blue!55!black}\circle*{.8}}%
+\put(274.10,107.08){\color{blue!55!black}\circle*{.8}}%
+\put(378.22,86.94){\color{blue!55!black}\circle*{.8}}%
+\put(402.43,41.72){\color{blue!55!black}\circle*{.8}}%
+\put(349.15,40.48){\color{blue!55!black}\circle*{.8}}%
+\put(293.32,68.34){\color{blue!55!black}\circle*{.8}}%
+\put(265.14,104.82){\color{blue!55!black}\circle*{.8}}%
+\put(344.15,113.06){\color{blue!55!black}\circle*{.8}}%
+\put(420.23,60.92){\color{blue!55!black}\circle*{.8}}%
+\put(375.63,24.72){\color{blue!55!black}\circle*{.8}}%
+\put(312.90,46.00){\color{blue!55!black}\circle*{.8}}%
+\put(278.04,87.66){\color{blue!55!black}\circle*{.8}}%
+\put(310.49,121.38){\color{blue!55!black}\circle*{.8}}%
+\put(410.15,94.84){\color{blue!55!black}\circle*{.8}}%
+\put(410.93,30.65){\color{blue!55!black}\circle*{.8}}%
+\put(329.51,21.85){\color{blue!55!black}\circle*{.8}}%
+\put(290.07,61.58){\color{blue!55!black}\circle*{.8}}%
+\put(296.14,107.16){\color{blue!55!black}\circle*{.8}}%
+\put(375.30,118.41){\color{blue!55!black}\circle*{.8}}%
+\put(432.18,60.94){\color{blue!55!black}\circle*{.8}}%
+\put(359.44,12.70){\color{blue!55!black}\circle*{.8}}%
+\put(291.68,33.91){\color{blue!55!black}\circle*{.8}}%
+\put(292.94,80.56){\color{blue!55!black}\circle*{.8}}%
+\put(340.78,116.09){\color{blue!55!black}\circle*{.8}}%
+\put(420.80,94.96){\color{blue!55!black}\circle*{.8}}%
+\put(397.11,29.56){\color{blue!55!black}\circle*{.8}}%
+\put(298.85,15.40){\color{blue!55!black}\circle*{.8}}%
+\put(281.81,53.81){\color{blue!55!black}\circle*{.8}}%
+\put(320.43,94.50){\color{blue!55!black}\circle*{.8}}%
+\put(387.66,108.40){\color{blue!55!black}\circle*{.8}}%
+\put(417.21,62.66){\color{blue!55!black}\circle*{.8}}%
+\put(326.71,17.22){\color{blue!55!black}\circle*{.8}}%
+\put(264.48,34.70){\color{blue!55!black}\circle*{.8}}%
+\put(302.26,71.33){\color{blue!55!black}\circle*{.8}}%
+\put(358.21,97.25){\color{blue!55!black}\circle*{.8}}%
+\put(407.64,87.33){\color{blue!55!black}\circle*{.8}}%
+\put(363.69,39.30){\color{blue!55!black}\circle*{.8}}%
+\put(263.65,28.67){\color{blue!55!black}\circle*{.8}}%
+\put(273.05,57.74){\color{blue!55!black}\circle*{.8}}%
+\put(339.15,78.86){\color{blue!55!black}\circle*{.8}}%
+\put(385.23,88.26){\color{blue!55!black}\circle*{.8}}%
+\put(384.73,64.70){\color{blue!55!black}\circle*{.8}}%
+\put(290.74,37.78){\color{blue!55!black}\circle*{.8}}%
+\put(244.66,54.32){\color{blue!55!black}\circle*{.8}}%
+\put(315.01,71.31){\color{blue!55!black}\circle*{.8}}%
+\put(371.41,74.88){\color{blue!55!black}\circle*{.8}}%
+\put(384.46,73.48){\color{blue!55!black}\circle*{.8}}%
+\put(328.34,54.41){\color{blue!55!black}\circle*{.8}}%
+\put(242.22,57.73){\color{blue!55!black}\circle*{.8}}%
+\put(278.38,76.81){\color{blue!55!black}\circle*{.8}}%
+\put(363.18,69.40){\color{blue!55!black}\circle*{.8}}%
+\put(381.94,64.00){\color{blue!55!black}\circle*{.8}}%
+\put(353.11,62.78){\color{blue!55!black}\circle*{.8}}%
+\put(270.33,63.72){\color{blue!55!black}\circle*{.8}}%
+\put(248.02,85.34){\color{blue!55!black}\circle*{.8}}%
+\put(341.70,81.97){\color{blue!55!black}\circle*{.8}}%
+\put(390.25,55.64){\color{blue!55!black}\circle*{.8}}%
+\put(365.62,54.24){\color{blue!55!black}\circle*{.8}}%
+\put(306.51,64.63){\color{blue!55!black}\circle*{.8}}%
+\put(246.91,87.77){\color{blue!55!black}\circle*{.8}}%
+\put(304.93,101.85){\color{blue!55!black}\circle*{.8}}%
+\put(395.87,67.14){\color{blue!55!black}\circle*{.8}}%
+\put(383.87,39.97){\color{blue!55!black}\circle*{.8}}%
+\put(331.30,52.93){\color{blue!55!black}\circle*{.8}}%
+\put(271.60,80.65){\color{blue!55!black}\circle*{.8}}%
+\put(275.53,111.52){\color{blue!55!black}\circle*{.8}}%
+\put(378.48,95.34){\color{blue!55!black}\circle*{.8}}%
+\put(410.78,41.85){\color{blue!55!black}\circle*{.8}}%
+\put(351.22,32.42){\color{blue!55!black}\circle*{.8}}%
+\put(297.53,63.10){\color{blue!55!black}\circle*{.8}}%
+\put(271.77,103.45){\color{blue!55!black}\circle*{.8}}%
+\put(342.04,118.72){\color{blue!55!black}\circle*{.8}}%
+\put(424.66,68.12){\color{blue!55!black}\circle*{.8}}%
+\put(381.87,21.07){\color{blue!55!black}\circle*{.8}}%
+\put(312.58,37.74){\color{blue!55!black}\circle*{.8}}%
+\put(283.66,81.61){\color{blue!55!black}\circle*{.8}}%
+\put(311.46,119.97){\color{blue!55!black}\circle*{.8}}%
+\put(407.52,102.23){\color{blue!55!black}\circle*{.8}}%
+\put(417.23,35.06){\color{blue!55!black}\circle*{.8}}%
+\put(330.10,15.95){\color{blue!55!black}\circle*{.8}}%
+\put(289.22,53.64){\color{blue!55!black}\circle*{.8}}%
+\put(299.58,100.25){\color{blue!55!black}\circle*{.8}}%
+\put(370.45,119.06){\color{blue!55!black}\circle*{.8}}%
+\put(431.83,69.23){\color{blue!55!black}\circle*{.8}}%
+\put(363.17,14.05){\color{blue!55!black}\circle*{.8}}%
+\put(286.96,27.87){\color{blue!55!black}\circle*{.8}}%
+\put(292.68,72.69){\color{blue!55!black}\circle*{.8}}%
+\put(339.02,109.61){\color{blue!55!black}\circle*{.8}}%
+\put(413.80,98.97){\color{blue!55!black}\circle*{.8}}%
+\put(399.10,37.25){\color{blue!55!black}\circle*{.8}}%
+\put(296.79,15.08){\color{blue!55!black}\circle*{.8}}%
+\put(275.34,48.83){\color{blue!55!black}\circle*{.8}}%
+\put(320.02,86.41){\color{blue!55!black}\circle*{.8}}%
+\put(380.86,104.36){\color{blue!55!black}\circle*{.8}}%
+\put(412.69,69.65){\color{blue!55!black}\circle*{.8}}%
+\put(328.40,23.45){\color{blue!55!black}\circle*{.8}}%
+\put(257.29,34.71){\color{blue!55!black}\circle*{.8}}%
+\put(297.92,67.17){\color{blue!55!black}\circle*{.8}}%
+\put(356.07,89.32){\color{blue!55!black}\circle*{.8}}%
+\put(399.58,87.09){\color{blue!55!black}\circle*{.8}}%
+\put(363.86,47.53){\color{blue!55!black}\circle*{.8}}%
+\put(262.21,33.91){\color{blue!55!black}\circle*{.8}}%
+\put(265.04,59.23){\color{blue!55!black}\circle*{.8}}%
+\put(338.49,74.37){\color{blue!55!black}\circle*{.8}}%
+\put(381.04,81.61){\color{blue!55!black}\circle*{.8}}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(415.05,43.34)(404.91,36.04)(394.77,28.75)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(394.77,28.75)(381.96,23.47)(369.14,18.19)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(369.14,18.19)(355.51,15.38)(341.88,12.57)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(341.88,12.57)(329.32,12.28)(316.75,11.99)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(316.75,11.99)(306.74,13.94)(296.73,15.89)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(296.73,15.89)(290.11,19.56)(283.50,23.23)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(283.50,23.23)(280.43,28.01)(277.35,32.79)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(277.35,32.79)(277.37,38.14)(277.38,43.49)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(277.38,43.49)(279.69,49.00)(281.99,54.51)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(281.99,54.51)(285.78,59.94)(289.57,65.37)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(289.57,65.37)(294.26,70.60)(298.94,75.83)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(298.94,75.83)(304.29,80.77)(309.64,85.71)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(309.64,85.71)(315.76,90.21)(321.87,94.70)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(321.87,94.70)(328.97,98.47)(336.08,102.24)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(336.08,102.24)(344.29,104.88)(352.49,107.52)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(352.49,107.52)(361.56,108.56)(370.62,109.60)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(370.62,109.60)(379.82,108.66)(389.02,107.71)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(389.02,107.71)(397.19,104.56)(405.35,101.41)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(405.35,101.41)(411.09,96.17)(416.84,90.93)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(416.84,90.93)(418.86,84.04)(420.89,77.15)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(420.89,77.15)(418.37,69.37)(415.85,61.58)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(415.85,61.58)(408.67,53.84)(401.49,46.11)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(401.49,46.11)(390.38,39.37)(379.27,32.63)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(379.27,32.63)(365.68,27.68)(352.09,22.73)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(352.09,22.73)(337.93,20.03)(323.77,17.34)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(323.77,17.34)(311.00,17.01)(298.24,16.67)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(298.24,16.67)(288.47,18.44)(278.71,20.21)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(278.71,20.21)(272.92,23.58)(267.12,26.94)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(267.12,26.94)(265.48,31.28)(263.84,35.62)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(263.84,35.62)(265.84,40.37)(267.84,45.11)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(267.84,45.11)(272.52,49.83)(277.20,54.55)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(277.20,54.55)(283.45,59.01)(289.70,63.48)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(289.70,63.48)(296.59,67.62)(303.49,71.76)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(303.49,71.76)(310.47,75.58)(317.46,79.41)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(317.46,79.41)(324.37,82.89)(331.29,86.38)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(331.29,86.38)(338.26,89.40)(345.23,92.41)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(345.23,92.41)(352.41,94.68)(359.58,96.95)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(359.58,96.95)(366.92,98.09)(374.25,99.23)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(374.25,99.23)(381.29,98.86)(388.33,98.50)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(388.33,98.50)(394.23,96.36)(400.14,94.22)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(400.14,94.22)(403.78,90.30)(407.42,86.38)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(407.42,86.38)(407.70,80.98)(407.98,75.57)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(407.98,75.57)(404.15,69.27)(400.31,62.97)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(400.31,62.97)(392.24,56.58)(384.17,50.19)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(384.17,50.19)(372.52,44.56)(360.88,38.93)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(360.88,38.93)(347.05,34.79)(333.22,30.66)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(333.22,30.66)(319.09,28.49)(304.95,26.32)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(304.95,26.32)(292.49,26.22)(280.04,26.12)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(280.04,26.12)(270.93,27.86)(261.83,29.60)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(261.83,29.60)(257.13,32.69)(252.42,35.77)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(252.42,35.77)(252.34,39.57)(252.25,43.38)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(252.25,43.38)(256.24,47.31)(260.22,51.25)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(260.22,51.25)(267.15,54.90)(274.08,58.54)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(274.08,58.54)(282.61,61.69)(291.14,64.84)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(291.14,64.84)(300.03,67.50)(308.92,70.15)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(308.92,70.15)(317.31,72.43)(325.69,74.72)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(325.69,74.72)(333.17,76.76)(340.66,78.81)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(340.66,78.81)(347.25,80.66)(353.84,82.51)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(353.84,82.51)(359.75,84.05)(365.65,85.58)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(365.65,85.58)(371.01,86.55)(376.37,87.51)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(376.37,87.51)(381.04,87.56)(385.72,87.61)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(385.72,87.61)(389.19,86.46)(392.67,85.30)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(392.67,85.30)(394.14,82.82)(395.62,80.34)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(395.62,80.34)(394.20,76.66)(392.79,72.98)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(392.79,72.98)(387.84,68.52)(382.89,64.05)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(382.89,64.05)(374.28,59.43)(365.66,54.81)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(365.66,54.81)(353.96,50.74)(342.26,46.66)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(342.26,46.66)(328.74,43.78)(315.22,40.90)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(315.22,40.90)(301.66,39.63)(288.10,38.36)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(288.10,38.36)(276.45,38.80)(264.79,39.25)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(264.79,39.25)(256.73,41.17)(248.67,43.09)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(248.67,43.09)(245.28,46.00)(241.88,48.92)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(241.88,48.92)(243.42,52.20)(244.95,55.49)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(244.95,55.49)(250.83,58.56)(256.71,61.63)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(256.71,61.63)(265.70,64.06)(274.69,66.50)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(274.69,66.50)(285.23,68.13)(295.78,69.76)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(295.78,69.76)(306.37,70.66)(316.96,71.56)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(316.96,71.56)(326.45,71.98)(335.95,72.41)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(335.95,72.41)(343.74,72.66)(351.52,72.91)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(351.52,72.91)(357.50,73.22)(363.49,73.53)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(363.49,73.53)(367.91,73.97)(372.34,74.41)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(372.34,74.41)(375.55,74.86)(378.77,75.32)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(378.77,75.32)(380.93,75.53)(383.10,75.73)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(383.10,75.73)(384.07,75.39)(385.05,75.05)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(385.05,75.05)(384.35,73.95)(383.66,72.85)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(383.66,72.85)(380.66,70.96)(377.67,69.07)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(377.67,69.07)(371.84,66.61)(366.01,64.15)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(366.01,64.15)(357.22,61.54)(348.43,58.93)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(348.43,58.93)(337.13,56.72)(325.84,54.51)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(325.84,54.51)(313.15,53.20)(300.46,51.89)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(300.46,51.89)(288.00,51.83)(275.54,51.77)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(275.54,51.77)(265.14,53.03)(254.74,54.28)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(254.74,54.28)(248.04,56.61)(241.34,58.94)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(241.34,58.94)(239.42,61.85)(237.50,64.76)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(237.50,64.76)(240.64,67.65)(243.77,70.53)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(243.77,70.53)(251.37,72.79)(258.97,75.05)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(258.97,75.05)(269.72,76.29)(280.48,77.52)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(280.48,77.52)(292.68,77.59)(304.88,77.66)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(304.88,77.66)(316.80,76.70)(328.73,75.75)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(328.73,75.75)(338.99,74.16)(349.26,72.56)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(349.26,72.56)(357.06,70.79)(364.86,69.02)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(364.86,69.02)(370.00,67.52)(375.15,66.01)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(375.15,66.01)(377.93,65.04)(380.71,64.07)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(380.71,64.07)(381.66,63.69)(382.61,63.31)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(382.61,63.31)(382.21,63.35)(381.80,63.40)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(381.80,63.40)(380.26,63.61)(378.72,63.81)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(378.72,63.81)(375.92,63.89)(373.12,63.96)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(373.12,63.96)(368.69,63.75)(364.26,63.53)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(364.26,63.53)(357.81,63.05)(351.36,62.56)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(351.36,62.56)(342.74,62.03)(334.12,61.49)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(334.12,61.49)(323.67,61.26)(313.21,61.03)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(313.21,61.03)(301.83,61.46)(290.45,61.89)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(290.45,61.89)(279.55,63.23)(268.65,64.57)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(268.65,64.57)(259.88,66.83)(251.11,69.10)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(251.11,69.10)(246.02,72.02)(240.92,74.95)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(240.92,74.95)(240.55,78.05)(240.18,81.15)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(240.18,81.15)(244.81,83.80)(249.44,86.45)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(249.44,86.45)(258.49,88.07)(267.55,89.69)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(267.55,89.69)(279.69,89.87)(291.83,90.05)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(291.83,90.05)(305.24,88.68)(318.66,87.30)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(318.66,87.30)(331.48,84.58)(344.29,81.85)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(344.29,81.85)(354.93,78.26)(365.58,74.66)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(365.58,74.66)(373.08,70.83)(380.58,66.99)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(380.58,66.99)(384.67,63.54)(388.76,60.09)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(388.76,60.09)(389.76,57.50)(390.77,54.92)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(390.77,54.92)(389.40,53.43)(388.02,51.93)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(388.02,51.93)(385.05,51.52)(382.08,51.10)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(382.08,51.10)(378.08,51.52)(374.08,51.95)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(374.08,51.95)(369.29,52.91)(364.50,53.86)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(364.50,53.86)(358.82,55.06)(353.14,56.26)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(353.14,56.26)(346.31,57.55)(339.49,58.84)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(339.49,58.84)(331.37,60.25)(323.25,61.66)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(323.25,61.66)(314.02,63.34)(304.79,65.02)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(304.79,65.02)(295.12,67.18)(285.44,69.35)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(285.44,69.35)(276.47,72.13)(267.50,74.91)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(267.50,74.91)(260.66,78.27)(253.82,81.62)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(253.82,81.62)(250.49,85.26)(247.15,88.91)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(247.15,88.91)(248.31,92.35)(249.47,95.79)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(249.47,95.79)(255.41,98.41)(261.35,101.03)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(261.35,101.03)(271.51,102.24)(281.68,103.44)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(281.68,103.44)(294.74,102.83)(307.81,102.21)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(307.81,102.21)(321.93,99.65)(336.06,97.10)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(336.06,97.10)(349.27,92.86)(362.48,88.61)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(362.48,88.61)(373.08,83.23)(383.67,77.85)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(383.67,77.85)(390.56,72.09)(397.44,66.33)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(397.44,66.33)(400.27,60.98)(403.10,55.64)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(403.10,55.64)(402.24,51.38)(401.38,47.12)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(401.38,47.12)(397.69,44.37)(394.00,41.61)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(394.00,41.61)(388.53,40.48)(383.07,39.35)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(383.07,39.35)(376.74,39.69)(370.40,40.03)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(370.40,40.03)(363.78,41.51)(357.16,43.00)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(357.16,43.00)(350.44,45.26)(343.71,47.52)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(343.71,47.52)(336.76,50.26)(329.81,53.00)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(329.81,53.00)(322.48,56.06)(315.15,59.12)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(315.15,59.12)(307.46,62.48)(299.77,65.84)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(299.77,65.84)(292.12,69.56)(284.48,73.28)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(284.48,73.28)(277.73,77.38)(270.97,81.48)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(270.97,81.48)(266.25,85.88)(261.53,90.27)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(261.53,90.27)(260.03,94.65)(258.53,99.02)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(258.53,99.02)(261.14,102.90)(263.74,106.77)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(263.74,106.77)(270.72,109.53)(277.70,112.28)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(277.70,112.28)(288.57,113.32)(299.43,114.37)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(299.43,114.37)(312.91,113.27)(326.39,112.18)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(326.39,112.18)(340.67,108.82)(354.95,105.47)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(354.95,105.47)(368.03,100.10)(381.12,94.73)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(381.12,94.73)(391.23,87.95)(401.35,81.17)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(401.35,81.17)(407.31,73.82)(413.27,66.46)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(413.27,66.46)(414.67,59.47)(416.07,52.47)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(416.07,52.47)(413.31,46.67)(410.55,40.86)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(410.55,40.86)(404.62,36.84)(398.69,32.81)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(398.69,32.81)(390.88,30.83)(383.07,28.85)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(383.07,28.85)(374.60,28.86)(366.13,28.86)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(366.13,28.86)(357.90,30.55)(349.68,32.23)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(349.68,32.23)(342.13,35.17)(334.58,38.11)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(334.58,38.11)(327.75,41.89)(320.92,45.67)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(320.92,45.67)(314.63,49.98)(308.34,54.29)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(308.34,54.29)(302.44,58.95)(296.54,63.61)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(296.54,63.61)(291.17,68.55)(285.79,73.49)}%
+{\color{red!75!black}\linethickness{.5pt}\qbezier(285.79,73.49)(281.45,78.64)(277.11,83.80)}%
+\put(415.05,43.34){\color{black}\circle*{3}}%
+\end{picture}%
+\end{center}%
+{\small Слева --- первые три из четырёх SVD-координат окна.
+Справа --- те же окна в точках $g(\varphi_n)$: первый угол задаёт обход
+вокруг отверстия, второй --- вокруг трубки.
+Синим показано каждое четвёртое окно из $2025$; красным соединены первые $180$
+окон по времени, чёрным отмечено первое. Серые линии --- координатная сетка тора.\par}
+
+\end{minipage}
+\end{document}

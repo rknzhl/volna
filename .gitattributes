@@ -1,0 +1,2 @@
+# Plotly exports include bundled third-party JavaScript.
+results/notebooks/*.html -whitespace
