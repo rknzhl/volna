@@ -1,0 +1,15 @@
+Make a FINAL precise cleanup of this infographic. Preserve the full canvas, all eight panels, every unmentioned formula, all plots, spacing, palette, sharpness and typography. Change ONLY the following small items:
+
+1. In panel 8, the first ochre check card has a formula that mixes the reduced xi and full x coordinates. Remove that formula completely. Keep its heading "1. Восстановление окон" and put the short plain text "Ошибка мала." beneath it. No other mathematical symbols in this card.
+
+2. At the bottom of panel 8, REMOVE the blue horizontal arrow connecting the green result box to the red refusal box. They are TWO ALTERNATIVE outcomes, not a sequence. Keep the small branch from the centered caption above to each box independently. Keep the exact box text:
+green: "Проверки пройдены: результат."
+red: "Пороги не пройдены: отказ."
+No arrow or line may go from one box into the other.
+
+3. In panel 3, REMOVE ALL curly braces, side brackets and the duplicated labels "общая часть" around the two window columns. They are redundant and one brace has the wrong extent. Preserve the columns and their colors EXACTLY:
+left x_n: gray y_n, blue y_{n+1}, blue ellipsis, blue y_{n+L-1};
+right x_{n+1}: blue y_{n+1}, blue ellipsis, blue y_{n+L-1}, gray y_{n+L}.
+Preserve the labels P_1 x_n below the LEFT column, P_0 x_{n+1} below the RIGHT column, and the operator definitions and tangent-transfer equations. Add only a tiny single clean caption near these columns if useful: "Синим — общие снимки".
+
+Absolutely no other changes. Do not reflow or regenerate the content of other panels. Final output remains ONE polished academic Russian infographic.

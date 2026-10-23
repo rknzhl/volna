@@ -1,0 +1,59 @@
+Edit this new eight-stage infographic, preserving its academic style, all eight numbered headings, palette, equation legibility, layout, and all unmentioned correct content. This is a precision correction of several mathematical drawings. Do not squeeze text; modestly enlarge the canvas/spacing if needed. Do not add paragraphs.
+
+CORRECTION 1 — PANEL 1, DATA SPLIT AND WINDOWS:
+The current blue oscillatory residual must NOT point into the slow component as if the latter were derived from the former. Use a genuine branch from filtered observations to TWO separate outputs: "Нормированный остаток" (blue oscillations) and "Медленная компонента" (gray smooth curves). Remove every arrow from residual to slow component.
+The x_n window is a stack of m-dimensional SNAPSHOTS, not a length-L vector of scalar coordinates. Relabel its four visible blocks as y_n, y_{n+1}, ..., y_{n+L-1}. Add a small clean definition near it:
+"y_n in R^m — снимок нормированного остатка".
+Keep x_n in R^{mL}, xi_n in R^D, xi_n=U^T x_n, U in R^{mL x D} exactly as properly typeset mathematics.
+
+CORRECTION 2 — PANEL 2, PERSISTENCE DISPLAY:
+Replace the current birth/death-looking graphic with a standard simple persistence BARCODE: several horizontal intervals along one horizontal axis labelled "масштаб"; long navy intervals and a few very short pale-gray intervals. Include an ellipsis for general r. No vertical "рождение" or horizontal "смерть" axes. Keep the captions "r — по устойчивым циклам" and "Предположение: тор." No angles here.
+
+CORRECTION 3 — REBUILD PANEL 3 WINDOW DRAWING CORRECTLY:
+Left column heading x_n:
+  first block y_n: GRAY, nonshared;
+  next block y_{n+1}: PALE BLUE;
+  ellipsis: PALE BLUE;
+  last block y_{n+L-1}: PALE BLUE.
+Right column heading x_{n+1}:
+  first block y_{n+1}: PALE BLUE;
+  ellipsis: PALE BLUE;
+  next-to-last block y_{n+L-1}: PALE BLUE;
+  last block y_{n+L}: GRAY, nonshared.
+The shared L-1 snapshots are bottom L-1 blocks on the LEFT and top L-1 blocks on the RIGHT.
+Under the LEFT window write P_1 x_n.
+Under the RIGHT window write P_0 x_{n+1}.
+Use short connecting highlight/brackets only if they are correctly aligned with the common blocks. Never label P_0 as selecting the shared portion of the left window or P_1 as selecting the shared portion of the right window.
+Keep the small operator definitions:
+"P_0: без последнего снимка; P_1: без первого."
+In the right-side tangent drawing, REMOVE the undefined labels T_{xi_n}M and T_{xi_{n+1}}M. Label the planes "span Q_n" and "span Q_{n+1}" instead. Keep xi_n, xi_{n+1}, velocity v, velocity v', and the hatted estimated calligraphic time-shift derivative arrow.
+Keep the tangent restrictions and the overlap formula:
+v in span Q_n,   v' in span Q_{n+1},
+P_0 U v' approximately equals P_1 U v.
+
+CORRECTION 4 — PANEL 4 INDEX:
+Change the rightmost point/frame indices from xi_K,W_K to xi_{K-1},W_{K-1}. Use a small notation definition "K — число окон" in a clear position, or the top notation strip with sufficient space. Preserve the approximate invariance equation and the anchor W_0=Q_0.
+
+CORRECTION 5 — PANEL 5 NONTRIVIAL LOOPS:
+The currently drawn purple loops sitting inside filled triangles would be contractible and have zero period after closure. Replace that mesh drawing with a schematic finite triangular complex with CLEAR WHITE HOLES. Purple directed cycles run along edge paths encircling the white holes; no filled faces span those cycles. Show gamma_1 and gamma_r with an ellipsis between them for general r. Each cycle must visibly encircle a missing region, NOT lie inside a single filled triangle. Keep the nearby triangles to explain the local closure condition.
+Preserve all captions and equations in panel 5, including:
+v=W(xi)a, beta_xi(v)=a in R^r,
+"Базис обходов конечного комплекса",
+"Согласование интегралов",
+"По каждому треугольнику: сумма = 0",
+Pi in R^{r x r}, f_ell in R^r.
+This is a schematic illustration of nontrivial finite loop classes, not a claim that a planar mesh is the true general-r torus.
+
+CORRECTION 6 — PANEL 8 CHECK LANGUAGE:
+In check 2 replace the apparently exact return formula by the short phrase:
+"Отклонение после 2pi мало".
+In check 3 replace the vague formula about agreed fields by:
+"Два порядка дают близкие окна".
+These are empirical tests, not exact equalities.
+
+INVARIANTS:
+Keep panels 6 and 7, their formulas, actual RK4 reconstruction, observed slow addback, output Y_hat_I in R^{|I| x m}, and I definition unchanged.
+Keep the distinction between nodal integrals/angles and actual smooth Phi.
+Keep the bottom note, the approximate D Phi E check, the accept/refuse branches and the ochre numerical-addition highlights.
+No exact closed-beta or inverse theorem; no initial generator phases or separate circular-coordinate initialization.
+Keep very sharp, spacious typeset math and clean Russian text. Exactly ONE final portrait image.

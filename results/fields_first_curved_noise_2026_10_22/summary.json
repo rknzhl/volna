@@ -1,0 +1,110 @@
+[
+  {
+    "name": "curved_noise_0.01",
+    "status": "unresolved_fit",
+    "phase_dimension": 3,
+    "rmse_std_normalized": null,
+    "phase_mae_rad": null,
+    "primitive_phase_match": false,
+    "passed": false,
+    "noise_sigma_over_signal_std": 0.01,
+    "nominal_snr_db": 40.0,
+    "fit_status": "unresolved_no_lag_passed_training_gates",
+    "selected_lag": null,
+    "candidates_tried": 4,
+    "resource_skipped_lags": [],
+    "candidate_budget_exhausted": false,
+    "conditioning_rank": 13,
+    "geometry": "local_polynomial_graphs",
+    "topology_landmarks": 1536,
+    "query_duality_rms": null,
+    "conditioner_rmse_std_normalized": null,
+    "elapsed_seconds": null,
+    "attempts": [
+      {
+        "lag": 4,
+        "neighbors": 24,
+        "status": "unresolved_local_dimension",
+        "phase_dimension": null,
+        "geometry": null,
+        "failed_training_checks": [],
+        "exception": null
+      },
+      {
+        "lag": 8,
+        "neighbors": 24,
+        "status": "unresolved_tangent_atlas_gap",
+        "phase_dimension": 3,
+        "geometry": "local_polynomial_graphs",
+        "failed_training_checks": [],
+        "exception": null
+      },
+      {
+        "lag": 8,
+        "neighbors": 48,
+        "status": "conditional_fields_first_model",
+        "phase_dimension": 3,
+        "geometry": "local_polynomial_graphs",
+        "failed_training_checks": [
+          "closed_projection",
+          "duality"
+        ],
+        "exception": null
+      },
+      {
+        "lag": 8,
+        "neighbors": 96,
+        "status": "conditional_fields_first_model",
+        "phase_dimension": 3,
+        "geometry": "local_polynomial_graphs",
+        "failed_training_checks": [
+          "closed_projection",
+          "duality"
+        ],
+        "exception": null
+      }
+    ]
+  },
+  {
+    "name": "curved_noise_0.1",
+    "status": "unresolved_fit",
+    "phase_dimension": null,
+    "rmse_std_normalized": null,
+    "phase_mae_rad": null,
+    "primitive_phase_match": false,
+    "passed": false,
+    "noise_sigma_over_signal_std": 0.1,
+    "nominal_snr_db": 20.0,
+    "fit_status": "unresolved_no_lag_passed_training_gates",
+    "selected_lag": null,
+    "candidates_tried": 2,
+    "resource_skipped_lags": [],
+    "candidate_budget_exhausted": false,
+    "conditioning_rank": 13,
+    "geometry": null,
+    "topology_landmarks": 1536,
+    "query_duality_rms": null,
+    "conditioner_rmse_std_normalized": null,
+    "elapsed_seconds": 55.627885625000005,
+    "attempts": [
+      {
+        "lag": 4,
+        "neighbors": 24,
+        "status": "unresolved_local_dimension",
+        "phase_dimension": null,
+        "geometry": null,
+        "failed_training_checks": [],
+        "exception": null
+      },
+      {
+        "lag": 8,
+        "neighbors": 24,
+        "status": "unresolved_local_dimension",
+        "phase_dimension": null,
+        "geometry": null,
+        "failed_training_checks": [],
+        "exception": null
+      }
+    ]
+  }
+]

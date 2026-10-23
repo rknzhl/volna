@@ -1,0 +1,38 @@
+[
+  {
+    "file": "fundamental2waves_noise0p05.json",
+    "status": "transformed_conditionally",
+    "noise": 0.05,
+    "fit_status": "accepted_conditionally_by_training_gates",
+    "rmse_percent": 0.890943004141744,
+    "phase_mae_rad": 0.0047795101781981375
+  },
+  {
+    "file": "nonlinear3sensor_wide_noise0p05.json",
+    "status": "transformed_conditionally",
+    "noise": 0.05,
+    "fit_status": "accepted_conditionally_by_training_gates",
+    "rmse_percent": 2.7297024470474684,
+    "phase_mae_rad": 0.01725131736315158
+  },
+  {
+    "file": "opticalsteady1d_layered_noise0p05.json",
+    "status": "transformed_conditionally",
+    "noise": 0.05,
+    "fit_status": "accepted_conditionally_by_training_gates",
+    "rmse_percent": 1.1317696385608076,
+    "phase_mae_rad": 0.005397488306325855
+  },
+  {
+    "file": "scalarcircle_chirp_noise0p01.json",
+    "status": "unresolved_fit",
+    "noise": 0.01,
+    "fit_status": "unresolved_candidate_budget_exhausted"
+  },
+  {
+    "file": "scalarcircle_noise0p10.json",
+    "status": "unresolved_fit",
+    "noise": 0.1,
+    "fit_status": "unresolved_candidate_budget_exhausted"
+  }
+]

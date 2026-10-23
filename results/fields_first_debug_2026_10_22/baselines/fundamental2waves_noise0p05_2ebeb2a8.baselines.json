@@ -1,0 +1,389 @@
+{
+  "source": "/Users/rknza/research/Takers/results/fields_first_e2e_2026_10_20/fundamental2waves_noise0p05.json",
+  "source_sha256": "2ebeb2a8078c8ec651fd17e825f5c75b8d77f0473dad0a325f537233b803c0cf",
+  "configuration": {
+    "case": "fundamental2waves",
+    "seed": 31,
+    "noise": 0.05,
+    "trend": "quadratic",
+    "phase_mode": "rigid",
+    "rate_profile": "default",
+    "trend_strength": 0.3,
+    "ntrain": 2400,
+    "ntest": 600
+  },
+  "evaluation": {
+    "raw_time_first": 2495,
+    "raw_time_last": 2904,
+    "snapshot_count": 410,
+    "window_count": 407,
+    "window_lag": 4,
+    "snapshot_indices_sha256": "a493ba92945aa27fab58a13af820245657bbcbad1abde1a4eb25bb71ba1bfe3e",
+    "window_indices_sha256": "e0258ccddc4f9fcc0ee4494f4383928a29a4dfbc109d2c40d99ca40927078751",
+    "train_observations_sha256": "617b1ba68100d19f994f4e9b57d82701adeaaee5d142fd503ace513d72723d25",
+    "query_observations_sha256": "849ff1bce26e3ce4a15bb1fe0b439fab9ef5f083b904ed5f1e9fbf446493d8b2",
+    "generator_sha256": "94e97569ec87f160d7f7f7073ad5b497f03c4dfb173ea1c6319334391db24e8c",
+    "source_generator_hash_matches_current": false,
+    "source_generator_observations_bitwise_equivalent": true,
+    "generator_equivalence_evidence": "/Users/rknza/research/Takers/results/fields_first_debug_2026_10_22/generator_equivalence.json",
+    "predictions_frozen_before_truth_evaluation": true,
+    "same_saved_query_indices": true,
+    "reconstruction_is_observed_block_not_forecast": true,
+    "topological_decoder": null,
+    "metrics_not_provided_by_a_method_are_null": true
+  },
+  "maximum_numerical_threads": 1,
+  "dreimac_version": "0.3.2",
+  "rows": [
+    {
+      "method": "fields_first",
+      "status": "transformed_conditionally",
+      "reconstruction_rmse": 0.00890943004141744,
+      "phase_mae_rad": 0.0047795101781981375,
+      "absolute_determinant": 1,
+      "phase_dimension": 2,
+      "metrics_from_saved_source": true,
+      "fit_seconds": 143.35625672340393,
+      "encode_seconds": null,
+      "timing_scope": "saved full fit; query elapsed time was not recorded",
+      "train_phase_step_rmse_rad": 0.004187340187936706
+    },
+    {
+      "method": "observed",
+      "status": "evaluated",
+      "reconstruction_rmse": 0.04937382291214965,
+      "phase_mae_rad": null,
+      "phase_dimension": null
+    },
+    {
+      "method": "ssa",
+      "status": "evaluated",
+      "reconstruction_rmse": 0.016745498465528686,
+      "reconstruction_metrics": {
+        "train_channel_std_normalized_rmse": 0.016745498465528686,
+        "per_channel_train_std_normalized_rmse": [
+          0.01660249477062395,
+          0.015834796743970883,
+          0.015399527876968468,
+          0.017669862785669156,
+          0.01599872490288205,
+          0.016748939289434658,
+          0.016959503726814512,
+          0.017214593500294806,
+          0.01815806715997562,
+          0.015554471529092818,
+          0.017138059108501514,
+          0.01741735561609116
+        ],
+        "raw_relative_error": 0.012155113990231262
+      },
+      "phase_mae_rad": null,
+      "phase_dimension": null,
+      "fit_seconds": 0.6597845849999997,
+      "encode_seconds": 0.0016890000000016059,
+      "metadata": {
+        "selected_ranks": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "selected_cv_mse": [
+          0.006825841504800626,
+          0.01085972275079734,
+          0.004541801166833973,
+          0.004394986025899599,
+          0.0066405628326449365,
+          0.005350379729959889,
+          0.007736011398706902,
+          0.00876032177716302,
+          0.005703105298852331,
+          0.008649801178069315,
+          0.004025948516991589,
+          0.009785102407217241
+        ],
+        "fit_seconds": 0.6597845849999997,
+        "encode_seconds": 0.0016890000000016059,
+        "fit_seconds_scope": "training CV and full-training subspace fit",
+        "encode_seconds_scope": "frozen subspace projection and overlap averaging on the whole query block",
+        "lag": 32,
+        "maxrank": 24,
+        "trend_degree": 0,
+        "cv_folds": 2,
+        "holdout_fraction": 0.1,
+        "completion_iterations": 10,
+        "selection": "minimum training masked raw-entry MSE; ranks 0..24",
+        "query_subspace_refit": false,
+        "physical_trend_identified": false
+      }
+    },
+    {
+      "method": "mssa",
+      "status": "evaluated",
+      "reconstruction_rmse": 0.006434286751011122,
+      "reconstruction_metrics": {
+        "train_channel_std_normalized_rmse": 0.006434286751011122,
+        "per_channel_train_std_normalized_rmse": [
+          0.010022429839646801,
+          0.0068084993116037254,
+          0.006415696495433719,
+          0.006020111738432175,
+          0.0073404328312635355,
+          0.0052489357950511436,
+          0.005373289687263358,
+          0.00541472362234053,
+          0.006329185936854756,
+          0.005667938518719242,
+          0.005692609807164709,
+          0.005327119212767231
+        ],
+        "raw_relative_error": 0.004670013638907434
+      },
+      "phase_mae_rad": null,
+      "phase_dimension": null,
+      "fit_seconds": 0.15773683299999952,
+      "encode_seconds": 0.00035837499999935574,
+      "metadata": {
+        "selected_rank": 6,
+        "selected_cv_mse": 0.0016795077389279095,
+        "source_preprocessing_rank": 6,
+        "fit_seconds": 0.15773683299999952,
+        "encode_seconds": 0.00035837499999935574,
+        "fit_seconds_scope": "training CV and full-training subspace fit",
+        "encode_seconds_scope": "frozen subspace projection and overlap averaging on the whole query block",
+        "saved_conditioner_rmse_absolute_difference": 0.0,
+        "reproduces_saved_conditioner_rmse": true,
+        "lag": 32,
+        "maxrank": 24,
+        "trend_degree": 0,
+        "cv_folds": 2,
+        "holdout_fraction": 0.1,
+        "completion_iterations": 10,
+        "selection": "minimum training masked raw-entry MSE; ranks 0..24",
+        "query_subspace_refit": false,
+        "physical_trend_identified": false
+      }
+    },
+    {
+      "method": "circular",
+      "status": "evaluated",
+      "metadata": {
+        "phase_dimension": 2,
+        "selection": {
+          "selected_count": 2,
+          "lifetime_gap": 2.540563377501906,
+          "common_birth": 0.3012963533401489,
+          "common_death": 0.8502612113952637,
+          "rank_certified_for_true_manifold": false,
+          "criterion": "largest lifetime gap among common-standard-range prefixes"
+        },
+        "n_landmarks": 192,
+        "prime": 47,
+        "cover_percent": 0.5,
+        "selected_window_lag": 4,
+        "dimension_rule": "training persistent H1 count under the torus hypothesis",
+        "preprocessing": "same joint MSSA and fixed highpass as fields-first",
+        "shared_window_geometry_seconds": 0.000438042000000749,
+        "shared_training_persistence_seconds": 0.05489095899999974,
+        "topology_resolution_attempts": [
+          {
+            "n_landmarks": 192,
+            "selected_dimension": 2,
+            "selection": {
+              "selected_count": 2,
+              "lifetime_gap": 2.540563377501906,
+              "common_birth": 0.3012963533401489,
+              "common_death": 0.8502612113952637,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            }
+          }
+        ],
+        "topology_resolution_rule": "retry 192 landmarks once at 384 only if no dimension is selected; unchanged persistence gates",
+        "query_refit": false,
+        "reconstruction_decoder": null,
+        "shared_query_landmark_distances_seconds": 0.0005786249999992776,
+        "cover_radii": [
+          0.5241213738918304,
+          0.36148349940776825
+        ],
+        "fit_seconds": 0.28027083299999944,
+        "encode_seconds": 0.07437200000000033,
+        "fit_seconds_scope": "native harmonic coordinate fits; shared preprocessing and persistence reported separately",
+        "encode_seconds_scope": "fixed classifying map on query windows; shared query preparation reported separately",
+        "adapter_verification_seconds": 0.07404100000000113,
+        "native_train_adapter_max_error_rad": 0.0,
+        "query_coverage": 1.0,
+        "lattice_reduction": false,
+        "frozen_harmonic_coefficients": true,
+        "shared_preprocessing_fit_seconds": 0.15773683299999952,
+        "shared_training_filter_seconds": 0.0022133340000003443,
+        "shared_query_filter_seconds": 0.0006052500000013339
+      },
+      "phase_dimension": 2,
+      "reconstruction_rmse": null,
+      "phase_mae_rad": 0.11475379925823184,
+      "absolute_determinant": 1,
+      "fit_seconds": 0.28027083299999944,
+      "encode_seconds": 0.07437200000000033,
+      "train_phase_step_rmse_rad": 0.12954738624565934,
+      "phase_rmse_rad": 0.14907626461503412,
+      "phase_dimension_matches_truth": true,
+      "independent_phase_basis": true,
+      "train_phase_evaluation": {
+        "winding_candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "absolute_determinant": 1,
+        "candidate_is_finite_character_match_not_global_certificate": true,
+        "origins": [
+          -2.624728675821383,
+          1.6436534475766211
+        ],
+        "phase_mae_rad": 0.11320160569398068,
+        "phase_max_abs_rad": 0.5316493184783754,
+        "coherence": [
+          0.9963320872019924,
+          0.9823614225608315
+        ]
+      }
+    },
+    {
+      "method": "toroidal",
+      "status": "evaluated",
+      "metadata": {
+        "phase_dimension": 2,
+        "selection": {
+          "selected_count": 2,
+          "lifetime_gap": 2.540563377501906,
+          "common_birth": 0.3012963533401489,
+          "common_death": 0.8502612113952637,
+          "rank_certified_for_true_manifold": false,
+          "criterion": "largest lifetime gap among common-standard-range prefixes"
+        },
+        "n_landmarks": 192,
+        "prime": 47,
+        "cover_percent": 0.5,
+        "selected_window_lag": 4,
+        "dimension_rule": "training persistent H1 count under the torus hypothesis",
+        "preprocessing": "same joint MSSA and fixed highpass as fields-first",
+        "shared_window_geometry_seconds": 0.000438042000000749,
+        "shared_training_persistence_seconds": 0.05489095899999974,
+        "topology_resolution_attempts": [
+          {
+            "n_landmarks": 192,
+            "selected_dimension": 2,
+            "selection": {
+              "selected_count": 2,
+              "lifetime_gap": 2.540563377501906,
+              "common_birth": 0.3012963533401489,
+              "common_death": 0.8502612113952637,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            }
+          }
+        ],
+        "topology_resolution_rule": "retry 192 landmarks once at 384 only if no dimension is selected; unchanged persistence gates",
+        "query_refit": false,
+        "reconstruction_decoder": null,
+        "shared_query_landmark_distances_seconds": 0.0005786249999992776,
+        "cover_radii": [
+          0.3632134795188904
+        ],
+        "fit_seconds": 0.1613058340000002,
+        "encode_seconds": 0.10415933300000013,
+        "fit_seconds_scope": "native harmonic coordinate fits; shared preprocessing and persistence reported separately",
+        "encode_seconds_scope": "fixed classifying map on query windows; shared query preparation reported separately",
+        "adapter_verification_seconds": 0.07522699999999993,
+        "native_train_adapter_max_error_rad": 0.0,
+        "query_coverage": 1.0,
+        "lattice_reduction": true,
+        "frozen_harmonic_coefficients": true,
+        "shared_preprocessing_fit_seconds": 0.15773683299999952,
+        "shared_training_filter_seconds": 0.0022133340000003443,
+        "shared_query_filter_seconds": 0.0006052500000013339
+      },
+      "phase_dimension": 2,
+      "reconstruction_rmse": null,
+      "phase_mae_rad": 0.12460118186755369,
+      "absolute_determinant": 1,
+      "fit_seconds": 0.1613058340000002,
+      "encode_seconds": 0.10415933300000013,
+      "train_phase_step_rmse_rad": 0.135196125300287,
+      "phase_rmse_rad": 0.15571442593453969,
+      "phase_dimension_matches_truth": true,
+      "independent_phase_basis": true,
+      "train_phase_evaluation": {
+        "winding_candidate": [
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "absolute_determinant": 1,
+        "candidate_is_finite_character_match_not_global_certificate": true,
+        "origins": [
+          -2.623516324722318,
+          1.643890418511914
+        ],
+        "phase_mae_rad": 0.12350757568602383,
+        "phase_max_abs_rad": 0.5292753995927049,
+        "coherence": [
+          0.993593646239891,
+          0.9830118229138421
+        ]
+      }
+    }
+  ],
+  "cache_key": "e8888d7f4bcbdf8c46e2a866493d0cd3ab836af4d44a860ac07bd686f8a4e296",
+  "comparison_version": {
+    "methods": [
+      "ssa",
+      "mssa",
+      "circular",
+      "toroidal"
+    ],
+    "n_landmarks": 192,
+    "generator_evidence_sha256": "c3250a719e38d532d6a696bf9a3039935747588a05fae60702ded7f791f6b9a8",
+    "code_sha256": {
+      "compare_fields_first_baselines.py": "e718a41011d4754a3c4004e3cf12dbb32f35af8f85f6b2c728c58aa29b607c1f",
+      "fields_first_preprocess.py": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+      "fields_first_sensor_cases.py": "94e97569ec87f160d7f7f7073ad5b497f03c4dfb173ea1c6319334391db24e8c",
+      "fields_first_periods.py": "376f9806362c29fbc7c37591979cf3a4ba5c5ff8f9f96f8a9f2f1e36bdba0509",
+      "evaluate_tangent_overlap_angles.py": "6423e03bbf4a6e159306bde311ffbd7fb1292b62c8771692c9399b640da45271",
+      "tangent_overlap.py": "9b56530a87addc4b7dd8d59cf161e119abae55429866f068a1d311ff9af571d1"
+    },
+    "package_versions": {
+      "numpy": "2.0.2",
+      "scipy": "1.13.1",
+      "scikit-learn": "1.6.1",
+      "dreimac": "0.3.2",
+      "ripser": "0.6.15"
+    }
+  },
+  "report_only_code_update": {
+    "previous_comparator_sha256": "ef99a97650696b81fcb68d14e06f9bab809c5180ae69e54b27ff0fdc87f55409",
+    "current_comparator_sha256": "e718a41011d4754a3c4004e3cf12dbb32f35af8f85f6b2c728c58aa29b607c1f",
+    "numerical_ast_identical": true,
+    "estimator_fits_performed": false
+  }
+}

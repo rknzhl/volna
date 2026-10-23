@@ -1,0 +1,86 @@
+[
+  {
+    "lag": 8,
+    "landmarks": 384,
+    "r": 2,
+    "selection": {
+      "selected_count": 2,
+      "lifetime_gap": 4.0606718002370785,
+      "common_birth": 0.45003095269203186,
+      "common_death": 1.2222437858581543,
+      "rank_certified_for_true_manifold": false,
+      "criterion": "largest lifetime gap among common-standard-range prefixes"
+    },
+    "seconds": 0.24928712844848633
+  },
+  {
+    "lag": 8,
+    "landmarks": 768,
+    "r": 2,
+    "selection": {
+      "selected_count": 2,
+      "lifetime_gap": 2.8515948311559858,
+      "common_birth": 0.32688698172569275,
+      "common_death": 1.2222437858581543,
+      "rank_certified_for_true_manifold": false,
+      "criterion": "largest lifetime gap among common-standard-range prefixes"
+    },
+    "seconds": 1.4612250328063965
+  },
+  {
+    "lag": 16,
+    "landmarks": 384,
+    "r": 2,
+    "selection": {
+      "selected_count": 2,
+      "lifetime_gap": 3.599496245076562,
+      "common_birth": 0.4493044316768646,
+      "common_death": 1.2225167751312256,
+      "rank_certified_for_true_manifold": false,
+      "criterion": "largest lifetime gap among common-standard-range prefixes"
+    },
+    "seconds": 0.18296194076538086
+  },
+  {
+    "lag": 16,
+    "landmarks": 768,
+    "r": 2,
+    "selection": {
+      "selected_count": 2,
+      "lifetime_gap": 2.96449981129907,
+      "common_birth": 0.3068999648094177,
+      "common_death": 1.2224568128585815,
+      "rank_certified_for_true_manifold": false,
+      "criterion": "largest lifetime gap among common-standard-range prefixes"
+    },
+    "seconds": 1.9545929431915283
+  },
+  {
+    "lag": 32,
+    "landmarks": 384,
+    "r": 2,
+    "selection": {
+      "selected_count": 2,
+      "lifetime_gap": 4.167251807510911,
+      "common_birth": 0.45014506578445435,
+      "common_death": 1.2232509851455688,
+      "rank_certified_for_true_manifold": false,
+      "criterion": "largest lifetime gap among common-standard-range prefixes"
+    },
+    "seconds": 0.18115711212158203
+  },
+  {
+    "lag": 32,
+    "landmarks": 768,
+    "r": 2,
+    "selection": {
+      "selected_count": 2,
+      "lifetime_gap": 2.8914657369386783,
+      "common_birth": 0.3069365322589874,
+      "common_death": 1.2232387065887451,
+      "rank_certified_for_true_manifold": false,
+      "criterion": "largest lifetime gap among common-standard-range prefixes"
+    },
+    "seconds": 1.2776210308074951
+  }
+]

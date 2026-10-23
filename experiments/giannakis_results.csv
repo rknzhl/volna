@@ -1,0 +1,9 @@
+name,phase_dimension,phase_status,phase_mae_rad,sensor_nrmse,gauge_is_signed_permutation
+toy_sine,1,evaluated,0.007777455939224986,0.009813782411276855,True
+toy_torus,2,evaluated,0.06534582208682747,0.0537314637644401,True
+scalar_noise10,2,phase_basis_unresolved,,0.02298703446162029,False
+two_waves,2,evaluated,0.06271178766656972,0.05430481716556717,True
+noise00,3,phase_basis_unresolved,,0.039140514076441674,False
+noise01,3,phase_basis_unresolved,,0.03548705046909622,False
+noise05,3,phase_basis_unresolved,,0.03583218814373546,False
+noise10,3,phase_basis_unresolved,,0.039154652015475196,False

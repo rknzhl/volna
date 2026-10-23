@@ -1,0 +1,20 @@
+[
+  {
+    "name": "scalar_noise10",
+    "status": "transformed_conditionally",
+    "phase_dimension": 1,
+    "rmse_std_normalized": 0.024989518643761775,
+    "phase_mae_rad": 0.011574082040588147,
+    "primitive_phase_match": true,
+    "passed": true
+  },
+  {
+    "name": "two_waves",
+    "status": "transformed_conditionally",
+    "phase_dimension": 2,
+    "rmse_std_normalized": 0.00695481017613429,
+    "phase_mae_rad": 0.004314847060861237,
+    "primitive_phase_match": true,
+    "passed": true
+  }
+]

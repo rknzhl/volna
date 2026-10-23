@@ -1,0 +1,15 @@
+{
+  "fields_first_tangent_atlas.py_function_AST_identical": true,
+  "fields_first_preprocess.py_function_AST_identical": true,
+  "fields_first_io.py_function_AST_identical": true,
+  "fields_first_frame.py_function_AST_identical": true,
+  "frame_max_field_change": 0.0,
+  "frame_max_derivative_change": 0.0,
+  "atlas_max_projector_change": 0.0,
+  "atlas_max_derivative_change": 0.0,
+  "preprocess_same_cv_selection": true,
+  "preprocess_max_denoised_change": 0.0,
+  "preprocess_max_residual_change": 0.0,
+  "io_exact_match": true,
+  "all_exact": true
+}

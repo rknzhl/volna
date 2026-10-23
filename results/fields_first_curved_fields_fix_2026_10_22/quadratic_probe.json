@@ -1,0 +1,23 @@
+{
+  "duality_rms": 0.5657141354887694,
+  "phase_step_rmse": 0.03407827279974049,
+  "charts": {
+    "degree": 2,
+    "chart_count": 1024,
+    "quadratic_chart_count": 1024,
+    "linear_fallback_count": 0,
+    "minimum_design_rank": 9,
+    "design_columns": 9,
+    "local_fit_rms_quantiles": [
+      0.008476921658419028,
+      0.015451383192672287,
+      0.01935391850524343,
+      0.026476385310821905
+    ],
+    "targets": "local lifts of the field-derived closed integration potential",
+    "fields_refitted": false,
+    "independent_phase_targets_used": false
+  },
+  "elapsed_seconds": 19.191084459,
+  "fields_and_periods_refitted": false
+}

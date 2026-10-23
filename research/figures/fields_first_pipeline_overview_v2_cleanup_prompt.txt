@@ -1,0 +1,21 @@
+Final small clarity corrections to this NINE-STEP infographic. Preserve the tall single-column layout, every panel, the enlarged readable typography, spacing, all unmentioned correct text and formulas. Do not add dense explanations.
+
+1. PANEL 1: add the short readable definition near the snapshot stack:
+"y_n — один снимок всех датчиков."
+Typeset y_n mathematically. This is the only missing definition. Keep all current content, including x_n in R^{mL}, xi_n in R^D, D definition and the two separate residual/slow branches.
+
+2. PANEL 4: remove ALL individual W_1,W_2,... labels attached to the numerous little frame arrows. Some are duplicated and confuse field components with sample locations. Keep the arrows, the anchor xi_0, the "Начальные направления фиксированы" caption, and the ONE clean matrix formula W(xi)=[W_1(xi),...,W_r(xi)] in R^{D x r}. No change to the fields or the rest of this panel.
+
+3. PANEL 6: the entire-column symbol Pi_{:,j} must be ABOVE the column, not an entry inside its first scalar cell. Make a simple large bracketed column with dots for its r entries and Pi_{:,j} clearly outside/above it. A short readable caption "Период одного обхода" can appear underneath. Preserve the closed directed loop around the WHITE HOLE and the corrected-integration captions. Keep the final matrix symbol Pi in R^{r x r}; do not introduce any new b or gamma variables here.
+
+4. PANEL 7: change the label above b's column from "b in R^r" to:
+"Интеграл b in R^r".
+Typeset the math properly. Near the OPEN curve, add only:
+"Накопление коэффициентов".
+Keep the existing "Опорное окно", "Это окно", Pi^{-1}, "Доли оборота", "2pi, mod 2pi", angle circle glyphs and the smooth approximation caption. The new plain-language captions define what b means. The open path must stay open and distinct from panel 6's closed loop.
+
+5. PANEL 8: make sure EVERY reconstructed-window label has a hat:
+x_hat_n, x_hat_{n+1}, ...
+The curved-flow endpoint must also be xi_hat_n with a visible hat. All other formulae, averaging of the duplicate common snapshots, physical-scale restoration, slow-component addback and final same-sensor traces are unchanged.
+
+No other changes. All text must remain large; if these tiny definitions need room, enlarge that band's height instead of shrinking letters. Keep generous white space. Exactly ONE final, crisp academic image.

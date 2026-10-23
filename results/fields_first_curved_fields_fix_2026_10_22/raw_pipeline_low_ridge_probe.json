@@ -1,0 +1,35 @@
+{
+  "gates": {
+    "core_status": "conditional_fields_first_model",
+    "passed": false,
+    "closed_projection_relative": 0.026352729119019452,
+    "duality_rms": 0.14623397937029076,
+    "phase_step_rmse": 0.01772405507701658,
+    "minimum_atlas_gap": 0.44106261878950637,
+    "flow_geometry": "ambient_tangent_extension",
+    "checks": {
+      "closed_projection": true,
+      "duality": true,
+      "phase_step": true,
+      "atlas_gap": true,
+      "train_encoder_full_coverage": true,
+      "full_turn": false
+    },
+    "full_turn_relative": [
+      0.07618750808485725,
+      0.15960413315488212,
+      0.18240146471024113
+    ],
+    "full_turn_probe_count": 1
+  },
+  "fit": {
+    "ridge": 1e-10,
+    "spatial_weight": 0.0,
+    "full_overlap_relative": 6.75392711552805e-05,
+    "normal_relative": 0.03625589807505023,
+    "reference_relative": 0.06194419394384935,
+    "minimum_singular": 0.6624369173696982,
+    "seconds": 0.8094991669999998
+  },
+  "elapsed_seconds": 5.095728708
+}

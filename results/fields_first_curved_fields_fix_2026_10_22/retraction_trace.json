@@ -1,0 +1,82 @@
+{
+  "rows": [
+    {
+      "iteration": 0,
+      "maximum_residual": 0.04715695143270332,
+      "max_displacement": 0.0,
+      "minimum_gap": 0.5277817164094545
+    },
+    {
+      "iteration": 1,
+      "maximum_residual": 0.033123399015667486,
+      "max_displacement": 0.04715695143270334,
+      "minimum_gap": 0.4696179570766283
+    },
+    {
+      "iteration": 2,
+      "maximum_residual": 0.027463808891540265,
+      "max_displacement": 0.08025830132375547,
+      "minimum_gap": 0.41747568062117946
+    },
+    {
+      "iteration": 5,
+      "maximum_residual": 0.026175065858909052,
+      "max_displacement": 0.15788753741232728,
+      "minimum_gap": 0.24757655047816518
+    },
+    {
+      "iteration": 10,
+      "maximum_residual": 0.0022913669766688946,
+      "max_displacement": 0.2732343815896815,
+      "minimum_gap": 0.017762318639090724
+    },
+    {
+      "iteration": 20,
+      "maximum_residual": 0.0005960486123404366,
+      "max_displacement": 0.27332242245144756,
+      "minimum_gap": 0.017837220962824252
+    },
+    {
+      "iteration": 40,
+      "maximum_residual": 0.000381939772942049,
+      "max_displacement": 0.27332242317325733,
+      "minimum_gap": 0.018031641128379072
+    },
+    {
+      "iteration": 60,
+      "maximum_residual": 0.00030312413733570546,
+      "max_displacement": 0.2733224231732574,
+      "minimum_gap": 0.018206544115771495
+    },
+    {
+      "iteration": 80,
+      "maximum_residual": 0.00016974515826745652,
+      "max_displacement": 0.2733224231732574,
+      "minimum_gap": 0.018268194049561925
+    },
+    {
+      "iteration": 100,
+      "maximum_residual": 8.40726101024195e-05,
+      "max_displacement": 0.2733224231732574,
+      "minimum_gap": 0.018277521470817626
+    }
+  ],
+  "source_indices": [
+    0,
+    147,
+    294,
+    441,
+    588,
+    735,
+    882,
+    1029,
+    1176,
+    1323,
+    1470,
+    1617,
+    1764,
+    1911,
+    2058,
+    2206
+  ]
+}

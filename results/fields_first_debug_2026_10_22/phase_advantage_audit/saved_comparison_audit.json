@@ -1,0 +1,367 @@
+{
+  "saved_runs": 11,
+  "distinct_configurations": 6,
+  "wins": {
+    "phase_vs_circular": 11,
+    "phase_vs_toroidal": 11,
+    "readings_vs_ssa": 8,
+    "readings_vs_mssa": 2,
+    "train_step_vs_circular": 11,
+    "train_step_vs_toroidal": 11
+  },
+  "native_topology_advantage_factor_range": [
+    10.959713755525021,
+    88.97795701680404
+  ],
+  "basis_bound": "For wrapped coordinate MAE m: m/||A||_1 <= m_generator <= ||A^-1||_1 m; induced column-sum norms.",
+  "restrictions": [
+    "Only successful fields-first runs enter this comparison.",
+    "Repeated query lengths are not independent runs.",
+    "Training phase-step variation is a fields-first acceptance criterion.",
+    "Native CC/TC do not enforce uniform dynamical phases.",
+    "No phase-extraction SSA/MSSA baseline is included."
+  ],
+  "records": [
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_debug_2026_10_22/scalar_clean.json",
+      "configuration": {
+        "case": "scalarcircle",
+        "seed": 31,
+        "noise": 0.0,
+        "trend": null,
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 1800,
+        "ntest": 600
+      },
+      "phase_mae_ours": 0.0042982896936246545,
+      "best_native_topology_phase_mae": 0.37979610797809077,
+      "advantage_over_best_native_topology": 88.35982101006714,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.37979610797809077,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.0042982896936246545,
+          "lower_bound_on_advantage_factor": 88.35982101006714,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.37979610797809077,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.0042982896936246545,
+          "lower_bound_on_advantage_factor": 88.35982101006714,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_debug_2026_10_22/scalar_noise10.json",
+      "configuration": {
+        "case": "scalarcircle",
+        "seed": 31,
+        "noise": 0.1,
+        "trend": "linear",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 1800,
+        "ntest": 600
+      },
+      "phase_mae_ours": 0.010697980349679573,
+      "best_native_topology_phase_mae": 0.3787033828494917,
+      "advantage_over_best_native_topology": 35.39952126205154,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.3787033828494917,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.010697980349679573,
+          "lower_bound_on_advantage_factor": 35.39952126205154,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.3787033828494917,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.010697980349679573,
+          "lower_bound_on_advantage_factor": 35.39952126205154,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_debug_2026_10_22/validation/nonlinear_sensors.json",
+      "configuration": {
+        "case": "nonlinear3sensor",
+        "seed": 47,
+        "noise": 0.05,
+        "trend": "quadratic",
+        "phase_mode": "rigid",
+        "rate_profile": "wide",
+        "trend_strength": 0.3,
+        "ntrain": 2400,
+        "ntest": 320
+      },
+      "phase_mae_ours": 0.014051130907392146,
+      "best_native_topology_phase_mae": 0.18388139003254794,
+      "advantage_over_best_native_topology": 13.086590057730511,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.19190730911332649,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.014051130907392146,
+          "lower_bound_on_advantage_factor": 13.657783873635834,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.18388139003254794,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.014051130907392146,
+          "lower_bound_on_advantage_factor": 13.086590057730511,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_debug_2026_10_22/validation/optical.json",
+      "configuration": {
+        "case": "opticalsteady1d_layered",
+        "seed": 31,
+        "noise": 0.05,
+        "trend": "linear",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 2400,
+        "ntest": 320
+      },
+      "phase_mae_ours": 0.005360353280073921,
+      "best_native_topology_phase_mae": 0.06985321201183774,
+      "advantage_over_best_native_topology": 13.031456764520275,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.04681431680004785,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.010720706560147841,
+          "lower_bound_on_advantage_factor": 4.366719351695628,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.06985321201183774,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.010720706560147841,
+          "lower_bound_on_advantage_factor": 6.5157283822601375,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_debug_2026_10_22/validation/scalar_clean.json",
+      "configuration": {
+        "case": "scalarcircle",
+        "seed": 31,
+        "noise": 0.0,
+        "trend": null,
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 1800,
+        "ntest": 320
+      },
+      "phase_mae_ours": 0.004264590488713209,
+      "best_native_topology_phase_mae": 0.37945454919899524,
+      "advantage_over_best_native_topology": 88.97795701680404,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.37945454919899524,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.004264590488713209,
+          "lower_bound_on_advantage_factor": 88.97795701680404,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.37945454919899524,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.004264590488713209,
+          "lower_bound_on_advantage_factor": 88.97795701680404,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_debug_2026_10_22/validation/scalar_noise10.json",
+      "configuration": {
+        "case": "scalarcircle",
+        "seed": 31,
+        "noise": 0.1,
+        "trend": "linear",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 1800,
+        "ntest": 320
+      },
+      "phase_mae_ours": 0.012096990876885498,
+      "best_native_topology_phase_mae": 0.3815245840649097,
+      "advantage_over_best_native_topology": 31.538800677605977,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.3815245840649097,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.012096990876885498,
+          "lower_bound_on_advantage_factor": 31.538800677605977,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.3815245840649097,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.012096990876885498,
+          "lower_bound_on_advantage_factor": 31.538800677605977,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_debug_2026_10_22/validation/three_phases_linear.json",
+      "configuration": {
+        "case": "threephase6sensor",
+        "seed": 31,
+        "noise": 0.0,
+        "trend": null,
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 2400,
+        "ntest": 320
+      },
+      "phase_mae_ours": 0.0038706953859242144,
+      "best_native_topology_phase_mae": 0.10071625886455841,
+      "advantage_over_best_native_topology": 26.020197618963543,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.05845414433731313,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.007741390771848429,
+          "lower_bound_on_advantage_factor": 7.55085824499154,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.10071625886455841,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.007741390771848429,
+          "lower_bound_on_advantage_factor": 13.010098809481772,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_debug_2026_10_22/validation/two_waves.json",
+      "configuration": {
+        "case": "fundamental2waves",
+        "seed": 31,
+        "noise": 0.05,
+        "trend": "quadratic",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 2400,
+        "ntest": 320
+      },
+      "phase_mae_ours": 0.004977211420267309,
+      "best_native_topology_phase_mae": 0.11480522775120651,
+      "advantage_over_best_native_topology": 23.066174622142274,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.11480522775120651,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.004977211420267309,
+          "lower_bound_on_advantage_factor": 23.066174622142274,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.12429036306525112,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.004977211420267309,
+          "lower_bound_on_advantage_factor": 24.97188738238809,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_e2e_2026_10_20/fundamental2waves_noise0p05.json",
+      "configuration": {
+        "case": "fundamental2waves",
+        "seed": 31,
+        "noise": 0.05,
+        "trend": "quadratic",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 2400,
+        "ntest": 600
+      },
+      "phase_mae_ours": 0.0047795101781981375,
+      "best_native_topology_phase_mae": 0.11475379925823184,
+      "advantage_over_best_native_topology": 24.00953130755623,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.11475379925823184,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.0047795101781981375,
+          "lower_bound_on_advantage_factor": 24.00953130755623,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.12460118186755369,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.0047795101781981375,
+          "lower_bound_on_advantage_factor": 26.069864321227996,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_e2e_2026_10_20/nonlinear3sensor_wide_noise0p05.json",
+      "configuration": {
+        "case": "nonlinear3sensor",
+        "seed": 47,
+        "noise": 0.05,
+        "trend": "quadratic",
+        "phase_mode": "rigid",
+        "rate_profile": "wide",
+        "trend_strength": 0.3,
+        "ntrain": 2400,
+        "ntest": 600
+      },
+      "phase_mae_ours": 0.01725131736315158,
+      "best_native_topology_phase_mae": 0.18906950020586,
+      "advantage_over_best_native_topology": 10.959713755525021,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.19254958308796755,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.01725131736315158,
+          "lower_bound_on_advantage_factor": 11.161442284938138,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.18906950020586,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.01725131736315158,
+          "lower_bound_on_advantage_factor": 10.959713755525021,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_e2e_2026_10_20/opticalsteady1d_layered_noise0p05.json",
+      "configuration": {
+        "case": "opticalsteady1d_layered",
+        "seed": 31,
+        "noise": 0.05,
+        "trend": "linear",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 2400,
+        "ntest": 600
+      },
+      "phase_mae_ours": 0.005397488306325855,
+      "best_native_topology_phase_mae": 0.0706278824104424,
+      "advantage_over_best_native_topology": 13.085323839917642,
+      "generator_basis_bounds": {
+        "circular": {
+          "phase_mae_lower_bound_in_generator_basis": 0.047220083215476,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.01079497661265171,
+          "lower_bound_on_advantage_factor": 4.374264522271782,
+          "ranking_survives_integer_basis_change": true
+        },
+        "toroidal": {
+          "phase_mae_lower_bound_in_generator_basis": 0.0706278824104424,
+          "ours_phase_mae_upper_bound_in_generator_basis": 0.01079497661265171,
+          "lower_bound_on_advantage_factor": 6.542661919958821,
+          "ranking_survives_integer_basis_change": true
+        }
+      }
+    }
+  ]
+}

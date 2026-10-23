@@ -1,0 +1,318 @@
+VALIDATE scalar_noise10
+PIPELINE_TRY_LAG 4
+PIPELINE_TRY_NEIGHBORS 24
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: divide by zero encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: overflow encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: invalid value encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: divide by zero encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: overflow encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: invalid value encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+ATLAS (1607, 4) r 1
+FRAME
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: divide by zero encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: overflow encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: invalid value encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+PERIOD_COMPLEX
+BETA_INTEGRALS
+PIPELINE_CANDIDATE_RESULT 4 24 {'core_status': 'conditional_fields_first_model', 'passed': False, 'closed_projection_relative': 0.16662530329379044, 'duality_rms': 2.2230164453445416, 'phase_step_rmse': 0.20287945975806568, 'minimum_atlas_gap': 0.12083332522929047, 'flow_geometry': 'ambient_tangent_extension', 'checks': {'closed_projection': False, 'duality': False, 'phase_step': False, 'atlas_gap': True, 'train_encoder_full_coverage': True}}
+PIPELINE_TRY_NEIGHBORS 48
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: divide by zero encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: overflow encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: invalid value encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: divide by zero encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: overflow encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: invalid value encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+ATLAS (1607, 4) r 1
+FRAME
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: divide by zero encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: overflow encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: invalid value encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+PERIOD_COMPLEX
+BETA_INTEGRALS
+PIPELINE_CANDIDATE_RESULT 4 48 {'core_status': 'conditional_fields_first_model', 'passed': False, 'closed_projection_relative': 0.014476954206886517, 'duality_rms': 0.06231716556759788, 'phase_step_rmse': 0.017186984487770816, 'minimum_atlas_gap': 0.49698509010419756, 'flow_geometry': 'ambient_tangent_extension', 'checks': {'closed_projection': True, 'duality': True, 'phase_step': True, 'atlas_gap': True, 'train_encoder_full_coverage': True, 'inverse': True, 'full_turn': False, 'flow_order': True}, 'inverse_window_relative': 0.04015721144745958, 'full_turn_relative': [0.21339449335071362], 'full_turn_probe_count': 1, 'flow_order_relative': 0.0, 'source_rms': 0.9995019954164825, 'geometry_constrained_retry': {'passed': False, 'exception_type': 'ValueError', 'exception': 'normal_graph_retraction_did_not_converge'}}
+PIPELINE_TRY_NEIGHBORS 96
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: divide by zero encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: overflow encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: invalid value encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: divide by zero encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: overflow encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: invalid value encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+ATLAS (1607, 4) r 1
+FRAME
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: divide by zero encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: overflow encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: invalid value encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+PERIOD_COMPLEX
+BETA_INTEGRALS
+PIPELINE_CANDIDATE_RESULT 4 96 {'core_status': 'conditional_fields_first_model', 'passed': False, 'closed_projection_relative': 0.015916738077885337, 'duality_rms': 0.04834128464263499, 'phase_step_rmse': 0.015919596009320892, 'minimum_atlas_gap': 0.8940799158004057, 'flow_geometry': 'ambient_tangent_extension', 'checks': {'closed_projection': True, 'duality': True, 'phase_step': True, 'atlas_gap': True, 'train_encoder_full_coverage': True, 'inverse': False, 'full_turn': False, 'flow_order': True}, 'inverse_window_relative': 0.05429521137513362, 'full_turn_relative': [0.18115413364298308], 'full_turn_probe_count': 1, 'flow_order_relative': 0.0, 'source_rms': 0.9995019954164825, 'geometry_constrained_retry': {'passed': False, 'exception_type': 'ValueError', 'exception': 'normal_graph_retraction_did_not_converge'}}
+PIPELINE_TRY_LAG 8
+PIPELINE_TRY_NEIGHBORS 24
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: divide by zero encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: overflow encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: invalid value encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: divide by zero encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: overflow encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: invalid value encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+ATLAS (1603, 8) r 1
+FRAME
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: divide by zero encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: overflow encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: invalid value encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+PERIOD_COMPLEX
+BETA_INTEGRALS
+PIPELINE_CANDIDATE_RESULT 8 24 {'core_status': 'conditional_fields_first_model', 'passed': False, 'closed_projection_relative': 0.01892910927483288, 'duality_rms': 0.18476190840657636, 'phase_step_rmse': 0.017414890091796906, 'minimum_atlas_gap': 0.05170956958977402, 'flow_geometry': 'ambient_tangent_extension', 'checks': {'closed_projection': True, 'duality': False, 'phase_step': True, 'atlas_gap': False, 'train_encoder_full_coverage': True}}
+PIPELINE_TRY_NEIGHBORS 48
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: divide by zero encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: overflow encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: invalid value encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: divide by zero encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: overflow encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: invalid value encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+ATLAS (1603, 8) r 1
+FRAME
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: divide by zero encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: overflow encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: invalid value encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+PERIOD_COMPLEX
+BETA_INTEGRALS
+PIPELINE_CANDIDATE_RESULT 8 48 {'core_status': 'conditional_fields_first_model', 'passed': False, 'closed_projection_relative': 0.006533033884186739, 'duality_rms': 0.030962609364239488, 'phase_step_rmse': 0.00610235583498876, 'minimum_atlas_gap': 0.667545731874791, 'flow_geometry': 'normal_graph_constraint', 'ambient_field_duality_rms': 0.03150042398631136, 'flow_duality_probe_count': 16, 'checks': {'closed_projection': True, 'duality': True, 'phase_step': True, 'atlas_gap': True, 'train_encoder_full_coverage': True, 'reference_projection': True, 'flow_refinement': False, 'inverse': True, 'full_turn': True, 'flow_order': True}, 'reference_displacement_relative': 0.03861039550586139, 'inverse_window_relative': 0.027825359690455232, 'full_turn_relative': [0.04016123626544307], 'full_turn_probe_count': 8, 'flow_step_refinement_relative': [0.01633101223692971], 'flow_order_relative': 0.0, 'flow_retraction': {'calls': 737, 'maximum_iterations': 11, 'maximum_normal_residual_relative': 9.995001048480695e-10, 'maximum_displacement_relative': 0.044317825180699266}, 'source_rms': 0.9991471966215975, 'ambient_flow_attempt': {'core_status': 'conditional_fields_first_model', 'passed': False, 'closed_projection_relative': 0.006533033884186739, 'duality_rms': 0.03150042398631136, 'phase_step_rmse': 0.00610235583498876, 'minimum_atlas_gap': 0.667545731874791, 'flow_geometry': 'ambient_tangent_extension', 'checks': {'closed_projection': True, 'duality': True, 'phase_step': True, 'atlas_gap': True, 'train_encoder_full_coverage': True, 'inverse': False, 'full_turn': False, 'flow_order': True}, 'inverse_window_relative': 0.0659672135480847, 'full_turn_relative': [0.13562547753558768], 'full_turn_probe_count': 1, 'flow_order_relative': 0.0, 'source_rms': 0.9991471966215975}}
+PIPELINE_TRY_NEIGHBORS 96
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: divide by zero encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: overflow encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: invalid value encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: divide by zero encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: overflow encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: invalid value encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+ATLAS (1603, 8) r 1
+FRAME
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: divide by zero encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: overflow encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: invalid value encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+PERIOD_COMPLEX
+BETA_INTEGRALS
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:245: RuntimeWarning: divide by zero encountered in matmul
+  xt=fullx@model['basis']
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:245: RuntimeWarning: overflow encountered in matmul
+  xt=fullx@model['basis']
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:245: RuntimeWarning: invalid value encountered in matmul
+  xt=fullx@model['basis']
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:246: RuntimeWarning: divide by zero encountered in matmul
+  projection=float(linalg.norm(fullx-xt@model['basis'].T)/max(linalg.norm(fullx),1e-15))
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:246: RuntimeWarning: overflow encountered in matmul
+  projection=float(linalg.norm(fullx-xt@model['basis'].T)/max(linalg.norm(fullx),1e-15))
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:246: RuntimeWarning: invalid value encountered in matmul
+  projection=float(linalg.norm(fullx-xt@model['basis'].T)/max(linalg.norm(fullx),1e-15))
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:258: RuntimeWarning: divide by zero encountered in matmul
+  rawhat=(xhat@model['basis'].T)*model['normal']*np.tile(model['scale'],lag)+np.tile(model['mean'],lag)
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:258: RuntimeWarning: overflow encountered in matmul
+  rawhat=(xhat@model['basis'].T)*model['normal']*np.tile(model['scale'],lag)+np.tile(model['mean'],lag)
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:258: RuntimeWarning: invalid value encountered in matmul
+  rawhat=(xhat@model['basis'].T)*model['normal']*np.tile(model['scale'],lag)+np.tile(model['mean'],lag)
+/Users/rknza/research/Takers/code/lag_ssa/evaluate_tangent_overlap_angles.py:32: RuntimeWarning: divide by zero encountered in matmul
+  correlation = np.exp(1j * angles).T @ characters.conj() / len(angles)
+/Users/rknza/research/Takers/code/lag_ssa/evaluate_tangent_overlap_angles.py:32: RuntimeWarning: overflow encountered in matmul
+  correlation = np.exp(1j * angles).T @ characters.conj() / len(angles)
+/Users/rknza/research/Takers/code/lag_ssa/evaluate_tangent_overlap_angles.py:32: RuntimeWarning: invalid value encountered in matmul
+  correlation = np.exp(1j * angles).T @ characters.conj() / len(angles)
+VALIDATION_RESULT {'name': 'scalar_noise10', 'status': 'transformed_conditionally', 'phase_dimension': 1, 'rmse_std_normalized': 0.022666469314256525, 'phase_mae_rad': 0.010697980349679573, 'passed': True}
+VALIDATE scalar_clean
+PIPELINE_TRY_LAG 4
+PIPELINE_TRY_NEIGHBORS 24
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: divide by zero encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: overflow encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: invalid value encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: divide by zero encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: overflow encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: invalid value encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+ATLAS (1607, 4) r 1
+FRAME
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: divide by zero encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: overflow encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: invalid value encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+PERIOD_COMPLEX
+BETA_INTEGRALS
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:245: RuntimeWarning: divide by zero encountered in matmul
+  xt=fullx@model['basis']
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:245: RuntimeWarning: overflow encountered in matmul
+  xt=fullx@model['basis']
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:245: RuntimeWarning: invalid value encountered in matmul
+  xt=fullx@model['basis']
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:246: RuntimeWarning: divide by zero encountered in matmul
+  projection=float(linalg.norm(fullx-xt@model['basis'].T)/max(linalg.norm(fullx),1e-15))
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:246: RuntimeWarning: overflow encountered in matmul
+  projection=float(linalg.norm(fullx-xt@model['basis'].T)/max(linalg.norm(fullx),1e-15))
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:246: RuntimeWarning: invalid value encountered in matmul
+  projection=float(linalg.norm(fullx-xt@model['basis'].T)/max(linalg.norm(fullx),1e-15))
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:258: RuntimeWarning: divide by zero encountered in matmul
+  rawhat=(xhat@model['basis'].T)*model['normal']*np.tile(model['scale'],lag)+np.tile(model['mean'],lag)
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:258: RuntimeWarning: overflow encountered in matmul
+  rawhat=(xhat@model['basis'].T)*model['normal']*np.tile(model['scale'],lag)+np.tile(model['mean'],lag)
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:258: RuntimeWarning: invalid value encountered in matmul
+  rawhat=(xhat@model['basis'].T)*model['normal']*np.tile(model['scale'],lag)+np.tile(model['mean'],lag)
+/Users/rknza/research/Takers/code/lag_ssa/evaluate_tangent_overlap_angles.py:32: RuntimeWarning: divide by zero encountered in matmul
+  correlation = np.exp(1j * angles).T @ characters.conj() / len(angles)
+/Users/rknza/research/Takers/code/lag_ssa/evaluate_tangent_overlap_angles.py:32: RuntimeWarning: overflow encountered in matmul
+  correlation = np.exp(1j * angles).T @ characters.conj() / len(angles)
+/Users/rknza/research/Takers/code/lag_ssa/evaluate_tangent_overlap_angles.py:32: RuntimeWarning: invalid value encountered in matmul
+  correlation = np.exp(1j * angles).T @ characters.conj() / len(angles)
+VALIDATION_RESULT {'name': 'scalar_clean', 'status': 'transformed_conditionally', 'phase_dimension': 1, 'rmse_std_normalized': 0.011384814578642754, 'phase_mae_rad': 0.0042982896936246545, 'passed': True}
+VALIDATE two_waves
+PIPELINE_TRY_LAG 4
+PIPELINE_TRY_NEIGHBORS 24
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: divide by zero encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: overflow encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: invalid value encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: divide by zero encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: overflow encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: invalid value encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+ATLAS (1607, 48) r 2
+FRAME
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: divide by zero encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: overflow encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: invalid value encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+PERIOD_COMPLEX
+BETA_INTEGRALS
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_periods.py:348: RuntimeWarning: divide by zero encountered in matmul
+  fitted = np.asarray(inc @ potential) + c.T @ periods.T
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_periods.py:348: RuntimeWarning: overflow encountered in matmul
+  fitted = np.asarray(inc @ potential) + c.T @ periods.T
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_periods.py:348: RuntimeWarning: invalid value encountered in matmul
+  fitted = np.asarray(inc @ potential) + c.T @ periods.T
+PIPELINE_CANDIDATE_RESULT 4 24 {'core_status': 'conditional_fields_first_model', 'passed': False, 'closed_projection_relative': 0.012563036794973096, 'duality_rms': 0.03178071636625355, 'phase_step_rmse': 0.006579812415318311, 'minimum_atlas_gap': 0.9526919339040671, 'flow_geometry': 'normal_graph_constraint', 'ambient_field_duality_rms': 0.03557822103724632, 'flow_duality_probe_count': 16, 'checks': {'closed_projection': True, 'duality': True, 'phase_step': True, 'atlas_gap': True, 'train_encoder_full_coverage': True, 'reference_projection': True, 'flow_refinement': True, 'inverse': True, 'full_turn': False, 'flow_order': True}, 'reference_displacement_relative': 0.002151279825617447, 'inverse_window_relative': 0.01446449938251269, 'full_turn_relative': [0.005879658539723645, 0.0536136561374269], 'full_turn_probe_count': 8, 'flow_step_refinement_relative': [0.0011340843244113444, 0.0006861469886663429], 'flow_order_relative': 0.022954978971569718, 'flow_retraction': {'calls': 1691, 'maximum_iterations': 16, 'maximum_normal_residual_relative': 9.996928091467938e-10, 'maximum_displacement_relative': 0.010545256827810455}, 'source_rms': 1.0000357078456887, 'ambient_flow_attempt': {'core_status': 'conditional_fields_first_model', 'passed': False, 'closed_projection_relative': 0.012563036794973096, 'duality_rms': 0.03557822103724632, 'phase_step_rmse': 0.006579812415318311, 'minimum_atlas_gap': 0.9526919339040671, 'flow_geometry': 'ambient_tangent_extension', 'checks': {'closed_projection': True, 'duality': True, 'phase_step': True, 'atlas_gap': True, 'train_encoder_full_coverage': True, 'inverse': False, 'full_turn': False, 'flow_order': False}, 'inverse_window_relative': 0.12868923807706362, 'full_turn_relative': [0.035216364459469886, 0.1269036411747244], 'full_turn_probe_count': 1, 'flow_order_relative': 0.14208362444944267, 'source_rms': 1.0000357078456887}}
+PIPELINE_TRY_NEIGHBORS 48
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: divide by zero encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: overflow encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:326: RuntimeWarning: invalid value encountered in matmul
+  basis=vh[keep].T;x=fullx@basis
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: divide by zero encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: overflow encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py:347: RuntimeWarning: invalid value encountered in matmul
+  linear_span_relative_residual=float(linalg.norm(x@basis.T-fullx)/linalg.norm(fullx)),
+ATLAS (1607, 48) r 2
+FRAME
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: divide by zero encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: overflow encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_frame.py:37: RuntimeWarning: invalid value encountered in matmul
+  z=linalg.lstsq(M@null,-M@c0,cond=1e-10,lapack_driver='gelsy')[0];c=c0+null@z
+PERIOD_COMPLEX
+BETA_INTEGRALS
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_periods.py:348: RuntimeWarning: divide by zero encountered in matmul
+  fitted = np.asarray(inc @ potential) + c.T @ periods.T
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_periods.py:348: RuntimeWarning: overflow encountered in matmul
+  fitted = np.asarray(inc @ potential) + c.T @ periods.T
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_periods.py:348: RuntimeWarning: invalid value encountered in matmul
+  fitted = np.asarray(inc @ potential) + c.T @ periods.T
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:245: RuntimeWarning: divide by zero encountered in matmul
+  xt=fullx@model['basis']
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:245: RuntimeWarning: overflow encountered in matmul
+  xt=fullx@model['basis']
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:245: RuntimeWarning: invalid value encountered in matmul
+  xt=fullx@model['basis']
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:246: RuntimeWarning: divide by zero encountered in matmul
+  projection=float(linalg.norm(fullx-xt@model['basis'].T)/max(linalg.norm(fullx),1e-15))
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:246: RuntimeWarning: overflow encountered in matmul
+  projection=float(linalg.norm(fullx-xt@model['basis'].T)/max(linalg.norm(fullx),1e-15))
+/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py:246: RuntimeWarning: invalid value encountered in matmul
+  projection=float(linalg.norm(fullx-xt@model['basis'].T)/max(linalg.norm(fullx),1e-15))
+Traceback (most recent call last):
+  File "/Users/rknza/research/Takers/code/lag_ssa/validate_fields_first.py", line 57, in <module>
+    raise SystemExit(main())
+  File "/Users/rknza/research/Takers/code/lag_ssa/validate_fields_first.py", line 39, in main
+    result=benchmark(**config,max_candidates=args.max_candidates,
+  File "/Users/rknza/research/Takers/code/lag_ssa/benchmark_fields_first_sensors.py", line 33, in benchmark
+    prediction = pipeline.transform(Y[ntrain:], start_index=ntrain)
+  File "/Users/rknza/research/Takers/code/lag_ssa/fields_first_sensor_pipeline.py", line 257, in transform
+    xhat=core.inverse(model,enc['phases'])
+  File "/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py", line 293, in inverse
+    states=flow(model,states,ph[:,j],j,step)
+  File "/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py", line 281, in flow
+    k2=phase_field(model,states+dt[:,None]*k1/2)[:,:,axis]
+  File "/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py", line 207, in phase_field
+    return np.einsum('...pa,ab->...pb',field(model,x),model['period_model']['Pi'])/(2*np.pi)
+  File "/Users/rknza/research/Takers/code/lag_ssa/fields_first_phase.py", line 51, in field
+    geom=evaluate_tangent_frame(model['atlas'],x)
+  File "/Users/rknza/research/Takers/code/lag_ssa/fields_first_tangent_atlas.py", line 353, in evaluate_tangent_frame
+    return evaluate_projector_sparse(atlas, queryX, frame_only=True)
+  File "/Users/rknza/research/Takers/code/lag_ssa/fields_first_tangent_atlas.py", line 261, in evaluate_projector_sparse
+    u = np.einsum("mp,mpa->ma", delta, frames) / atlas["radius"][pair_c, None]
+  File "/Users/rknza/research/Takers/.venv/lib/python3.9/site-packages/numpy/_core/einsumfunc.py", line 1429, in einsum
+    return c_einsum(*operands, **kwargs)
+KeyboardInterrupt

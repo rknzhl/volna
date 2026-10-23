@@ -1,0 +1,792 @@
+{
+  "scope": "Independent verification of frozen predictions; no estimator or preprocessing fitting.",
+  "estimator_fits_performed": false,
+  "preprocessing_fits_performed": false,
+  "code_audit": {
+    "scope": "estimator signatures, TRAIN selection, and prediction-freeze/scoring source order",
+    "estimator_arguments": {
+      "fit_diffusion_basis": [
+        "x",
+        "n_basis",
+        "bandwidth_scale",
+        "neighbors"
+      ],
+      "fit_generator": [
+        "basis",
+        "dt",
+        "regularization",
+        "n_basis",
+        "skew_adjoint"
+      ],
+      "select_independent_phases": [
+        "model",
+        "max_phases",
+        "max_order",
+        "frequency_tolerance",
+        "max_radius_cv",
+        "max_relative_residual",
+        "minimum_relation_coherence"
+      ]
+    },
+    "oracle_arguments_absent": true,
+    "query_labels_absent_from_model_selection": true,
+    "evaluator_reads_follow_prediction_save": true,
+    "static_audit_is_not_general_information_flow_proof": true
+  },
+  "complete_eight_case_comparison": true,
+  "metrics_units": "Sensor NRMSE is clean oscillatory TRAIN-channel-standard-deviation normalized; phase MAE is radians.",
+  "phase_metric_policy": "Finite TRAIN character alignment in [-4,4]^r; count and absolute determinant one required. Mixed unimodular gauges remain basis-dependent; unresolved scores stay null.",
+  "records": [
+    {
+      "name": "toy_sine",
+      "checks": {
+        "source_json_hash": true,
+        "toy_input_source_hash": true,
+        "cache_key": true,
+        "all_recorded_code_hashes": true,
+        "package_versions": true,
+        "frozen_prediction_hash": true,
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true,
+        "train_window_indices": true,
+        "query_window_indices": true,
+        "snapshot_indices": true,
+        "split_lag_dt_and_counts": true,
+        "predictions_frozen_before_truth_evaluation": true,
+        "query_refit": true,
+        "truth_used_in_fit": true,
+        "truth_used_in_selection": true,
+        "supplied_true_phase_count": true,
+        "shared_training_selected_window_lag": true,
+        "reconstruction_is_observed_block_not_forecast": true,
+        "frozen_diffusion_and_generator": true,
+        "phase_selection_has_no_oracle_dimension": true,
+        "selected_train_validation_minimum": true,
+        "selection_grid": true,
+        "selected_generator_parameters": true,
+        "shared_preprocessing": true,
+        "shared_preprocessing_cv": true,
+        "prediction_shapes": true,
+        "finite_predictions": true,
+        "selected_phase_ids": true,
+        "recomputed_sensor_nrmse": true,
+        "train_phase_match_winding_candidate": true,
+        "train_phase_match_origins": true,
+        "train_phase_match_coherence": true,
+        "train_phase_match_phase_mae_rad": true,
+        "train_phase_match_phase_max_abs_rad": true,
+        "train_phase_match_determinant": true,
+        "recomputed_diagnostic_phase_mae": true,
+        "primitive_phase_flag": true,
+        "signed_permutation_flag": true,
+        "phase_status_preserves_failure": true,
+        "phase_score_preserves_failure": true
+      },
+      "source_code_checks": {
+        "experiments/run_giannakis_comparison.py": true,
+        "code/lag_ssa/giannakis_koopman.py": true,
+        "code/lag_ssa/fields_first_sensor_cases.py": true,
+        "code/lag_ssa/fields_first_preprocess.py": true,
+        "code/lag_ssa/tangent_overlap.py": true,
+        "code/lag_ssa/evaluate_tangent_overlap_angles.py": true
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true
+      },
+      "original_input_array_sources": {
+        "experiments/data/toy_sine_data.npz": "6150b361a80fe97bfc09709eb9ad4ba2ddbe262900dc73b247df2484509faf4e"
+      },
+      "hashes": {
+        "train_observations_sha256": "545979b13ee08c7bc8940baa021f08906236811d5aba98f1550345a29815a5b9",
+        "query_observations_sha256": "f88f69aa0b82535ed59b2f4507cfb9b7132b76bc3406b5c906b1b711e990234c",
+        "snapshot_indices_sha256": "3c018181856997a44a94b99f85194c4a59819ae2d0e6a2d5b7cd1f64bc864f99",
+        "window_indices_sha256": "289bb5864d5a85d97c80d72d0100d49760cb2dc6fe9b673c212fa92348fb78b3"
+      },
+      "existing_baseline_checks": null,
+      "phase_dimension": 1,
+      "reference_phase_dimension": 1,
+      "phase_status": "evaluated",
+      "phase_mae_rad": 0.007777455939224986,
+      "diagnostic_phase_mae_rad": 0.007777455939224986,
+      "sensor_nrmse": 0.009813782411276855,
+      "winding_candidate": [
+        [
+          1
+        ]
+      ],
+      "absolute_determinant": 1,
+      "gauge_is_signed_permutation": true,
+      "phase_error_directly_comparable_in_original_coordinate_gauge": true,
+      "phase_metric_caveat": "Signed permutation and TRAIN origin alignment preserve coordinate-averaged MAE."
+    },
+    {
+      "name": "toy_torus",
+      "checks": {
+        "source_json_hash": true,
+        "toy_input_source_hash": true,
+        "cache_key": true,
+        "all_recorded_code_hashes": true,
+        "package_versions": true,
+        "frozen_prediction_hash": true,
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true,
+        "train_window_indices": true,
+        "query_window_indices": true,
+        "snapshot_indices": true,
+        "split_lag_dt_and_counts": true,
+        "predictions_frozen_before_truth_evaluation": true,
+        "query_refit": true,
+        "truth_used_in_fit": true,
+        "truth_used_in_selection": true,
+        "supplied_true_phase_count": true,
+        "shared_training_selected_window_lag": true,
+        "reconstruction_is_observed_block_not_forecast": true,
+        "frozen_diffusion_and_generator": true,
+        "phase_selection_has_no_oracle_dimension": true,
+        "selected_train_validation_minimum": true,
+        "selection_grid": true,
+        "selected_generator_parameters": true,
+        "shared_preprocessing": true,
+        "shared_preprocessing_cv": true,
+        "prediction_shapes": true,
+        "finite_predictions": true,
+        "selected_phase_ids": true,
+        "recomputed_sensor_nrmse": true,
+        "train_phase_match_winding_candidate": true,
+        "train_phase_match_origins": true,
+        "train_phase_match_coherence": true,
+        "train_phase_match_phase_mae_rad": true,
+        "train_phase_match_phase_max_abs_rad": true,
+        "train_phase_match_determinant": true,
+        "recomputed_diagnostic_phase_mae": true,
+        "primitive_phase_flag": true,
+        "signed_permutation_flag": true,
+        "phase_status_preserves_failure": true,
+        "phase_score_preserves_failure": true
+      },
+      "source_code_checks": {
+        "experiments/run_giannakis_comparison.py": true,
+        "code/lag_ssa/giannakis_koopman.py": true,
+        "code/lag_ssa/fields_first_sensor_cases.py": true,
+        "code/lag_ssa/fields_first_preprocess.py": true,
+        "code/lag_ssa/tangent_overlap.py": true,
+        "code/lag_ssa/evaluate_tangent_overlap_angles.py": true
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true
+      },
+      "original_input_array_sources": {
+        "experiments/data/toy_torus_data.npz": "90b5ab90b68faa2c22fe38ffc158d6e67cf12373a4bac70f410af7470e42e77e"
+      },
+      "hashes": {
+        "train_observations_sha256": "fc50e10dd489ddfb7dd22ef1fa55d77d4910a3bb2f3f8be0aa5107be01370704",
+        "query_observations_sha256": "013f0e71e2bbe1f2e8c96c58fb2680390f32f28bde37e89b0621c359bcf9f09e",
+        "snapshot_indices_sha256": "3028e451c5c2b7375c8e496788a5640791c876eade8e234d76d01c99be4043a5",
+        "window_indices_sha256": "0184ce8ddd9cc8fb11a9c8ba8300211b10260acf6ea734eab1a0a9a909b2255f"
+      },
+      "existing_baseline_checks": null,
+      "phase_dimension": 2,
+      "reference_phase_dimension": 2,
+      "phase_status": "evaluated",
+      "phase_mae_rad": 0.06534582208682747,
+      "diagnostic_phase_mae_rad": 0.06534582208682747,
+      "sensor_nrmse": 0.0537314637644401,
+      "winding_candidate": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "absolute_determinant": 1,
+      "gauge_is_signed_permutation": true,
+      "phase_error_directly_comparable_in_original_coordinate_gauge": true,
+      "phase_metric_caveat": "Signed permutation and TRAIN origin alignment preserve coordinate-averaged MAE."
+    },
+    {
+      "name": "scalar_noise10",
+      "checks": {
+        "source_json_hash": true,
+        "toy_input_source_hash": true,
+        "cache_key": true,
+        "all_recorded_code_hashes": true,
+        "package_versions": true,
+        "frozen_prediction_hash": true,
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true,
+        "train_window_indices": true,
+        "query_window_indices": true,
+        "snapshot_indices": true,
+        "split_lag_dt_and_counts": true,
+        "predictions_frozen_before_truth_evaluation": true,
+        "query_refit": true,
+        "truth_used_in_fit": true,
+        "truth_used_in_selection": true,
+        "supplied_true_phase_count": true,
+        "shared_training_selected_window_lag": true,
+        "reconstruction_is_observed_block_not_forecast": true,
+        "frozen_diffusion_and_generator": true,
+        "phase_selection_has_no_oracle_dimension": true,
+        "selected_train_validation_minimum": true,
+        "selection_grid": true,
+        "selected_generator_parameters": true,
+        "shared_preprocessing": true,
+        "shared_preprocessing_cv": true,
+        "prediction_shapes": true,
+        "finite_predictions": true,
+        "selected_phase_ids": true,
+        "recomputed_sensor_nrmse": true,
+        "train_phase_match_winding_candidate": true,
+        "train_phase_match_origins": true,
+        "train_phase_match_coherence": true,
+        "train_phase_match_phase_mae_rad": true,
+        "train_phase_match_phase_max_abs_rad": true,
+        "train_phase_match_determinant": true,
+        "recomputed_diagnostic_phase_mae": true,
+        "primitive_phase_flag": true,
+        "signed_permutation_flag": true,
+        "phase_status_preserves_failure": true,
+        "phase_score_preserves_failure": true,
+        "existing_baseline_inputs_and_indices": true,
+        "existing_baseline_lag": true
+      },
+      "source_code_checks": {
+        "experiments/run_giannakis_comparison.py": true,
+        "code/lag_ssa/giannakis_koopman.py": true,
+        "code/lag_ssa/fields_first_sensor_cases.py": true,
+        "code/lag_ssa/fields_first_preprocess.py": true,
+        "code/lag_ssa/tangent_overlap.py": true,
+        "code/lag_ssa/evaluate_tangent_overlap_angles.py": true
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true
+      },
+      "original_input_array_sources": {},
+      "hashes": {
+        "train_observations_sha256": "aea61f388faad7eefe7648fb37c87a11d53ac7f840e7a48d761ef37c941cd0b8",
+        "query_observations_sha256": "a76db45ba0d718c742cb57dd3cd4ee77f075d713552b0c583bfcdfdab3c414bb",
+        "snapshot_indices_sha256": "4d88d5f3a78726d8e9220ae40837ab10f056b3369e34ff24eae47edb746d4ac8",
+        "window_indices_sha256": "899def52540e037a86da651796743c738eefbd63daa4ad2eaf6aecf3649c5676"
+      },
+      "existing_baseline_checks": {
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true
+      },
+      "phase_dimension": 2,
+      "reference_phase_dimension": 1,
+      "phase_status": "phase_basis_unresolved",
+      "phase_mae_rad": null,
+      "diagnostic_phase_mae_rad": 0.7920027654634443,
+      "sensor_nrmse": 0.02298703446162029,
+      "winding_candidate": [
+        [
+          1
+        ],
+        [
+          -1
+        ]
+      ],
+      "absolute_determinant": null,
+      "gauge_is_signed_permutation": false,
+      "phase_error_directly_comparable_in_original_coordinate_gauge": false,
+      "phase_metric_caveat": "Phase basis unresolved; headline phase score remains null."
+    },
+    {
+      "name": "two_waves",
+      "checks": {
+        "source_json_hash": true,
+        "toy_input_source_hash": true,
+        "cache_key": true,
+        "all_recorded_code_hashes": true,
+        "package_versions": true,
+        "frozen_prediction_hash": true,
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true,
+        "train_window_indices": true,
+        "query_window_indices": true,
+        "snapshot_indices": true,
+        "split_lag_dt_and_counts": true,
+        "predictions_frozen_before_truth_evaluation": true,
+        "query_refit": true,
+        "truth_used_in_fit": true,
+        "truth_used_in_selection": true,
+        "supplied_true_phase_count": true,
+        "shared_training_selected_window_lag": true,
+        "reconstruction_is_observed_block_not_forecast": true,
+        "frozen_diffusion_and_generator": true,
+        "phase_selection_has_no_oracle_dimension": true,
+        "selected_train_validation_minimum": true,
+        "selection_grid": true,
+        "selected_generator_parameters": true,
+        "shared_preprocessing": true,
+        "shared_preprocessing_cv": true,
+        "prediction_shapes": true,
+        "finite_predictions": true,
+        "selected_phase_ids": true,
+        "recomputed_sensor_nrmse": true,
+        "train_phase_match_winding_candidate": true,
+        "train_phase_match_origins": true,
+        "train_phase_match_coherence": true,
+        "train_phase_match_phase_mae_rad": true,
+        "train_phase_match_phase_max_abs_rad": true,
+        "train_phase_match_determinant": true,
+        "recomputed_diagnostic_phase_mae": true,
+        "primitive_phase_flag": true,
+        "signed_permutation_flag": true,
+        "phase_status_preserves_failure": true,
+        "phase_score_preserves_failure": true,
+        "existing_baseline_inputs_and_indices": true,
+        "existing_baseline_lag": true
+      },
+      "source_code_checks": {
+        "experiments/run_giannakis_comparison.py": true,
+        "code/lag_ssa/giannakis_koopman.py": true,
+        "code/lag_ssa/fields_first_sensor_cases.py": true,
+        "code/lag_ssa/fields_first_preprocess.py": true,
+        "code/lag_ssa/tangent_overlap.py": true,
+        "code/lag_ssa/evaluate_tangent_overlap_angles.py": true
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true
+      },
+      "original_input_array_sources": {},
+      "hashes": {
+        "train_observations_sha256": "617b1ba68100d19f994f4e9b57d82701adeaaee5d142fd503ace513d72723d25",
+        "query_observations_sha256": "3988f00569299f7ecf262eebf57186c2aa910a8ab6b455b31ceb550f7612d827",
+        "snapshot_indices_sha256": "3028e451c5c2b7375c8e496788a5640791c876eade8e234d76d01c99be4043a5",
+        "window_indices_sha256": "0184ce8ddd9cc8fb11a9c8ba8300211b10260acf6ea734eab1a0a9a909b2255f"
+      },
+      "existing_baseline_checks": {
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true
+      },
+      "phase_dimension": 2,
+      "reference_phase_dimension": 2,
+      "phase_status": "evaluated",
+      "phase_mae_rad": 0.06271178766656972,
+      "diagnostic_phase_mae_rad": 0.06271178766656972,
+      "sensor_nrmse": 0.05430481716556717,
+      "winding_candidate": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "absolute_determinant": 1,
+      "gauge_is_signed_permutation": true,
+      "phase_error_directly_comparable_in_original_coordinate_gauge": true,
+      "phase_metric_caveat": "Signed permutation and TRAIN origin alignment preserve coordinate-averaged MAE."
+    },
+    {
+      "name": "noise00",
+      "checks": {
+        "source_json_hash": true,
+        "toy_input_source_hash": true,
+        "cache_key": true,
+        "all_recorded_code_hashes": true,
+        "package_versions": true,
+        "frozen_prediction_hash": true,
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true,
+        "train_window_indices": true,
+        "query_window_indices": true,
+        "snapshot_indices": true,
+        "split_lag_dt_and_counts": true,
+        "predictions_frozen_before_truth_evaluation": true,
+        "query_refit": true,
+        "truth_used_in_fit": true,
+        "truth_used_in_selection": true,
+        "supplied_true_phase_count": true,
+        "shared_training_selected_window_lag": true,
+        "reconstruction_is_observed_block_not_forecast": true,
+        "frozen_diffusion_and_generator": true,
+        "phase_selection_has_no_oracle_dimension": true,
+        "selected_train_validation_minimum": true,
+        "selection_grid": true,
+        "selected_generator_parameters": true,
+        "shared_preprocessing": true,
+        "shared_preprocessing_cv": true,
+        "prediction_shapes": true,
+        "finite_predictions": true,
+        "selected_phase_ids": true,
+        "recomputed_sensor_nrmse": true,
+        "train_phase_match_winding_candidate": true,
+        "train_phase_match_origins": true,
+        "train_phase_match_coherence": true,
+        "train_phase_match_phase_mae_rad": true,
+        "train_phase_match_phase_max_abs_rad": true,
+        "train_phase_match_determinant": true,
+        "recomputed_diagnostic_phase_mae": true,
+        "primitive_phase_flag": true,
+        "signed_permutation_flag": true,
+        "phase_status_preserves_failure": true,
+        "phase_score_preserves_failure": true
+      },
+      "source_code_checks": {
+        "experiments/run_giannakis_comparison.py": true,
+        "code/lag_ssa/giannakis_koopman.py": true,
+        "code/lag_ssa/fields_first_sensor_cases.py": true,
+        "code/lag_ssa/fields_first_preprocess.py": true,
+        "code/lag_ssa/tangent_overlap.py": true,
+        "code/lag_ssa/evaluate_tangent_overlap_angles.py": true
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true
+      },
+      "original_input_array_sources": {},
+      "hashes": {
+        "train_observations_sha256": "c833e503c9ed3c56f70f4bf8c540d651643d9db83b18d4f4bd2314ee9f5f7805",
+        "query_observations_sha256": "408bc3d0fd7180a23c190c96b18e0f7825c1c46a78a7248e165d7a938f7aa180",
+        "snapshot_indices_sha256": "3028e451c5c2b7375c8e496788a5640791c876eade8e234d76d01c99be4043a5",
+        "window_indices_sha256": "ce58679543133a6428660362eb8edfae28e6e2234f21c1d00346d3f22fc1705f"
+      },
+      "existing_baseline_checks": null,
+      "phase_dimension": 3,
+      "reference_phase_dimension": 3,
+      "phase_status": "phase_basis_unresolved",
+      "phase_mae_rad": null,
+      "diagnostic_phase_mae_rad": 0.08487441823664367,
+      "sensor_nrmse": 0.039140514076441674,
+      "winding_candidate": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          -1,
+          0
+        ]
+      ],
+      "absolute_determinant": 0,
+      "gauge_is_signed_permutation": false,
+      "phase_error_directly_comparable_in_original_coordinate_gauge": false,
+      "phase_metric_caveat": "Phase basis unresolved; headline phase score remains null."
+    },
+    {
+      "name": "noise01",
+      "checks": {
+        "source_json_hash": true,
+        "toy_input_source_hash": true,
+        "cache_key": true,
+        "all_recorded_code_hashes": true,
+        "package_versions": true,
+        "frozen_prediction_hash": true,
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true,
+        "train_window_indices": true,
+        "query_window_indices": true,
+        "snapshot_indices": true,
+        "split_lag_dt_and_counts": true,
+        "predictions_frozen_before_truth_evaluation": true,
+        "query_refit": true,
+        "truth_used_in_fit": true,
+        "truth_used_in_selection": true,
+        "supplied_true_phase_count": true,
+        "shared_training_selected_window_lag": true,
+        "reconstruction_is_observed_block_not_forecast": true,
+        "frozen_diffusion_and_generator": true,
+        "phase_selection_has_no_oracle_dimension": true,
+        "selected_train_validation_minimum": true,
+        "selection_grid": true,
+        "selected_generator_parameters": true,
+        "shared_preprocessing": true,
+        "shared_preprocessing_cv": true,
+        "prediction_shapes": true,
+        "finite_predictions": true,
+        "selected_phase_ids": true,
+        "recomputed_sensor_nrmse": true,
+        "train_phase_match_winding_candidate": true,
+        "train_phase_match_origins": true,
+        "train_phase_match_coherence": true,
+        "train_phase_match_phase_mae_rad": true,
+        "train_phase_match_phase_max_abs_rad": true,
+        "train_phase_match_determinant": true,
+        "recomputed_diagnostic_phase_mae": true,
+        "primitive_phase_flag": true,
+        "signed_permutation_flag": true,
+        "phase_status_preserves_failure": true,
+        "phase_score_preserves_failure": true
+      },
+      "source_code_checks": {
+        "experiments/run_giannakis_comparison.py": true,
+        "code/lag_ssa/giannakis_koopman.py": true,
+        "code/lag_ssa/fields_first_sensor_cases.py": true,
+        "code/lag_ssa/fields_first_preprocess.py": true,
+        "code/lag_ssa/tangent_overlap.py": true,
+        "code/lag_ssa/evaluate_tangent_overlap_angles.py": true
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true
+      },
+      "original_input_array_sources": {},
+      "hashes": {
+        "train_observations_sha256": "ddf056ab53a76d9a3068fc8b46396108ebf36e3918d40e608e9c920060317c9d",
+        "query_observations_sha256": "25acc6448912709f1cea8652604c377f6505ccc9e469211e77a901e9cb8f58f2",
+        "snapshot_indices_sha256": "3028e451c5c2b7375c8e496788a5640791c876eade8e234d76d01c99be4043a5",
+        "window_indices_sha256": "0184ce8ddd9cc8fb11a9c8ba8300211b10260acf6ea734eab1a0a9a909b2255f"
+      },
+      "existing_baseline_checks": null,
+      "phase_dimension": 3,
+      "reference_phase_dimension": 3,
+      "phase_status": "phase_basis_unresolved",
+      "phase_mae_rad": null,
+      "diagnostic_phase_mae_rad": 0.14195963902383338,
+      "sensor_nrmse": 0.03548705046909622,
+      "winding_candidate": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "absolute_determinant": 0,
+      "gauge_is_signed_permutation": false,
+      "phase_error_directly_comparable_in_original_coordinate_gauge": false,
+      "phase_metric_caveat": "Phase basis unresolved; headline phase score remains null."
+    },
+    {
+      "name": "noise05",
+      "checks": {
+        "source_json_hash": true,
+        "toy_input_source_hash": true,
+        "cache_key": true,
+        "all_recorded_code_hashes": true,
+        "package_versions": true,
+        "frozen_prediction_hash": true,
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true,
+        "train_window_indices": true,
+        "query_window_indices": true,
+        "snapshot_indices": true,
+        "split_lag_dt_and_counts": true,
+        "predictions_frozen_before_truth_evaluation": true,
+        "query_refit": true,
+        "truth_used_in_fit": true,
+        "truth_used_in_selection": true,
+        "supplied_true_phase_count": true,
+        "shared_training_selected_window_lag": true,
+        "reconstruction_is_observed_block_not_forecast": true,
+        "frozen_diffusion_and_generator": true,
+        "phase_selection_has_no_oracle_dimension": true,
+        "selected_train_validation_minimum": true,
+        "selection_grid": true,
+        "selected_generator_parameters": true,
+        "shared_preprocessing": true,
+        "shared_preprocessing_cv": true,
+        "prediction_shapes": true,
+        "finite_predictions": true,
+        "selected_phase_ids": true,
+        "recomputed_sensor_nrmse": true,
+        "train_phase_match_winding_candidate": true,
+        "train_phase_match_origins": true,
+        "train_phase_match_coherence": true,
+        "train_phase_match_phase_mae_rad": true,
+        "train_phase_match_phase_max_abs_rad": true,
+        "train_phase_match_determinant": true,
+        "recomputed_diagnostic_phase_mae": true,
+        "primitive_phase_flag": true,
+        "signed_permutation_flag": true,
+        "phase_status_preserves_failure": true,
+        "phase_score_preserves_failure": true
+      },
+      "source_code_checks": {
+        "experiments/run_giannakis_comparison.py": true,
+        "code/lag_ssa/giannakis_koopman.py": true,
+        "code/lag_ssa/fields_first_sensor_cases.py": true,
+        "code/lag_ssa/fields_first_preprocess.py": true,
+        "code/lag_ssa/tangent_overlap.py": true,
+        "code/lag_ssa/evaluate_tangent_overlap_angles.py": true
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true
+      },
+      "original_input_array_sources": {},
+      "hashes": {
+        "train_observations_sha256": "6a8250ef95b3062b8065e3d333ff4108121ee4567d0611cb82a90616d2a05c7b",
+        "query_observations_sha256": "6c126d72ac2d67840a9cc10b184c549658649adb427513c8f0fecf5bc119643e",
+        "snapshot_indices_sha256": "3028e451c5c2b7375c8e496788a5640791c876eade8e234d76d01c99be4043a5",
+        "window_indices_sha256": "0184ce8ddd9cc8fb11a9c8ba8300211b10260acf6ea734eab1a0a9a909b2255f"
+      },
+      "existing_baseline_checks": null,
+      "phase_dimension": 3,
+      "reference_phase_dimension": 3,
+      "phase_status": "phase_basis_unresolved",
+      "phase_mae_rad": null,
+      "diagnostic_phase_mae_rad": 0.1436813646012982,
+      "sensor_nrmse": 0.03583218814373546,
+      "winding_candidate": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "absolute_determinant": 0,
+      "gauge_is_signed_permutation": false,
+      "phase_error_directly_comparable_in_original_coordinate_gauge": false,
+      "phase_metric_caveat": "Phase basis unresolved; headline phase score remains null."
+    },
+    {
+      "name": "noise10",
+      "checks": {
+        "source_json_hash": true,
+        "toy_input_source_hash": true,
+        "cache_key": true,
+        "all_recorded_code_hashes": true,
+        "package_versions": true,
+        "frozen_prediction_hash": true,
+        "train_observations_sha256": true,
+        "query_observations_sha256": true,
+        "snapshot_indices_sha256": true,
+        "window_indices_sha256": true,
+        "train_window_indices": true,
+        "query_window_indices": true,
+        "snapshot_indices": true,
+        "split_lag_dt_and_counts": true,
+        "predictions_frozen_before_truth_evaluation": true,
+        "query_refit": true,
+        "truth_used_in_fit": true,
+        "truth_used_in_selection": true,
+        "supplied_true_phase_count": true,
+        "shared_training_selected_window_lag": true,
+        "reconstruction_is_observed_block_not_forecast": true,
+        "frozen_diffusion_and_generator": true,
+        "phase_selection_has_no_oracle_dimension": true,
+        "selected_train_validation_minimum": true,
+        "selection_grid": true,
+        "selected_generator_parameters": true,
+        "shared_preprocessing": true,
+        "shared_preprocessing_cv": true,
+        "prediction_shapes": true,
+        "finite_predictions": true,
+        "selected_phase_ids": true,
+        "recomputed_sensor_nrmse": true,
+        "train_phase_match_winding_candidate": true,
+        "train_phase_match_origins": true,
+        "train_phase_match_coherence": true,
+        "train_phase_match_phase_mae_rad": true,
+        "train_phase_match_phase_max_abs_rad": true,
+        "train_phase_match_determinant": true,
+        "recomputed_diagnostic_phase_mae": true,
+        "primitive_phase_flag": true,
+        "signed_permutation_flag": true,
+        "phase_status_preserves_failure": true,
+        "phase_score_preserves_failure": true
+      },
+      "source_code_checks": {
+        "experiments/run_giannakis_comparison.py": true,
+        "code/lag_ssa/giannakis_koopman.py": true,
+        "code/lag_ssa/fields_first_sensor_cases.py": true,
+        "code/lag_ssa/fields_first_preprocess.py": true,
+        "code/lag_ssa/tangent_overlap.py": true,
+        "code/lag_ssa/evaluate_tangent_overlap_angles.py": true
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true
+      },
+      "original_input_array_sources": {},
+      "hashes": {
+        "train_observations_sha256": "7db8ec98eb7bcc724666895395275de3180ca928478c505be1a4be6b3b833ae3",
+        "query_observations_sha256": "bbc3a2bcbe67794fc7ed6653cb813c28fc4123edaede3a433c1c1b30db4d602e",
+        "snapshot_indices_sha256": "3028e451c5c2b7375c8e496788a5640791c876eade8e234d76d01c99be4043a5",
+        "window_indices_sha256": "ce58679543133a6428660362eb8edfae28e6e2234f21c1d00346d3f22fc1705f"
+      },
+      "existing_baseline_checks": null,
+      "phase_dimension": 3,
+      "reference_phase_dimension": 3,
+      "phase_status": "phase_basis_unresolved",
+      "phase_mae_rad": null,
+      "diagnostic_phase_mae_rad": 0.08075735561212996,
+      "sensor_nrmse": 0.039154652015475196,
+      "winding_candidate": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          -1,
+          0
+        ]
+      ],
+      "absolute_determinant": 0,
+      "gauge_is_signed_permutation": false,
+      "phase_error_directly_comparable_in_original_coordinate_gauge": false,
+      "phase_metric_caveat": "Phase basis unresolved; headline phase score remains null."
+    }
+  ]
+}

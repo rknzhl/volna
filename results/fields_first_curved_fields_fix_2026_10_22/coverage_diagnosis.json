@@ -1,0 +1,10 @@
+{
+  "radius": 0.2979170083999634,
+  "nearest_query_max": 0.32761797117970515,
+  "uncovered_indices": [
+    114
+  ],
+  "common_birth": 0.29136207699775696,
+  "common_death": 0.6089438796043396,
+  "maximum_standard_radius": 0.3044719398021698
+}

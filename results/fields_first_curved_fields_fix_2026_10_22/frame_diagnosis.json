@@ -1,0 +1,51 @@
+{
+  "reference": {
+    "synthetic_phases_for_diagnosis_only": true,
+    "tangent_projection_relative": 0.04719373878846134,
+    "projected_reference_overlap_relative": 0.022023374429297252
+  },
+  "results": [
+    {
+      "name": "local_original",
+      "columns": 768,
+      "spatial_weight": 0.001,
+      "transfer_relative": 0.018492252929149154,
+      "error_to_anchored_reference": 0.2654136715837719,
+      "minimum_singular": 0.40905032726576945,
+      "minimum_relative_singular": 0.29492642211391834,
+      "seconds": 2.5987015840000005
+    },
+    {
+      "name": "local_no_spatial",
+      "columns": 768,
+      "spatial_weight": 0.0,
+      "transfer_relative": 0.018371582383610214,
+      "error_to_anchored_reference": 0.2615710220569971,
+      "minimum_singular": 0.41324097178911207,
+      "minimum_relative_singular": 0.29516469070321444,
+      "seconds": 0.47854716699999855
+    },
+    {
+      "name": "linear_original",
+      "columns": 182,
+      "spatial_weight": 0.001,
+      "transfer_relative": 0.011512724853328434,
+      "error_to_anchored_reference": 0.10978326968180316,
+      "minimum_singular": 0.6260967909610224,
+      "minimum_relative_singular": 0.4588742661026544,
+      "seconds": 0.2714985419999998
+    },
+    {
+      "name": "linear_no_spatial",
+      "columns": 182,
+      "spatial_weight": 0.0,
+      "transfer_relative": 0.011454324264623438,
+      "error_to_anchored_reference": 0.10713873805640707,
+      "minimum_singular": 0.6281750170714898,
+      "minimum_relative_singular": 0.4585296931094459,
+      "seconds": 0.042713874999996904
+    }
+  ],
+  "elapsed_seconds": 9.757116792,
+  "numerical_threads": 1
+}

@@ -1,0 +1,90 @@
+Use case: scientific-educational.
+Create ONE SINGLE unified academic textbook illustration covering sections 1 through 6 of a mathematical construction. Not multiple files, not a collage of three previous pages. One coherent portrait page with six numbered stages connected in reading order. VERY SPACIOUS. General dimension r. This is a final figure for a Russian mathematics research paper.
+
+FORMAT AND STYLE
+Portrait canvas with aspect ratio 2:3, ideally 2048 by 3072 or the highest supported portrait resolution. Pure white background. Large crisp academic serif lettering and properly typeset LaTeX-style mathematical notation. Black text, navy, very pale blue and small restrained purple arrows. Thin analytical strokes, no glossy 3D rendering, no boxes/cards around every item, no decorative words. At least 45% of the page must be whitespace. Wide margins. More white space between the THREE horizontal bands than between objects within a band. Large labels readable at normal viewing size. No clipped equations. Do not overfill the canvas.
+All quantities are GENERAL m,L,N,K,r. Never r=2, m=12, L=24, four circular coordinates, two physical waves, or a three-dimensional donut claimed to represent arbitrary r. Represent a general torus by S^1 times ... times S^1. Draw curved sheets and tangent planes only as explicitly labeled schematic projections.
+Render math as genuine mathematical typography, NOT raw LaTeX text.
+
+TITLE, modest and clean: "От показаний датчиков к фазам".
+Small overall formula beneath title:
+theta in T^r --h_L--> z in M subset R^{mL} --Phi--> varphi in T^r.
+Here theta denotes original model phases, varphi recovered phases. Use Greek letters and correct superscripts. Keep them distinct.
+
+LAYOUT: THREE HORIZONTAL BANDS, each with two numbered headings, sections (1,2), (3,4), (5,6). Thin unobtrusive connectors indicate flow between the bands. Do not duplicate drawings or formulas just for decoration.
+
+TOP BAND — SECTIONS 1 AND 2
+LEFT heading "1. Наблюдения".
+Small physical domain Omega containing sensor dots s_1, s_i, ..., s_m over very subtle gray contours of u(s,t_n). A leader from s_i points to Y_{i,n}. Then a slim arrow leads to the snapshot column:
+y_n=(Y_{1,n},...,Y_{m,n})^T in R^m.
+Below only:
+Y_{i,n}=u(s_i,t_n).
+No prose besides the tiny label "Один момент".
+
+RIGHT heading "2. Совместные окна".
+Two narrow, well-spaced column stacks labeled x_n and x_{n+1}. Their blocks are WHOLE SNAPSHOTS.
+Left labels top to bottom: y_n; y_{n+1}; vertical ellipsis; y_{n+L-1}.
+Right labels top to bottom: y_{n+1}; vertical ellipsis; y_{n+L-1}; y_{n+L}.
+Shade ONLY the first left block y_n gray and ONLY the last right block y_{n+L} gray. All other blocks pale blue. The common L−1 snapshots are shifted by one place. NO row-to-row guide lines, no incorrect horizontal or diagonal correspondences.
+Below the stacks:
+x_n=(y_n^T,...,y_{n+L-1}^T)^T in R^{mL}.
+P_1 x_n=P_0 x_{n+1}.
+Keep all rows and formulas legible and separated.
+
+Below this first band, one SHORT full-width notation strip:
+H=[x_0,...,x_{K-1}] in R^{mL times K},   K=N−L+1.
+A compact small line:
+"m — число датчиков; N — число снимков; L — снимки в окне".
+And:
+"P_0: убрать последний снимок; P_1: убрать первый".
+
+MIDDLE BAND — SECTIONS 3 AND 4
+LEFT heading "3. Касательные пространства".
+RIGHT heading "4. Перенос базиса".
+This band contains ONE connected geometric diagram across its full width, not two unrelated pictures.
+At the top of the band show a small product of circle glyphs with multiplication and ellipsis:
+T^r=S^1 times ... times S^1.
+A neat arrow h_L goes to a restrained pale-blue local curved sheet representing a schematic projection of M. Above sheet:
+M=h_L(T^r),   dim M=r.
+Short necessary caption "Схематическая проекция".
+On the sheet place z=x_n and T(z)=x_{n+1}, connected by a thin purple curved arrow labeled T.
+
+Below the sheet two enlarged abstract tangent-space insets linked by leader lines to z and T(z). Label T_z M and T_{T(z)} M, each dim r. Each inset has gray frame arrows labeled W_1, ..., W_r, with appropriate arguments (z) or (T(z)). These arrows schematically represent an r-dimensional basis, with ellipsis; do not imply arbitrary r literally equals two or three. No orthogonality marks. A purple vector v in first inset and v' in second are general combinations of the frame.
+One clean arrow labeled D T_z connects the tangent spaces. Nearby:
+v'=D T_z v,    P_0 v'=P_1 v.
+Under the right part show the invariant-frame law:
+W(T(z))=D T_z W(z).
+Under the left part:
+W(z)=[W_1(z),...,W_r(z)] in R^{mL times r}.
+Avoid repeating identical formulas elsewhere.
+
+BOTTOM BAND — SECTIONS 5 AND 6
+LEFT heading "5. Полные периоды".
+First define the necessary meaning of beta, with a short caption "Коэффициенты скорости":
+v=W(z)a,    beta_z(v)=a in R^r.
+Under it draw a plain simple CLOSED loop glyph gamma_j on WHITE background, one orientation arrow and one base point. Label gamma_j subset M, j=1,...,r. DO NOT draw a filled disk/surface spanning this loop: the selected loop must not appear contractible in M.
+A short arrow from this loop goes to its period vector:
+Pi_{:,j}=oint_{gamma_j} beta in R^r.
+Then:
+Pi=[Pi_{:,1},...,Pi_{:,r}] in R^{r times r}.
+Use proper CLOSED integral signs. Do not put an erroneous transpose on a column vector. Pi is a matrix of vectors, not a scalar or diagonal assumption.
+A short useful calibration caption:
+"Полный обход gamma_j: j-й угол +2pi".
+No period parallelogram and no two-axis graph.
+
+RIGHT heading "6. Фазовые координаты".
+An OPEN directed curve from z_* to z=x_n, with the start marked "нулевые углы". This is a path on M; leave its background white.
+Under this open path, a clear three-stage vertical flow with LARGE spacing and only short labels:
+"Перемещение" above integral_{z_*}^{z} beta in R^r.
+A down arrow labeled Pi^{-1}.
+"Доли оборотов" above Pi^{-1} integral_{z_*}^{z} beta.
+A down arrow labeled "times 2pi, mod 2pi".
+"Углы" above varphi_n=Phi(x_n) in T^r.
+If full algebra repeats itself, keep the main flow but do not add duplicate standalone phase formulas.
+At the bottom of this section, small circle glyphs with points and angle labels varphi_1, ..., varphi_r, separated by multiplication signs and ellipsis, indicating r circle factors.
+
+BOTTOM FOOTER, one separated full-width mathematical line:
+chi(varphi)=(cos varphi_1,sin varphi_1,...,cos varphi_r,sin varphi_r) in R^{2r},   dim T^r=r.
+
+STRICT CONSTRAINTS
+Exactly ONE final portrait image with all SIX numbered headings present and readable. Respect the large whitespace and generous distances. No extra prose, no invented acronyms, no inverse reconstruction, no section 7, no claims of arbitrary physical-field interpolation. All symbols and typesetting mathematically correct. Preserve complete cycles as cycles, open paths as open paths, and shared window blocks exactly as specified. No gratuitous repetitions. This should look like a clean, spacious, accurate academic textbook plate.

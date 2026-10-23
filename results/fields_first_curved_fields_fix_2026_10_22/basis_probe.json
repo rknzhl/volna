@@ -1,0 +1,24 @@
+{
+  "integer_basis_change": [
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      -1
+    ],
+    [
+      1,
+      -1,
+      2
+    ]
+  ],
+  "determinant": -1,
+  "old_duality": 0.24165287267799512,
+  "new_duality": 0.14438555075528528,
+  "old_gram_condition": 29.435471343706503,
+  "new_gram_condition": 4.3714181216802475
+}

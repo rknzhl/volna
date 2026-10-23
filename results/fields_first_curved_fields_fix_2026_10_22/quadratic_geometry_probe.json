@@ -1,0 +1,11 @@
+{
+  "degree": 2,
+  "neighbors": 48,
+  "tangent_error": 0.05815787950507718,
+  "own_jet_tangent_error": 0.07417775109906423,
+  "source_normal_residual_max": 0.054995219616633916,
+  "minimum_gap": 0.5166328848351851,
+  "frame_reference_error": 0.31067931304218316,
+  "transfer": 0.01980504060778804,
+  "seconds": 9.404643125
+}

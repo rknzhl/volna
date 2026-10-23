@@ -1,0 +1,12 @@
+{
+  "weighted_slope_duality": 0.1289474576291033,
+  "partition_term": 0.24176589007058769,
+  "total": 0.2350399852925146,
+  "active_chart_quantiles": [
+    1.0,
+    2.0,
+    3.5,
+    5.0
+  ],
+  "elapsed_scope": "64 training windows, no refit"
+}

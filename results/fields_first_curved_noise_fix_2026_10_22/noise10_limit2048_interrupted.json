@@ -1,0 +1,8 @@
+{
+  "status": "interrupted_for_runtime_budget",
+  "numerical_threads": 1,
+  "topology_landmark_limit": 2048,
+  "completed_source_attempt": "lag4 failed unchanged full-turn gate",
+  "interrupted_stage": "lag8 dimension persistence; no final result",
+  "stopped_only_owned_worker_pid": 45862
+}

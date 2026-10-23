@@ -1,0 +1,267 @@
+{
+  "maximum_numerical_threads": 1,
+  "field_fits": 0,
+  "inverse_flows": 0,
+  "elapsed_seconds": 10.710986792,
+  "chirp": {
+    "case": "scalarcircle",
+    "phase_mode": "chirp",
+    "ntrain": 900,
+    "ntest": 600,
+    "lag": 4,
+    "boundary_trim": 95,
+    "oracle_quantities_for_diagnosis_only": true,
+    "fields_fitted": false,
+    "exact_increment_formula": "alpha * (1 + 0.2*(2*n+1)/ntrain)",
+    "train_increment_range": [
+      0.6044380192550634,
+      0.7861173215678718
+    ],
+    "train_constant_increment": 0.6952776704114979,
+    "exact_phase_train_step_rmse": 0.05252063627344871,
+    "exact_phase_query_step_rmse_against_frozen_train_step": 0.19562151778938425,
+    "configured_phase_step_threshold": 0.05,
+    "exact_phases_pass_train_gate": false,
+    "exact_phases_pass_query_gate": false,
+    "phase_frequency_window_map_formula": "theta + ell*omega + kappa*ell*(ell-1)/2",
+    "window_phase_formula_max_error": 3.410605131648481e-13,
+    "phase_frequency_window_jacobian_min_second_singular": 0.11750787647071552,
+    "phase_frequency_window_jacobian_second_to_first_ratio_quantiles": [
+      0.10097290013320852,
+      0.22643962959038794,
+      0.583705084657695
+    ],
+    "classification": "nonstationary phase/frequency state violates the rigid phase-only torus model"
+  },
+  "curved": {
+    "case": "threephase4sensor",
+    "ntrain": 2400,
+    "seed": 31,
+    "raw_observations_sha256": "9a99f38586d86eeeccbb3485067ef13bb0057028e148f3a898ef65f4e6f15220",
+    "oracle_inverse_used_for_diagnosis_only": true,
+    "explicit_inverse_max_wrapped_phase_error": 2.274033865137883e-13,
+    "raw_embedding_jacobian_min_singular": 1.0,
+    "selected_conditioning_rank": 13,
+    "conditioning_relative_error": 3.6061781265518446e-14,
+    "fields_fitted": false,
+    "probes": [
+      {
+        "input": "raw",
+        "states": 2203,
+        "lag": 8,
+        "landmarks": 384,
+        "inferred_dimension": 2,
+        "selection": {
+          "selected_count": 2,
+          "lifetime_gap": 3.7568872299304013,
+          "common_birth": 0.4491191506385803,
+          "common_death": 1.222440481185913,
+          "rank_certified_for_true_manifold": false,
+          "criterion": "largest lifetime gap among common-standard-range prefixes"
+        },
+        "top_bars": [
+          [
+            0.44571417570114136,
+            1.222885012626648
+          ],
+          [
+            0.4491191506385803,
+            1.222440481185913
+          ],
+          [
+            0.4120130240917206,
+            0.6178539991378784
+          ],
+          [
+            0.4093475341796875,
+            0.5988675951957703
+          ],
+          [
+            0.4253842532634735,
+            0.6104258298873901
+          ],
+          [
+            0.44846656918525696,
+            0.6298632621765137
+          ],
+          [
+            0.45638447999954224,
+            0.6348419785499573
+          ],
+          [
+            0.4582575261592865,
+            0.6336004137992859
+          ],
+          [
+            0.40784943103790283,
+            0.5809262990951538
+          ],
+          [
+            0.4367690682411194,
+            0.6089485883712769
+          ]
+        ],
+        "prefix_diagnostics": [
+          {
+            "count": 1,
+            "common_birth": 0.44571417570114136,
+            "common_death": 1.222885012626648,
+            "common_standard_range": true,
+            "lifetime_gap": 1.0049778872327875,
+            "lifetime_gap_at_least_two": false
+          },
+          {
+            "count": 2,
+            "common_birth": 0.4491191506385803,
+            "common_death": 1.222440481185913,
+            "common_standard_range": true,
+            "lifetime_gap": 3.7568872299304013,
+            "lifetime_gap_at_least_two": true
+          },
+          {
+            "count": 3,
+            "common_birth": 0.4491191506385803,
+            "common_death": 0.6178539991378784,
+            "common_standard_range": false,
+            "lifetime_gap": 1.0861170788072407,
+            "lifetime_gap_at_least_two": false
+          },
+          {
+            "count": 4,
+            "common_birth": 0.4491191506385803,
+            "common_death": 0.5988675951957703,
+            "common_standard_range": false,
+            "lifetime_gap": 1.024202584488719,
+            "lifetime_gap_at_least_two": false
+          },
+          {
+            "count": 5,
+            "common_birth": 0.4491191506385803,
+            "common_death": 0.5988675951957703,
+            "common_standard_range": false,
+            "lifetime_gap": 1.0200934403629707,
+            "lifetime_gap_at_least_two": false
+          },
+          {
+            "count": 6,
+            "common_birth": 0.4491191506385803,
+            "common_death": 0.5988675951957703,
+            "common_standard_range": false,
+            "lifetime_gap": 1.0164699968604085,
+            "lifetime_gap_at_least_two": false
+          }
+        ],
+        "seconds": 0.21485304199999966
+      },
+      {
+        "input": "preprocessed",
+        "states": 2203,
+        "lag": 8,
+        "landmarks": 384,
+        "inferred_dimension": 2,
+        "selection": {
+          "selected_count": 2,
+          "lifetime_gap": 4.0606718002370785,
+          "common_birth": 0.45003095269203186,
+          "common_death": 1.2222437858581543,
+          "rank_certified_for_true_manifold": false,
+          "criterion": "largest lifetime gap among common-standard-range prefixes"
+        },
+        "top_bars": [
+          [
+            0.4480012357234955,
+            1.227547287940979
+          ],
+          [
+            0.45003095269203186,
+            1.2222437858581543
+          ],
+          [
+            0.44956856966018677,
+            0.6397373080253601
+          ],
+          [
+            0.36431726813316345,
+            0.5460810661315918
+          ],
+          [
+            0.4499281942844391,
+            0.626823365688324
+          ],
+          [
+            0.4777633547782898,
+            0.6433186531066895
+          ],
+          [
+            0.4467518925666809,
+            0.6118013262748718
+          ],
+          [
+            0.44979357719421387,
+            0.61219722032547
+          ],
+          [
+            0.4494228959083557,
+            0.6111981272697449
+          ],
+          [
+            0.4509473443031311,
+            0.6125004291534424
+          ]
+        ],
+        "prefix_diagnostics": [
+          {
+            "count": 1,
+            "common_birth": 0.4480012357234955,
+            "common_death": 1.227547287940979,
+            "common_standard_range": true,
+            "lifetime_gap": 1.0094963703481776,
+            "lifetime_gap_at_least_two": false
+          },
+          {
+            "count": 2,
+            "common_birth": 0.45003095269203186,
+            "common_death": 1.2222437858581543,
+            "common_standard_range": true,
+            "lifetime_gap": 4.0606718002370785,
+            "lifetime_gap_at_least_two": true
+          },
+          {
+            "count": 3,
+            "common_birth": 0.45003095269203186,
+            "common_death": 0.6397373080253601,
+            "common_standard_range": false,
+            "lifetime_gap": 1.0462410032102083,
+            "lifetime_gap_at_least_two": false
+          },
+          {
+            "count": 4,
+            "common_birth": 0.45003095269203186,
+            "common_death": 0.5460810661315918,
+            "common_standard_range": false,
+            "lifetime_gap": 1.0275226652932627,
+            "lifetime_gap_at_least_two": false
+          },
+          {
+            "count": 5,
+            "common_birth": 0.45003095269203186,
+            "common_death": 0.5460810661315918,
+            "common_standard_range": false,
+            "lifetime_gap": 1.0684959840608133,
+            "lifetime_gap_at_least_two": false
+          },
+          {
+            "count": 6,
+            "common_birth": 0.4777633547782898,
+            "common_death": 0.5460810661315918,
+            "common_standard_range": false,
+            "lifetime_gap": 1.0030649279360941,
+            "lifetime_gap_at_least_two": false
+          }
+        ],
+        "seconds": 0.21356770900000122
+      }
+    ]
+  },
+  "code_sha256": "501135dd5f8522bc8c1c3b402bf08867b26ca63406b879f6f08fa1372afc7734"
+}

@@ -1,0 +1,27 @@
+Edit this scientific textbook illustration with ONLY the following precise corrections. Preserve all other content, six headings, layout, colors, letter sizes, equations, sensor domain, shared-window rows, closed loops, open path, normalization flow and white background exactly.
+
+1. In section 2, the redundant displayed window tuple directly below the two stacks currently contains a missing transpose. REMOVE that entire tuple equation. In its same clear location, write only:
+x_n, x_{n+1} \in \mathbb R^{mL}.
+The stacks already define their components. Keep the next equation P_1x_n=P_0x_{n+1} unchanged. Do not add a new definition.
+
+2. In each tangent-space inset of sections 3–4, the label W_1 currently lacks its vector arrow. ADD a visible slim dark gray arrow from the same point as W_2 and W_r toward down-left in the plane, ending beside label W_1(z) in the left inset and W_1(\mathcal T(z)) in the right inset. Keep the existing W_2 and W_r arrows and the purple general velocity arrows. Each inset must show three schematic gray frame arrows labelled W_1, W_2, ..., W_r (ellipsis indicates general dimension r); they need not be perpendicular. Do not cover any text.
+
+3. Consistently typeset the time shift as the distinctly calligraphic \mathcal T in the sheet arrow, point \mathcal T(z), tangent-space subscript T_{\mathcal T(z)}M, operator D\mathcal T_z, transported frame labels W_j(\mathcal T(z)), and identity W(\mathcal T(z))=D\mathcal T_z W(z). Keep ordinary T only for tangent-space notation T_zM; keep blackboard bold \mathbb T^r for the torus. Everything is typeset mathematical typography, never visible raw commands.
+
+Do not redesign or add more material. Preserve the spacious refined academic style of this reference. Exactly one full portrait image with all six sections, nothing cropped.
+
+
+ADDITIONAL FINAL LABEL EDIT — the user requests concise labels suitable for a journal figure. Keep only necessary prose. Apply these exact text changes without adding new content:
+- Remove "Один момент" above the snapshot column; it is redundant.
+- Shorten the notation legend to "m датчиков; N снимков; L снимков в окне."
+- Shorten the P legend to "P_0: без последнего снимка; P_1: без первого."
+- Remove the brace and caption "r множителей" under the source circles; \mathbb T^r and the ellipsis already establish general dimension.
+- Keep "Схематическая проекция" because it prevents dimensional misunderstanding.
+- In section 5 replace "Коэффициенты скорости:" with "Коэффициенты". Keep v=W(z)a and beta_z(v)=a in R^r.
+- Preserve the precise compact homology-basis statement and all period formulas.
+- Shorten its bottom caption to "gamma_j: +2pi по j-й фазе".
+- In section 6 replace "нулевые углы" by the mathematical label Phi(z_*)=0.
+- Replace "Интеграл коэффициентов" by "Коэффициенты".
+- Replace "Доли оборотов" by "Обороты".
+- Keep "Углы". The two arrows remain Pi^{-1} and times 2pi, mod 2pi.
+Use only these short labels and the existing math. The explanatory chain must remain coefficients -> turns -> angles. Preserve enough clear space between labels and formulas. No paragraphs or additional sentences.

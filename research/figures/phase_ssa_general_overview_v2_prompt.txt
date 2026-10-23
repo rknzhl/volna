@@ -1,0 +1,79 @@
+Use case: scientific-educational. EDIT the supplied image, which is the existing accepted illustration. Refine its academic typography, mathematical clarity and spacing while preserving the single-page six-stage composition and its visual language. This is ONE unified textbook plate in Russian about a general r-dimensional phase torus, covering sections 1–6 of the user's mathematical paper.
+
+INVARIANTS
+Keep all six numbered stages, general m,L,N,K,r, white background, restrained navy / pale blue / purple palette, serif mathematical typesetting, three horizontal bands, paired sections (1,2), (3,4), (5,6). Preserve the physical sensor diagram, correctly shifted window blocks, general product of r circles, schematic manifold and two tangent-space insets, full-loop integral and open-path phase normalization. Do not specialize to r=2 or draw a 3D donut as a general torus. No section 7, inverse reconstruction or unrelated material. No prose paragraphs.
+
+REFINEMENT GOALS
+Make this look like a carefully edited academic textbook figure, not a crowded infographic. Use the highest available portrait resolution, ideally 2048x3072. Clean pure white, no paper texture, no shadows. Make the title smaller to release space. Wide margins, consistent thin strokes, increased vertical gaps, ample clear space around every displayed equation. Typeset all mathematics correctly, with distinct calligraphic time shift \mathcal T and tangent-space T. Do not shrink typography to fit extra words. Avoid overlaps, leader lines through labels, decorative arrows and redundant formulas. Preserve every essential meaning while simplifying labels.
+
+TITLE
+"От показаний датчиков к фазам"
+Below, small but legible:
+theta in mathbb T^r --h_L--> z in M subset mathbb R^{mL} --Phi--> varphi in mathbb T^r.
+Greek theta and varphi are distinct original and recovered phases.
+
+BAND 1
+"1. Наблюдения"
+A clean physical domain Omega with subtle contours u(s,t_n) and sensor dots s_1, s_i, ..., s_m. Sensor reading Y_{i,n}=u(s_i,t_n).
+Snapshot y_n=(Y_{1,n},...,Y_{m,n})^top in mathbb R^m.
+Small label "Один момент".
+Make the flow from sensor values to a column snapshot visually clear.
+
+"2. Совместные окна"
+Keep the existing two adjacent window stacks, labelled x_n and x_{n+1}. Left rows y_n; y_{n+1}; vertical ellipsis; y_{n+L-1}. Right rows y_{n+1}; vertical ellipsis; y_{n+L-1}; y_{n+L}.
+ONLY first left row and last right row gray. All common rows pale blue. No misleading row correspondence lines.
+x_n=(y_n^top,...,y_{n+L-1}^top)^top in mathbb R^{mL}.
+P_1x_n=P_0x_{n+1}.
+Below the band, thin separated compact notation strip:
+H=[x_0,...,x_{K-1}] in mathbb R^{mL times K}, K=N-L+1.
+"m — число датчиков; N — число снимков; L — число снимков в окне."
+"P_0: без последнего снимка; P_1: без первого."
+Keep notation strip airy and readable.
+
+BAND 2
+"3. Касательные пространства"
+"4. Перенос базиса"
+One connected geometry diagram. T^r=S^1 times ... times S^1, r circle factors, a map h_L to a pale-blue curved sheet with M=h_L(T^r), dim M=r. Caption "Схематическая проекция" applies to all drawn sheets and tangent planes; they do not literally depict arbitrary-r spaces.
+Points z=x_n and mathcal T(z)=x_{n+1} on M, a purple time-shift arrow labelled mathcal T.
+Two enlarged tangent spaces below, left T_zM and right T_{mathcal T(z)}M, both "dim r". Schematic frame arrows labelled W_1(z),...,W_r(z) and corresponding transported W_j(mathcal T(z)); use ellipsis, no orthogonality assumption. General purple velocities v and v'.
+A central arrow D mathcal T_z from the first tangent space to the second. In the clear central gap, not among frame-vector labels:
+v'=D mathcal T_z v,
+P_0v'=P_1v.
+Below these drawings, well separated:
+W(z)=[W_1(z),...,W_r(z)] in mathbb R^{mL times r},
+W(mathcal T(z))=D mathcal T_z W(z).
+Ensure neither equation collides with vector labels or tangent-space labels.
+
+BAND 3
+"5. Полные периоды"
+"Коэффициенты скорости"
+v=W(z)a, beta_z(v)=a in mathbb R^r.
+Then a compact precise statement, in real typeset math:
+"[gamma_1],..., [gamma_r] — базис H_1(M;mathbb Z)".
+This means a full integer basis of loop classes; arbitrary linearly independent or multiply traversed loops are insufficient. Do not expand this into a paragraph.
+Below, a clean closed directed loop gamma_j subset M on white background, no filled disk spanning it. A thin arrow from the loop to:
+Pi_{:,j}=oint_{gamma_j} beta in mathbb R^r.
+Then:
+Pi=[Pi_{:,1},...,Pi_{:,r}] in mathbb R^{r times r}.
+Use closed integral signs, matrix columns, no diagonal assumption.
+Small calibration label, separated from formulas:
+"Обход gamma_j: +2pi по j-му углу".
+This calibration refers to the NORMALIZED recovered phase in stage 6, not raw integral coefficients.
+
+"6. Фазовые координаты"
+An open directed path ON M from z_* to z=x_n, with small start label "нулевые углы". Keep path open, and show a small "на M" label so it is not confused with a sensor time curve.
+Below, the three-stage normalization is the visual focus of this lower band. Generous gaps, no crowded arrow labels:
+Label "Интеграл коэффициентов" next to integral_{z_*}^{z} beta in mathbb R^r.
+Arrow down marked Pi^{-1}.
+Label "Доли оборотов" next to Pi^{-1} integral_{z_*}^{z} beta.
+Arrow down marked "times 2pi, mod 2pi".
+Label "Углы" next to varphi_n=Phi(x_n) in mathbb T^r.
+IMPORTANT: do not call integral beta a displacement in the ambient window space. It is accumulated tangent-frame coefficients in R^r. Matrix Pi^{-1} expresses them in units of full loops, then 2pi converts turns to radians. Use the short labels above rather than this explanatory paragraph.
+Below show a restrained product of circle glyphs with angles varphi_1,...,varphi_r, with multiplication and ellipsis.
+
+FOOTER
+A thin line and one clean centered mathematical statement:
+chi(varphi)=(cos varphi_1,sin varphi_1,...,cos varphi_r,sin varphi_r) in mathbb R^{2r}, dim mathbb T^r=r.
+
+QUALITY GATE
+Exactly one coherent image and all six numbered headings. No invented claims, no raw LaTeX commands visible, no bad subscripts, no clipped or overlapping text. Do not add text beyond the requested short labels and equations. Be especially careful to distinguish \mathcal T (time shift), T_zM (tangent space), mathbb T^r (torus), theta (original phases) and varphi (recovered phases). The result should be slightly more polished, spacious and mathematically clear than the accepted reference, while staying recognizably the same illustration.

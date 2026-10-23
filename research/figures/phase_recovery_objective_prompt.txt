@@ -1,0 +1,41 @@
+Mode: built-in imagegen
+Asset: journal-style schematic of independent phase recovery
+Final asset: research/figures/phase_recovery_objective.png
+
+INITIAL GENERATION PROMPT
+
+Use case: scientific-educational.
+Create one publication-quality conceptual figure for a mathematical journal article about recovering an UNKNOWN number r of independent phases from mixed multichannel sensor measurements by tangent transport between overlapping delay windows.
+
+Format: a wide horizontal four-panel scientific plate, aspect ratio about 2.6:1, generous white margins and generous gutters, suitable for printing at 170 mm width. White background. Crisp fine line art with precise geometric drawings; flat, vector-like academic style, no glossy 3D rendering, no decorative boxes, no background texture, no infographic marketing design. High-resolution clean edges. Serif text like a mathematics paper, black readable labels; substantial label size for 170 mm printed width. Restrained cobalt-blue and muted vermilion-orange accents, neutral gray meshes. No title above the plate and no prose paragraphs in the figure.
+
+Reading order is strictly left to right, with four balanced panels labelled (a), (b), (c), (d). Exact headings:
+(a) "Measurements"
+(b) "Window geometry"
+(c) "Coherent fields"
+(d) "Independent phases"
+
+Panel (a): Three vertically stacked thin GRAY continuous quasiperiodic sensor traces, each a distinct mixture of oscillations, sharing an unobtrusive horizontal time direction. Over two nearby intervals show very light translucent overlapping vertical selection bands, suggesting adjacent joint delay windows. Label the record with mathematical italic Y. The traces should be mixtures, not one isolated sinusoid per sensor. A single fine rightward connector leads to panel b.
+
+Panel (b): A pale gray point cloud lying on a smooth embedded toroidal manifold drawn in a clean schematic perspective, with a visible central hole. This torus is a schematic illustration of an unknown-dimensional window manifold, not a fixed two-phase assumption. Mark two nearby sampled window points. At each point, draw a small translucent tangent-plane patch and a cobalt tangent perturbation arrow; label the two arrows v and v′. A short fine connector indicates transporting the same perturbation between overlapping windows. Label one point x_n and one patch Q. Under this diagram a short single line "infer r" indicates that the dimension is estimated from window geometry. A fine rightward connector to panel c carries the short label "overlap".
+
+Panel (c): Draw the SAME window torus more clearly as a light gray thin wire mesh. Show two sparse families of tangential arrows, one blue and one orange, defining coherent tangent directions across the torus. Add two clearly distinguished closed fundamental paths: a blue major longitudinal loop around the central hole and an orange minor meridional loop around the tube; they must really lie on the torus and each have one orientation arrow. Label the paths gamma_1 and gamma_2 in proper mathematical Greek if possible. Mark a small black reference point z_*. Keep labels clear of lines. Place only the simple mathematical labels W and Π near the diagram; Π represents full-cycle integrals used to normalize the arbitrary field basis. Do not add a lattice parallelogram, a matrix, a Gaussian kernel, an exponential, or any dense equation.
+
+Between panels c and d, a clearly visible rightward arrow is labelled Φ.
+
+Panel (d): Two distinct flat unit circles, one blue and one orange, each with one marked phase point, an angle arc and one orientation arrow, labelled with proper mathematical φ_1 and φ_2. Below them place a small ellipsis and the general notation "φ ∈ T^r" rendered mathematically. This denotes a general vector of r independent angles, with two drawn for illustration. Do not draw preset known input angles anywhere upstream.
+
+Inverse route: Along the generous bottom whitespace draw a single restrained curved return arrow starting from the phase circles in panel d and ending at the WINDOW STATE in panel b, not at the raw traces in panel a. Label this arrow "Inverse flows Ψ". The arrow should clearly distinguish the backward reconstruction map from the forward data-to-phase arrows and avoid all diagrams and labels. It represents integration of normalized tangent fields back to window coordinates.
+
+Mathematical constraints: the torus is only an illustration for r=2; unknown r is inferred, not supplied. Tangent transport comes before phases. Periods come from integration of motion coefficients along independent loops; phase coordinates are not provided by a separate initializer. Reconstruction uses flows, not matrix exponentials, and does not directly extrapolate a field between unmeasured spatial locations.
+Avoid any extra text beyond the specified headings, short connector labels and mathematical labels. No logos, no watermarks, no fake citations, no numerical performance claims. Every component must have space to breathe and be legible as a journal figure.
+
+TARGETED REFINEMENT PROMPT
+
+Edit this scientific journal figure with only two targeted mathematical corrections. Preserve the exact wide composition, panel headings, typography, all existing labels, gray sensor traces, point-cloud torus, tangent patches, gray torus mesh, blue and orange full-cycle loops, phase circles, and white background. Keep the same size and quality.
+
+1. In panel (c), change the MANY SMALL VECTOR-FIELD ARROWS drawn on the torus from blue/orange to neutral dark gray. Keep the TWO LARGE CLOSED LOOPS gamma_1 and gamma_2, their orientation arrows and their labels distinctly blue and orange. The coherent frame W is arbitrary before period normalization, so small field arrows must be neutral, while colors identify independent cycle classes and the final phase coordinates.
+
+2. Correct the large bottom return arrow labelled "Inverse flows Ψ". Its arrowhead currently points at the text "infer r". It must instead point to a reconstructed WINDOW STATE on the point-cloud torus in panel (b). Add a small black marked point on the lower-front portion of that point-cloud surface, labelled mathematically x-hat_n (a proper hat over x, subscript n). End the return arrow AT THAT MARKED POINT on the surface. Keep the text "infer r" nearby but reposition it slightly left if needed so neither the arrow nor the point intersects this text. Route the return arrow gracefully through bottom whitespace, with its final short segment rising to the marked point. The arrow must not terminate at a dimension label or at the raw sensor traces. Preserve the return-arrow label.
+
+Keep everything else unchanged. No extra prose, no added panels, no matrix exponential, no new equation, no decorative border.

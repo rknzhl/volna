@@ -1,0 +1,306 @@
+{
+  "scope": "Cached controls on identical inputs and timestamps versus current frozen fields-first runs.",
+  "input_hash_provenance": "Current run JSONs store generator configuration, not original input hashes. The input hashes below are regenerated from that configuration with the unchanged generator source matching the baseline cache. Saved preprocessing configuration and its MSSA reconstruction error also agree exactly.",
+  "estimator_fits_performed": false,
+  "persistence_jobs_performed": false,
+  "baseline_dependency_policy": "Frozen controls retain their recorded dependency versions. fields_first_periods.py changed; its full-file hash is not silently relabelled as current. The comparator uses SETTINGS and the legacy _select_prefix(..., preferred_count=None) rule; added geometry-guided branches do not update the saved controls.",
+  "phase_metric_policy": "All compared winding matrices are signed permutations; coordinate-averaged wrapped MAE is comparable after frozen TRAIN origin alignment.",
+  "metrics_units": "Sensor NRMSE is a fraction of clean TRAIN channel standard deviation; phase MAE is radians.",
+  "curved_case_controls": "No matching saved SSA/CC/TC baseline cache; only the current run's MSSA preprocessing error is available.",
+  "records": [
+    {
+      "name": "scalar_noise10",
+      "current_run": "results/fields_first_curved_noise_fix_2026_10_22/regression/scalar_noise10.json",
+      "saved_baseline": "results/fields_first_debug_2026_10_22/baselines/scalar_noise10_c62b9edc.baselines.json",
+      "saved_cdf_controls": "results/fields_first_debug_2026_10_22/phase_advantage_audit/circular_cdf_diagnostic.json",
+      "configuration": {
+        "case": "scalarcircle",
+        "seed": 31,
+        "noise": 0.1,
+        "trend": "linear",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 1800,
+        "ntest": 320
+      },
+      "selected_lag": 8,
+      "snapshot_count": 130,
+      "window_count": 123,
+      "raw_time_first": 1895,
+      "raw_time_last": 2024,
+      "hashes": {
+        "train_observations_sha256": "aea61f388faad7eefe7648fb37c87a11d53ac7f840e7a48d761ef37c941cd0b8",
+        "query_observations_sha256": "a76db45ba0d718c742cb57dd3cd4ee77f075d713552b0c583bfcdfdab3c414bb",
+        "snapshot_indices_sha256": "4d88d5f3a78726d8e9220ae40837ab10f056b3369e34ff24eae47edb746d4ac8",
+        "window_indices_sha256": "899def52540e037a86da651796743c738eefbd63daa4ad2eaf6aecf3649c5676"
+      },
+      "checks": {
+        "train_observations_sha256_matches_saved_baseline": true,
+        "query_observations_sha256_matches_saved_baseline": true,
+        "snapshot_indices_sha256_matches_saved_baseline": true,
+        "window_indices_sha256_matches_saved_baseline": true,
+        "configuration_matches": true,
+        "split_matches": true,
+        "selected_lag_matches": true,
+        "preprocessing_matches_old_source": true,
+        "current_phase_gauge_is_signed_permutation": true,
+        "all_current_model_sources_match_run": true,
+        "generator_source_matches_saved_baseline": true,
+        "linear_baseline_source_and_evaluator_match": true,
+        "baseline_packages_match": true,
+        "mssa_matches_current_saved_preprocessing_error": true,
+        "circular_phase_gauge_is_signed_permutation": true,
+        "toroidal_phase_gauge_is_signed_permutation": true,
+        "cdf_inputs_and_indices_match": true,
+        "cdf_lag_matches": true,
+        "circular_cdf_phase_gauge_is_signed_permutation": true
+      },
+      "current_source_checks": {
+        "fields_first_phase.py": true,
+        "fields_first_frame.py": true,
+        "fields_first_tangent_atlas.py": true,
+        "fields_first_periods.py": true,
+        "fields_first_implicit_geometry.py": true,
+        "fields_first_span.py": true,
+        "fields_first_bounded_persistence.py": true,
+        "fields_first_paths.py": true,
+        "fields_first_preprocess.py": true,
+        "fields_first_sensor_pipeline.py": true
+      },
+      "baseline_dependency_checks": {
+        "compare_fields_first_baselines.py": {
+          "saved_sha256": "e718a41011d4754a3c4004e3cf12dbb32f35af8f85f6b2c728c58aa29b607c1f",
+          "current_sha256": "e718a41011d4754a3c4004e3cf12dbb32f35af8f85f6b2c728c58aa29b607c1f",
+          "whole_file_matches": true
+        },
+        "fields_first_preprocess.py": {
+          "saved_sha256": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "current_sha256": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "whole_file_matches": true
+        },
+        "fields_first_sensor_cases.py": {
+          "saved_sha256": "94e97569ec87f160d7f7f7073ad5b497f03c4dfb173ea1c6319334391db24e8c",
+          "current_sha256": "94e97569ec87f160d7f7f7073ad5b497f03c4dfb173ea1c6319334391db24e8c",
+          "whole_file_matches": true
+        },
+        "fields_first_periods.py": {
+          "saved_sha256": "376f9806362c29fbc7c37591979cf3a4ba5c5ff8f9f96f8a9f2f1e36bdba0509",
+          "current_sha256": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "whole_file_matches": false
+        },
+        "evaluate_tangent_overlap_angles.py": {
+          "saved_sha256": "6423e03bbf4a6e159306bde311ffbd7fb1292b62c8771692c9399b640da45271",
+          "current_sha256": "6423e03bbf4a6e159306bde311ffbd7fb1292b62c8771692c9399b640da45271",
+          "whole_file_matches": true
+        },
+        "tangent_overlap.py": {
+          "saved_sha256": "9b56530a87addc4b7dd8d59cf161e119abae55429866f068a1d311ff9af571d1",
+          "current_sha256": "9b56530a87addc4b7dd8d59cf161e119abae55429866f068a1d311ff9af571d1",
+          "whole_file_matches": true
+        }
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true,
+        "dreimac": true,
+        "ripser": true
+      },
+      "phase_winding_matrices": {
+        "current": [
+          [
+            -1
+          ]
+        ],
+        "circular": [
+          [
+            -1
+          ]
+        ],
+        "toroidal": [
+          [
+            -1
+          ]
+        ],
+        "circular_cdf": [
+          [
+            -1
+          ]
+        ]
+      },
+      "metrics": {
+        "current_sensor_nrmse": 0.024989518643761775,
+        "current_phase_mae_rad": 0.011574082040588147,
+        "ssa_sensor_nrmse": 0.03753389207038572,
+        "mssa_sensor_nrmse": 0.03753389207038572,
+        "circular_phase_mae_rad": 0.3815245840649097,
+        "toroidal_phase_mae_rad": 0.3815245840649097,
+        "circular_cdf_phase_mae_rad": 0.009828851468162807
+      }
+    },
+    {
+      "name": "two_waves",
+      "current_run": "results/fields_first_curved_noise_fix_2026_10_22/regression/two_waves.json",
+      "saved_baseline": "results/fields_first_debug_2026_10_22/baselines/two_waves_82055dfd.baselines.json",
+      "saved_cdf_controls": "results/fields_first_debug_2026_10_22/phase_advantage_audit/multifactor_marginal_cdf_diagnostic.json",
+      "configuration": {
+        "case": "fundamental2waves",
+        "seed": 31,
+        "noise": 0.05,
+        "trend": "quadratic",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "trend_strength": 0.3,
+        "ntrain": 2400,
+        "ntest": 320
+      },
+      "selected_lag": 4,
+      "snapshot_count": 130,
+      "window_count": 127,
+      "raw_time_first": 2495,
+      "raw_time_last": 2624,
+      "hashes": {
+        "train_observations_sha256": "617b1ba68100d19f994f4e9b57d82701adeaaee5d142fd503ace513d72723d25",
+        "query_observations_sha256": "3988f00569299f7ecf262eebf57186c2aa910a8ab6b455b31ceb550f7612d827",
+        "snapshot_indices_sha256": "3028e451c5c2b7375c8e496788a5640791c876eade8e234d76d01c99be4043a5",
+        "window_indices_sha256": "0184ce8ddd9cc8fb11a9c8ba8300211b10260acf6ea734eab1a0a9a909b2255f"
+      },
+      "checks": {
+        "train_observations_sha256_matches_saved_baseline": true,
+        "query_observations_sha256_matches_saved_baseline": true,
+        "snapshot_indices_sha256_matches_saved_baseline": true,
+        "window_indices_sha256_matches_saved_baseline": true,
+        "configuration_matches": true,
+        "split_matches": true,
+        "selected_lag_matches": true,
+        "preprocessing_matches_old_source": true,
+        "current_phase_gauge_is_signed_permutation": true,
+        "all_current_model_sources_match_run": true,
+        "generator_source_matches_saved_baseline": true,
+        "linear_baseline_source_and_evaluator_match": true,
+        "baseline_packages_match": true,
+        "mssa_matches_current_saved_preprocessing_error": true,
+        "circular_phase_gauge_is_signed_permutation": true,
+        "toroidal_phase_gauge_is_signed_permutation": true,
+        "cdf_inputs_and_indices_match": true,
+        "cdf_lag_matches": true,
+        "circular_cdf_phase_gauge_is_signed_permutation": true,
+        "toroidal_cdf_phase_gauge_is_signed_permutation": true
+      },
+      "current_source_checks": {
+        "fields_first_phase.py": true,
+        "fields_first_frame.py": true,
+        "fields_first_tangent_atlas.py": true,
+        "fields_first_periods.py": true,
+        "fields_first_implicit_geometry.py": true,
+        "fields_first_span.py": true,
+        "fields_first_bounded_persistence.py": true,
+        "fields_first_paths.py": true,
+        "fields_first_preprocess.py": true,
+        "fields_first_sensor_pipeline.py": true
+      },
+      "baseline_dependency_checks": {
+        "compare_fields_first_baselines.py": {
+          "saved_sha256": "e718a41011d4754a3c4004e3cf12dbb32f35af8f85f6b2c728c58aa29b607c1f",
+          "current_sha256": "e718a41011d4754a3c4004e3cf12dbb32f35af8f85f6b2c728c58aa29b607c1f",
+          "whole_file_matches": true
+        },
+        "fields_first_preprocess.py": {
+          "saved_sha256": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "current_sha256": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "whole_file_matches": true
+        },
+        "fields_first_sensor_cases.py": {
+          "saved_sha256": "94e97569ec87f160d7f7f7073ad5b497f03c4dfb173ea1c6319334391db24e8c",
+          "current_sha256": "94e97569ec87f160d7f7f7073ad5b497f03c4dfb173ea1c6319334391db24e8c",
+          "whole_file_matches": true
+        },
+        "fields_first_periods.py": {
+          "saved_sha256": "376f9806362c29fbc7c37591979cf3a4ba5c5ff8f9f96f8a9f2f1e36bdba0509",
+          "current_sha256": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "whole_file_matches": false
+        },
+        "evaluate_tangent_overlap_angles.py": {
+          "saved_sha256": "6423e03bbf4a6e159306bde311ffbd7fb1292b62c8771692c9399b640da45271",
+          "current_sha256": "6423e03bbf4a6e159306bde311ffbd7fb1292b62c8771692c9399b640da45271",
+          "whole_file_matches": true
+        },
+        "tangent_overlap.py": {
+          "saved_sha256": "9b56530a87addc4b7dd8d59cf161e119abae55429866f068a1d311ff9af571d1",
+          "current_sha256": "9b56530a87addc4b7dd8d59cf161e119abae55429866f068a1d311ff9af571d1",
+          "whole_file_matches": true
+        }
+      },
+      "package_checks": {
+        "numpy": true,
+        "scipy": true,
+        "scikit-learn": true,
+        "dreimac": true,
+        "ripser": true
+      },
+      "phase_winding_matrices": {
+        "current": [
+          [
+            0,
+            1
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "circular": [
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "toroidal": [
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "circular_cdf": [
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "toroidal_cdf": [
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "metrics": {
+        "current_sensor_nrmse": 0.00695481017613429,
+        "current_phase_mae_rad": 0.004314847060861237,
+        "ssa_sensor_nrmse": 0.017281224798329463,
+        "mssa_sensor_nrmse": 0.007020971231631759,
+        "circular_phase_mae_rad": 0.11480522775120651,
+        "toroidal_phase_mae_rad": 0.12429036306525112,
+        "circular_cdf_phase_mae_rad": 0.08565997862020448,
+        "toroidal_cdf_phase_mae_rad": 0.09174185967385266
+      }
+    }
+  ]
+}

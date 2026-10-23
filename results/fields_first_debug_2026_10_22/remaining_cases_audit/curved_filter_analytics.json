@@ -1,0 +1,349 @@
+{
+  "case": "threephase4sensor",
+  "noise": 0.0,
+  "trend": null,
+  "ntrain": 2400,
+  "seed": 31,
+  "saved_selected_preprocessing_rank": 13,
+  "frequency_characters": [
+    "a",
+    "b",
+    "a+c",
+    "a-c",
+    "b+c",
+    "b-c"
+  ],
+  "frequencies_rad_per_sample": [
+    0.579827560572969,
+    0.4676537180435969,
+    1.4071727122478912,
+    -0.24751759110195315,
+    1.294998869718519,
+    -0.3596914336313253
+  ],
+  "SG_highpass_gains": [
+    0.993057121261929,
+    0.9551361029291123,
+    1.0052799113725217,
+    0.9481281364844514,
+    1.0182789984049818,
+    0.9348321164765842
+  ],
+  "trajectory_singular_values_first_16": [
+    260.4450157953142,
+    260.3629166335682,
+    258.8503540098998,
+    258.82242640453404,
+    66.12390538858484,
+    66.09069573103548,
+    66.05645830149628,
+    66.04494991386278,
+    63.570031899543,
+    63.53578160761018,
+    63.50660777200571,
+    63.48192926058809,
+    0.6869221693009723,
+    4.744637597097135e-12,
+    4.708387163638248e-12,
+    4.693136928806693e-12
+  ],
+  "trajectory_numerical_rank_1e10": 13,
+  "conditioning_relative_error": 3.6958624585580723e-14,
+  "actual_residual_vs_exact_Fourier_filter_relative_error": 3.6055793655972224e-14,
+  "filtered_carrier_positive_margins": [
+    1.0094102185953715,
+    0.9337166484174417
+  ],
+  "filtered_radius_squared_strict_monotonicity_margins": [
+    0.9867116036398468,
+    0.9135670276129273
+  ],
+  "third_phase_preserved_by_exact_filtered_snapshot_embedding": true,
+  "saved_topology_prefix_diagnostics": [
+    {
+      "lag": 4,
+      "neighbors": 24,
+      "n_landmarks": 192,
+      "selected_r": null,
+      "top_bars": [
+        [
+          0.5321974754333496,
+          0.8624222874641418
+        ],
+        [
+          0.5321274995803833,
+          0.8546186089515686
+        ],
+        [
+          0.5452763438224792,
+          0.7472108006477356
+        ],
+        [
+          0.5464375615119934,
+          0.7436834573745728
+        ],
+        [
+          0.550649881362915,
+          0.7379191517829895
+        ],
+        [
+          0.5334503650665283,
+          0.7149929404258728
+        ]
+      ],
+      "prefixes": [
+        {
+          "prefix": 1,
+          "common_birth": 0.5321974754333496,
+          "common_death": 0.8624222874641418,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.0239811344712313,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 2,
+          "common_birth": 0.5321974754333496,
+          "common_death": 0.8546186089515686,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.5970088237603375,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 3,
+          "common_birth": 0.5452763438224792,
+          "common_death": 0.7472108006477356,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.023770131906539,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 4,
+          "common_birth": 0.5464375615119934,
+          "common_death": 0.7436834573745728,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.0532742260389318,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 5,
+          "common_birth": 0.550649881362915,
+          "common_death": 0.7379191517829895,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.0315446393188739,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 6,
+          "common_birth": 0.550649881362915,
+          "common_death": 0.7149929404258728,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.0203180635195757,
+          "gap_at_least_2": false
+        }
+      ]
+    },
+    {
+      "lag": 8,
+      "neighbors": 24,
+      "n_landmarks": 192,
+      "selected_r": 2,
+      "top_bars": [
+        [
+          0.5493361353874207,
+          1.246942400932312
+        ],
+        [
+          0.5594003200531006,
+          1.2222437858581543
+        ],
+        [
+          0.5623740553855896,
+          0.7562054395675659
+        ],
+        [
+          0.5725454688072205,
+          0.760302722454071
+        ],
+        [
+          0.5610042810440063,
+          0.7485392093658447
+        ],
+        [
+          0.561445415019989,
+          0.7416559457778931
+        ]
+      ],
+      "prefixes": [
+        {
+          "prefix": 1,
+          "common_birth": 0.5493361353874207,
+          "common_death": 1.246942400932312,
+          "standard_range_admissible": true,
+          "lifetime_gap": 1.05244496104011,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 2,
+          "common_birth": 0.5594003200531006,
+          "common_death": 1.2222437858581543,
+          "standard_range_admissible": true,
+          "lifetime_gap": 3.419691133107479,
+          "gap_at_least_2": true
+        },
+        {
+          "prefix": 3,
+          "common_birth": 0.5623740553855896,
+          "common_death": 0.7562054395675659,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.03235097668477,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 4,
+          "common_birth": 0.5725454688072205,
+          "common_death": 0.7562054395675659,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.0011855142239459,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 5,
+          "common_birth": 0.5725454688072205,
+          "common_death": 0.7485392093658447,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.0406435602466204,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 6,
+          "common_birth": 0.5725454688072205,
+          "common_death": 0.7416559457778931,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.012762403900941,
+          "gap_at_least_2": false
+        }
+      ]
+    },
+    {
+      "lag": 8,
+      "neighbors": 48,
+      "n_landmarks": 192,
+      "selected_r": 2,
+      "top_bars": [
+        [
+          0.5493361353874207,
+          1.246942400932312
+        ],
+        [
+          0.5594003200531006,
+          1.2222437858581543
+        ],
+        [
+          0.5623740553855896,
+          0.7562054395675659
+        ],
+        [
+          0.5725454688072205,
+          0.760302722454071
+        ],
+        [
+          0.5610042810440063,
+          0.7485392093658447
+        ],
+        [
+          0.561445415019989,
+          0.7416559457778931
+        ]
+      ],
+      "prefixes": [
+        {
+          "prefix": 1,
+          "common_birth": 0.5493361353874207,
+          "common_death": 1.246942400932312,
+          "standard_range_admissible": true,
+          "lifetime_gap": 1.05244496104011,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 2,
+          "common_birth": 0.5594003200531006,
+          "common_death": 1.2222437858581543,
+          "standard_range_admissible": true,
+          "lifetime_gap": 3.419691133107479,
+          "gap_at_least_2": true
+        },
+        {
+          "prefix": 3,
+          "common_birth": 0.5623740553855896,
+          "common_death": 0.7562054395675659,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.03235097668477,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 4,
+          "common_birth": 0.5725454688072205,
+          "common_death": 0.7562054395675659,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.0011855142239459,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 5,
+          "common_birth": 0.5725454688072205,
+          "common_death": 0.7485392093658447,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.0406435602466204,
+          "gap_at_least_2": false
+        },
+        {
+          "prefix": 6,
+          "common_birth": 0.5725454688072205,
+          "common_death": 0.7416559457778931,
+          "standard_range_admissible": false,
+          "lifetime_gap": 1.012762403900941,
+          "gap_at_least_2": false
+        }
+      ]
+    }
+  ],
+  "analytic_embedding_certificate": {
+    "notation": "Identify R4 with C2: z_a=y1+i*y2, z_b=y3+i*y4; phases a,b,c are modulo 2*pi.",
+    "raw_map": "F(a,b,c)=((2+cos(c))*exp(i*a),(2+sin(c))*exp(i*b)).",
+    "raw_inverse": "a=arg(z_a), b=arg(z_b), c=atan2(abs(z_b)-2,abs(z_a)-2). Both radii are >=1.",
+    "raw_jacobian_gram": "DF^T DF=diag((2+cos(c))^2,(2+sin(c))^2,1); all singular values lie in [1,3].",
+    "filter_symbol": "H(w)=1-sum_{k=-64}^{64} g_k*cos(k*w), where g=savgol_coeffs(129,2). The symmetric filter has a real even symbol.",
+    "filter_gain_order": "Existing SG_highpass_gains correspond to [alpha_a,alpha_b,alpha_a+alpha_c,alpha_a-alpha_c,alpha_b+alpha_c,alpha_b-alpha_c].",
+    "coefficient_definitions": {
+      "Q_a": "2*H(alpha_a)",
+      "A_a": "(H(alpha_a+alpha_c)+H(alpha_a-alpha_c))/2",
+      "B_a": "(H(alpha_a+alpha_c)-H(alpha_a-alpha_c))/2",
+      "Q_b": "2*H(alpha_b)",
+      "A_b": "(H(alpha_b+alpha_c)+H(alpha_b-alpha_c))/2",
+      "B_b": "(H(alpha_b+alpha_c)-H(alpha_b-alpha_c))/2"
+    },
+    "filtered_map": "F_H(a,b,c)=(exp(i*a)*q_a(c),exp(i*b)*q_b(c)).",
+    "filtered_amplitudes": {
+      "q_a(c)": "Q_a+A_a*cos(c)+i*B_a*sin(c)",
+      "q_b(c)": "Q_b+A_b*sin(c)-i*B_b*cos(c)"
+    },
+    "radius_squared_polynomials": {
+      "P_a(u), u=cos(c)": "Q_a^2+B_a^2+2*Q_a*A_a*u+(A_a^2-B_a^2)*u^2",
+      "P_b(v), v=sin(c)": "Q_b^2+B_b^2+2*Q_b*A_b*v+(A_b^2-B_b^2)*v^2"
+    },
+    "sufficient_embedding_conditions": [
+      "Q_a > abs(A_a) and Q_b > abs(A_b): q_a,q_b never vanish.",
+      "Q_a*A_a > abs(A_a^2-B_a^2) and Q_b*A_b > abs(A_b^2-B_b^2): P_a and P_b have strictly positive derivatives on [-1,1]."
+    ],
+    "check_using_existing_numeric_fields": {
+      "nonzero_amplitude_margins": "filtered_carrier_positive_margins = [Q_a-abs(A_a), Q_b-abs(A_b)]",
+      "monotonicity_margins": "filtered_radius_squared_strict_monotonicity_margins = [Q_a*A_a-abs(A_a^2-B_a^2),Q_b*A_b-abs(A_b^2-B_b^2)]",
+      "derivative_lower_bounds": "P_a prime >= 2*first monotonicity margin; P_b prime >= 2*second margin. All stored margins are strictly positive."
+    },
+    "filtered_inverse": "Invert the two strictly increasing polynomials on [-1,1] to recover u=cos(c),v=sin(c) from abs(z_a)^2,abs(z_b)^2. Then c=atan2(v,u), a=arg(z_a)-arg(q_a(c)), b=arg(z_b)-arg(q_b(c)).",
+    "immersion_and_embedding": "The inverse above is smooth on the image because P_a prime,P_b prime are bounded away from zero, (u,v) lies on the unit circle, and q_a,q_b do not vanish. Thus F_H is a smooth embedding of T3 into R4.",
+    "delay_observability": "Every delay map with L>=1 contains this embedded snapshot. For L>=2 its L-1 prefix also contains an embedded snapshot; overlap observability holds.",
+    "conditioning_check": "The stored selected rank13 matches the numerical trajectory rank13. The actual saved-rank randomized projection/folding and the exact filtered Fourier model agree to the stored roundoff-scale relative errors.",
+    "scope": "Generator-informed diagnostic certificate for this fixed noiseless case and valid filter interior; it does not certify finite persistent homology, generic preprocessing, or arbitrary data."
+  }
+}

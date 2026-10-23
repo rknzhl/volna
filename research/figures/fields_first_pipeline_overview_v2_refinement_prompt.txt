@@ -1,0 +1,96 @@
+Refine this newly redesigned NINE-BAND infographic. Preserve its single vertical reading order, white background, navy serif type, pale-blue geometry and violet arrows. The user wants LARGE LABELS, SHORTER TEXT and MORE AIR. Further reduce word count by about one third, and increase all body/caption sizes by about 30%. Never compensate by shrinking drawings. Enlarge the canvas if necessary. Keep one full-width band per step; no two-column numbered panels. Exactly one final image, tall portrait.
+
+The key goal is a reader who has not read the paper. Favor one action and one visible result per band. Use the following shorter copy, replacing the longer paragraphs in the current image. Do not repeat the same message in multiple labels. Every caption must remain readable; no tiny footnotes.
+
+1. "Собираем окна"
+Body: "Ослабляем шум. Медленную часть сохраняем отдельно."
+Body: "m датчиков, L соседних снимков — одно окно."
+Keep the branching filtered traces, gray slow component and snapshot stack.
+REMOVE the extra undefined xi(t) label over the oscillatory residual: call it simply "Остаток".
+Snapshot block labels y_n,... are allowed only with ONE clear short definition: "y_n — один снимок всех датчиков".
+Keep x_n in R^{mL} -> xi_n in R^D, label "Линейные координаты".
+Short definition: "D — число координат".
+Do not add SVD/U algebra.
+
+2. "Находим допустимые направления"
+Body: "По близким окнам находим r направлений допустимого изменения."
+Caption: "r — число фаз; оцениваем по устойчивым циклам. Модель: тор."
+Keep one highlighted neighborhood and a large fitted local plane.
+Label: "Точка — одно окно".
+Remove the duplicate long text about local geometry, and remove the "Касательное пространство (локально)" label. The plane is explained by the plain-language body.
+
+3. "Переносим изменения"
+Body: "Переносим направления шага 2, сохраняя изменения общих снимков."
+Keep the two adjacent windows exactly correct:
+left x_n=[gray y_n; blue y_{n+1}; blue ellipsis; blue y_{n+L-1}];
+right x_{n+1}=[blue y_{n+1}; blue ellipsis; blue y_{n+L-1}; gray y_{n+L}].
+Keep matched blue change arrows and one clear violet "Перенос" arrow.
+Single caption: "Синим — общие снимки".
+No operator equations or brackets.
+
+4. "Согласуем поля"
+Body: "Подбираем r гладких полей, согласованных с переносом."
+Keep the frame arrows across several sample points.
+Mark the anchor: "Начальные направления фиксированы".
+Keep W(xi)=[W_1(xi),...,W_r(xi)] in R^{D x r}.
+Remove all other repeated prose and the long ochre caption.
+Important: at EACH sample point there is a whole r-direction frame. Labels W_1,...,W_r name components of fields, not different sample locations. Do not imply exact invariance.
+
+5. "Находим коэффициенты скорости"
+Body: "Раскладываем допустимую скорость по полям W."
+Keep the large vector diagram and the column a=(a_1,...,a_r)^T.
+One equation line: v=W(xi)a, beta_xi(v)=a in R^r.
+Label near v: "Скорость в R^D".
+Label on the arrow: "Решаем систему".
+Short beta caption: "beta возвращает коэффициенты a".
+No additional paragraphs or duplicate definitions.
+
+6. "Измеряем полные обороты"
+Body: "r полных обходов дают r столбцов матрицы Pi."
+Make the visual show ONE clear directed closed edge path around a WHITE HOLE in a finite triangular mesh. It must not be inside a filled triangle.
+Show that traversal -> ONE COLUMN labelled Pi_{:,j} -> the matrix Pi in R^{r x r}.
+REMOVE the ambiguous b column in this band; reserve b for the OPEN-path accumulation in band 7.
+REMOVE gamma labels and the small matrix-entry grid. A large clean Pi symbol plus its shape is enough.
+Caption on the arrow: "Интегрируем коэффициенты скорости".
+Ochre short caption: "Проверяем обходы. Согласуем интегралы."
+These are corrected integrals on a finite complex. Do not claim raw beta is exactly closed, or that Pi is diagonal.
+
+7. "Получаем углы"
+Body: "Переводим интегралы в доли оборота, затем — в углы."
+Add a SIMPLE OPEN violet path from xi_0 ("Опорное окно") to xi_n ("Это окно"), visually distinct from the CLOSED path in band 6. Show accumulation along that selected open path leading to b in R^r.
+Use a clear short normalization:
+b -- Pi^{-1} --> "Доли оборота" -- "2pi, mod 2pi" --> phi in T^r.
+Do NOT add the undefined d_1,...,d_r variables in the middle. Plain words "Доли оборота" are sufficient.
+Show large circle glyphs phi_1,...,phi_r and ellipsis.
+Short definition: "Угол — положение в цикле".
+Ochre caption: "Для новых окон — гладкая аппроксимация".
+The b is corrected, locally approximated accumulated coefficients along a chosen path; do not present a global real-valued b(xi) or an exact raw-integral formula.
+
+8. "Восстанавливаем показания"
+Body: "Из опорного окна меняем углы по одному, двигаясь по полям E."
+Keep E(xi)=W(xi)Pi/(2pi) as ONE clean equation.
+Keep the connected curved surface path xi_0 -> ... -> xi_hat_n. The endpoint MUST have a hat on xi.
+Label: "Численное интегрирование".
+In the LOWER RECONSTRUCTION CHAIN, replace the current ONE-window box with a LARGE group of THREE overlapping reconstructed window stacks labelled x_hat_n, x_hat_{n+1}, ... . Highlight the duplicate shared snapshot blocks so the averaging is visually concrete.
+Arrow caption: "Общие снимки усредняем".
+One short secondary caption: "Возвращаем исходный масштаб".
+Then + the gray slow component labelled "Медленная часть" -> restored sensor traces.
+Final caption: "Показания тех же датчиков".
+No extra I output-time notation is needed in this introductory diagram. No exact inverse theorem or regression decoder. Give this row sufficient height; do not cram its two related drawings.
+
+9. "Проверяем результат"
+Body: "L и размер окрестности выбираем по обучающим проверкам."
+Use FOUR simple clear checks with large type, rather than four cramped mini-plots:
+"Малая ошибка окон"
+"Возврат после полного оборота"
+"Два порядка дают близкий результат"
+"Шаг углов почти постоянен"
+Two independent output branches:
+"Пройдено → фазы и показания"
+"Не пройдено → отказ"
+No line connects the two outcomes.
+
+FOOTER:
+"Геометрия показана схематически. Точность проверяется численно."
+
+Do not preserve unnecessarily small text or obsolete wording. Overall content should feel like a carefully explained textbook sequence, with generous empty space and substantially larger type than the supplied image. All nine steps must remain. Do not add new jargon or unsupported mathematical equalities.

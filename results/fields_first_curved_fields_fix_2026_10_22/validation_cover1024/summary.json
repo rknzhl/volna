@@ -1,0 +1,11 @@
+[
+  {
+    "name": "three_phases",
+    "status": "unresolved_query_coverage",
+    "phase_dimension": 3,
+    "rmse_std_normalized": null,
+    "phase_mae_rad": null,
+    "primitive_phase_match": false,
+    "passed": false
+  }
+]

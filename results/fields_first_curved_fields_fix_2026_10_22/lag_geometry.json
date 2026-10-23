@@ -1,0 +1,44 @@
+[
+  {
+    "lag": 4,
+    "neighbors": 48,
+    "tangent_projection_error": 0.04314967167444023,
+    "source_normal_residual_max": 0.04716522212344628,
+    "source_normal_residual_median": 0.03237646024956546
+  },
+  {
+    "lag": 4,
+    "neighbors": 96,
+    "tangent_projection_error": 0.08418970714031769,
+    "source_normal_residual_max": 0.07807775067579711,
+    "source_normal_residual_median": 0.03783327564389576
+  },
+  {
+    "lag": 8,
+    "neighbors": 48,
+    "tangent_projection_error": 0.038408782287465776,
+    "source_normal_residual_max": 0.04558199146603805,
+    "source_normal_residual_median": 0.03221615728728659
+  },
+  {
+    "lag": 8,
+    "neighbors": 96,
+    "tangent_projection_error": 0.039076943446031985,
+    "source_normal_residual_max": 0.06789757385043531,
+    "source_normal_residual_median": 0.03879250379518713
+  },
+  {
+    "lag": 16,
+    "neighbors": 48,
+    "tangent_projection_error": 0.038382648919476146,
+    "source_normal_residual_max": 0.044422208257618334,
+    "source_normal_residual_median": 0.03217021434771012
+  },
+  {
+    "lag": 16,
+    "neighbors": 96,
+    "tangent_projection_error": 0.03852910557292341,
+    "source_normal_residual_max": 0.06869668809993436,
+    "source_normal_residual_median": 0.03829264087344532
+  }
+]

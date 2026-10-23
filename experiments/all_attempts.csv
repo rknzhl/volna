@@ -1,0 +1,10 @@
+name,model,status,sensors,noise_percent,phases,lag,phase_mae_rad,signal_nrmse
+toy_sine,Sine toy,transformed_conditionally,1,0,1,4,0.00020433630200750812,0.004958924972356995
+toy_torus,Two-wave toy,transformed_conditionally,12,0,2,4,0.001341513822752076,0.0010965583640428728
+scalar_noise10,One nonlinear sensor,accepted,1,10.0,1,8,0.011574082040588147,0.024989518643761775
+two_waves,Two waves,accepted,12,5.0,2,4,0.004314847060861237,0.00695481017613429
+noise00,Curved torus,accepted,4,0.0,3,8,0.004393306960247492,0.004556763741101716
+noise01,Curved torus,accepted,4,1.0,3,4,0.009327795549830044,0.006500211515414789
+noise05,Curved torus,accepted,4,5.0,3,4,0.010910400689206413,0.01839738967099542
+noise10,Curved torus,accepted,4,10.0,3,8,0.013933099830340861,0.022853572457643374
+toy_signal,10:1 harmonic diagnostic,unresolved_fit,1,0,,"4,8",,

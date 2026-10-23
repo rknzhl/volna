@@ -1,0 +1,19 @@
+{
+  "pipeline_result": "validation/three_phases.json",
+  "final_source_changes_after_fit": [
+    {
+      "file": "fields_first_phase.py",
+      "run_sha256": "ef652ac99fd7c2127ecdcf2791a385acd53ffb0c317d06ce29a326842b607e88",
+      "final_sha256": "ae13f15fd32a59f6b948aa6dedeb347b6b5c23e554bb0b14af9e5860453c5ff5"
+    },
+    {
+      "file": "fields_first_periods.py",
+      "run_sha256": "d9d848564360c18af63c72a2450e1a3fd113569149b0c62be9bbcbe869e2b434",
+      "final_sha256": "fd290918562517286fdf370cce6129bac897d2fdeec2dea2f16a32408d8a1bfc"
+    }
+  ],
+  "explanation": "The periods module corrected diagnostic labels/docstrings to acknowledge TRAIN spacing in scale selection. The phase module gained an early refusal of the unsupported local-graph retry for implicit geometry, before mutation. Both changes leave the accepted numerical path unchanged; the refusal has a regression test.",
+  "final_unit_test_count": 40,
+  "final_unit_tests_passed": true,
+  "unit_test_execution_seconds": 0.544
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "noise_percent": 0,
+    "case": "threephase4sensor",
+    "seed": 31,
+    "ntrain": 2400,
+    "ntest": 320,
+    "experiment_lags": [
+      4,
+      8
+    ],
+    "experiment_neighbors": [
+      24
+    ],
+    "status": "transformed_conditionally",
+    "phase_dimension": 3,
+    "source_linear_dimension": 13,
+    "conditioning_rank": 13,
+    "blocking_stage": null,
+    "tangent_spectral_gap": 0.9999999999999911,
+    "implicit_geometry_status": "fitted_implicit_geometry",
+    "implicit_geometry_failure": null,
+    "sensor_nrmse": 0.004362738136567828,
+    "phase_mae_rad": 0.00420070217755569,
+    "source": "fields_first_curved_fields_fix_2026_10_22/validation/three_phases.json"
+  },
+  {
+    "noise_percent": 1,
+    "case": "threephase4sensor",
+    "seed": 31,
+    "ntrain": 2400,
+    "ntest": 320,
+    "experiment_lags": [
+      4,
+      8
+    ],
+    "experiment_neighbors": [
+      24
+    ],
+    "status": "unresolved_fit",
+    "phase_dimension": 3,
+    "source_linear_dimension": 32,
+    "conditioning_rank": 13,
+    "blocking_stage": "unresolved_tangent_atlas_gap",
+    "tangent_spectral_gap": 0.002469127456017184,
+    "implicit_geometry_status": "unsupported_implicit_geometry",
+    "implicit_geometry_failure": "quadratic_relations_fail_validation",
+    "sensor_nrmse": null,
+    "phase_mae_rad": null,
+    "source": "fields_first_curved_noise_2026_10_22/baseline_noise01.json"
+  },
+  {
+    "noise_percent": 5,
+    "case": "threephase4sensor",
+    "seed": 31,
+    "ntrain": 2400,
+    "ntest": 320,
+    "experiment_lags": [
+      4,
+      8
+    ],
+    "experiment_neighbors": [
+      24
+    ],
+    "status": "unresolved_fit",
+    "phase_dimension": 3,
+    "source_linear_dimension": 32,
+    "conditioning_rank": 13,
+    "blocking_stage": "unresolved_tangent_atlas_gap",
+    "tangent_spectral_gap": 0.002110914382122797,
+    "implicit_geometry_status": "unsupported_implicit_geometry",
+    "implicit_geometry_failure": "no_exact_quadratic_relations",
+    "sensor_nrmse": null,
+    "phase_mae_rad": null,
+    "source": "fields_first_curved_noise_2026_10_22/baseline_noise05.json"
+  },
+  {
+    "noise_percent": 10,
+    "case": "threephase4sensor",
+    "seed": 31,
+    "ntrain": 2400,
+    "ntest": 320,
+    "experiment_lags": [
+      4,
+      8
+    ],
+    "experiment_neighbors": [
+      24
+    ],
+    "status": "unresolved_fit",
+    "phase_dimension": null,
+    "source_linear_dimension": 32,
+    "conditioning_rank": 13,
+    "blocking_stage": "unresolved_local_dimension",
+    "tangent_spectral_gap": null,
+    "implicit_geometry_status": null,
+    "implicit_geometry_failure": null,
+    "sensor_nrmse": null,
+    "phase_mae_rad": null,
+    "source": "fields_first_curved_noise_2026_10_22/baseline_noise10.json"
+  }
+]

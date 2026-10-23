@@ -1,0 +1,37 @@
+Use case: scientific-educational. EDIT AND EXTEND the supplied accepted research illustration. The user requests adding section 7 to the SAME unified figure, with very concise academic labels. Preserve all of sections 1–6 and their contents, diagrams, typesetting, palette and visual scale. Extend the white canvas DOWNWARD for a new full-width section 7; do not squeeze the existing six sections and do not shrink their type. Final single tall portrait image, approximately 1:2 width:height, at highest supported resolution. Pure white, navy mathematical serif, pale blue schematic manifolds and thin purple arrows, journal/textbook style. No new decorative elements or prose.
+
+CURRENT IMAGE AS LOCKED REFERENCE
+Keep the title and all six numbered headings, sensor measurement diagram, correctly shifted common window blocks, definitions m,N,L,K,H,P_0,P_1, general-r circle product, schematic M and tangent-space transfer, W frame labels and formulas, integral beta, full integer loop basis, period matrix Pi, three-stage coefficient-to-turns-to-angle normalization, circular-coordinate representation chi in R^{2r}. No fixed r=2 examples. No raw LaTeX text. General m,L,N,K,r throughout.
+
+ADDITION: NEW FULL-WIDTH BOTTOM BAND
+Keep the current chi(varphi) footer formula as a narrow separated strip BELOW section 6 and ABOVE the new section 7. Then a generous gap and a thin divider before the new section.
+Heading: "7. Восстановление показаний".
+Do not number any other new section.
+This band must have enough height for legible, well-spaced mathematics and one connected visual path, approximately one quarter of the final entire canvas.
+
+New content, precise and compact:
+1. At top of this band, caption "Поля углов" and one typeset formula
+[E_1(z),...,E_r(z)] = (1/(2pi)) W(z) Pi,    E_j(z) in T_zM.
+These are tangent vector fields that individually increase the corresponding recovered phase at unit rate while preserving the other phases.
+
+2. In the left half, draw a clean pale-blue schematic local manifold sheet with a sequential purple path. Start point labelled u_0=z_*; intermediate point u_1; ellipsis along path; final point labelled u_r=Psi(varphi).
+Arrows between endpoints are labelled E_1, ..., E_r, indicating the fields followed. Show short consecutive smoothly curved path segments, not a free straight ambient-space shortcut. No orthogonality or two-dimensional phase claim. This is a schematic projection for general r.
+Use the tiny caption "На M" if needed. Do not repeat a paragraph explaining it.
+
+3. In the right half, compact typeset initial value problem matching that path:
+{ d w_j(s)/ds = E_j(w_j(s)),
+  w_j(0)=u_{j-1} },
+u_j=w_j(varphi_j),   j=1,...,r.
+Below it one tiny explanatory line:
+"s — приращение угла".
+The path w_j(s) is on M; if space permits include w_j(s) in M on the same line. No new undefined flow symbols, no special linear matrices, no matrix exponentials because this is the GENERAL nonlinear construction. Keep equation block clear of all path labels.
+
+4. Across the bottom of this new band, a simple final result:
+xhat_n=Psi(varphi_n),    Psi=Phi^{-1}.
+Then a short visual pipeline of the whole collection of window columns:
+[xhat_0,...,xhat_{K-1}]  -- "Усреднение перекрытий" -->  Yhat in R^{m times N}.
+If helpful depict small stacked columns before the arrow and a simple rectangular measurement array after it. It must be clear the averaging uses ALL overlapping windows, not a single window. Use wide gaps and concise labels. No formula for folding indices, no hypothetical reconstruction of an entire unsensed spatial field.
+
+MATHEMATICAL TYPOGRAPHY / CARE
+Use Pi as an invertible r by r matrix, W(z) as mL by r, E_j(z) as tangent vectors in R^{mL}, varphi in T^r, Psi:T^r->M as inverse of Phi. Phi and Psi must be visually distinct. Match hats and subscripts exactly. Keep \mathcal T the shift distinct from T_zM tangent space and mathbb T^r torus in the preserved part.
+No additional prose beyond the specified short labels. Do not drop any of the first six sections. The final output is exactly ONE tall academic figure with SEVEN numbered sections and enough whitespace.

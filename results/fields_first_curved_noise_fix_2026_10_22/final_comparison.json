@@ -1,0 +1,246 @@
+[
+  {
+    "noise_percent": 0,
+    "r": 3,
+    "lag": 8,
+    "span": 12,
+    "original_span": 13,
+    "projection_error": 0.0006186958457212655,
+    "relation_tolerance": 1e-10,
+    "landmark_count": 1536,
+    "filtration_cap": null,
+    "phase_mae_rad": 0.004393306960247492,
+    "sensor_rmse_over_train_signal_std": 0.004556763741101716,
+    "query_windows": 123,
+    "query_snapshots": 130,
+    "phase_basis_determinant": 1,
+    "passed": true,
+    "training_gates": {
+      "core_status": "conditional_fields_first_model",
+      "passed": true,
+      "closed_projection_relative": 0.006228720341137812,
+      "duality_rms": 0.02737352162388511,
+      "phase_step_rmse": 0.00129380255204781,
+      "minimum_atlas_gap": 0.9999999999999936,
+      "flow_geometry": "ambient_tangent_extension",
+      "checks": {
+        "closed_projection": true,
+        "duality": true,
+        "phase_step": true,
+        "atlas_gap": true,
+        "train_encoder_full_coverage": true,
+        "full_turn": true,
+        "inverse": true,
+        "flow_order": true
+      },
+      "full_turn_relative": [
+        0.006838891139135558,
+        0.011934764987862886,
+        0.009100540600940583
+      ],
+      "full_turn_probe_count": 1,
+      "inverse_window_relative": 0.006981759978063547,
+      "inverse_discarded_span_relative": 0.0006196657282320054,
+      "flow_order_relative": 0.008660933655146613,
+      "source_rms": 1.0000020217183667
+    },
+    "query_diagnostics": {
+      "query_projection_relative": 0.0006190195092571473,
+      "encoder_coverage": 1.0,
+      "minimum_atlas_gap": 0.9999999999999951,
+      "prefold_overlap_relative": 0.00619786044311806,
+      "query_residual_window_relative": 0.007847606783715341,
+      "encoder_field_duality_rms": 0.03363385119122878,
+      "phase_step_rmse_against_frozen_training_step": 0.0011780575231902294,
+      "flow_domain": {
+        "maximum_nearest_distance": 0.27433546603844683,
+        "minimum_atlas_gap": 0.9999961778080019,
+        "minimum_frame_singular": 0.955191539856026
+      }
+    },
+    "execution_seconds": 116.268803208
+  },
+  {
+    "noise_percent": 1,
+    "r": 3,
+    "lag": 4,
+    "span": 12,
+    "original_span": 16,
+    "projection_error": 4.808579180296392e-05,
+    "relation_tolerance": 0.0008,
+    "landmark_count": 2048,
+    "filtration_cap": 0.6689553678035737,
+    "phase_mae_rad": 0.009327795549830044,
+    "sensor_rmse_over_train_signal_std": 0.006500211515414789,
+    "query_windows": 127,
+    "query_snapshots": 130,
+    "phase_basis_determinant": 1,
+    "passed": true,
+    "training_gates": {
+      "core_status": "conditional_fields_first_model",
+      "passed": true,
+      "closed_projection_relative": 0.006759431075551544,
+      "duality_rms": 0.024814007613553856,
+      "phase_step_rmse": 0.004085464858603226,
+      "minimum_atlas_gap": 0.9999376412019892,
+      "flow_geometry": "ambient_tangent_extension",
+      "checks": {
+        "closed_projection": true,
+        "duality": true,
+        "phase_step": true,
+        "atlas_gap": true,
+        "train_encoder_full_coverage": true,
+        "full_turn": true,
+        "inverse": true,
+        "flow_order": true
+      },
+      "full_turn_relative": [
+        0.015752231529207242,
+        0.007249954910268886,
+        0.0077231975813468684
+      ],
+      "full_turn_probe_count": 1,
+      "inverse_window_relative": 0.008672275912398865,
+      "inverse_discarded_span_relative": 4.738163443757445e-05,
+      "flow_order_relative": 0.0071216146971474215,
+      "source_rms": 1.0001747351182226
+    },
+    "query_diagnostics": {
+      "query_projection_relative": 4.888483582047498e-05,
+      "encoder_coverage": 1.0,
+      "minimum_atlas_gap": 0.9999556349120315,
+      "prefold_overlap_relative": 0.007173726760049924,
+      "query_residual_window_relative": 0.010237909433176566,
+      "encoder_field_duality_rms": 0.13483931760855353,
+      "phase_step_rmse_against_frozen_training_step": 0.0102934419428236,
+      "flow_domain": {
+        "maximum_nearest_distance": 0.30956027233300765,
+        "minimum_atlas_gap": 0.9999556349120315,
+        "minimum_frame_singular": 0.6203844663516941
+      }
+    },
+    "execution_seconds": 26.577785542
+  },
+  {
+    "noise_percent": 5,
+    "r": 3,
+    "lag": 4,
+    "span": 12,
+    "original_span": 16,
+    "projection_error": 0.0005529634541074631,
+    "relation_tolerance": 0.0032,
+    "landmark_count": 2048,
+    "filtration_cap": 0.6625864386558533,
+    "phase_mae_rad": 0.010910400689206413,
+    "sensor_rmse_over_train_signal_std": 0.01839738967099542,
+    "query_windows": 127,
+    "query_snapshots": 130,
+    "phase_basis_determinant": 1,
+    "passed": true,
+    "training_gates": {
+      "core_status": "conditional_fields_first_model",
+      "passed": true,
+      "closed_projection_relative": 0.009962149319441038,
+      "duality_rms": 0.02567525523960029,
+      "phase_step_rmse": 0.006660899106169987,
+      "minimum_atlas_gap": 0.9983266232683827,
+      "flow_geometry": "ambient_tangent_extension",
+      "checks": {
+        "closed_projection": true,
+        "duality": true,
+        "phase_step": true,
+        "atlas_gap": true,
+        "train_encoder_full_coverage": true,
+        "full_turn": true,
+        "inverse": true,
+        "flow_order": true
+      },
+      "full_turn_relative": [
+        0.04049924225273016,
+        0.010988106596716582,
+        0.018055361887174038
+      ],
+      "full_turn_probe_count": 1,
+      "inverse_window_relative": 0.024702873330325646,
+      "inverse_discarded_span_relative": 0.0005761448115290548,
+      "flow_order_relative": 0.01755001779785319,
+      "source_rms": 1.0001723781128071
+    },
+    "query_diagnostics": {
+      "query_projection_relative": 0.0005490938358236767,
+      "encoder_coverage": 1.0,
+      "minimum_atlas_gap": 0.9989040098220007,
+      "prefold_overlap_relative": 0.015766664475351144,
+      "query_residual_window_relative": 0.027619736968295262,
+      "encoder_field_duality_rms": 0.14305641733544558,
+      "phase_step_rmse_against_frozen_training_step": 0.01038679501087432,
+      "flow_domain": {
+        "maximum_nearest_distance": 0.31680594927087313,
+        "minimum_atlas_gap": 0.9989040098220007,
+        "minimum_frame_singular": 0.620494563199729
+      }
+    },
+    "execution_seconds": 27.319603083
+  },
+  {
+    "noise_percent": 10,
+    "r": 3,
+    "lag": 8,
+    "span": 12,
+    "original_span": 32,
+    "projection_error": 0.003079101309408893,
+    "relation_tolerance": 0.0064,
+    "landmark_count": 2048,
+    "filtration_cap": 0.6603959739208222,
+    "phase_mae_rad": 0.013933099830340861,
+    "sensor_rmse_over_train_signal_std": 0.022853572457643374,
+    "query_windows": 123,
+    "query_snapshots": 130,
+    "phase_basis_determinant": 1,
+    "passed": true,
+    "training_gates": {
+      "core_status": "conditional_fields_first_model",
+      "passed": true,
+      "closed_projection_relative": 0.006537617116232585,
+      "duality_rms": 0.018684185422760673,
+      "phase_step_rmse": 0.0021533278917168727,
+      "minimum_atlas_gap": 0.9951656279573702,
+      "flow_geometry": "ambient_tangent_extension",
+      "checks": {
+        "closed_projection": true,
+        "duality": true,
+        "phase_step": true,
+        "atlas_gap": true,
+        "train_encoder_full_coverage": true,
+        "full_turn": true,
+        "inverse": true,
+        "flow_order": true
+      },
+      "full_turn_relative": [
+        0.012486765955208175,
+        0.03431514916344643,
+        0.028856269702300583
+      ],
+      "full_turn_probe_count": 1,
+      "inverse_window_relative": 0.03368144808910723,
+      "inverse_discarded_span_relative": 0.003293843558968822,
+      "flow_order_relative": 0.022381507501738573,
+      "source_rms": 1.0000038972076144
+    },
+    "query_diagnostics": {
+      "query_projection_relative": 0.003116552979308913,
+      "encoder_coverage": 1.0,
+      "minimum_atlas_gap": 0.9963834013149072,
+      "prefold_overlap_relative": 0.02588988157349704,
+      "query_residual_window_relative": 0.04098054945167122,
+      "encoder_field_duality_rms": 0.04108216809410138,
+      "phase_step_rmse_against_frozen_training_step": 0.0027012884693652355,
+      "flow_domain": {
+        "maximum_nearest_distance": 0.2787311344854032,
+        "minimum_atlas_gap": 0.9963834013149072,
+        "minimum_frame_singular": 0.8917125099638211
+      }
+    },
+    "execution_seconds": 104.98556725
+  }
+]

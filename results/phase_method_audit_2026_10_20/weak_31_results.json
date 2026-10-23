@@ -1,0 +1,41 @@
+{
+  "case": "weak",
+  "seed": 31,
+  "lag": 2,
+  "counts": {
+    "train": 1400,
+    "validation": 200,
+    "test": 300
+  },
+  "protocol": "fixed local-affine global real potential; exact analytic encoder derivatives; rank-revealing LS cond=1e-8; lambda selected by validation structured window error among train+validation coframe gates; structured Hermite decoder",
+  "topology": {
+    "status": "unresolved",
+    "settings": {
+      "n_landmarks": 192,
+      "prime": 47,
+      "lifetime_gap": 2.0,
+      "cover_percent": 0.5,
+      "standard_range": true,
+      "check_integer_cocycles": true,
+      "source_neighbours": 12,
+      "averaging_window": 32,
+      "rank_selection": "largest lifetime gap among common-standard-range prefixes",
+      "partition": "exponential"
+    },
+    "selected_rank": null,
+    "rank_selection": {
+      "reason": "no_declared_persistence_gap_with_common_standard_range"
+    },
+    "direct_distance_control_error": 5.551115123125783e-16,
+    "geometric_rank_certified": false,
+    "primitive_true_phase_basis_certified": false,
+    "finite_complex_equivalence_to_manifold_certified": false,
+    "energy_truncation_applied": false,
+    "train_state_count": 1399,
+    "landmark_count": 192,
+    "library_warnings": []
+  },
+  "no_truth_used_to_fit_or_select": true,
+  "results": [],
+  "failure": "unresolved_initial_toroidal_coordinates"
+}

@@ -1,0 +1,17 @@
+{
+  "ambient16": 0.17721180799326183,
+  "local16": 0.2551282922412985,
+  "local_field_change": 0.23883874066638058,
+  "geometry": [
+    {
+      "k": 48,
+      "own_jet_tangent_error": 0.14136654151800856,
+      "source16_normal_residual_max": 0.04716522212344628
+    },
+    {
+      "k": 96,
+      "own_jet_tangent_error": 0.3394942592294462,
+      "source16_normal_residual_max": 0.07807775067579711
+    }
+  ]
+}

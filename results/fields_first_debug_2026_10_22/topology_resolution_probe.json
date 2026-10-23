@@ -1,0 +1,43 @@
+[
+  {
+    "case": "threephase6sensor",
+    "landmarks": 192,
+    "r": null,
+    "selection": {
+      "reason": "no_declared_persistence_gap_with_common_standard_range"
+    },
+    "seconds": 0.09105896949768066
+  },
+  {
+    "case": "threephase6sensor",
+    "landmarks": 384,
+    "r": 3,
+    "selection": {
+      "selected_count": 3,
+      "lifetime_gap": 2.6705321238838837,
+      "common_birth": 0.44279906153678894,
+      "common_death": 1.0192174911499023,
+      "rank_certified_for_true_manifold": false,
+      "criterion": "largest lifetime gap among common-standard-range prefixes"
+    },
+    "seconds": 0.2515730857849121
+  },
+  {
+    "case": "threephase4sensor",
+    "landmarks": 192,
+    "r": null,
+    "selection": {
+      "reason": "no_declared_persistence_gap_with_common_standard_range"
+    },
+    "seconds": 0.028817176818847656
+  },
+  {
+    "case": "threephase4sensor",
+    "landmarks": 384,
+    "r": null,
+    "selection": {
+      "reason": "no_declared_persistence_gap_with_common_standard_range"
+    },
+    "seconds": 0.09489202499389648
+  }
+]

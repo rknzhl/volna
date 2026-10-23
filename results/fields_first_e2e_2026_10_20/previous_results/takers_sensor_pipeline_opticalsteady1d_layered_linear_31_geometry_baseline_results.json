@@ -1,0 +1,355 @@
+{
+  "case": "opticalsteady1d_layered",
+  "trend": "linear",
+  "noise": 0.05,
+  "seed": 31,
+  "ntrain": 2400,
+  "ntest": 600,
+  "fit": {
+    "status": "unresolved_no_lag_passed_training_gates",
+    "preprocessing": {
+      "rank": 8,
+      "cv_selected": {
+        "degree": 0,
+        "rank": 8,
+        "cv_mse_raw": 0.0003738629743636015,
+        "fold_mse_raw": [
+          0.0003622368932484847,
+          0.0003850593202127249
+        ]
+      },
+      "lag": 32,
+      "window": 129,
+      "polyorder": 2,
+      "boundary_trim_each_side": 95,
+      "retained_training_count": 2210,
+      "scope": {
+        "slow_is_identified_physical_trend": false,
+        "polynomial_annihilation_degree": 2,
+        "shift_equivariance_region": "valid_mask interior only",
+        "phase_preservation_condition": "surviving filtered characters must still give an observable delay embedding",
+        "test_mode": "conditioning on the new observed block, not forecasting"
+      }
+    },
+    "attempts": [
+      {
+        "lag": 4,
+        "diagnostics": {
+          "dimension_selected": 3,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "rule": "smallest dimension with median cubic graph residual <0.01; tail residual is reported as a geometry diagnostic",
+            "median_singular_gaps": [
+              1.3202330146075836,
+              6.794063406027248,
+              1.9823893313074308,
+              3.8854877245218735
+            ],
+            "automatic_dimension_is_heuristic": true,
+            "neighbours": 24,
+            "candidates": [
+              {
+                "dimension": 1,
+                "median_cubic_graph_relative_residual": 0.5997357046990713,
+                "p90_cubic_graph_relative_residual": 0.6561893059867673
+              },
+              {
+                "dimension": 2,
+                "median_cubic_graph_relative_residual": 0.021294042552766648,
+                "p90_cubic_graph_relative_residual": 0.025697271736532523
+              },
+              {
+                "dimension": 3,
+                "median_cubic_graph_relative_residual": 0.009036379756975441,
+                "p90_cubic_graph_relative_residual": 0.012139997764198619
+              }
+            ]
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit"
+          ],
+          "full_window_dimension": 32,
+          "retained_numerical_linear_span": 32,
+          "linear_span_relative_residual": 7.253427734315765e-16,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "overlap": {
+            "minimum_prefix_singular": 0.6063437753030277,
+            "overlap_relative_residual_quantiles": [
+              0.08036477776902845,
+              0.15407486435224782,
+              0.3905753659157184
+            ]
+          },
+          "atlas_min_gap": 0.005308006749757788,
+          "frame_anchor_error": 3.80316585982835e-14,
+          "frame_transfer_relative": 0.05703743897029727,
+          "frame_min_singular": 1.3381169300682733e-06,
+          "frame_min_relative_singular": 1.5437100811692969e-06
+        },
+        "period_complex_diagnostics": null,
+        "gates": {
+          "core_status": "unresolved_degenerate_frame",
+          "passed": false
+        }
+      },
+      {
+        "lag": 8,
+        "diagnostics": {
+          "dimension_selected": 3,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "rule": "smallest dimension with median cubic graph residual <0.01; tail residual is reported as a geometry diagnostic",
+            "median_singular_gaps": [
+              1.3404286300885595,
+              6.757841145784268,
+              1.971110330059258,
+              3.644100152548211
+            ],
+            "automatic_dimension_is_heuristic": true,
+            "neighbours": 24,
+            "candidates": [
+              {
+                "dimension": 1,
+                "median_cubic_graph_relative_residual": 0.5899661960335941,
+                "p90_cubic_graph_relative_residual": 0.6515464310269866
+              },
+              {
+                "dimension": 2,
+                "median_cubic_graph_relative_residual": 0.021640218848731508,
+                "p90_cubic_graph_relative_residual": 0.02580305529696474
+              },
+              {
+                "dimension": 3,
+                "median_cubic_graph_relative_residual": 0.009600933736934375,
+                "p90_cubic_graph_relative_residual": 0.012355255219984101
+              }
+            ]
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit"
+          ],
+          "full_window_dimension": 64,
+          "retained_numerical_linear_span": 64,
+          "linear_span_relative_residual": 1.0333445005927232e-15,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "overlap": {
+            "minimum_prefix_singular": 0.7760235379125227,
+            "overlap_relative_residual_quantiles": [
+              0.07954248748712035,
+              0.1485361645882628,
+              0.371388811504669
+            ]
+          },
+          "atlas_min_gap": 0.001665799655489908,
+          "frame_anchor_error": 3.533958079188798e-14,
+          "frame_transfer_relative": 0.048142719290588706,
+          "frame_min_singular": 8.024956193041495e-06,
+          "frame_min_relative_singular": 9.29117020082382e-06
+        },
+        "period_complex_diagnostics": null,
+        "gates": {
+          "core_status": "unresolved_degenerate_frame",
+          "passed": false
+        }
+      },
+      {
+        "lag": 16,
+        "diagnostics": {
+          "dimension_selected": null,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "rule": "smallest dimension with median cubic graph residual <0.01; tail residual is reported as a geometry diagnostic",
+            "median_singular_gaps": [
+              1.3680484284854109,
+              6.906081139838789,
+              1.9104247305423476,
+              4.112384715480231
+            ],
+            "automatic_dimension_is_heuristic": true,
+            "neighbours": 24,
+            "candidates": [
+              {
+                "dimension": 1,
+                "median_cubic_graph_relative_residual": 0.5813351991537246,
+                "p90_cubic_graph_relative_residual": 0.6264492638995908
+              },
+              {
+                "dimension": 2,
+                "median_cubic_graph_relative_residual": 0.021762467819314704,
+                "p90_cubic_graph_relative_residual": 0.02568265880008186
+              },
+              {
+                "dimension": 3,
+                "median_cubic_graph_relative_residual": 0.010111121738237083,
+                "p90_cubic_graph_relative_residual": 0.012557435045141799
+              }
+            ]
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [],
+          "full_window_dimension": 128,
+          "retained_numerical_linear_span": 128,
+          "linear_span_relative_residual": 1.3116547217558052e-15,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule"
+        },
+        "period_complex_diagnostics": null,
+        "gates": {
+          "core_status": "unresolved_local_dimension",
+          "passed": false
+        }
+      },
+      {
+        "lag": 32,
+        "diagnostics": {
+          "dimension_selected": null,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "rule": "smallest dimension with median cubic graph residual <0.01; tail residual is reported as a geometry diagnostic",
+            "median_singular_gaps": [
+              1.3486193509992046,
+              7.010843133542778,
+              1.8835572349046452,
+              4.514604387491925
+            ],
+            "automatic_dimension_is_heuristic": true,
+            "neighbours": 24,
+            "candidates": [
+              {
+                "dimension": 1,
+                "median_cubic_graph_relative_residual": 0.5847153143902911,
+                "p90_cubic_graph_relative_residual": 0.6147331799748408
+              },
+              {
+                "dimension": 2,
+                "median_cubic_graph_relative_residual": 0.022598858252563102,
+                "p90_cubic_graph_relative_residual": 0.025300251615020402
+              },
+              {
+                "dimension": 3,
+                "median_cubic_graph_relative_residual": 0.011035528230633352,
+                "p90_cubic_graph_relative_residual": 0.013504947712905741
+              }
+            ]
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [],
+          "full_window_dimension": 256,
+          "retained_numerical_linear_span": 256,
+          "linear_span_relative_residual": 1.2912830071743608e-15,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule"
+        },
+        "period_complex_diagnostics": null,
+        "gates": {
+          "core_status": "unresolved_local_dimension",
+          "passed": false
+        }
+      },
+      {
+        "lag": 48,
+        "diagnostics": {
+          "dimension_selected": null,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "rule": "smallest dimension with median cubic graph residual <0.01; tail residual is reported as a geometry diagnostic",
+            "median_singular_gaps": [
+              1.3333835451834488,
+              7.009726416845886,
+              1.8375765409052065,
+              4.302555510242173
+            ],
+            "automatic_dimension_is_heuristic": true,
+            "neighbours": 24,
+            "candidates": [
+              {
+                "dimension": 1,
+                "median_cubic_graph_relative_residual": 0.5867094899312744,
+                "p90_cubic_graph_relative_residual": 0.6064291314736209
+              },
+              {
+                "dimension": 2,
+                "median_cubic_graph_relative_residual": 0.023420040851148575,
+                "p90_cubic_graph_relative_residual": 0.026196680472274043
+              },
+              {
+                "dimension": 3,
+                "median_cubic_graph_relative_residual": 0.01184622905910954,
+                "p90_cubic_graph_relative_residual": 0.013912737388056512
+              }
+            ]
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [],
+          "full_window_dimension": 384,
+          "retained_numerical_linear_span": 384,
+          "linear_span_relative_residual": 1.6459201983132622e-15,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule"
+        },
+        "period_complex_diagnostics": null,
+        "gates": {
+          "core_status": "unresolved_local_dimension",
+          "passed": false
+        }
+      }
+    ],
+    "selected_lag": null,
+    "gates": {
+      "closed_projection_relative": 0.05,
+      "duality_rms": 0.15,
+      "phase_step_rmse": 0.05,
+      "inverse_window_relative": 0.05,
+      "full_turn_relative": 0.05,
+      "flow_order_relative": 0.05,
+      "minimum_atlas_gap": 0.1,
+      "query_projection_relative": 0.1
+    },
+    "provenance": {
+      "takers_original_e2e.py": "982894b3ca3d313c2a54a0508b4577fee750320af2eda9e360fb133c29ae1740",
+      "takers_direct_frame_probe.py": "3ef22d504790183317e6512883f7270083c7e5baedc1e58aabb8fdbe9a65dec2",
+      "takers_tangent_atlas.py": "59f0859cf07da27c113b3e979e4c2de7a49cee2359fb05ff47e2b20323656004",
+      "takers_original_periods.py": "7ea263916df6d0f8b638fa06a714ee329811540d4dde026c0d0e4ef4e6d25e95",
+      "takers_path_class_check.py": "7dad56f13c4144a8a60a79c181d3832dcb872cca1d3afc93a6bd285dec01f8f3",
+      "takers_sensor_preprocess.py": "3edc722cb2b2b55a04dd6b9747881155d991d7989a929ddefa095fc613811a59",
+      "takers_original_sensor_pipeline.py": "cf952de24a12be36314e2a8e56a5caab85792bdc0692a431df1fb4ddc675c194",
+      "takers_sensor_cases.py": "9e4a23d47384ac95fbf8cac6f527ab846c692066a0a80a87c40df8ef16b59f7a"
+    },
+    "elapsed_fit_seconds": 90.61116600036621,
+    "scope": {
+      "inputs_are_readings_only": true,
+      "phase_initialization_used": false,
+      "regression_decoder_used": false,
+      "physical_trend_identified": false,
+      "reconstruction_mode": "conditioning on observed query block; not forecasting",
+      "acceptance_is_empirical_not_global_certificate": true,
+      "source_span_rule": "all source singular directions above relative threshold 1e-10; finite cutoff, not an exact full-span guarantee"
+    }
+  },
+  "transform_status": "unresolved_fit",
+  "prediction_frozen_before_truth_evaluation": true,
+  "generator_metadata": {
+    "case": "opticalsteady1d_layered",
+    "seed": 31,
+    "noise_level": 0.05,
+    "trend": "linear",
+    "trend_strength": 0.3,
+    "phase_mode": "rigid",
+    "rate_profile": "default",
+    "sigma_calibration_count": 2400,
+    "rigid_rotation_clean_model": false,
+    "regime": "outside stationary rigid-torus model / stress",
+    "phase_truth_scope": "generator phases; use only after model freeze",
+    "legacy_rational_sampling_resonance": false
+  },
+  "nominal_snr_db": 26.020599913279625,
+  "transform": {
+    "fit_status": "unresolved_no_lag_passed_training_gates"
+  }
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "name": "noise00",
+    "status": "transformed_conditionally",
+    "phase_dimension": 3,
+    "rmse_std_normalized": 0.004556763741101716,
+    "phase_mae_rad": 0.004393306960247492,
+    "primitive_phase_match": true,
+    "passed": true,
+    "noise": 0.0,
+    "elapsed_seconds": 116.268803208
+  },
+  {
+    "name": "noise01",
+    "status": "transformed_conditionally",
+    "phase_dimension": 3,
+    "rmse_std_normalized": 0.006500211515414789,
+    "phase_mae_rad": 0.009327795549830044,
+    "primitive_phase_match": true,
+    "passed": true,
+    "noise": 0.01,
+    "elapsed_seconds": 26.577785542
+  },
+  {
+    "name": "noise05",
+    "status": "transformed_conditionally",
+    "phase_dimension": 3,
+    "rmse_std_normalized": 0.01839738967099542,
+    "phase_mae_rad": 0.010910400689206413,
+    "primitive_phase_match": true,
+    "passed": true,
+    "noise": 0.05,
+    "elapsed_seconds": 27.319603083
+  },
+  {
+    "name": "noise10",
+    "status": "transformed_conditionally",
+    "phase_dimension": 3,
+    "rmse_std_normalized": 0.022853572457643374,
+    "phase_mae_rad": 0.013933099830340861,
+    "primitive_phase_match": true,
+    "passed": true,
+    "noise": 0.1,
+    "elapsed_seconds": 104.98556725
+  }
+]

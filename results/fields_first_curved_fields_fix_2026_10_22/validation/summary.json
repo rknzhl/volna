@@ -1,0 +1,11 @@
+[
+  {
+    "name": "three_phases",
+    "status": "transformed_conditionally",
+    "phase_dimension": 3,
+    "rmse_std_normalized": 0.004362738136567828,
+    "phase_mae_rad": 0.00420070217755569,
+    "primitive_phase_match": true,
+    "passed": true
+  }
+]

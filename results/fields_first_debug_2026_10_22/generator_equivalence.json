@@ -1,0 +1,106 @@
+{
+  "original_snapshot": "/private/tmp/takers_sensor_cases.py",
+  "original_snapshot_sha256": "9e4a23d47384ac95fbf8cac6f527ab846c692066a0a80a87c40df8ef16b59f7a",
+  "recovered_packaged_generator_sha256": "9661641cc7938aed4bfa6faefdb4f1f029bb25351c0f37daa448ce515dcb12e2",
+  "expected_manifest_generator_sha256": "9661641cc7938aed4bfa6faefdb4f1f029bb25351c0f37daa448ce515dcb12e2",
+  "current_generator_sha256": "94e97569ec87f160d7f7f7073ad5b497f03c4dfb173ea1c6319334391db24e8c",
+  "snapshot_recovery": "only original packaging edits: docstring, repository-relative source path, removed __main__ checks",
+  "all_observation_and_evaluator_arrays_bitwise_equal": true,
+  "maximum_numerical_threads": 1,
+  "estimator_fits_performed": false,
+  "runs": [
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_e2e_2026_10_20/fundamental2waves_noise0p05.json",
+      "source_sha256": "2ebeb2a8078c8ec651fd17e825f5c75b8d77f0473dad0a325f537233b803c0cf",
+      "configuration": {
+        "case": "fundamental2waves",
+        "seed": 31,
+        "noise": 0.05,
+        "trend": "quadratic",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "train_count": 2400,
+        "n": 3000
+      },
+      "observations_bitwise_equal": true,
+      "evaluator_arrays_bitwise_equal": {
+        "theta": true,
+        "clean_signal": true,
+        "trend": true,
+        "clean_total": true,
+        "noise": true,
+        "signal_train_std": true,
+        "sigma_noise": true
+      },
+      "shape": [
+        3000,
+        12
+      ],
+      "observations_sha256": "a7d0b7484ce5f2feca54da0d895db58053e0e86615b0bfe6c585babafe874155",
+      "train_observations_sha256": "617b1ba68100d19f994f4e9b57d82701adeaaee5d142fd503ace513d72723d25",
+      "query_observations_sha256": "849ff1bce26e3ce4a15bb1fe0b439fab9ef5f083b904ed5f1e9fbf446493d8b2"
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_e2e_2026_10_20/nonlinear3sensor_wide_noise0p05.json",
+      "source_sha256": "e798bf525b9e04e87eaccba84d46f51c4520ffc9ff6282c1d9aea5d420e2f8f4",
+      "configuration": {
+        "case": "nonlinear3sensor",
+        "seed": 47,
+        "noise": 0.05,
+        "trend": "quadratic",
+        "phase_mode": "rigid",
+        "rate_profile": "wide",
+        "train_count": 2400,
+        "n": 3000
+      },
+      "observations_bitwise_equal": true,
+      "evaluator_arrays_bitwise_equal": {
+        "theta": true,
+        "clean_signal": true,
+        "trend": true,
+        "clean_total": true,
+        "noise": true,
+        "signal_train_std": true,
+        "sigma_noise": true
+      },
+      "shape": [
+        3000,
+        3
+      ],
+      "observations_sha256": "4a788767c5a6e659bfaef55975696a4bbd7de2e68e0c6ff4d091c022a44c29fc",
+      "train_observations_sha256": "fdf5fbbfd301a5068dda8a6c2ec8ba840816e9bfe1cde30b72b6ed16dc6f1b58",
+      "query_observations_sha256": "930e103c18e2bc6f28b3ee64ce7eb5bec6726a0babba34e8d819b1b75dbe6063"
+    },
+    {
+      "source": "/Users/rknza/research/Takers/results/fields_first_e2e_2026_10_20/opticalsteady1d_layered_noise0p05.json",
+      "source_sha256": "de0094391b27aa77be63e549e16ec00611a7575a8aee5ff704cb06ae2fc54a12",
+      "configuration": {
+        "case": "opticalsteady1d_layered",
+        "seed": 31,
+        "noise": 0.05,
+        "trend": "linear",
+        "phase_mode": "rigid",
+        "rate_profile": "default",
+        "train_count": 2400,
+        "n": 3000
+      },
+      "observations_bitwise_equal": true,
+      "evaluator_arrays_bitwise_equal": {
+        "theta": true,
+        "clean_signal": true,
+        "trend": true,
+        "clean_total": true,
+        "noise": true,
+        "signal_train_std": true,
+        "sigma_noise": true
+      },
+      "shape": [
+        3000,
+        8
+      ],
+      "observations_sha256": "e31a8c8beaccf3653acd2cecc4174e9909b2db28c3af41da4e833ddd5c11f5a7",
+      "train_observations_sha256": "1ca1886035a5575d7086d39c9f2db1a56eac17881fe35523f6f3de4eecd2d756",
+      "query_observations_sha256": "83ffc43637b3242e2e4ca16eb0d336f67d9e9b6b2256508364e2779403a5edcb"
+    }
+  ]
+}

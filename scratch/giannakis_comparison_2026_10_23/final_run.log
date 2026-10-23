@@ -1,0 +1,88 @@
+FIT toy_sine
+VALIDATE toy_sine {"n_basis": 32, "regularization": 0.0001, "validation_reconstruction_mse": 4.61637267369658e-06, "validation_one_step_mse": 4.2789928722080854e-05, "selection_loss": 2.3703150697888718e-05}
+VALIDATE toy_sine {"n_basis": 32, "regularization": 0.001, "validation_reconstruction_mse": 4.616372673696416e-06, "validation_one_step_mse": 4.153657653543971e-05, "selection_loss": 2.3076474604568066e-05}
+VALIDATE toy_sine {"n_basis": 32, "regularization": 0.01, "validation_reconstruction_mse": 4.616372673696642e-06, "validation_one_step_mse": 5.723540942109122e-05, "selection_loss": 3.092589104739393e-05}
+VALIDATE toy_sine {"n_basis": 64, "regularization": 0.0001, "validation_reconstruction_mse": 4.665474394171575e-06, "validation_one_step_mse": 5.2152572957324e-05, "selection_loss": 2.8409023675747786e-05}
+VALIDATE toy_sine {"n_basis": 64, "regularization": 0.001, "validation_reconstruction_mse": 4.665474394172373e-06, "validation_one_step_mse": 5.1617665168010194e-05, "selection_loss": 2.8141569781091283e-05}
+VALIDATE toy_sine {"n_basis": 64, "regularization": 0.01, "validation_reconstruction_mse": 4.665474394172687e-06, "validation_one_step_mse": 6.12655742454761e-05, "selection_loss": 3.2965524319824395e-05}
+VALIDATE toy_sine {"n_basis": 128, "regularization": 0.0001, "validation_reconstruction_mse": 4.66547288358605e-06, "validation_one_step_mse": 5.146583670084251e-05, "selection_loss": 2.806565479221428e-05}
+VALIDATE toy_sine {"n_basis": 128, "regularization": 0.001, "validation_reconstruction_mse": 4.665472883585113e-06, "validation_one_step_mse": 5.1001585692764404e-05, "selection_loss": 2.7833529288174757e-05}
+VALIDATE toy_sine {"n_basis": 128, "regularization": 0.01, "validation_reconstruction_mse": 4.665472883585623e-06, "validation_one_step_mse": 6.1005399153931034e-05, "selection_loss": 3.283543601875833e-05}
+DONE toy_sine {"phase_dimension": 1, "phase_status": "evaluated", "phase_mae_rad": 0.007777455939224986, "sensor_nrmse": 0.009813782411276855, "elapsed_seconds": 0.335974958}
+FIT toy_torus
+VALIDATE toy_torus {"n_basis": 32, "regularization": 0.0001, "validation_reconstruction_mse": 9.096713629012088e-05, "validation_one_step_mse": 0.00011215954822538591, "selection_loss": 0.0001015633422577534}
+VALIDATE toy_torus {"n_basis": 32, "regularization": 0.001, "validation_reconstruction_mse": 9.096713629012095e-05, "validation_one_step_mse": 0.00011212994177216158, "selection_loss": 0.00010154853903114127}
+VALIDATE toy_torus {"n_basis": 32, "regularization": 0.01, "validation_reconstruction_mse": 9.09671362901204e-05, "validation_one_step_mse": 0.00011215308777981233, "selection_loss": 0.00010156011203496637}
+VALIDATE toy_torus {"n_basis": 64, "regularization": 0.0001, "validation_reconstruction_mse": 8.917404351290814e-05, "validation_one_step_mse": 0.0001103449902232476, "selection_loss": 9.975951686807787e-05}
+VALIDATE toy_torus {"n_basis": 64, "regularization": 0.001, "validation_reconstruction_mse": 8.917404351290842e-05, "validation_one_step_mse": 0.00011032759874031811, "selection_loss": 9.975082112661326e-05}
+VALIDATE toy_torus {"n_basis": 64, "regularization": 0.01, "validation_reconstruction_mse": 8.917404351290737e-05, "validation_one_step_mse": 0.00011045924721019517, "selection_loss": 9.981664536155128e-05}
+VALIDATE toy_torus {"n_basis": 128, "regularization": 0.0001, "validation_reconstruction_mse": 8.917331823467194e-05, "validation_one_step_mse": 0.00011022466197523287, "selection_loss": 9.96989901049524e-05}
+VALIDATE toy_torus {"n_basis": 128, "regularization": 0.001, "validation_reconstruction_mse": 8.917331823467045e-05, "validation_one_step_mse": 0.00011041123921946963, "selection_loss": 9.979227872707004e-05}
+VALIDATE toy_torus {"n_basis": 128, "regularization": 0.01, "validation_reconstruction_mse": 8.917331823467103e-05, "validation_one_step_mse": 0.00011052024060623052, "selection_loss": 9.984677942045077e-05}
+DONE toy_torus {"phase_dimension": 2, "phase_status": "evaluated", "phase_mae_rad": 0.06534582208682747, "sensor_nrmse": 0.0537314637644401, "elapsed_seconds": 1.7437737500000001}
+FIT scalar_noise10
+VALIDATE scalar_noise10 {"n_basis": 32, "regularization": 0.0001, "validation_reconstruction_mse": 9.923989921100248e-05, "validation_one_step_mse": 0.0013855279319863292, "selection_loss": 0.0007423839155986658}
+VALIDATE scalar_noise10 {"n_basis": 32, "regularization": 0.001, "validation_reconstruction_mse": 9.92398992110019e-05, "validation_one_step_mse": 0.001385834093421013, "selection_loss": 0.0007425369963160075}
+VALIDATE scalar_noise10 {"n_basis": 32, "regularization": 0.01, "validation_reconstruction_mse": 9.92398992110017e-05, "validation_one_step_mse": 0.0013961598433457755, "selection_loss": 0.0007476998712783886}
+VALIDATE scalar_noise10 {"n_basis": 64, "regularization": 0.0001, "validation_reconstruction_mse": 9.77294672352645e-05, "validation_one_step_mse": 0.0013849477500974653, "selection_loss": 0.0007413386086663649}
+VALIDATE scalar_noise10 {"n_basis": 64, "regularization": 0.001, "validation_reconstruction_mse": 9.772946723526691e-05, "validation_one_step_mse": 0.0013847953869892944, "selection_loss": 0.0007412624271122807}
+VALIDATE scalar_noise10 {"n_basis": 64, "regularization": 0.01, "validation_reconstruction_mse": 9.772946723526611e-05, "validation_one_step_mse": 0.0013975421410544287, "selection_loss": 0.0007476358041448474}
+VALIDATE scalar_noise10 {"n_basis": 128, "regularization": 0.0001, "validation_reconstruction_mse": 9.111582354318774e-05, "validation_one_step_mse": 0.0013726327763278604, "selection_loss": 0.0007318742999355241}
+VALIDATE scalar_noise10 {"n_basis": 128, "regularization": 0.001, "validation_reconstruction_mse": 9.111582354318604e-05, "validation_one_step_mse": 0.0013743996676375786, "selection_loss": 0.0007327577455903823}
+VALIDATE scalar_noise10 {"n_basis": 128, "regularization": 0.01, "validation_reconstruction_mse": 9.111582354318648e-05, "validation_one_step_mse": 0.0013999953872643625, "selection_loss": 0.0007455556054037745}
+DONE scalar_noise10 {"phase_dimension": 2, "phase_status": "phase_basis_unresolved", "phase_mae_rad": null, "sensor_nrmse": 0.02298703446162029, "elapsed_seconds": 0.9539884170000001}
+FIT two_waves
+VALIDATE two_waves {"n_basis": 32, "regularization": 0.0001, "validation_reconstruction_mse": 9.353958668216701e-05, "validation_one_step_mse": 0.00011481664822549587, "selection_loss": 0.00010417811745383144}
+VALIDATE two_waves {"n_basis": 32, "regularization": 0.001, "validation_reconstruction_mse": 9.353958668216493e-05, "validation_one_step_mse": 0.00011478595407306576, "selection_loss": 0.00010416277037761533}
+VALIDATE two_waves {"n_basis": 32, "regularization": 0.01, "validation_reconstruction_mse": 9.353958668216482e-05, "validation_one_step_mse": 0.00011479675566882012, "selection_loss": 0.00010416817117549248}
+VALIDATE two_waves {"n_basis": 64, "regularization": 0.0001, "validation_reconstruction_mse": 9.175789100018082e-05, "validation_one_step_mse": 0.00011301578012599965, "selection_loss": 0.00010238683556309023}
+VALIDATE two_waves {"n_basis": 64, "regularization": 0.001, "validation_reconstruction_mse": 9.175789100018106e-05, "validation_one_step_mse": 0.00011299821366494371, "selection_loss": 0.00010237805233256238}
+VALIDATE two_waves {"n_basis": 64, "regularization": 0.01, "validation_reconstruction_mse": 9.175789100018194e-05, "validation_one_step_mse": 0.00011311824281137779, "selection_loss": 0.00010243806690577986}
+VALIDATE two_waves {"n_basis": 128, "regularization": 0.0001, "validation_reconstruction_mse": 9.170257805661769e-05, "validation_one_step_mse": 0.00011287090032974197, "selection_loss": 0.00010228673919317983}
+VALIDATE two_waves {"n_basis": 128, "regularization": 0.001, "validation_reconstruction_mse": 9.170257805661937e-05, "validation_one_step_mse": 0.00011302671282793815, "selection_loss": 0.00010236464544227876}
+VALIDATE two_waves {"n_basis": 128, "regularization": 0.01, "validation_reconstruction_mse": 9.170257805661872e-05, "validation_one_step_mse": 0.00011312296879990237, "selection_loss": 0.00010241277342826055}
+DONE two_waves {"phase_dimension": 2, "phase_status": "evaluated", "phase_mae_rad": 0.06271178766656972, "sensor_nrmse": 0.05430481716556717, "elapsed_seconds": 1.6698996670000001}
+FIT noise00
+VALIDATE noise00 {"n_basis": 32, "regularization": 0.0001, "validation_reconstruction_mse": 0.001313275941650508, "validation_one_step_mse": 0.0018126877300239706, "selection_loss": 0.0015629818358372394}
+VALIDATE noise00 {"n_basis": 32, "regularization": 0.001, "validation_reconstruction_mse": 0.0013132759416505074, "validation_one_step_mse": 0.0018126812087784806, "selection_loss": 0.0015629785752144941}
+VALIDATE noise00 {"n_basis": 32, "regularization": 0.01, "validation_reconstruction_mse": 0.0013132759416505078, "validation_one_step_mse": 0.0018127347037976817, "selection_loss": 0.0015630053227240948}
+VALIDATE noise00 {"n_basis": 64, "regularization": 0.0001, "validation_reconstruction_mse": 4.6580168023378994e-05, "validation_one_step_mse": 0.00033039140391995144, "selection_loss": 0.00018848578597166523}
+VALIDATE noise00 {"n_basis": 64, "regularization": 0.001, "validation_reconstruction_mse": 4.6580168023378364e-05, "validation_one_step_mse": 0.0003307476830435971, "selection_loss": 0.00018866392553348773}
+VALIDATE noise00 {"n_basis": 64, "regularization": 0.01, "validation_reconstruction_mse": 4.6580168023379604e-05, "validation_one_step_mse": 0.0003310521617674219, "selection_loss": 0.00018881616489540076}
+VALIDATE noise00 {"n_basis": 128, "regularization": 0.0001, "validation_reconstruction_mse": 2.270583560331875e-05, "validation_one_step_mse": 0.00030496394504155803, "selection_loss": 0.0001638348903224384}
+VALIDATE noise00 {"n_basis": 128, "regularization": 0.001, "validation_reconstruction_mse": 2.270583560331934e-05, "validation_one_step_mse": 0.00030547758378546644, "selection_loss": 0.00016409170969439288}
+VALIDATE noise00 {"n_basis": 128, "regularization": 0.01, "validation_reconstruction_mse": 2.2705835603318988e-05, "validation_one_step_mse": 0.00030588916501781213, "selection_loss": 0.00016429750031056556}
+DONE noise00 {"phase_dimension": 3, "phase_status": "phase_basis_unresolved", "phase_mae_rad": null, "sensor_nrmse": 0.039140514076441674, "elapsed_seconds": 1.5523557500000003}
+FIT noise01
+VALIDATE noise01 {"n_basis": 32, "regularization": 0.0001, "validation_reconstruction_mse": 0.0007570213025425953, "validation_one_step_mse": 0.0016808138379167533, "selection_loss": 0.0012189175702296744}
+VALIDATE noise01 {"n_basis": 32, "regularization": 0.001, "validation_reconstruction_mse": 0.0007570213025425952, "validation_one_step_mse": 0.0016812573970162433, "selection_loss": 0.0012191393497794191}
+VALIDATE noise01 {"n_basis": 32, "regularization": 0.01, "validation_reconstruction_mse": 0.0007570213025425953, "validation_one_step_mse": 0.001690602305981009, "selection_loss": 0.0012238118042618021}
+VALIDATE noise01 {"n_basis": 64, "regularization": 0.0001, "validation_reconstruction_mse": 0.00012164253431840068, "validation_one_step_mse": 0.0007051303918785516, "selection_loss": 0.00041338646309847614}
+VALIDATE noise01 {"n_basis": 64, "regularization": 0.001, "validation_reconstruction_mse": 0.00012164253431839729, "validation_one_step_mse": 0.000706223928624556, "selection_loss": 0.00041393323147147665}
+VALIDATE noise01 {"n_basis": 64, "regularization": 0.01, "validation_reconstruction_mse": 0.00012164253431839771, "validation_one_step_mse": 0.0007174062033749358, "selection_loss": 0.00041952436884666675}
+VALIDATE noise01 {"n_basis": 128, "regularization": 0.0001, "validation_reconstruction_mse": 8.739725208844408e-05, "validation_one_step_mse": 0.0005981540623826903, "selection_loss": 0.0003427756572355672}
+VALIDATE noise01 {"n_basis": 128, "regularization": 0.001, "validation_reconstruction_mse": 8.739725208844433e-05, "validation_one_step_mse": 0.0005991543560037949, "selection_loss": 0.0003432758040461196}
+VALIDATE noise01 {"n_basis": 128, "regularization": 0.01, "validation_reconstruction_mse": 8.739725208844437e-05, "validation_one_step_mse": 0.0006097200797746109, "selection_loss": 0.0003485586659315276}
+DONE noise01 {"phase_dimension": 3, "phase_status": "phase_basis_unresolved", "phase_mae_rad": null, "sensor_nrmse": 0.03548705046909622, "elapsed_seconds": 1.5312843329999994}
+FIT noise05
+VALIDATE noise05 {"n_basis": 32, "regularization": 0.0001, "validation_reconstruction_mse": 0.0008036129223501055, "validation_one_step_mse": 0.0017299038975010623, "selection_loss": 0.001266758409925584}
+VALIDATE noise05 {"n_basis": 32, "regularization": 0.001, "validation_reconstruction_mse": 0.0008036129223501055, "validation_one_step_mse": 0.0017305546294047944, "selection_loss": 0.00126708377587745}
+VALIDATE noise05 {"n_basis": 32, "regularization": 0.01, "validation_reconstruction_mse": 0.0008036129223501045, "validation_one_step_mse": 0.0017398035564712138, "selection_loss": 0.0012717082394106591}
+VALIDATE noise05 {"n_basis": 64, "regularization": 0.0001, "validation_reconstruction_mse": 0.00012986085543924478, "validation_one_step_mse": 0.0007169872412900035, "selection_loss": 0.00042342404836462414}
+VALIDATE noise05 {"n_basis": 64, "regularization": 0.001, "validation_reconstruction_mse": 0.0001298608554392443, "validation_one_step_mse": 0.0007180887470808973, "selection_loss": 0.0004239748012600708}
+VALIDATE noise05 {"n_basis": 64, "regularization": 0.01, "validation_reconstruction_mse": 0.00012986085543924579, "validation_one_step_mse": 0.0007292909314637377, "selection_loss": 0.00042957589345149174}
+VALIDATE noise05 {"n_basis": 128, "regularization": 0.0001, "validation_reconstruction_mse": 9.275899759846055e-05, "validation_one_step_mse": 0.0006025080029642449, "selection_loss": 0.0003476335002813527}
+VALIDATE noise05 {"n_basis": 128, "regularization": 0.001, "validation_reconstruction_mse": 9.275899759846119e-05, "validation_one_step_mse": 0.0006035767135157632, "selection_loss": 0.00034816785555711216}
+VALIDATE noise05 {"n_basis": 128, "regularization": 0.01, "validation_reconstruction_mse": 9.275899759846005e-05, "validation_one_step_mse": 0.000614345434648141, "selection_loss": 0.00035355221612330055}
+DONE noise05 {"phase_dimension": 3, "phase_status": "phase_basis_unresolved", "phase_mae_rad": null, "sensor_nrmse": 0.03583218814373546, "elapsed_seconds": 1.7051064169999997}
+FIT noise10
+VALIDATE noise10 {"n_basis": 32, "regularization": 0.0001, "validation_reconstruction_mse": 0.0013012586087665437, "validation_one_step_mse": 0.001791300838029844, "selection_loss": 0.001546279723398194}
+VALIDATE noise10 {"n_basis": 32, "regularization": 0.001, "validation_reconstruction_mse": 0.0013012586087665437, "validation_one_step_mse": 0.0017912995869041287, "selection_loss": 0.0015462790978353362}
+VALIDATE noise10 {"n_basis": 32, "regularization": 0.01, "validation_reconstruction_mse": 0.0013012586087665437, "validation_one_step_mse": 0.001791392085041566, "selection_loss": 0.0015463253469040548}
+VALIDATE noise10 {"n_basis": 64, "regularization": 0.0001, "validation_reconstruction_mse": 6.724947974492013e-05, "validation_one_step_mse": 0.00034856058107983256, "selection_loss": 0.00020790503041237635}
+VALIDATE noise10 {"n_basis": 64, "regularization": 0.001, "validation_reconstruction_mse": 6.724947974492024e-05, "validation_one_step_mse": 0.0003489162391778247, "selection_loss": 0.00020808285946137246}
+VALIDATE noise10 {"n_basis": 64, "regularization": 0.01, "validation_reconstruction_mse": 6.724947974492013e-05, "validation_one_step_mse": 0.00034949083880950047, "selection_loss": 0.0002083701592772103}
+VALIDATE noise10 {"n_basis": 128, "regularization": 0.0001, "validation_reconstruction_mse": 3.926528205515352e-05, "validation_one_step_mse": 0.0003163878555463294, "selection_loss": 0.00017782656880074147}
+VALIDATE noise10 {"n_basis": 128, "regularization": 0.001, "validation_reconstruction_mse": 3.926528205515347e-05, "validation_one_step_mse": 0.000316848012292748, "selection_loss": 0.00017805664717395072}
+VALIDATE noise10 {"n_basis": 128, "regularization": 0.01, "validation_reconstruction_mse": 3.926528205515334e-05, "validation_one_step_mse": 0.00031763203947343725, "selection_loss": 0.0001784486607642953}
+DONE noise10 {"phase_dimension": 3, "phase_status": "phase_basis_unresolved", "phase_mae_rad": null, "sensor_nrmse": 0.039154652015475196, "elapsed_seconds": 1.491864833000001}

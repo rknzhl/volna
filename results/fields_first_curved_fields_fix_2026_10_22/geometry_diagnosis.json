@@ -1,0 +1,24 @@
+{
+  "geometry": [
+    {
+      "name": "cubic",
+      "tangent_projection_relative": 0.043149671674416294,
+      "minimum_atlas_gap": 0.44106261878950637
+    },
+    {
+      "name": "cubic_half_bandwidth",
+      "tangent_projection_relative": 0.07545267713607716,
+      "minimum_atlas_gap": 0.12376632131060106
+    },
+    {
+      "name": "quartic",
+      "tangent_projection_relative": 0.08633638918079975,
+      "minimum_atlas_gap": 0.005359427184951748
+    }
+  ],
+  "oracle_control_only": true,
+  "ideal_linear_encoder_original_basis_duality": 0.23643163392197597,
+  "ideal_linear_encoder_source_basis_duality": 0.13875773881350592,
+  "elapsed_seconds": 21.770428959,
+  "numerical_threads": 1
+}

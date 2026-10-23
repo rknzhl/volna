@@ -1,0 +1,34 @@
+{
+  "6": {
+    "projector_max_absolute_error": 1.5543122344752192e-15,
+    "spectral_gap_max_error": 7.771561172376096e-16,
+    "beta_action_max_error": 3.836930773104541e-13
+  },
+  "48": {
+    "projector_max_absolute_error": 2.983724378680108e-16,
+    "spectral_gap_max_error": 4.440892098500626e-16,
+    "beta_action_max_error": 1.2434497875801753e-13
+  },
+  "safety_checks": 6,
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "filepath": "/Users/rknza/research/Takers/.venv/lib/python3.9/site-packages/scipy/.dylibs/libopenblas.0.dylib",
+      "version": "0.3.27",
+      "threading_layer": "pthreads",
+      "architecture": "neoversen1"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libomp",
+      "filepath": "/Users/rknza/research/Takers/.venv/lib/python3.9/site-packages/sklearn/.dylibs/libomp.dylib",
+      "version": null
+    }
+  ],
+  "elapsed_seconds": 0.20589494705200195
+}

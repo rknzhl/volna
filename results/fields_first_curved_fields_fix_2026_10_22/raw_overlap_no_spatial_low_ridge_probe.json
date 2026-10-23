@@ -1,0 +1,9 @@
+{
+  "ridge": 1e-10,
+  "spatial_weight": 0.0,
+  "full_overlap_relative": 6.75392711552805e-05,
+  "normal_relative": 0.03625589807505023,
+  "reference_relative": 0.06194419394384935,
+  "minimum_singular": 0.6624369173696982,
+  "seconds": 0.8094991669999998
+}

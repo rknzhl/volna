@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "prime": 47,
+  "filtration_threshold": 0.5947759539539763,
+  "known_phases_used": false,
+  "numerical_threads": 1,
+  "elapsed_seconds": 3.9363866670000003,
+  "selected_dimension": 3,
+  "threshold": 0.5947759539539763,
+  "selection": {
+    "selected_count": 3,
+    "lifetime_gap": 1.3907292394766724,
+    "common_birth": 0.28117701411247253,
+    "common_death": 0.6002949476242065,
+    "rank_certified_for_true_manifold": false,
+    "lifetime_gap_required": false,
+    "criterion": "independent dimension with common standard range"
+  },
+  "diagnostic": {
+    "train_fill_distance": 0.1926487191995165,
+    "scale_selection": "midpoint of widest standard interval with exactly r active classes and TRAIN buffer",
+    "training_sampling_buffer": 0.1019797609423565,
+    "standard_scale_interval": [
+      0.5623540282249451,
+      0.6002949476242065
+    ],
+    "allowed_scale_interval": [
+      0.5892569602837461,
+      0.6002949476242065
+    ],
+    "selected_scale_interval": [
+      0.5892569602837461,
+      0.6002949476242065
+    ],
+    "rips_threshold": 0.5947759539539763,
+    "cover_radius": 0.29738797697698816,
+    "active_b1_mod_prime": 3,
+    "train_cover_margin": 0.10473925777747164,
+    "coverage_guarantee": "covers the TRAIN neighbourhood of radius R minus TRAIN fill distance; no promise for all future states"
+  }
+}

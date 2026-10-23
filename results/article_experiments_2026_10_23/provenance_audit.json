@@ -1,0 +1,665 @@
+{
+  "rows": [
+    {
+      "name": "noise00.json",
+      "result_path": "/Users/rknza/research/Takers/results/fields_first_curved_noise_fix_2026_10_22/noise00.json",
+      "case": "threephase4sensor",
+      "trend": null,
+      "seed": 31,
+      "noise_fraction": 0.0,
+      "r": 3,
+      "m": 4,
+      "N_train": 2400,
+      "N_query": 320,
+      "N_train_after_preparation": 2210,
+      "N_eval_sensors": 130,
+      "N_eval_phases": 123,
+      "eval_raw_first": 2495,
+      "eval_raw_last": 2624,
+      "phase_MAE_rad": 0.004393306960247492,
+      "clean_sensor_NRMSE": 0.004556763741101716,
+      "clean_sensor_NRMSE_definition": "sqrt(mean(((Y_hat-Y_clean)/clean_TRAIN_channel_std)^2))",
+      "closed_integral_correction": 0.006228720341137812,
+      "full_turn_max_training_origin": 0.011934764987862886,
+      "flow_order_relative": 0.008660933655146613,
+      "inverse_window_relative": 0.006981759978063547,
+      "full_turn_max_eight_training_starts": 0.02212169509710973,
+      "lag": 8,
+      "neighbors": 24,
+      "D": 12,
+      "fit_seconds": 113.77189469337463,
+      "end_to_end_seconds": 116.268803208,
+      "timing_scope": "end-to-end benchmark",
+      "input_r_supplied": false,
+      "phase_basis_absolute_determinant": 1,
+      "status": "transformed_conditionally",
+      "recorded_fitting_source_count": 10,
+      "every_recorded_fitting_hash_matches": true,
+      "mismatched_source_names": [],
+      "hash_checks": {
+        "fields_first_phase.py": {
+          "recorded": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "current": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "matches": true
+        },
+        "fields_first_frame.py": {
+          "recorded": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "current": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "matches": true
+        },
+        "fields_first_tangent_atlas.py": {
+          "recorded": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "current": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "matches": true
+        },
+        "fields_first_periods.py": {
+          "recorded": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "current": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "matches": true
+        },
+        "fields_first_implicit_geometry.py": {
+          "recorded": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "current": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "matches": true
+        },
+        "fields_first_span.py": {
+          "recorded": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "current": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "matches": true
+        },
+        "fields_first_bounded_persistence.py": {
+          "recorded": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "current": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "matches": true
+        },
+        "fields_first_paths.py": {
+          "recorded": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "current": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "matches": true
+        },
+        "fields_first_preprocess.py": {
+          "recorded": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "current": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "matches": true
+        },
+        "fields_first_sensor_pipeline.py": {
+          "recorded": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "current": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "matches": true
+        }
+      },
+      "frozen_model": {
+        "path": "/private/tmp/takers_curved_noise_fix_20261022/noise00_candidate.pkl",
+        "exists": true,
+        "archived_in_repository": false,
+        "bytes": 32990413,
+        "status": "conditional_fields_first_model",
+        "source_windows_shape": [
+          2203,
+          12
+        ],
+        "train_phases_shape": [
+          2203,
+          3
+        ],
+        "frozen_fit_metadata_match": {
+          "lag": true,
+          "r": true,
+          "span_dimension": true,
+          "closure": true,
+          "encoder_duality": true
+        },
+        "all_metadata_match": true,
+        "contains_preprocess_model": false,
+        "contains_query_prediction": false,
+        "conditioning_cache": {
+          "path": "/private/tmp/takers_curved_noise_fix_20261022/noise00_inputs.pkl",
+          "exists": false
+        }
+      }
+    },
+    {
+      "name": "noise01.json",
+      "result_path": "/Users/rknza/research/Takers/results/fields_first_curved_noise_fix_2026_10_22/noise01.json",
+      "case": "threephase4sensor",
+      "trend": null,
+      "seed": 31,
+      "noise_fraction": 0.01,
+      "r": 3,
+      "m": 4,
+      "N_train": 2400,
+      "N_query": 320,
+      "N_train_after_preparation": 2210,
+      "N_eval_sensors": 130,
+      "N_eval_phases": 127,
+      "eval_raw_first": 2495,
+      "eval_raw_last": 2624,
+      "phase_MAE_rad": 0.009327795549830044,
+      "clean_sensor_NRMSE": 0.006500211515414789,
+      "clean_sensor_NRMSE_definition": "sqrt(mean(((Y_hat-Y_clean)/clean_TRAIN_channel_std)^2))",
+      "closed_integral_correction": 0.006759431075551544,
+      "full_turn_max_training_origin": 0.015752231529207242,
+      "flow_order_relative": 0.0071216146971474215,
+      "inverse_window_relative": 0.008672275912398865,
+      "full_turn_max_eight_training_starts": 0.015752231529207242,
+      "lag": 4,
+      "neighbors": 24,
+      "D": 12,
+      "fit_seconds": 24.227574825286865,
+      "end_to_end_seconds": 26.577785542,
+      "timing_scope": "end-to-end benchmark",
+      "input_r_supplied": false,
+      "phase_basis_absolute_determinant": 1,
+      "status": "transformed_conditionally",
+      "recorded_fitting_source_count": 10,
+      "every_recorded_fitting_hash_matches": true,
+      "mismatched_source_names": [],
+      "hash_checks": {
+        "fields_first_phase.py": {
+          "recorded": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "current": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "matches": true
+        },
+        "fields_first_frame.py": {
+          "recorded": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "current": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "matches": true
+        },
+        "fields_first_tangent_atlas.py": {
+          "recorded": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "current": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "matches": true
+        },
+        "fields_first_periods.py": {
+          "recorded": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "current": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "matches": true
+        },
+        "fields_first_implicit_geometry.py": {
+          "recorded": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "current": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "matches": true
+        },
+        "fields_first_span.py": {
+          "recorded": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "current": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "matches": true
+        },
+        "fields_first_bounded_persistence.py": {
+          "recorded": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "current": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "matches": true
+        },
+        "fields_first_paths.py": {
+          "recorded": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "current": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "matches": true
+        },
+        "fields_first_preprocess.py": {
+          "recorded": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "current": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "matches": true
+        },
+        "fields_first_sensor_pipeline.py": {
+          "recorded": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "current": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "matches": true
+        }
+      },
+      "frozen_model": {
+        "path": "/private/tmp/takers_curved_noise_fix_20261022/noise01_candidate.pkl",
+        "exists": true,
+        "archived_in_repository": false,
+        "bytes": 61402723,
+        "status": "conditional_fields_first_model",
+        "source_windows_shape": [
+          2207,
+          12
+        ],
+        "train_phases_shape": [
+          2207,
+          3
+        ],
+        "frozen_fit_metadata_match": {
+          "lag": true,
+          "r": true,
+          "span_dimension": true,
+          "closure": true,
+          "encoder_duality": true
+        },
+        "all_metadata_match": true,
+        "contains_preprocess_model": false,
+        "contains_query_prediction": false,
+        "conditioning_cache": {
+          "path": "/private/tmp/takers_curved_noise_fix_20261022/noise01_inputs.pkl",
+          "exists": true
+        }
+      }
+    },
+    {
+      "name": "noise05.json",
+      "result_path": "/Users/rknza/research/Takers/results/fields_first_curved_noise_fix_2026_10_22/noise05.json",
+      "case": "threephase4sensor",
+      "trend": null,
+      "seed": 31,
+      "noise_fraction": 0.05,
+      "r": 3,
+      "m": 4,
+      "N_train": 2400,
+      "N_query": 320,
+      "N_train_after_preparation": 2210,
+      "N_eval_sensors": 130,
+      "N_eval_phases": 127,
+      "eval_raw_first": 2495,
+      "eval_raw_last": 2624,
+      "phase_MAE_rad": 0.010910400689206413,
+      "clean_sensor_NRMSE": 0.01839738967099542,
+      "clean_sensor_NRMSE_definition": "sqrt(mean(((Y_hat-Y_clean)/clean_TRAIN_channel_std)^2))",
+      "closed_integral_correction": 0.009962149319441038,
+      "full_turn_max_training_origin": 0.04049924225273016,
+      "flow_order_relative": 0.01755001779785319,
+      "inverse_window_relative": 0.024702873330325646,
+      "full_turn_max_eight_training_starts": 0.04049924225273016,
+      "lag": 4,
+      "neighbors": 24,
+      "D": 12,
+      "fit_seconds": 25.217172861099243,
+      "end_to_end_seconds": 27.319603083,
+      "timing_scope": "end-to-end benchmark",
+      "input_r_supplied": false,
+      "phase_basis_absolute_determinant": 1,
+      "status": "transformed_conditionally",
+      "recorded_fitting_source_count": 10,
+      "every_recorded_fitting_hash_matches": true,
+      "mismatched_source_names": [],
+      "hash_checks": {
+        "fields_first_phase.py": {
+          "recorded": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "current": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "matches": true
+        },
+        "fields_first_frame.py": {
+          "recorded": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "current": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "matches": true
+        },
+        "fields_first_tangent_atlas.py": {
+          "recorded": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "current": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "matches": true
+        },
+        "fields_first_periods.py": {
+          "recorded": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "current": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "matches": true
+        },
+        "fields_first_implicit_geometry.py": {
+          "recorded": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "current": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "matches": true
+        },
+        "fields_first_span.py": {
+          "recorded": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "current": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "matches": true
+        },
+        "fields_first_bounded_persistence.py": {
+          "recorded": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "current": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "matches": true
+        },
+        "fields_first_paths.py": {
+          "recorded": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "current": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "matches": true
+        },
+        "fields_first_preprocess.py": {
+          "recorded": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "current": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "matches": true
+        },
+        "fields_first_sensor_pipeline.py": {
+          "recorded": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "current": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "matches": true
+        }
+      },
+      "frozen_model": {
+        "path": "/private/tmp/takers_curved_noise_fix_20261022/noise05_candidate.pkl",
+        "exists": true,
+        "archived_in_repository": false,
+        "bytes": 61087765,
+        "status": "conditional_fields_first_model",
+        "source_windows_shape": [
+          2207,
+          12
+        ],
+        "train_phases_shape": [
+          2207,
+          3
+        ],
+        "frozen_fit_metadata_match": {
+          "lag": true,
+          "r": true,
+          "span_dimension": true,
+          "closure": true,
+          "encoder_duality": true
+        },
+        "all_metadata_match": true,
+        "contains_preprocess_model": false,
+        "contains_query_prediction": false,
+        "conditioning_cache": {
+          "path": "/private/tmp/takers_curved_noise_fix_20261022/noise05_inputs.pkl",
+          "exists": true
+        }
+      }
+    },
+    {
+      "name": "noise10.json",
+      "result_path": "/Users/rknza/research/Takers/results/fields_first_curved_noise_fix_2026_10_22/noise10.json",
+      "case": "threephase4sensor",
+      "trend": null,
+      "seed": 31,
+      "noise_fraction": 0.1,
+      "r": 3,
+      "m": 4,
+      "N_train": 2400,
+      "N_query": 320,
+      "N_train_after_preparation": 2210,
+      "N_eval_sensors": 130,
+      "N_eval_phases": 123,
+      "eval_raw_first": 2495,
+      "eval_raw_last": 2624,
+      "phase_MAE_rad": 0.013933099830340861,
+      "clean_sensor_NRMSE": 0.022853572457643374,
+      "clean_sensor_NRMSE_definition": "sqrt(mean(((Y_hat-Y_clean)/clean_TRAIN_channel_std)^2))",
+      "closed_integral_correction": 0.006537617116232585,
+      "full_turn_max_training_origin": 0.03431514916344643,
+      "flow_order_relative": 0.022381507501738573,
+      "inverse_window_relative": 0.03368144808910723,
+      "full_turn_max_eight_training_starts": 0.04887090334156295,
+      "lag": 8,
+      "neighbors": 24,
+      "D": 12,
+      "fit_seconds": 102.6172878742218,
+      "end_to_end_seconds": 104.98556725,
+      "timing_scope": "end-to-end benchmark",
+      "input_r_supplied": false,
+      "phase_basis_absolute_determinant": 1,
+      "status": "transformed_conditionally",
+      "recorded_fitting_source_count": 10,
+      "every_recorded_fitting_hash_matches": true,
+      "mismatched_source_names": [],
+      "hash_checks": {
+        "fields_first_phase.py": {
+          "recorded": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "current": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "matches": true
+        },
+        "fields_first_frame.py": {
+          "recorded": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "current": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "matches": true
+        },
+        "fields_first_tangent_atlas.py": {
+          "recorded": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "current": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "matches": true
+        },
+        "fields_first_periods.py": {
+          "recorded": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "current": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "matches": true
+        },
+        "fields_first_implicit_geometry.py": {
+          "recorded": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "current": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "matches": true
+        },
+        "fields_first_span.py": {
+          "recorded": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "current": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "matches": true
+        },
+        "fields_first_bounded_persistence.py": {
+          "recorded": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "current": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "matches": true
+        },
+        "fields_first_paths.py": {
+          "recorded": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "current": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "matches": true
+        },
+        "fields_first_preprocess.py": {
+          "recorded": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "current": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "matches": true
+        },
+        "fields_first_sensor_pipeline.py": {
+          "recorded": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "current": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "matches": true
+        }
+      },
+      "frozen_model": {
+        "path": "/private/tmp/takers_curved_noise_fix_20261022/noise10_candidate.pkl",
+        "exists": true,
+        "archived_in_repository": false,
+        "bytes": 59515266,
+        "status": "conditional_fields_first_model",
+        "source_windows_shape": [
+          2203,
+          12
+        ],
+        "train_phases_shape": [
+          2203,
+          3
+        ],
+        "frozen_fit_metadata_match": {
+          "lag": true,
+          "r": true,
+          "span_dimension": true,
+          "closure": true,
+          "encoder_duality": true
+        },
+        "all_metadata_match": true,
+        "contains_preprocess_model": false,
+        "contains_query_prediction": false,
+        "conditioning_cache": {
+          "path": "/private/tmp/takers_curved_noise_fix_20261022/noise10_inputs.pkl",
+          "exists": true
+        }
+      }
+    },
+    {
+      "name": "regression/scalar_noise10.json",
+      "result_path": "/Users/rknza/research/Takers/results/fields_first_curved_noise_fix_2026_10_22/regression/scalar_noise10.json",
+      "case": "scalarcircle",
+      "trend": "linear",
+      "seed": 31,
+      "noise_fraction": 0.1,
+      "r": 1,
+      "m": 1,
+      "N_train": 1800,
+      "N_query": 320,
+      "N_train_after_preparation": 1610,
+      "N_eval_sensors": 130,
+      "N_eval_phases": 123,
+      "eval_raw_first": 1895,
+      "eval_raw_last": 2024,
+      "phase_MAE_rad": 0.011574082040588147,
+      "clean_sensor_NRMSE": 0.024989518643761775,
+      "clean_sensor_NRMSE_definition": "sqrt(mean(((Y_hat-Y_clean)/clean_TRAIN_channel_std)^2))",
+      "closed_integral_correction": 0.005846774369653321,
+      "full_turn_max_training_origin": 0.040199593949245126,
+      "flow_order_relative": 0.0,
+      "inverse_window_relative": 0.02621392946174072,
+      "full_turn_max_eight_training_starts": null,
+      "lag": 8,
+      "neighbors": 96,
+      "D": 4,
+      "fit_seconds": 12.579482078552246,
+      "end_to_end_seconds": null,
+      "timing_scope": "fit only; transform time not recorded",
+      "input_r_supplied": false,
+      "phase_basis_absolute_determinant": 1,
+      "status": "transformed_conditionally",
+      "recorded_fitting_source_count": 10,
+      "every_recorded_fitting_hash_matches": true,
+      "mismatched_source_names": [],
+      "hash_checks": {
+        "fields_first_phase.py": {
+          "recorded": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "current": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "matches": true
+        },
+        "fields_first_frame.py": {
+          "recorded": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "current": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "matches": true
+        },
+        "fields_first_tangent_atlas.py": {
+          "recorded": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "current": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "matches": true
+        },
+        "fields_first_periods.py": {
+          "recorded": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "current": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "matches": true
+        },
+        "fields_first_implicit_geometry.py": {
+          "recorded": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "current": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "matches": true
+        },
+        "fields_first_span.py": {
+          "recorded": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "current": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "matches": true
+        },
+        "fields_first_bounded_persistence.py": {
+          "recorded": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "current": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "matches": true
+        },
+        "fields_first_paths.py": {
+          "recorded": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "current": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "matches": true
+        },
+        "fields_first_preprocess.py": {
+          "recorded": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "current": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "matches": true
+        },
+        "fields_first_sensor_pipeline.py": {
+          "recorded": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "current": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "matches": true
+        }
+      }
+    },
+    {
+      "name": "regression/two_waves.json",
+      "result_path": "/Users/rknza/research/Takers/results/fields_first_curved_noise_fix_2026_10_22/regression/two_waves.json",
+      "case": "fundamental2waves",
+      "trend": "quadratic",
+      "seed": 31,
+      "noise_fraction": 0.05,
+      "r": 2,
+      "m": 12,
+      "N_train": 2400,
+      "N_query": 320,
+      "N_train_after_preparation": 2210,
+      "N_eval_sensors": 130,
+      "N_eval_phases": 127,
+      "eval_raw_first": 2495,
+      "eval_raw_last": 2624,
+      "phase_MAE_rad": 0.004314847060861237,
+      "clean_sensor_NRMSE": 0.00695481017613429,
+      "clean_sensor_NRMSE_definition": "sqrt(mean(((Y_hat-Y_clean)/clean_TRAIN_channel_std)^2))",
+      "closed_integral_correction": 0.0009463538916786134,
+      "full_turn_max_training_origin": 0.0030223094000121067,
+      "flow_order_relative": 0.000611010208133166,
+      "inverse_window_relative": 0.005185310157948876,
+      "full_turn_max_eight_training_starts": null,
+      "lag": 4,
+      "neighbors": 24,
+      "D": 4,
+      "fit_seconds": 1.4845941066741943,
+      "end_to_end_seconds": null,
+      "timing_scope": "fit only; transform time not recorded",
+      "input_r_supplied": false,
+      "phase_basis_absolute_determinant": 1,
+      "status": "transformed_conditionally",
+      "recorded_fitting_source_count": 10,
+      "every_recorded_fitting_hash_matches": true,
+      "mismatched_source_names": [],
+      "hash_checks": {
+        "fields_first_phase.py": {
+          "recorded": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "current": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+          "matches": true
+        },
+        "fields_first_frame.py": {
+          "recorded": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "current": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+          "matches": true
+        },
+        "fields_first_tangent_atlas.py": {
+          "recorded": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "current": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+          "matches": true
+        },
+        "fields_first_periods.py": {
+          "recorded": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "current": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+          "matches": true
+        },
+        "fields_first_implicit_geometry.py": {
+          "recorded": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "current": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+          "matches": true
+        },
+        "fields_first_span.py": {
+          "recorded": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "current": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+          "matches": true
+        },
+        "fields_first_bounded_persistence.py": {
+          "recorded": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "current": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+          "matches": true
+        },
+        "fields_first_paths.py": {
+          "recorded": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "current": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+          "matches": true
+        },
+        "fields_first_preprocess.py": {
+          "recorded": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "current": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+          "matches": true
+        },
+        "fields_first_sensor_pipeline.py": {
+          "recorded": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "current": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59",
+          "matches": true
+        }
+      }
+    }
+  ],
+  "all_six_match_current_recorded_fitting_hashes": true,
+  "provenance_scope": "all10 recorded fitting-source hashes, not a full dependency/environment/input fingerprint",
+  "unrecorded_fitting_dependencies": [
+    "tangent_overlap.py",
+    "cohomology_primitivity.py",
+    "third-party library versions"
+  ],
+  "input_generator_and_evaluation_source_hashes_recorded": false,
+  "raw_query_prediction_arrays_saved": false,
+  "frozen_model_storage_scope": "curved-case models exist only in /private/tmp; regression models were not saved",
+  "old_debug_phase_npz_files_are_previous_version": true
+}

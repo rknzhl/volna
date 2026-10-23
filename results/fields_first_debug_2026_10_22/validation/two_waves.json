@@ -1,0 +1,1514 @@
+{
+  "case": "fundamental2waves",
+  "trend": "quadratic",
+  "noise": 0.05,
+  "seed": 31,
+  "ntrain": 2400,
+  "ntest": 320,
+  "phase_mode": "rigid",
+  "rate_profile": "default",
+  "fit": {
+    "status": "accepted_conditionally_by_training_gates",
+    "preprocessing": {
+      "rank": 6,
+      "cv_selected": {
+        "degree": 0,
+        "rank": 6,
+        "cv_mse_raw": 0.0016795077389279095,
+        "fold_mse_raw": [
+          0.0016690922134371055,
+          0.0016897167738259859
+        ]
+      },
+      "lag": 32,
+      "window": 129,
+      "polyorder": 2,
+      "boundary_trim_each_side": 95,
+      "retained_training_count": 2210,
+      "scope": {
+        "slow_is_identified_physical_trend": false,
+        "polynomial_annihilation_degree": 2,
+        "shift_equivariance_region": "valid_mask interior only",
+        "phase_preservation_condition": "surviving filtered characters must still give an observable delay embedding",
+        "test_mode": "conditioning on the new observed block, not forecasting"
+      }
+    },
+    "attempts": [
+      {
+        "lag": 4,
+        "neighbors": 24,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 2,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 2,
+            "selection": {
+              "selected_count": 2,
+              "lifetime_gap": 2.540563377501906,
+              "common_birth": 0.3012963533401489,
+              "common_death": 0.8502612113952637,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 2207,
+            "ambient_dimension": 48,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.3012963533401489,
+                1.493892788887024
+              ],
+              [
+                0.29783639311790466,
+                0.8502612113952637
+              ],
+              [
+                0.30459195375442505,
+                0.5220338106155396
+              ],
+              [
+                0.3058118224143982,
+                0.5211193561553955
+              ],
+              [
+                0.2948359549045563,
+                0.5066012144088745
+              ],
+              [
+                0.3098464608192444,
+                0.5166916251182556
+              ],
+              [
+                0.3246798813343048,
+                0.5060230493545532
+              ],
+              [
+                0.2961055338382721,
+                0.47617632150650024
+              ],
+              [
+                0.272452175617218,
+                0.451209157705307
+              ],
+              [
+                0.30543053150177,
+                0.48338308930397034
+              ],
+              [
+                0.3345435559749603,
+                0.505395233631134
+              ],
+              [
+                0.31961220502853394,
+                0.4809223711490631
+              ],
+              [
+                0.29507946968078613,
+                0.44252997636795044
+              ],
+              [
+                0.2985457479953766,
+                0.444717675447464
+              ],
+              [
+                0.31009355187416077,
+                0.4558072090148926
+              ],
+              [
+                0.2951989471912384,
+                0.43841585516929626
+              ],
+              [
+                0.3089663088321686,
+                0.4492477476596832
+              ],
+              [
+                0.3209511339664459,
+                0.4599078297615051
+              ],
+              [
+                0.3248445689678192,
+                0.4597950875759125
+              ],
+              [
+                0.28518423438072205,
+                0.41754525899887085
+              ],
+              [
+                0.3271045982837677,
+                0.4558044672012329
+              ],
+              [
+                0.30820441246032715,
+                0.43596816062927246
+              ],
+              [
+                0.3256523609161377,
+                0.45339837670326233
+              ],
+              [
+                0.31948837637901306,
+                0.4470064640045166
+              ],
+              [
+                0.3085553050041199,
+                0.4359319806098938
+              ],
+              [
+                0.306064635515213,
+                0.4317358136177063
+              ],
+              [
+                0.34304922819137573,
+                0.4637838304042816
+              ],
+              [
+                0.31770187616348267,
+                0.4287145137786865
+              ],
+              [
+                0.3278099596500397,
+                0.43095219135284424
+              ],
+              [
+                0.36519157886505127,
+                0.46820053458213806
+              ],
+              [
+                0.3073273301124573,
+                0.406032532453537
+              ],
+              [
+                0.3290758430957794,
+                0.42665067315101624
+              ],
+              [
+                0.3304756283760071,
+                0.4261290729045868
+              ],
+              [
+                0.3493163287639618,
+                0.44045665860176086
+              ],
+              [
+                0.2557244896888733,
+                0.3444097638130188
+              ],
+              [
+                0.34522297978401184,
+                0.4326508939266205
+              ],
+              [
+                0.319698303937912,
+                0.4062443673610687
+              ],
+              [
+                0.25358426570892334,
+                0.33932170271873474
+              ],
+              [
+                0.353275865316391,
+                0.43779826164245605
+              ],
+              [
+                0.326308012008667,
+                0.4094716012477875
+              ],
+              [
+                0.3485526442527771,
+                0.43022018671035767
+              ],
+              [
+                0.2731432020664215,
+                0.3535189628601074
+              ],
+              [
+                0.2979169487953186,
+                0.3777692914009094
+              ],
+              [
+                0.339643657207489,
+                0.4193689525127411
+              ],
+              [
+                0.26290085911750793,
+                0.34213897585868835
+              ],
+              [
+                0.3655341863632202,
+                0.44342485070228577
+              ],
+              [
+                0.332131028175354,
+                0.40991899371147156
+              ],
+              [
+                0.35171592235565186,
+                0.42695295810699463
+              ],
+              [
+                0.31276893615722656,
+                0.3856111168861389
+              ],
+              [
+                0.29627764225006104,
+                0.36825844645500183
+              ],
+              [
+                0.34771496057510376,
+                0.4180070161819458
+              ],
+              [
+                0.38892510533332825,
+                0.458906352519989
+              ],
+              [
+                0.3200420141220093,
+                0.38717058300971985
+              ],
+              [
+                0.3703100383281708,
+                0.4373515248298645
+              ],
+              [
+                0.3680732846260071,
+                0.43464329838752747
+              ],
+              [
+                0.3057766258716583,
+                0.36979809403419495
+              ],
+              [
+                0.22879457473754883,
+                0.2890850901603699
+              ],
+              [
+                0.3697080612182617,
+                0.42994922399520874
+              ],
+              [
+                0.38758498430252075,
+                0.446452796459198
+              ],
+              [
+                0.3151439428329468,
+                0.3738167881965637
+              ],
+              [
+                0.3793482184410095,
+                0.4376915395259857
+              ],
+              [
+                0.2873075306415558,
+                0.3409201502799988
+              ],
+              [
+                0.38505756855010986,
+                0.43528202176094055
+              ],
+              [
+                0.29447412490844727,
+                0.3422227203845978
+              ],
+              [
+                0.29206544160842896,
+                0.33851611614227295
+              ],
+              [
+                0.38060203194618225,
+                0.42666447162628174
+              ],
+              [
+                0.30210477113723755,
+                0.347403883934021
+              ],
+              [
+                0.30878373980522156,
+                0.3532464802265167
+              ],
+              [
+                0.41524383425712585,
+                0.4582413136959076
+              ],
+              [
+                0.35730284452438354,
+                0.4002687931060791
+              ],
+              [
+                0.340696781873703,
+                0.3818044364452362
+              ],
+              [
+                0.33109280467033386,
+                0.3683132827281952
+              ],
+              [
+                0.321027934551239,
+                0.35505929589271545
+              ],
+              [
+                0.42230916023254395,
+                0.4550815522670746
+              ],
+              [
+                0.3973107933998108,
+                0.42586779594421387
+              ],
+              [
+                0.34017956256866455,
+                0.36818036437034607
+              ],
+              [
+                0.2602848410606384,
+                0.2881319522857666
+              ],
+              [
+                0.3654669523239136,
+                0.39141324162483215
+              ],
+              [
+                0.30924859642982483,
+                0.33449628949165344
+              ],
+              [
+                0.4336932897567749,
+                0.4588807225227356
+              ],
+              [
+                0.30083200335502625,
+                0.32518619298934937
+              ],
+              [
+                0.42080962657928467,
+                0.44415441155433655
+              ],
+              [
+                0.3270544409751892,
+                0.34995758533477783
+              ],
+              [
+                0.40595540404319763,
+                0.4279541075229645
+              ],
+              [
+                0.3016563653945923,
+                0.3195127546787262
+              ],
+              [
+                0.33127084374427795,
+                0.34891512989997864
+              ],
+              [
+                0.29939886927604675,
+                0.31633514165878296
+              ],
+              [
+                0.32489922642707825,
+                0.3416932225227356
+              ],
+              [
+                0.3332471549510956,
+                0.34813106060028076
+              ],
+              [
+                0.40569305419921875,
+                0.41908684372901917
+              ],
+              [
+                0.41335612535476685,
+                0.4256557524204254
+              ],
+              [
+                0.34286314249038696,
+                0.35341188311576843
+              ],
+              [
+                0.29577282071113586,
+                0.3058106005191803
+              ],
+              [
+                0.34346476197242737,
+                0.34866446256637573
+              ],
+              [
+                0.3677464425563812,
+                0.37229692935943604
+              ],
+              [
+                0.24167151749134064,
+                0.2461645007133484
+              ],
+              [
+                0.2727210223674774,
+                0.2760621905326843
+              ],
+              [
+                0.42115285992622375,
+                0.4231032133102417
+              ],
+              [
+                0.42298489809036255,
+                0.42446020245552063
+              ],
+              [
+                0.38632091879844666,
+                0.3876316249370575
+              ],
+              [
+                0.40669625997543335,
+                0.40789276361465454
+              ]
+            ],
+            "direct_metric_control_max_error": 6.661338147750939e-16,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 48,
+          "retained_numerical_linear_span": 48,
+          "linear_span_relative_residual": 1.3432588412629944e-15,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 24,
+          "overlap": {
+            "minimum_prefix_singular": 0.7495331465020765,
+            "overlap_relative_residual_quantiles": [
+              0.0012265699320832047,
+              0.0024354724018948006,
+              0.005499825514059541
+            ]
+          },
+          "atlas_min_gap": 0.9402294204515251,
+          "frame_anchor_error": 1.0559553339996013e-15,
+          "frame_transfer_relative": 0.004120367262260908,
+          "frame_min_singular": 0.7630481313297585,
+          "frame_min_relative_singular": 0.7297502611560555,
+          "integration": {
+            "fine_edges": 27492,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 27492,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.2671331188068385,
+            "fine_edge_length_quantiles": [
+              0.1621319620095203,
+              0.22626708442359325,
+              0.2671331188068385
+            ],
+            "path_stretch_quantiles": [
+              1.0465116711700209,
+              1.183155041075889,
+              1.4394823919119404
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 27492,
+              "r": 2,
+              "valid_edge_count": 27492,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 2207,
+              "vertex_count": 2207,
+              "cover_radius": 0.3632134795188904,
+              "robust_cover_radius": 0.36321347951852717,
+              "coverage_margin": 3.6321347951889037e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 27492,
+              "deepest_subdivision": 0,
+              "chart_transitions": 33496,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 8.538371520760852e-17,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 48,
+                "residual_norm": 0.09528865488964042,
+                "normal_residual_norm": 3.671511646220627e-11,
+                "estimated_design_condition": 9.399609683478914
+              },
+              {
+                "coordinate": 1,
+                "stop": 2,
+                "iterations": 49,
+                "residual_norm": 0.037048138098068666,
+                "normal_residual_norm": 1.1042047615685353e-11,
+                "estimated_design_condition": 9.13237872466096
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.003971578488807909,
+            "weighted_projection_relative": 0.003971578488807909,
+            "raw_triangle_curl_rms": 0.001640573726965441,
+            "fitted_triangle_curl_max": 8.881784197001252e-16,
+            "period_singular_values": [
+              5.602662775608275,
+              3.2736532005099157
+            ],
+            "period_condition": 1.7114405321662003,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 4.440892098500626e-16
+          },
+          "encoder_field_duality_relative": 0.031156201736868346,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            -0.5798261564959416,
+            0.46765235497753016
+          ],
+          "train_phase_step_rmse": 0.004589458394727154,
+          "commutators": {
+            "source_probe_count": 32,
+            "pairs": [
+              {
+                "axes": [
+                  0,
+                  1
+                ],
+                "bracket_rms": 0.05782426865815995,
+                "normal_bracket_rms": 0.05468034118349754,
+                "dimensionless_relative_bracket": 0.13282243899165685
+              }
+            ]
+          },
+          "elapsed_fit_seconds": 67.7601408958435
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 2,
+          "supplied_frame_dimension": 2,
+          "selection": {
+            "selected_count": 2,
+            "lifetime_gap": 2.540563377501906,
+            "common_birth": 0.3012963533401489,
+            "common_death": 0.8502612113952637,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 6.661338147750939e-16,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            },
+            {
+              "class_index": 1,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 6725,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 2,
+          "cover_radius": 0.3632134795188904,
+          "rips_threshold": 0.7264269590377808,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "gates": {
+          "core_status": "conditional_fields_first_model",
+          "passed": false,
+          "closed_projection_relative": 0.003971578488807909,
+          "duality_rms": 0.031156201736868346,
+          "phase_step_rmse": 0.004589458394727154,
+          "minimum_atlas_gap": 0.9402294204515251,
+          "flow_geometry": "ambient_tangent_extension",
+          "checks": {
+            "closed_projection": true,
+            "duality": true,
+            "phase_step": true,
+            "atlas_gap": true,
+            "train_encoder_full_coverage": true,
+            "full_turn": true,
+            "inverse": true,
+            "flow_order": false
+          },
+          "full_turn_relative": [
+            0.015744448840778913,
+            0.01640040164104238
+          ],
+          "full_turn_probe_count": 1,
+          "inverse_window_relative": 0.03951000489305591,
+          "flow_order_relative": 0.06348379195529012,
+          "source_rms": 1.0000594829078229
+        },
+        "completed": true
+      },
+      {
+        "lag": 4,
+        "neighbors": 48,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 2,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 2,
+            "selection": {
+              "selected_count": 2,
+              "lifetime_gap": 2.540563377501906,
+              "common_birth": 0.3012963533401489,
+              "common_death": 0.8502612113952637,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 2207,
+            "ambient_dimension": 48,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.3012963533401489,
+                1.493892788887024
+              ],
+              [
+                0.29783639311790466,
+                0.8502612113952637
+              ],
+              [
+                0.30459195375442505,
+                0.5220338106155396
+              ],
+              [
+                0.3058118224143982,
+                0.5211193561553955
+              ],
+              [
+                0.2948359549045563,
+                0.5066012144088745
+              ],
+              [
+                0.3098464608192444,
+                0.5166916251182556
+              ],
+              [
+                0.3246798813343048,
+                0.5060230493545532
+              ],
+              [
+                0.2961055338382721,
+                0.47617632150650024
+              ],
+              [
+                0.272452175617218,
+                0.451209157705307
+              ],
+              [
+                0.30543053150177,
+                0.48338308930397034
+              ],
+              [
+                0.3345435559749603,
+                0.505395233631134
+              ],
+              [
+                0.31961220502853394,
+                0.4809223711490631
+              ],
+              [
+                0.29507946968078613,
+                0.44252997636795044
+              ],
+              [
+                0.2985457479953766,
+                0.444717675447464
+              ],
+              [
+                0.31009355187416077,
+                0.4558072090148926
+              ],
+              [
+                0.2951989471912384,
+                0.43841585516929626
+              ],
+              [
+                0.3089663088321686,
+                0.4492477476596832
+              ],
+              [
+                0.3209511339664459,
+                0.4599078297615051
+              ],
+              [
+                0.3248445689678192,
+                0.4597950875759125
+              ],
+              [
+                0.28518423438072205,
+                0.41754525899887085
+              ],
+              [
+                0.3271045982837677,
+                0.4558044672012329
+              ],
+              [
+                0.30820441246032715,
+                0.43596816062927246
+              ],
+              [
+                0.3256523609161377,
+                0.45339837670326233
+              ],
+              [
+                0.31948837637901306,
+                0.4470064640045166
+              ],
+              [
+                0.3085553050041199,
+                0.4359319806098938
+              ],
+              [
+                0.306064635515213,
+                0.4317358136177063
+              ],
+              [
+                0.34304922819137573,
+                0.4637838304042816
+              ],
+              [
+                0.31770187616348267,
+                0.4287145137786865
+              ],
+              [
+                0.3278099596500397,
+                0.43095219135284424
+              ],
+              [
+                0.36519157886505127,
+                0.46820053458213806
+              ],
+              [
+                0.3073273301124573,
+                0.406032532453537
+              ],
+              [
+                0.3290758430957794,
+                0.42665067315101624
+              ],
+              [
+                0.3304756283760071,
+                0.4261290729045868
+              ],
+              [
+                0.3493163287639618,
+                0.44045665860176086
+              ],
+              [
+                0.2557244896888733,
+                0.3444097638130188
+              ],
+              [
+                0.34522297978401184,
+                0.4326508939266205
+              ],
+              [
+                0.319698303937912,
+                0.4062443673610687
+              ],
+              [
+                0.25358426570892334,
+                0.33932170271873474
+              ],
+              [
+                0.353275865316391,
+                0.43779826164245605
+              ],
+              [
+                0.326308012008667,
+                0.4094716012477875
+              ],
+              [
+                0.3485526442527771,
+                0.43022018671035767
+              ],
+              [
+                0.2731432020664215,
+                0.3535189628601074
+              ],
+              [
+                0.2979169487953186,
+                0.3777692914009094
+              ],
+              [
+                0.339643657207489,
+                0.4193689525127411
+              ],
+              [
+                0.26290085911750793,
+                0.34213897585868835
+              ],
+              [
+                0.3655341863632202,
+                0.44342485070228577
+              ],
+              [
+                0.332131028175354,
+                0.40991899371147156
+              ],
+              [
+                0.35171592235565186,
+                0.42695295810699463
+              ],
+              [
+                0.31276893615722656,
+                0.3856111168861389
+              ],
+              [
+                0.29627764225006104,
+                0.36825844645500183
+              ],
+              [
+                0.34771496057510376,
+                0.4180070161819458
+              ],
+              [
+                0.38892510533332825,
+                0.458906352519989
+              ],
+              [
+                0.3200420141220093,
+                0.38717058300971985
+              ],
+              [
+                0.3703100383281708,
+                0.4373515248298645
+              ],
+              [
+                0.3680732846260071,
+                0.43464329838752747
+              ],
+              [
+                0.3057766258716583,
+                0.36979809403419495
+              ],
+              [
+                0.22879457473754883,
+                0.2890850901603699
+              ],
+              [
+                0.3697080612182617,
+                0.42994922399520874
+              ],
+              [
+                0.38758498430252075,
+                0.446452796459198
+              ],
+              [
+                0.3151439428329468,
+                0.3738167881965637
+              ],
+              [
+                0.3793482184410095,
+                0.4376915395259857
+              ],
+              [
+                0.2873075306415558,
+                0.3409201502799988
+              ],
+              [
+                0.38505756855010986,
+                0.43528202176094055
+              ],
+              [
+                0.29447412490844727,
+                0.3422227203845978
+              ],
+              [
+                0.29206544160842896,
+                0.33851611614227295
+              ],
+              [
+                0.38060203194618225,
+                0.42666447162628174
+              ],
+              [
+                0.30210477113723755,
+                0.347403883934021
+              ],
+              [
+                0.30878373980522156,
+                0.3532464802265167
+              ],
+              [
+                0.41524383425712585,
+                0.4582413136959076
+              ],
+              [
+                0.35730284452438354,
+                0.4002687931060791
+              ],
+              [
+                0.340696781873703,
+                0.3818044364452362
+              ],
+              [
+                0.33109280467033386,
+                0.3683132827281952
+              ],
+              [
+                0.321027934551239,
+                0.35505929589271545
+              ],
+              [
+                0.42230916023254395,
+                0.4550815522670746
+              ],
+              [
+                0.3973107933998108,
+                0.42586779594421387
+              ],
+              [
+                0.34017956256866455,
+                0.36818036437034607
+              ],
+              [
+                0.2602848410606384,
+                0.2881319522857666
+              ],
+              [
+                0.3654669523239136,
+                0.39141324162483215
+              ],
+              [
+                0.30924859642982483,
+                0.33449628949165344
+              ],
+              [
+                0.4336932897567749,
+                0.4588807225227356
+              ],
+              [
+                0.30083200335502625,
+                0.32518619298934937
+              ],
+              [
+                0.42080962657928467,
+                0.44415441155433655
+              ],
+              [
+                0.3270544409751892,
+                0.34995758533477783
+              ],
+              [
+                0.40595540404319763,
+                0.4279541075229645
+              ],
+              [
+                0.3016563653945923,
+                0.3195127546787262
+              ],
+              [
+                0.33127084374427795,
+                0.34891512989997864
+              ],
+              [
+                0.29939886927604675,
+                0.31633514165878296
+              ],
+              [
+                0.32489922642707825,
+                0.3416932225227356
+              ],
+              [
+                0.3332471549510956,
+                0.34813106060028076
+              ],
+              [
+                0.40569305419921875,
+                0.41908684372901917
+              ],
+              [
+                0.41335612535476685,
+                0.4256557524204254
+              ],
+              [
+                0.34286314249038696,
+                0.35341188311576843
+              ],
+              [
+                0.29577282071113586,
+                0.3058106005191803
+              ],
+              [
+                0.34346476197242737,
+                0.34866446256637573
+              ],
+              [
+                0.3677464425563812,
+                0.37229692935943604
+              ],
+              [
+                0.24167151749134064,
+                0.2461645007133484
+              ],
+              [
+                0.2727210223674774,
+                0.2760621905326843
+              ],
+              [
+                0.42115285992622375,
+                0.4231032133102417
+              ],
+              [
+                0.42298489809036255,
+                0.42446020245552063
+              ],
+              [
+                0.38632091879844666,
+                0.3876316249370575
+              ],
+              [
+                0.40669625997543335,
+                0.40789276361465454
+              ]
+            ],
+            "direct_metric_control_max_error": 6.661338147750939e-16,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 48,
+          "retained_numerical_linear_span": 48,
+          "linear_span_relative_residual": 1.3432588412629944e-15,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 48,
+          "overlap": {
+            "minimum_prefix_singular": 0.7514085792932959,
+            "overlap_relative_residual_quantiles": [
+              0.0008608793913529574,
+              0.0017356950508655936,
+              0.003275522804574586
+            ]
+          },
+          "atlas_min_gap": 0.9936750602518699,
+          "frame_anchor_error": 1.6601282041002642e-15,
+          "frame_transfer_relative": 0.0015848051749484987,
+          "frame_min_singular": 0.7649581409988662,
+          "frame_min_relative_singular": 0.7316191702146798,
+          "integration": {
+            "fine_edges": 27492,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 27492,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.2671331188068385,
+            "fine_edge_length_quantiles": [
+              0.1621319620095203,
+              0.22626708442359325,
+              0.2671331188068385
+            ],
+            "path_stretch_quantiles": [
+              1.0465116711700209,
+              1.183155041075889,
+              1.4394823919119404
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 27492,
+              "r": 2,
+              "valid_edge_count": 27492,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 2207,
+              "vertex_count": 2207,
+              "cover_radius": 0.3632134795188904,
+              "robust_cover_radius": 0.36321347951852717,
+              "coverage_margin": 3.6321347951889037e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 27492,
+              "deepest_subdivision": 0,
+              "chart_transitions": 33496,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 8.588502129020733e-17,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 50,
+                "residual_norm": 0.02886508512065866,
+                "normal_residual_norm": 1.0767771763208562e-11,
+                "estimated_design_condition": 9.285294398108492
+              },
+              {
+                "coordinate": 1,
+                "stop": 2,
+                "iterations": 50,
+                "residual_norm": 0.025173775278115065,
+                "normal_residual_norm": 7.370890076320345e-12,
+                "estimated_design_condition": 7.964512688518337
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.001493173950391839,
+            "weighted_projection_relative": 0.001493173950391839,
+            "raw_triangle_curl_rms": 0.0007866188089384927,
+            "fitted_triangle_curl_max": 1.1102230246251565e-15,
+            "period_singular_values": [
+              5.580188995196781,
+              3.263912109440493
+            ],
+            "period_condition": 1.7096627629943593,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 3.122502256758253e-16
+          },
+          "encoder_field_duality_relative": 0.030422879283344407,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            -0.5798266850049795,
+            0.46765630856191326
+          ],
+          "train_phase_step_rmse": 0.004187340187936706,
+          "commutators": {
+            "source_probe_count": 32,
+            "pairs": [
+              {
+                "axes": [
+                  0,
+                  1
+                ],
+                "bracket_rms": 0.017077335503461893,
+                "normal_bracket_rms": 0.015664720075026915,
+                "dimensionless_relative_bracket": 0.039331802082648665
+              }
+            ]
+          },
+          "elapsed_fit_seconds": 68.11631989479065
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 2,
+          "supplied_frame_dimension": 2,
+          "selection": {
+            "selected_count": 2,
+            "lifetime_gap": 2.540563377501906,
+            "common_birth": 0.3012963533401489,
+            "common_death": 0.8502612113952637,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 6.661338147750939e-16,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            },
+            {
+              "class_index": 1,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 6725,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 2,
+          "cover_radius": 0.3632134795188904,
+          "rips_threshold": 0.7264269590377808,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "gates": {
+          "core_status": "conditional_fields_first_model",
+          "passed": true,
+          "closed_projection_relative": 0.001493173950391839,
+          "duality_rms": 0.030422879283344407,
+          "phase_step_rmse": 0.004187340187936706,
+          "minimum_atlas_gap": 0.9936750602518699,
+          "flow_geometry": "ambient_tangent_extension",
+          "checks": {
+            "closed_projection": true,
+            "duality": true,
+            "phase_step": true,
+            "atlas_gap": true,
+            "train_encoder_full_coverage": true,
+            "full_turn": true,
+            "inverse": true,
+            "flow_order": true
+          },
+          "full_turn_relative": [
+            0.007569400302607167,
+            0.006930170002344692
+          ],
+          "full_turn_probe_count": 1,
+          "inverse_window_relative": 0.0074124196004719265,
+          "flow_order_relative": 0.004221492451463782,
+          "source_rms": 1.0000594829078229
+        },
+        "completed": true
+      }
+    ],
+    "selected_lag": 4,
+    "dimension_strategy": "persistent_count",
+    "neighbor_candidates": [
+      24,
+      48,
+      96
+    ],
+    "maximum_candidates": 9,
+    "gates": {
+      "closed_projection_relative": 0.05,
+      "duality_rms": 0.15,
+      "phase_step_rmse": 0.05,
+      "inverse_window_relative": 0.05,
+      "full_turn_relative": 0.05,
+      "flow_order_relative": 0.05,
+      "minimum_atlas_gap": 0.1,
+      "query_projection_relative": 0.1,
+      "flow_refinement_relative": 0.005
+    },
+    "provenance": {
+      "fields_first_phase.py": "32eb7b6ededc04c9c6f23d93c23d9ec2daf3dd62906dda6a3ad66f0732a128cb",
+      "fields_first_frame.py": "cafe5aaf80754f96735047aedfec390aabdb4a91e4b8a7387dfabd0d5cddc979",
+      "fields_first_tangent_atlas.py": "b3e3aaa4bf195e7dd5779ea4d86d387bf357dafd3c187f1771713b3640c068c1",
+      "fields_first_periods.py": "9ab938f1ec4c252e126aebffa839dc4b09ea44b02c95dbca38023c10df969669",
+      "fields_first_paths.py": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+      "fields_first_preprocess.py": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+      "fields_first_sensor_pipeline.py": "fddf2b7576c6a3feaa365a4d30baea5d2057783ebfeeea1ed94b888f1a34643b"
+    },
+    "elapsed_fit_seconds": 145.18885898590088,
+    "scope": {
+      "inputs_are_readings_only": true,
+      "phase_initialization_used": false,
+      "regression_decoder_used": false,
+      "physical_trend_identified": false,
+      "reconstruction_mode": "conditioning on observed query block; not forecasting",
+      "inverse_geometry": "ambient field or training-gated normal-graph constraint; no endpoint closure target",
+      "acceptance_is_empirical_not_global_certificate": true,
+      "source_span_rule": "all source singular directions above relative threshold 1e-10; finite cutoff, not an exact full-span guarantee"
+    }
+  },
+  "transform_status": "transformed_conditionally",
+  "prediction_frozen_before_truth_evaluation": true,
+  "generator_metadata": {
+    "case": "fundamental2waves",
+    "seed": 31,
+    "noise_level": 0.05,
+    "trend": "quadratic",
+    "trend_strength": 0.3,
+    "phase_mode": "rigid",
+    "rate_profile": "default",
+    "sigma_calibration_count": 2400,
+    "rigid_rotation_clean_model": false,
+    "regime": "outside stationary rigid-torus model / stress",
+    "phase_truth_scope": "generator phases; use only after model freeze",
+    "legacy_rational_sampling_resonance": false
+  },
+  "nominal_snr_db": 26.020599913279625,
+  "transform": {
+    "raw_time_first": 2495,
+    "raw_time_last": 2624,
+    "retained_snapshot_count": 130,
+    "retained_window_count": 127,
+    "diagnostics": {
+      "query_projection_relative": 1.3599842423477562e-15,
+      "encoder_coverage": 1.0,
+      "minimum_atlas_gap": 0.9906498645692866,
+      "prefold_overlap_relative": 0.005091070289979426,
+      "query_residual_window_relative": 0.008929686015385428,
+      "encoder_field_duality_rms": 0.04859775945534824,
+      "phase_step_rmse_against_frozen_training_step": 0.004638132216479248,
+      "flow_domain": {
+        "maximum_nearest_distance": 0.1423086995483552,
+        "minimum_atlas_gap": 0.9892701494156027,
+        "minimum_frame_singular": 0.7680473450806344
+      }
+    }
+  },
+  "reconstruction_against_clean_total": {
+    "train_channel_std_normalized_rmse": 0.00886874635609772,
+    "per_channel_train_std_normalized_rmse": [
+      0.011942735103035566,
+      0.00606480404693019,
+      0.008390362929923711,
+      0.006988358209605586,
+      0.008717162301096763,
+      0.008804196850443407,
+      0.009406338218083126,
+      0.008403942312802965,
+      0.01114629513468172,
+      0.008222036069164437,
+      0.008209047908488634,
+      0.00856570761608034
+    ],
+    "raw_relative_error": 0.006857564590544436
+  },
+  "reconstruction_against_noisy_observations": {
+    "train_channel_std_normalized_rmse": 0.04961199047023417,
+    "per_channel_train_std_normalized_rmse": [
+      0.04600250864708004,
+      0.050531899981362705,
+      0.05371842857562682,
+      0.0624009398623984,
+      0.04684070861726535,
+      0.04733396104234529,
+      0.046712840345661005,
+      0.04379215324953017,
+      0.049444242832340786,
+      0.04263557383084201,
+      0.0489052182768741,
+      0.053835870273954325
+    ],
+    "raw_relative_error": 0.038351589611660124
+  },
+  "preprocessed_against_clean_total": {
+    "train_channel_std_normalized_rmse": 0.007020971231631759,
+    "per_channel_train_std_normalized_rmse": [
+      0.009316945791393302,
+      0.008038970840300464,
+      0.007154555150933266,
+      0.006027545368370972,
+      0.007262474829310506,
+      0.005490955634022813,
+      0.0064075129773871154,
+      0.007103050573401598,
+      0.006392833548897867,
+      0.006854942782539757,
+      0.006685943058767388,
+      0.006753878178689799
+    ],
+    "raw_relative_error": 0.005429323470402469
+  },
+  "field_residual_against_filtered_clean": {
+    "train_channel_std_normalized_rmse": 0.007562876685938203,
+    "per_channel_train_std_normalized_rmse": [
+      0.008090593775412332,
+      0.007840406175773262,
+      0.007073190812283644,
+      0.006508190115648055,
+      0.006836285895169525,
+      0.007077848459315575,
+      0.008947700596256125,
+      0.0076774235458029975,
+      0.008339337162474796,
+      0.007675683715779558,
+      0.006715329845395077,
+      0.007593270708348388
+    ],
+    "raw_relative_error": 0.007654288988672948
+  },
+  "train_phase_evaluation": {
+    "winding_candidate": [
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "absolute_determinant": 1,
+    "candidate_is_finite_character_match_not_global_certificate": true,
+    "origins": [
+      -2.9244714393826414,
+      -2.3655304359278357
+    ],
+    "phase_mae_rad": 0.0037018069329320903,
+    "phase_max_abs_rad": 0.022857415795956213,
+    "coherence": [
+      0.9999944926561832,
+      0.999981613145126
+    ]
+  },
+  "phase_dimension_matches_truth": true,
+  "test_phase_evaluation": {
+    "mean_absolute_rad": 0.004977211420267309,
+    "per_coordinate_mean_absolute_rad": [
+      0.003611743761243071,
+      0.006342679079291547
+    ],
+    "per_coordinate_rmse_rad": [
+      0.00441982048695242,
+      0.008282765329440703
+    ],
+    "maximum_absolute_rad": 0.02279943851374553
+  }
+}

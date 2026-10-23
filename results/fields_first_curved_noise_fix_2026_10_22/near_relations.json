@@ -1,0 +1,346 @@
+[
+  {
+    "noise_percent": 1,
+    "p": 12,
+    "tol": 0.0001,
+    "relations": 3,
+    "validation_max": 0.00024353527507347262,
+    "training_max": 0.0002508623592509131,
+    "gap_min": 1.0,
+    "normal_ratio_min": -2.97895415828469e-17
+  },
+  {
+    "noise_percent": 1,
+    "p": 12,
+    "tol": 0.0003,
+    "relations": 22,
+    "validation_max": 0.0006889730731014841,
+    "training_max": 0.0007483336504973052,
+    "gap_min": 0.9992847942726771,
+    "normal_ratio_min": 0.008393992172658573
+  },
+  {
+    "noise_percent": 1,
+    "p": 12,
+    "tol": 0.001,
+    "relations": 34,
+    "validation_max": 0.0011553371267073653,
+    "training_max": 0.0011699262436716137,
+    "gap_min": 0.9999508813216039,
+    "normal_ratio_min": 0.1624641448525973
+  },
+  {
+    "noise_percent": 1,
+    "p": 12,
+    "tol": 0.003,
+    "relations": 34,
+    "validation_max": 0.0011553371267073653,
+    "training_max": 0.0011699262436716137,
+    "gap_min": 0.9999508813216039,
+    "normal_ratio_min": 0.1624641448525973
+  },
+  {
+    "noise_percent": 1,
+    "p": 12,
+    "tol": 0.006,
+    "relations": 34,
+    "validation_max": 0.0011553371267073653,
+    "training_max": 0.0011699262436716137,
+    "gap_min": 0.9999508813216039,
+    "normal_ratio_min": 0.1624641448525973
+  },
+  {
+    "noise_percent": 1,
+    "p": 12,
+    "tol": 0.01,
+    "relations": 37,
+    "validation_max": 0.01050386592679075,
+    "training_max": 0.010577994254340495,
+    "gap_min": 0.8700112156469413,
+    "normal_ratio_min": 0.1668775995595367
+  },
+  {
+    "noise_percent": 1,
+    "p": 13,
+    "tol": 0.0001,
+    "relations": 16,
+    "validation_max": 0.0002442287341253607,
+    "training_max": 0.0002506556680770689,
+    "gap_min": 0.9627302684284587,
+    "normal_ratio_min": 3.333109984415771e-07
+  },
+  {
+    "noise_percent": 1,
+    "p": 13,
+    "tol": 0.0003,
+    "relations": 36,
+    "validation_max": 0.0006927992933110341,
+    "training_max": 0.0007311256019168199,
+    "gap_min": 0.9992921108119784,
+    "normal_ratio_min": 0.002263971122451022
+  },
+  {
+    "noise_percent": 1,
+    "p": 13,
+    "tol": 0.001,
+    "relations": 48,
+    "validation_max": 0.0011580530210848945,
+    "training_max": 0.0011719318284328544,
+    "gap_min": 0.9999508302864036,
+    "normal_ratio_min": 0.06713698965514553
+  },
+  {
+    "noise_percent": 1,
+    "p": 13,
+    "tol": 0.003,
+    "relations": 48,
+    "validation_max": 0.0011580530210848945,
+    "training_max": 0.0011719318284328544,
+    "gap_min": 0.9999508302864036,
+    "normal_ratio_min": 0.06713698965514553
+  },
+  {
+    "noise_percent": 1,
+    "p": 13,
+    "tol": 0.006,
+    "relations": 48,
+    "validation_max": 0.0011580530210848945,
+    "training_max": 0.0011719318284328544,
+    "gap_min": 0.9999508302864036,
+    "normal_ratio_min": 0.06713698965514553
+  },
+  {
+    "noise_percent": 1,
+    "p": 13,
+    "tol": 0.01,
+    "relations": 51,
+    "validation_max": 0.010503815181815701,
+    "training_max": 0.010578024118613796,
+    "gap_min": 0.8700111644156507,
+    "normal_ratio_min": 0.06935261188663235
+  },
+  {
+    "noise_percent": 5,
+    "p": 12,
+    "tol": 0.0001,
+    "relations": 0
+  },
+  {
+    "noise_percent": 5,
+    "p": 12,
+    "tol": 0.0003,
+    "relations": 0
+  },
+  {
+    "noise_percent": 5,
+    "p": 12,
+    "tol": 0.001,
+    "relations": 18,
+    "validation_max": 0.001998450576789271,
+    "training_max": 0.0020919664542988796,
+    "gap_min": 0.983552297097003,
+    "normal_ratio_min": 0.020822192576396198
+  },
+  {
+    "noise_percent": 5,
+    "p": 12,
+    "tol": 0.003,
+    "relations": 34,
+    "validation_max": 0.0057578010915577205,
+    "training_max": 0.006027167559362311,
+    "gap_min": 0.9989017907581086,
+    "normal_ratio_min": 0.15832428097506762
+  },
+  {
+    "noise_percent": 5,
+    "p": 12,
+    "tol": 0.006,
+    "relations": 34,
+    "validation_max": 0.0057578010915577205,
+    "training_max": 0.006027167559362311,
+    "gap_min": 0.9989017907581086,
+    "normal_ratio_min": 0.15832428097506762
+  },
+  {
+    "noise_percent": 5,
+    "p": 12,
+    "tol": 0.01,
+    "relations": 37,
+    "validation_max": 0.011155589352678968,
+    "training_max": 0.011856421398494204,
+    "gap_min": 0.8635164432459531,
+    "normal_ratio_min": 0.16621838805807163
+  },
+  {
+    "noise_percent": 5,
+    "p": 13,
+    "tol": 0.0001,
+    "relations": 9,
+    "validation_max": 0.0002556526936944676,
+    "training_max": 0.00024354162439346738,
+    "gap_min": 0.3090840307346979,
+    "normal_ratio_min": 1.0635468941043099e-20
+  },
+  {
+    "noise_percent": 5,
+    "p": 13,
+    "tol": 0.0003,
+    "relations": 13,
+    "validation_max": 0.0008110106722636091,
+    "training_max": 0.0010030963451304012,
+    "gap_min": 0.02825743896285826,
+    "normal_ratio_min": 2.0700703851835038e-08
+  },
+  {
+    "noise_percent": 5,
+    "p": 13,
+    "tol": 0.001,
+    "relations": 32,
+    "validation_max": 0.0019923710458018074,
+    "training_max": 0.0020794345958545634,
+    "gap_min": 0.9836079089514727,
+    "normal_ratio_min": 0.0016407076544160796
+  },
+  {
+    "noise_percent": 5,
+    "p": 13,
+    "tol": 0.003,
+    "relations": 48,
+    "validation_max": 0.005757877399521763,
+    "training_max": 0.00602718226375389,
+    "gap_min": 0.9989010106933732,
+    "normal_ratio_min": 0.06605837743618931
+  },
+  {
+    "noise_percent": 5,
+    "p": 13,
+    "tol": 0.006,
+    "relations": 48,
+    "validation_max": 0.005757877399521763,
+    "training_max": 0.00602718226375389,
+    "gap_min": 0.9989010106933732,
+    "normal_ratio_min": 0.06605837743618931
+  },
+  {
+    "noise_percent": 5,
+    "p": 13,
+    "tol": 0.01,
+    "relations": 51,
+    "validation_max": 0.011155199539353268,
+    "training_max": 0.011855998688996604,
+    "gap_min": 0.863514596394252,
+    "normal_ratio_min": 0.06963291135138526
+  },
+  {
+    "noise_percent": 10,
+    "p": 12,
+    "tol": 0.0001,
+    "relations": 0
+  },
+  {
+    "noise_percent": 10,
+    "p": 12,
+    "tol": 0.0003,
+    "relations": 0
+  },
+  {
+    "noise_percent": 10,
+    "p": 12,
+    "tol": 0.001,
+    "relations": 4,
+    "validation_max": 0.0024929492309332885,
+    "training_max": 0.0023751496117041544,
+    "gap_min": 0.6021522894956517,
+    "normal_ratio_min": -5.5277488386708406e-17
+  },
+  {
+    "noise_percent": 10,
+    "p": 12,
+    "tol": 0.003,
+    "relations": 23,
+    "validation_max": 0.007578420963186542,
+    "training_max": 0.007620899858982905,
+    "gap_min": 0.93393925786015,
+    "normal_ratio_min": 0.007438230080182422
+  },
+  {
+    "noise_percent": 10,
+    "p": 12,
+    "tol": 0.006,
+    "relations": 34,
+    "validation_max": 0.011663309447287414,
+    "training_max": 0.012042818799797166,
+    "gap_min": 0.99567459966735,
+    "normal_ratio_min": 0.1515198618508288
+  },
+  {
+    "noise_percent": 10,
+    "p": 12,
+    "tol": 0.01,
+    "relations": 37,
+    "validation_max": 0.012070828259737315,
+    "training_max": 0.012042818799797166,
+    "gap_min": 0.8637204293841592,
+    "normal_ratio_min": 0.15868561450580895
+  },
+  {
+    "noise_percent": 10,
+    "p": 13,
+    "tol": 0.0001,
+    "relations": 1,
+    "validation_max": 8.515718626390351e-06,
+    "training_max": 1.0567685392488916e-05,
+    "gap_min": 1.0,
+    "normal_ratio_min": -3.632486568807434e-18
+  },
+  {
+    "noise_percent": 10,
+    "p": 13,
+    "tol": 0.0003,
+    "relations": 9,
+    "validation_max": 0.0006330488709126321,
+    "training_max": 0.0007201637418429416,
+    "gap_min": 0.208622735780572,
+    "normal_ratio_min": 1.6014868862720752e-20
+  },
+  {
+    "noise_percent": 10,
+    "p": 13,
+    "tol": 0.001,
+    "relations": 17,
+    "validation_max": 0.002480184030592138,
+    "training_max": 0.002373313911292305,
+    "gap_min": 0.0766988169542685,
+    "normal_ratio_min": 1.1341016931737084e-06
+  },
+  {
+    "noise_percent": 10,
+    "p": 13,
+    "tol": 0.003,
+    "relations": 36,
+    "validation_max": 0.007602051703843425,
+    "training_max": 0.007126006523649603,
+    "gap_min": 0.9376819590658829,
+    "normal_ratio_min": 0.0021869772834206785
+  },
+  {
+    "noise_percent": 10,
+    "p": 13,
+    "tol": 0.006,
+    "relations": 48,
+    "validation_max": 0.011656441142218546,
+    "training_max": 0.01204402927520836,
+    "gap_min": 0.9956570354225189,
+    "normal_ratio_min": 0.06378025488113041
+  },
+  {
+    "noise_percent": 10,
+    "p": 13,
+    "tol": 0.01,
+    "relations": 51,
+    "validation_max": 0.012070365862191018,
+    "training_max": 0.01204402927520836,
+    "gap_min": 0.8636894480294666,
+    "normal_ratio_min": 0.06755559106969165
+  }
+]

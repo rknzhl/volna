@@ -1,0 +1,141 @@
+{
+  "maximum_numerical_threads": 1,
+  "noise_fraction": 0.1,
+  "lags": {
+    "4": {
+      "states": 2207,
+      "dimension": 12,
+      "fps_start_train_index": 0,
+      "training_sampling_buffer": 0.1012464666541496,
+      "direct_buffer_control": 0.10124646665414971,
+      "previous_common_death": 0.5935092568397522,
+      "previous_twice_common_birth": 0.5148272514343262,
+      "metric_seconds": 0.017550500000000024,
+      "budgets": [
+        {
+          "landmarks": 1600,
+          "fill_distance": 0.20299276746951003,
+          "buffered_threshold_lower": 0.6084784682473192,
+          "allowed_lower_with_previous_birth": 0.6084784682473192,
+          "margin_below_previous_death": -0.014969211407567018,
+          "coverage_interval_exists_with_previous_bar": false,
+          "farthest_train_index": 2017,
+          "cumulative_fps_seconds": 0.003929958999999927
+        },
+        {
+          "landmarks": 1664,
+          "fill_distance": 0.19809972356791056,
+          "buffered_threshold_lower": 0.5986923804441203,
+          "allowed_lower_with_previous_birth": 0.5986923804441203,
+          "margin_below_previous_death": -0.005183123604368123,
+          "coverage_interval_exists_with_previous_bar": false,
+          "farthest_train_index": 1167,
+          "cumulative_fps_seconds": 0.004082334000000021
+        },
+        {
+          "landmarks": 1728,
+          "fill_distance": 0.19281306043519036,
+          "buffered_threshold_lower": 0.5881190541786799,
+          "allowed_lower_with_previous_birth": 0.5881190541786799,
+          "margin_below_previous_death": 0.005390202661072263,
+          "coverage_interval_exists_with_previous_bar": true,
+          "farthest_train_index": 1374,
+          "cumulative_fps_seconds": 0.004231166999999925
+        },
+        {
+          "landmarks": 1792,
+          "fill_distance": 0.18716505872015504,
+          "buffered_threshold_lower": 0.5768230507486093,
+          "allowed_lower_with_previous_birth": 0.5768230507486093,
+          "margin_below_previous_death": 0.016686206091142908,
+          "coverage_interval_exists_with_previous_bar": true,
+          "farthest_train_index": 1405,
+          "cumulative_fps_seconds": 0.004378875000000004
+        },
+        {
+          "landmarks": 1856,
+          "fill_distance": 0.18214350011393668,
+          "buffered_threshold_lower": 0.5667799335361725,
+          "allowed_lower_with_previous_birth": 0.5667799335361725,
+          "margin_below_previous_death": 0.02672932330357969,
+          "coverage_interval_exists_with_previous_bar": true,
+          "farthest_train_index": 1672,
+          "cumulative_fps_seconds": 0.004531834000000012
+        }
+      ],
+      "smallest_probed_budget_with_coverage": 1728,
+      "elapsed_seconds": 0.024552958999999985,
+      "certificate_scope": "TRAIN coverage lower bound only; new landmarks require new persistence checks",
+      "persistence_or_fields_computed": false,
+      "phases_or_truth_used": false
+    },
+    "8": {
+      "states": 2203,
+      "dimension": 12,
+      "fps_start_train_index": 0,
+      "training_sampling_buffer": 0.1019797609423565,
+      "direct_buffer_control": 0.10197976094235685,
+      "previous_common_death": 0.6003599762916565,
+      "previous_twice_common_birth": 0.5655551552772522,
+      "metric_seconds": 0.014910624999999955,
+      "budgets": [
+        {
+          "landmarks": 1600,
+          "fill_distance": 0.20535597165604041,
+          "buffered_threshold_lower": 0.6146714651967938,
+          "allowed_lower_with_previous_birth": 0.6146714651967938,
+          "margin_below_previous_death": -0.014311488905137337,
+          "coverage_interval_exists_with_previous_bar": false,
+          "farthest_train_index": 199,
+          "cumulative_fps_seconds": 0.004424541000000004
+        },
+        {
+          "landmarks": 1664,
+          "fill_distance": 0.20372957077834844,
+          "buffered_threshold_lower": 0.6114186634414098,
+          "allowed_lower_with_previous_birth": 0.6114186634414098,
+          "margin_below_previous_death": -0.011058687149753332,
+          "coverage_interval_exists_with_previous_bar": false,
+          "farthest_train_index": 1062,
+          "cumulative_fps_seconds": 0.004582416000000089
+        },
+        {
+          "landmarks": 1728,
+          "fill_distance": 0.2023521473871067,
+          "buffered_threshold_lower": 0.6086638166589264,
+          "allowed_lower_with_previous_birth": 0.6086638166589264,
+          "margin_below_previous_death": -0.008303840367269943,
+          "coverage_interval_exists_with_previous_bar": false,
+          "farthest_train_index": 355,
+          "cumulative_fps_seconds": 0.004736916000000035
+        },
+        {
+          "landmarks": 1792,
+          "fill_distance": 0.2005520045870971,
+          "buffered_threshold_lower": 0.6050635310589072,
+          "allowed_lower_with_previous_birth": 0.6050635310589072,
+          "margin_below_previous_death": -0.004703554767250706,
+          "coverage_interval_exists_with_previous_bar": false,
+          "farthest_train_index": 721,
+          "cumulative_fps_seconds": 0.0049000000000000155
+        },
+        {
+          "landmarks": 1856,
+          "fill_distance": 0.1988813864155486,
+          "buffered_threshold_lower": 0.6017222947158102,
+          "allowed_lower_with_previous_birth": 0.6017222947158102,
+          "margin_below_previous_death": -0.0013623184241536856,
+          "coverage_interval_exists_with_previous_bar": false,
+          "farthest_train_index": 518,
+          "cumulative_fps_seconds": 0.005057291000000075
+        }
+      ],
+      "smallest_probed_budget_with_coverage": null,
+      "elapsed_seconds": 0.021196290999999978,
+      "certificate_scope": "TRAIN coverage lower bound only; new landmarks require new persistence checks",
+      "persistence_or_fields_computed": false,
+      "phases_or_truth_used": false
+    }
+  },
+  "elapsed_seconds": 0.053793458000000016
+}

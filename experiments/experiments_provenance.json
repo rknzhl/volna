@@ -1,0 +1,129 @@
+{
+  "scope": "Saved final production outputs only; no fitting, persistence or flow integration performed by this script.",
+  "sources": [
+    {
+      "path": "experiments/data/noise00.json",
+      "sha256": "8281e806358b7c1aa7d7d68a8759c8434395579c4b2141706b02f56f1ce64dca",
+      "original_record_location": "results/fields_first_curved_noise_fix_2026_10_22/noise00.json"
+    },
+    {
+      "path": "experiments/data/noise01.json",
+      "sha256": "09a112587d47d2cc3c998dbc717ff5da7ee8bf53021678a14310d0d1d418fa77",
+      "original_record_location": "results/fields_first_curved_noise_fix_2026_10_22/noise01.json"
+    },
+    {
+      "path": "experiments/data/noise05.json",
+      "sha256": "2371cebd98bf3c635a8614acb53dda642cae0bbb4667edc53ec1798121b14224",
+      "original_record_location": "results/fields_first_curved_noise_fix_2026_10_22/noise05.json"
+    },
+    {
+      "path": "experiments/data/noise10.json",
+      "sha256": "72108d3f45155b046b4f3e42113f86201e013fc9f8fddfc1e86120b1f0535814",
+      "original_record_location": "results/fields_first_curved_noise_fix_2026_10_22/noise10.json"
+    },
+    {
+      "path": "experiments/data/flow_verification.json",
+      "sha256": "3421dce9aa23cb7f077afaf00175555c7b09a88444fd813c9f11bf2b53d7e1ab",
+      "original_record_location": "results/fields_first_curved_noise_fix_2026_10_22/flow_verification.json"
+    }
+  ],
+  "frozen_training_model": {
+    "path": "/private/tmp/takers_curved_noise_fix_20261022/noise00_candidate.pkl",
+    "sha256": "8217e41976294b91bad86050712d94ca114048c079620a4409f30f6af77202f9"
+  },
+  "generator_source": {
+    "path": "code/lag_ssa/fields_first_sensor_cases.py",
+    "sha256": "94e97569ec87f160d7f7f7073ad5b497f03c4dfb173ea1c6319334391db24e8c"
+  },
+  "production_source_hashes": {
+    "fields_first_phase.py": "119467532c7640e746aca30a0f8ddcee00e96faeb0f634b0187ccd0ad4abc242",
+    "fields_first_frame.py": "a2fa52d996b34a6a03477ca9fea7e8903487581419065678dfbde771164d78cb",
+    "fields_first_tangent_atlas.py": "d061ae46baf52a4cf64c72944836aba5cbb4f5e4716ef3bebfbaeb80d899c325",
+    "fields_first_periods.py": "39eaa49afe77ea6af21734b5d8e43c537c42126270d7d9a648ec8e3568657d1d",
+    "fields_first_implicit_geometry.py": "1e98e94a5d4a19b2c198f109a56187a24bc92955954d17d2e2171e5c7f71cd9b",
+    "fields_first_span.py": "e097752d3b022709598c127136b896c2fd79bd9ac1d7110a096be5769f8b2511",
+    "fields_first_bounded_persistence.py": "e725635d1ae87c530c0c8782d4f36f1c2cc9aaa91ee5f6c007baac56a0747f76",
+    "fields_first_paths.py": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+    "fields_first_preprocess.py": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+    "fields_first_sensor_pipeline.py": "7727e41522a72a5f81b00de88a2ff480d4692d2629b7b9ca1aad266c3d16ca59"
+  },
+  "plotting_script": {
+    "path": "experiments/plot_experiments.py",
+    "sha256": "25620fef3ea5700dec503a2389f6e12f2aa22c28d542a510571f6d307b1731a7"
+  },
+  "plotted_arrays": [
+    {
+      "path": "experiments/experiments_curved_noise_data.npz",
+      "sha256": "b7e51d6ca80b693f81907e4474d73d4b25871328602b870b73af88288201e12e"
+    },
+    {
+      "path": "experiments/experiments_train_phases_data.npz",
+      "sha256": "c915e3bfb63c7d231810cfae9e661bcf6f29ff907325fbb01ca9d56f9b155576"
+    }
+  ],
+  "phase_figure": {
+    "split": "TRAIN",
+    "noise": 0,
+    "phase_count": 3,
+    "training_sample_count": 2400,
+    "retained_window_count": 2203,
+    "raw_window_start_first": 95,
+    "raw_window_start_last": 2297,
+    "reference": "Generator phases transformed by the integer gauge and origins already saved in noise00.json.",
+    "integer_gauge": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "phase_origin_rad": [
+      2.5424168826575455,
+      -2.368651436565897,
+      2.9270776636836726
+    ],
+    "gauge_refitted": false,
+    "train_phase_mae_rad": 0.0016045478306272152,
+    "reference_panel_window_count": 40,
+    "residual_panel_window_count": 2203,
+    "role": "supplementary"
+  },
+  "noise_figure": {
+    "split": "query",
+    "seed": 31,
+    "training_sample_count": 2400,
+    "query_input_sample_count": 320,
+    "retained_query_snapshots": 130,
+    "noise_definition": "Noise standard deviation divided by clean TRAIN channel deviation; same orbit and standardized Gaussian realization across levels.",
+    "sensor_error_definition": "RMSE against clean query readings after division by clean TRAIN channel deviations, expressed in percent.",
+    "control": "Saved frozen MSSA conditioning output on the same inputs and retained query indices; not a separately tuned SSA/MSSA benchmark.",
+    "single_realization": true,
+    "line_segments": "Guides between observed noise levels; no fitted response curve.",
+    "role": "main",
+    "metrics": [
+      "phase MAE",
+      "sensor NRMSE"
+    ]
+  },
+  "figure_outputs": [
+    "experiments/figures/experiments_curved_noise.pdf",
+    "experiments/figures/experiments_train_phases.pdf",
+    "experiments/figures/extra_curved_noise_returns.pdf"
+  ],
+  "extra_noise_diagnostics": {
+    "role": "supplementary",
+    "filename": "extra_curved_noise_returns.pdf",
+    "full_turn": "Saved independent checks: all 3 fields at 8 TRAIN starts, error divided by full prepared-window RMS.",
+    "flow_threshold_percent": 5.0
+  }
+}

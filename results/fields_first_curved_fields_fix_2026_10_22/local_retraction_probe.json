@@ -1,0 +1,8 @@
+{
+  "gates": {
+    "passed": false,
+    "duality_rms": 0.2551282121095037
+  },
+  "elapsed_seconds": 1.078245917,
+  "numerical_threads": 1
+}

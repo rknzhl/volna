@@ -1,0 +1,18 @@
+{
+  "code/lag_ssa/benchmark_fields_first_sensors.py": "f1704af70cfac5d5e481740d32e96f8b386ab096d85b235b485ff5938590f6bc",
+  "code/lag_ssa/check_fields_first_safety.py": "9cb5d48d481a15b856c9a38ff217586ef416a3bcecda589880607cf741db7dd3",
+  "code/lag_ssa/cohomology_primitivity.py": "662cb2088267c2c36722876cc9d701e88c3155330f0f202c1c7ed52902c85b12",
+  "code/lag_ssa/evaluate_tangent_overlap_angles.py": "6423e03bbf4a6e159306bde311ffbd7fb1292b62c8771692c9399b640da45271",
+  "code/lag_ssa/fields_first_frame.py": "cafe5aaf80754f96735047aedfec390aabdb4a91e4b8a7387dfabd0d5cddc979",
+  "code/lag_ssa/fields_first_io.py": "93a9ff81716e1a7ec017108b0cb85ee744d56ad0740b53f39a9282343bdee22a",
+  "code/lag_ssa/fields_first_paths.py": "bac582cfe97fe6df89e2783f8c04a3fbd631a7c9575ab88da082e9ded463bb41",
+  "code/lag_ssa/fields_first_periods.py": "9ab938f1ec4c252e126aebffa839dc4b09ea44b02c95dbca38023c10df969669",
+  "code/lag_ssa/fields_first_phase.py": "0b1ac521043eeb201cafd59d844a086b74b64fdc21c0e578a3f7e1bc61df5075",
+  "code/lag_ssa/fields_first_preprocess.py": "cc050d290839eb15fe8d1eaae5d8cd4f7467ad15da868a13ea55fa1f9b0ea253",
+  "code/lag_ssa/fields_first_sensor_cases.py": "9661641cc7938aed4bfa6faefdb4f1f029bb25351c0f37daa448ce515dcb12e2",
+  "code/lag_ssa/fields_first_sensor_pipeline.py": "0f3de13f26aa2b4f1abf4a630f9324ef77221bfa1d45f1dba3e8bc27426e9579",
+  "code/lag_ssa/fields_first_tangent_atlas.py": "e1e7e2660f001cdd51164695d0dbed0c642f63734e0a21041c1828834d4daa1a",
+  "code/lag_ssa/requirements-fields-first.txt": "9a78f9c7383b34434122134870e117c1b818f98489d1cc7bf9c44fa193f4dcdd",
+  "code/lag_ssa/run_fields_first_sensor.py": "5414eaa07a28e15e55f21d49ae5948bd73c034bdfc5f3fa7807e1440743ac2f7",
+  "code/lag_ssa/tangent_overlap.py": "9b56530a87addc4b7dd8d59cf161e119abae55429866f068a1d311ff9af571d1"
+}

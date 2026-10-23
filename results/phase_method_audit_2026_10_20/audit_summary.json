@@ -1,0 +1,208 @@
+{
+  "date": "2026-10-20",
+  "verdict": "A single finite topology-preserving coframe prototype is executable end to end on the listed nonlinear noiseless examples. It is not a general recovery guarantee. The weak-phase example remains unresolved.",
+  "original_pdf_and_notebooks_modified": false,
+  "procedure": [
+    "joint windows and train-only preprocessing",
+    "persistent circular coordinates; reject ambiguous rank or uncertified primitive finite-complex free classes",
+    "local PCA tangent estimates and overlap transfer",
+    "one global real local-affine potential; analytic encoder derivatives; normalized regularized invariant-coframe least squares",
+    "single periodic snapshot decoder with structured delayed windows and derivative consistency",
+    "sampled phase fields and explicit model paths; held-out reconstruction and diagnostics"
+  ],
+  "equations": {
+    "window": "x_i=(y_i,...,y_{i+L-1}) in R^(mL)",
+    "transfer": "J_i=P0 Q_(i+1); A_i=(J_i^T J_i)^(-1) J_i^T P1 Q_i",
+    "encoder": "Phi(x)=Phi0(x)+C^T psi(x) mod 2pi",
+    "potential_features": "psi_(l,0)=w_l; psi_(l,a)=w_l Q_l[:,a]^T (x-center_l)/R",
+    "coframe": "D_i=J_Phi(x_i) Q_i",
+    "invariance": "D_(i+1) A_i approximately D_i",
+    "fields": "E_i=Q_i D_i^(-1)",
+    "structured_decoder": "Psi(phi)=(g(phi),g(phi+nu),...,g(phi+(L-1)nu))",
+    "decoder_derivatives": "J_Psi(Phi(x_i)) D_i approximately Q_i",
+    "model_path": "Psi(phi+s e_j)",
+    "connection_to_pdf": "dPhi=2pi Pi^(-1) beta; E=W Pi/(2pi) in the exact construction"
+  },
+  "exact_sufficient_statement": {
+    "conditions": [
+      "connected compact boundaryless r-dimensional C2 manifold M",
+      "C1 closed R^r-valued one-form eta",
+      "eta_x is an isomorphism on T_x M everywhere",
+      "image of all loop periods is exactly 2pi Z^r",
+      "T^* eta=eta"
+    ],
+    "conclusion": "Phi=integral eta mod 2pi is a global diffeomorphism M to T^r; dynamics become a constant translation; dual fields commute and are complete.",
+    "finite_status": "The prototype preserves initial cohomology classes exactly, but checks nondegeneracy and inverse consistency only on samples. A finite-complex certificate is not a manifold certificate."
+  },
+  "protocol": {
+    "raw_splits_before_windowing": true,
+    "lag": 2,
+    "validation_snapshots": 200,
+    "test_snapshots": 300,
+    "lambda_candidates": [
+      0,
+      0.1,
+      1,
+      10,
+      100,
+      1000
+    ],
+    "selection": "smallest validation window NRMSE among train+validation nondegenerate orientation-consistent coframes",
+    "truth": "only phase scoring after fit and model selection are frozen",
+    "test_values_used_to_select_model": false,
+    "encoder_derivatives": "analytic derivative of the actual frozen encoder, independently checked by finite differences",
+    "rank_gates": "minimum sigma_min/sigma_max >1e-3 and minimum sigma_min/initial-gradient-RMS >1e-3, with transported sampled orientation consistency",
+    "negative_variant": "A constant-per-chart correction has an unavoidable local rank defect at points with fewer than r+1 active weights; local-affine features remove this obstruction."
+  },
+  "results": [
+    {
+      "case": "circle",
+      "seed": 31,
+      "counts": {
+        "train": 1400,
+        "validation": 200,
+        "test": 300
+      },
+      "result_file": "circle_31_results.json",
+      "status": "conditional_e2e_fit",
+      "lambda_selected": 1000.0,
+      "test_window_nrmse": 0.0019904737190413985,
+      "test_snapshot_nrmse": 0.0019421847462547466,
+      "test_phase_mae_rad": 0.0010211184751285117,
+      "test_field_consistency_relative": 0.030046274180819024,
+      "structured_overlap_max": 0.0,
+      "train_gate": true,
+      "validation_gate": true,
+      "test_gate": true,
+      "cycle": {
+        "decoder_grid_points": 100,
+        "decoder_grid_encoder_coverage": 1.0,
+        "sampled_check_is_not_global_embedding_certificate": true,
+        "phase_cycle_mae_rad": 0.00044816376043572514,
+        "phase_cycle_max_rad": 0.0011933541047352884,
+        "differential_cycle_relative": 0.02881715157982844,
+        "corrected_encoder_gradient_finite_difference_max": 1.5870843528276168e-10
+      }
+    },
+    {
+      "case": "harmonic",
+      "seed": 31,
+      "counts": {
+        "train": 2400,
+        "validation": 200,
+        "test": 300
+      },
+      "result_file": "harmonic_31_results.json",
+      "status": "conditional_e2e_fit",
+      "lambda_selected": 1000.0,
+      "test_window_nrmse": 0.013311338156355016,
+      "test_snapshot_nrmse": 0.010663311932230442,
+      "test_phase_mae_rad": 0.036711811583732525,
+      "test_field_consistency_relative": 0.08905082075578581,
+      "structured_overlap_max": 0.0,
+      "train_gate": true,
+      "validation_gate": true,
+      "test_gate": true,
+      "cycle": {
+        "decoder_grid_points": 1600,
+        "decoder_grid_encoder_coverage": 1.0,
+        "sampled_check_is_not_global_embedding_certificate": true,
+        "phase_cycle_mae_rad": 0.004579038994487575,
+        "phase_cycle_max_rad": 0.02598964533436352,
+        "differential_cycle_relative": 0.057438930110586275,
+        "corrected_encoder_gradient_finite_difference_max": 3.048443164566095e-10
+      }
+    },
+    {
+      "case": "warped",
+      "seed": 31,
+      "counts": {
+        "train": 1400,
+        "validation": 200,
+        "test": 300
+      },
+      "result_file": "warped_31_results.json",
+      "status": "conditional_e2e_fit",
+      "lambda_selected": 1000.0,
+      "test_window_nrmse": 0.022943460041329324,
+      "test_snapshot_nrmse": 0.018980740697075633,
+      "test_phase_mae_rad": 0.03378330944912845,
+      "test_field_consistency_relative": 0.149176110135313,
+      "structured_overlap_max": 0.0,
+      "train_gate": true,
+      "validation_gate": true,
+      "test_gate": true,
+      "cycle": {
+        "decoder_grid_points": 1600,
+        "decoder_grid_encoder_coverage": 1.0,
+        "sampled_check_is_not_global_embedding_certificate": true,
+        "phase_cycle_mae_rad": 0.010389930146644329,
+        "phase_cycle_max_rad": 0.10118921451119903,
+        "differential_cycle_relative": 0.10483318245951506,
+        "corrected_encoder_gradient_finite_difference_max": 2.3104068658241772e-10
+      }
+    },
+    {
+      "case": "warped",
+      "seed": 47,
+      "counts": {
+        "train": 1400,
+        "validation": 200,
+        "test": 300
+      },
+      "result_file": "warped_47_results.json",
+      "status": "conditional_e2e_fit",
+      "lambda_selected": 1000.0,
+      "test_window_nrmse": 0.023591819830005637,
+      "test_snapshot_nrmse": 0.01859239458447249,
+      "test_phase_mae_rad": 0.037092531794848296,
+      "test_field_consistency_relative": 0.15315187969599792,
+      "structured_overlap_max": 0.0,
+      "train_gate": true,
+      "validation_gate": true,
+      "test_gate": true,
+      "cycle": {
+        "decoder_grid_points": 1600,
+        "decoder_grid_encoder_coverage": 1.0,
+        "sampled_check_is_not_global_embedding_certificate": true,
+        "phase_cycle_mae_rad": 0.010125121223880191,
+        "phase_cycle_max_rad": 0.1123695918373393,
+        "differential_cycle_relative": 0.0982479538416432,
+        "corrected_encoder_gradient_finite_difference_max": 6.097216065370503e-10
+      }
+    },
+    {
+      "case": "weak",
+      "seed": 31,
+      "counts": {
+        "train": 1400,
+        "validation": 200,
+        "test": 300
+      },
+      "result_file": "weak_31_results.json",
+      "status": "unresolved",
+      "failure": "unresolved_initial_toroidal_coordinates",
+      "topology_reason": "no_declared_persistence_gap_with_common_standard_range"
+    }
+  ],
+  "remaining_limits": [
+    "r is selected by a finite persistence-gap heuristic, not universally determined; the weak-phase test fails at this step.",
+    "All tests are noiseless, L=2, with rich instantaneous sensor observations; sparse noninjective snapshots are untested.",
+    "The second seed changes channel mixing, not the underlying phase trajectory.",
+    "All selected lambda values are at the upper end of the declared candidate grid; this is not an optimum certificate.",
+    "The finite regularized objective generally biases the exact invariant solution.",
+    "Decoder fields commute exactly on the parameter torus; fields are single-valued on its image only if the decoder is an embedding.",
+    "Field consistency with measured tangent directions remains approximate, about 3 to 15 percent in these tests.",
+    "Sampled rank/cycle checks do not prove global injectivity or a correct true-manifold topology.",
+    "Observed held-out windows are supplied to the encoder. These results measure reconstruction, not forecasting.",
+    "Reconstruction covers measured sensor values; a continuous spatial field away from sensors needs a separate identifiable spatial model."
+  ],
+  "runtime": {
+    "python": "3.9.6",
+    "numpy": "2.0.2",
+    "scipy": "1.13.1",
+    "scikit-learn": "1.6.1",
+    "dreimac": "0.3.2",
+    "ripser": "0.6.15"
+  }
+}

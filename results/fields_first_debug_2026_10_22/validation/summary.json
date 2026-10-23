@@ -1,0 +1,56 @@
+[
+  {
+    "name": "scalar_clean",
+    "status": "transformed_conditionally",
+    "phase_dimension": 1,
+    "rmse_std_normalized": 0.011495863924675935,
+    "phase_mae_rad": 0.004264590488713209,
+    "primitive_phase_match": true,
+    "passed": true
+  },
+  {
+    "name": "scalar_noise10",
+    "status": "transformed_conditionally",
+    "phase_dimension": 1,
+    "rmse_std_normalized": 0.025476228866000254,
+    "phase_mae_rad": 0.012096990876885498,
+    "primitive_phase_match": true,
+    "passed": true
+  },
+  {
+    "name": "two_waves",
+    "status": "transformed_conditionally",
+    "phase_dimension": 2,
+    "rmse_std_normalized": 0.00886874635609772,
+    "phase_mae_rad": 0.004977211420267309,
+    "primitive_phase_match": true,
+    "passed": true
+  },
+  {
+    "name": "nonlinear_sensors",
+    "status": "transformed_conditionally",
+    "phase_dimension": 2,
+    "rmse_std_normalized": 0.027047774803298175,
+    "phase_mae_rad": 0.014051130907392146,
+    "primitive_phase_match": true,
+    "passed": true
+  },
+  {
+    "name": "optical",
+    "status": "transformed_conditionally",
+    "phase_dimension": 2,
+    "rmse_std_normalized": 0.010408722518260393,
+    "phase_mae_rad": 0.005360353280073921,
+    "primitive_phase_match": true,
+    "passed": true
+  },
+  {
+    "name": "three_phases_linear",
+    "status": "transformed_conditionally",
+    "phase_dimension": 3,
+    "rmse_std_normalized": 0.013021346073757446,
+    "phase_mae_rad": 0.0038706953859242144,
+    "primitive_phase_match": true,
+    "passed": true
+  }
+]

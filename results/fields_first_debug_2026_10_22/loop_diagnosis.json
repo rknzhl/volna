@@ -1,0 +1,139 @@
+{
+  "case": "scalarcircle, seed31, linear trend, Gaussian noise sigma=0.10 per-channel clean training std",
+  "candidate": {
+    "lag": 16,
+    "neighbors": 96,
+    "r_automatically_selected": 1
+  },
+  "ambient_step_refinement": [
+    {
+      "step": 0.12,
+      "endpoint_relative": 0.09743834993584657,
+      "tangent_relative": 0.0812290514359765,
+      "normal_relative": 0.05381517667937152,
+      "endpoint_phase": [
+        -0.06009019631063966
+      ],
+      "seconds": 0.04101991653442383,
+      "endpoint_difference_previous": null
+    },
+    {
+      "step": 0.06,
+      "endpoint_relative": 0.08014117417007108,
+      "tangent_relative": 0.059684971846672125,
+      "normal_relative": 0.05348188415734455,
+      "endpoint_phase": [
+        -0.04432357893386137
+      ],
+      "seconds": 0.08264422416687012,
+      "endpoint_difference_previous": 0.022290552171569243
+    },
+    {
+      "step": 0.03,
+      "endpoint_relative": 0.08020018995982865,
+      "tangent_relative": 0.0597421171747827,
+      "normal_relative": 0.05350654076902311,
+      "endpoint_phase": [
+        -0.044364194896074356
+      ],
+      "seconds": 0.15571999549865723,
+      "endpoint_difference_previous": 8.322166136816382e-05
+    }
+  ],
+  "geometry_constrained_same_candidate": {
+    "gates": {
+      "core_status": "conditional_fields_first_model",
+      "passed": true,
+      "closed_projection_relative": 0.0048573463217531825,
+      "duality_rms": 0.007775052644712157,
+      "phase_step_rmse": 0.0025795043673250283,
+      "minimum_atlas_gap": 0.9848435632285427,
+      "flow_geometry": "normal_graph_constraint",
+      "ambient_field_duality_rms": 0.01639421874480965,
+      "flow_duality_probe_count": 16,
+      "checks": {
+        "closed_projection": true,
+        "duality": true,
+        "phase_step": true,
+        "atlas_gap": true,
+        "train_encoder_full_coverage": true,
+        "reference_projection": true,
+        "flow_refinement": true,
+        "inverse": true,
+        "full_turn": true,
+        "flow_order": true
+      },
+      "reference_displacement_relative": 0.03778776521750339,
+      "inverse_window_relative": 0.0254253138308764,
+      "full_turn_relative": [
+        0.002179189894270074
+      ],
+      "full_turn_probe_count": 8,
+      "flow_step_refinement_relative": [
+        0.000920723308660237
+      ],
+      "flow_retraction": {
+        "calls": 732,
+        "maximum_iterations": 10,
+        "maximum_normal_residual_relative": 9.939038734735228e-10,
+        "maximum_displacement_relative": 0.047206672228691536
+      },
+      "flow_order_relative": 0.0,
+      "source_rms": 0.9991468766369774,
+      "ambient_flow_attempt": {
+        "core_status": "conditional_fields_first_model",
+        "passed": false,
+        "closed_projection_relative": 0.0048573463217531825,
+        "duality_rms": 0.01639421874480965,
+        "phase_step_rmse": 0.0025795043673250283,
+        "minimum_atlas_gap": 0.9848435632285427,
+        "flow_geometry": "ambient_tangent_extension",
+        "checks": {
+          "closed_projection": true,
+          "duality": true,
+          "phase_step": true,
+          "atlas_gap": true,
+          "train_encoder_full_coverage": true,
+          "inverse": true,
+          "full_turn": false,
+          "flow_order": true
+        },
+        "inverse_window_relative": 0.0487575760597523,
+        "full_turn_relative": [
+          0.09743834993584657
+        ],
+        "full_turn_probe_count": 1,
+        "flow_order_relative": 0.0,
+        "source_rms": 0.9991468766369774
+      }
+    },
+    "transform_status": "transformed_conditionally",
+    "transform_diagnostics": {
+      "query_projection_relative": 4.823540807702919e-16,
+      "encoder_coverage": 1.0,
+      "minimum_atlas_gap": 0.9840589983142337,
+      "prefold_overlap_relative": 0.003239950202716973,
+      "query_residual_window_relative": 0.02881249581852428,
+      "encoder_field_duality_rms": 0.005562149789593796,
+      "ambient_field_duality_rms": 0.015202648468004164,
+      "flow_duality_probe_count": 16,
+      "flow_geometry": "normal_graph_constraint",
+      "flow_retraction": {
+        "calls": 843,
+        "maximum_iterations": 10,
+        "maximum_normal_residual_relative": 9.965832722897527e-10,
+        "maximum_displacement_relative": 0.047206672228691536
+      },
+      "phase_step_rmse_against_frozen_training_step": 0.0026663879252067507,
+      "flow_domain": {
+        "maximum_nearest_distance": 0.04291429737954958,
+        "minimum_atlas_gap": 0.9837866870338412,
+        "minimum_frame_singular": 0.7786819269382607
+      }
+    },
+    "elapsed_seconds": 63.157877922058105,
+    "reconstruction_rmse_std_normalized": 0.019914039017895773,
+    "phase_mae_rad": 0.009295825934774404
+  },
+  "interpretation": "RK4 truncation contributes, but about8% return defect remains as the step shrinks. Solving the normal graph constraint removes normal drift without any target endpoint. The corrected finite inverse is a geometry-constrained approximation; W and periods are not refitted to true phases or outputs."
+}

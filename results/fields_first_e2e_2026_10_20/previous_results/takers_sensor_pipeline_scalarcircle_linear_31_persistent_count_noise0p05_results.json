@@ -1,0 +1,2114 @@
+{
+  "case": "scalarcircle",
+  "trend": "linear",
+  "noise": 0.05,
+  "seed": 31,
+  "ntrain": 1800,
+  "ntest": 600,
+  "fit": {
+    "status": "accepted_conditionally_by_training_gates",
+    "preprocessing": {
+      "rank": 5,
+      "cv_selected": {
+        "degree": 0,
+        "rank": 5,
+        "cv_mse_raw": 0.0011979038496325869,
+        "fold_mse_raw": [
+          0.0008563805224183419,
+          0.0015760189619055008
+        ]
+      },
+      "lag": 32,
+      "window": 129,
+      "polyorder": 2,
+      "boundary_trim_each_side": 95,
+      "retained_training_count": 1610,
+      "scope": {
+        "slow_is_identified_physical_trend": false,
+        "polynomial_annihilation_degree": 2,
+        "shift_equivariance_region": "valid_mask interior only",
+        "phase_preservation_condition": "surviving filtered characters must still give an observable delay embedding",
+        "test_mode": "conditioning on the new observed block, not forecasting"
+      }
+    },
+    "attempts": [
+      {
+        "lag": 4,
+        "neighbors": 24,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 1,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 1,
+            "selection": {
+              "selected_count": 1,
+              "lifetime_gap": 130.86956280702836,
+              "common_birth": 0.06698194146156311,
+              "common_death": 1.4916166067123413,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 1607,
+            "ambient_dimension": 4,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.06698194146156311,
+                1.4916166067123413
+              ],
+              [
+                0.052416007965803146,
+                0.0633019208908081
+              ],
+              [
+                0.049070317298173904,
+                0.05732659995555878
+              ],
+              [
+                0.04785408824682236,
+                0.05180012434720993
+              ],
+              [
+                0.050101738423109055,
+                0.054016564041376114
+              ],
+              [
+                0.04011482372879982,
+                0.041278187185525894
+              ]
+            ],
+            "direct_metric_control_max_error": 2.4043267377038546e-15,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 4,
+          "retained_numerical_linear_span": 4,
+          "linear_span_relative_residual": 1.0700798268858567e-15,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 24,
+          "overlap": {
+            "minimum_prefix_singular": 0.30663324441822304,
+            "overlap_relative_residual_quantiles": [
+              0.008980751909499839,
+              0.05045746688897231,
+              0.21996439537550103
+            ]
+          },
+          "atlas_min_gap": 0.3135429755158929,
+          "frame_anchor_error": 3.0930834667533573e-15,
+          "frame_transfer_relative": 0.07814371437278025,
+          "frame_min_singular": 0.11539715817609267,
+          "frame_min_relative_singular": 1.0,
+          "integration": {
+            "fine_edges": 20056,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 20056,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.08965782084920947,
+            "fine_edge_length_quantiles": [
+              0.03135232220330024,
+              0.0597481469717114,
+              0.08965782084920947
+            ],
+            "path_stretch_quantiles": [
+              1.0172568525734498,
+              1.0973953028701893,
+              1.5657293030551913
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 20056,
+              "r": 1,
+              "valid_edge_count": 20056,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 1607,
+              "vertex_count": 1607,
+              "cover_radius": 0.4063951224088669,
+              "robust_cover_radius": 0.4063951224084605,
+              "coverage_margin": 4.0639512240886686e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 20056,
+              "deepest_subdivision": 0,
+              "chart_transitions": 36691,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 1.8607344287501955e-16,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 31,
+                "residual_norm": 1.1506163481315446,
+                "normal_residual_norm": 4.28131827106515e-10,
+                "estimated_design_condition": 13.119178403207844
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.012977137137841998,
+            "weighted_projection_relative": 0.012977137137841998,
+            "raw_triangle_curl_rms": 0.029737099366769024,
+            "fitted_triangle_curl_max": 1.6653345369377348e-15,
+            "period_singular_values": [
+              14.583632223164019
+            ],
+            "period_condition": 1.0,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 2.220446049250313e-16
+          },
+          "encoder_field_duality_relative": 0.30184241300127823,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            0.5797922233881001
+          ],
+          "train_phase_step_rmse": 0.025157580932340298,
+          "commutators": {
+            "pairs": [],
+            "source_probe_count": 0
+          },
+          "elapsed_fit_seconds": 2.7849810123443604
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 1,
+          "supplied_frame_dimension": 1,
+          "selection": {
+            "selected_count": 1,
+            "lifetime_gap": 130.86956280702836,
+            "common_birth": 0.06698194146156311,
+            "common_death": 1.4916166067123413,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 2.4043267377038546e-15,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 54078,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 1,
+          "cover_radius": 0.4063951224088669,
+          "rips_threshold": 0.8127902448177338,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "gates": {
+          "core_status": "conditional_fields_first_model",
+          "passed": false,
+          "closed_projection_relative": 0.012977137137841998,
+          "duality_rms": 0.30184241300127823,
+          "phase_step_rmse": 0.025157580932340298,
+          "minimum_atlas_gap": 0.3135429755158929,
+          "checks": {
+            "closed_projection": true,
+            "duality": false,
+            "phase_step": true,
+            "atlas_gap": true,
+            "train_encoder_full_coverage": true
+          }
+        }
+      },
+      {
+        "lag": 4,
+        "neighbors": 48,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 1,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 1,
+            "selection": {
+              "selected_count": 1,
+              "lifetime_gap": 130.86956280702836,
+              "common_birth": 0.06698194146156311,
+              "common_death": 1.4916166067123413,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 1607,
+            "ambient_dimension": 4,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.06698194146156311,
+                1.4916166067123413
+              ],
+              [
+                0.052416007965803146,
+                0.0633019208908081
+              ],
+              [
+                0.049070317298173904,
+                0.05732659995555878
+              ],
+              [
+                0.04785408824682236,
+                0.05180012434720993
+              ],
+              [
+                0.050101738423109055,
+                0.054016564041376114
+              ],
+              [
+                0.04011482372879982,
+                0.041278187185525894
+              ]
+            ],
+            "direct_metric_control_max_error": 2.4043267377038546e-15,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 4,
+          "retained_numerical_linear_span": 4,
+          "linear_span_relative_residual": 1.0700798268858567e-15,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 48,
+          "overlap": {
+            "minimum_prefix_singular": 0.5192409121450027,
+            "overlap_relative_residual_quantiles": [
+              0.0018824663058788073,
+              0.011554919045569656,
+              0.05049235309450974
+            ]
+          },
+          "atlas_min_gap": 0.8115758592652343,
+          "frame_anchor_error": 4.997087695367749e-16,
+          "frame_transfer_relative": 0.015363282039312547,
+          "frame_min_singular": 0.42203870476328725,
+          "frame_min_relative_singular": 1.0,
+          "integration": {
+            "fine_edges": 20056,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 20056,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.08965782084920947,
+            "fine_edge_length_quantiles": [
+              0.03135232220330024,
+              0.0597481469717114,
+              0.08965782084920947
+            ],
+            "path_stretch_quantiles": [
+              1.0172568525734498,
+              1.0973953028701893,
+              1.5657293030551913
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 20056,
+              "r": 1,
+              "valid_edge_count": 20056,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 1607,
+              "vertex_count": 1607,
+              "cover_radius": 0.4063951224088669,
+              "robust_cover_radius": 0.4063951224084605,
+              "coverage_margin": 4.0639512240886686e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 20056,
+              "deepest_subdivision": 0,
+              "chart_transitions": 36691,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 1.923320083717404e-16,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 32,
+                "residual_norm": 0.22365712405079058,
+                "normal_residual_norm": 3.617089432127702e-11,
+                "estimated_design_condition": 13.659926957785421
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.004727558416049292,
+            "weighted_projection_relative": 0.004727558416049292,
+            "raw_triangle_curl_rms": 0.00579878994921414,
+            "fitted_triangle_curl_max": 8.881784197001252e-16,
+            "period_singular_values": [
+              7.799906982306225
+            ],
+            "period_condition": 1.0,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 2.220446049250313e-16
+          },
+          "encoder_field_duality_relative": 0.03309336257561433,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            0.5798284376173316
+          ],
+          "train_phase_step_rmse": 0.008257631432532612,
+          "commutators": {
+            "pairs": [],
+            "source_probe_count": 0
+          },
+          "elapsed_fit_seconds": 2.6146090030670166
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 1,
+          "supplied_frame_dimension": 1,
+          "selection": {
+            "selected_count": 1,
+            "lifetime_gap": 130.86956280702836,
+            "common_birth": 0.06698194146156311,
+            "common_death": 1.4916166067123413,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 2.4043267377038546e-15,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 54078,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 1,
+          "cover_radius": 0.4063951224088669,
+          "rips_threshold": 0.8127902448177338,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "gates": {
+          "core_status": "conditional_fields_first_model",
+          "passed": false,
+          "closed_projection_relative": 0.004727558416049292,
+          "duality_rms": 0.03309336257561433,
+          "phase_step_rmse": 0.008257631432532612,
+          "minimum_atlas_gap": 0.8115758592652343,
+          "checks": {
+            "closed_projection": true,
+            "duality": true,
+            "phase_step": true,
+            "atlas_gap": true,
+            "train_encoder_full_coverage": true,
+            "inverse": true,
+            "full_turn": false,
+            "flow_order": true
+          },
+          "inverse_window_relative": 0.025973726348629753,
+          "full_turn_relative": [
+            0.144884946016183
+          ],
+          "flow_order_relative": 0.0,
+          "source_rms": 0.9995330719610673
+        }
+      },
+      {
+        "lag": 4,
+        "neighbors": 96,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 1,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 1,
+            "selection": {
+              "selected_count": 1,
+              "lifetime_gap": 130.86956280702836,
+              "common_birth": 0.06698194146156311,
+              "common_death": 1.4916166067123413,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 1607,
+            "ambient_dimension": 4,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.06698194146156311,
+                1.4916166067123413
+              ],
+              [
+                0.052416007965803146,
+                0.0633019208908081
+              ],
+              [
+                0.049070317298173904,
+                0.05732659995555878
+              ],
+              [
+                0.04785408824682236,
+                0.05180012434720993
+              ],
+              [
+                0.050101738423109055,
+                0.054016564041376114
+              ],
+              [
+                0.04011482372879982,
+                0.041278187185525894
+              ]
+            ],
+            "direct_metric_control_max_error": 2.4043267377038546e-15,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 4,
+          "retained_numerical_linear_span": 4,
+          "linear_span_relative_residual": 1.0700798268858567e-15,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 96,
+          "overlap": {
+            "minimum_prefix_singular": 0.5269160278924726,
+            "overlap_relative_residual_quantiles": [
+              0.0007616889037719436,
+              0.004614505920138751,
+              0.017788873105595605
+            ]
+          },
+          "atlas_min_gap": 0.9830832328773669,
+          "frame_anchor_error": 1.1102230246251565e-16,
+          "frame_transfer_relative": 0.0031980072823381916,
+          "frame_min_singular": 0.47595253979082175,
+          "frame_min_relative_singular": 1.0,
+          "integration": {
+            "fine_edges": 20056,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 20056,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.08965782084920947,
+            "fine_edge_length_quantiles": [
+              0.03135232220330024,
+              0.0597481469717114,
+              0.08965782084920947
+            ],
+            "path_stretch_quantiles": [
+              1.0172568525734498,
+              1.0973953028701893,
+              1.5657293030551913
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 20056,
+              "r": 1,
+              "valid_edge_count": 20056,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 1607,
+              "vertex_count": 1607,
+              "cover_radius": 0.4063951224088669,
+              "robust_cover_radius": 0.4063951224084605,
+              "coverage_margin": 4.0639512240886686e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 20056,
+              "deepest_subdivision": 0,
+              "chart_transitions": 36691,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 1.72981805236413e-16,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 32,
+                "residual_norm": 0.21939842722024777,
+                "normal_residual_norm": 3.442797008151364e-11,
+                "estimated_design_condition": 13.705178571798998
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.004870069720631447,
+            "weighted_projection_relative": 0.004870069720631447,
+            "raw_triangle_curl_rms": 0.005680519019635646,
+            "fitted_triangle_curl_max": 8.881784197001252e-16,
+            "period_singular_values": [
+              7.446021922582486
+            ],
+            "period_condition": 1.0,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 1.1102230246251565e-16
+          },
+          "encoder_field_duality_relative": 0.021775313764384928,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            0.579831301355831
+          ],
+          "train_phase_step_rmse": 0.007516255507549974,
+          "commutators": {
+            "pairs": [],
+            "source_probe_count": 0
+          },
+          "elapsed_fit_seconds": 2.548149824142456
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 1,
+          "supplied_frame_dimension": 1,
+          "selection": {
+            "selected_count": 1,
+            "lifetime_gap": 130.86956280702836,
+            "common_birth": 0.06698194146156311,
+            "common_death": 1.4916166067123413,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 2.4043267377038546e-15,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 54078,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 1,
+          "cover_radius": 0.4063951224088669,
+          "rips_threshold": 0.8127902448177338,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "gates": {
+          "core_status": "conditional_fields_first_model",
+          "passed": false,
+          "closed_projection_relative": 0.004870069720631447,
+          "duality_rms": 0.021775313764384928,
+          "phase_step_rmse": 0.007516255507549974,
+          "minimum_atlas_gap": 0.9830832328773669,
+          "checks": {
+            "closed_projection": true,
+            "duality": true,
+            "phase_step": true,
+            "atlas_gap": true,
+            "train_encoder_full_coverage": true,
+            "inverse": true,
+            "full_turn": false,
+            "flow_order": true
+          },
+          "inverse_window_relative": 0.028350516347502956,
+          "full_turn_relative": [
+            0.09943984442514066
+          ],
+          "flow_order_relative": 0.0,
+          "source_rms": 0.9995330719610673
+        }
+      },
+      {
+        "lag": 8,
+        "neighbors": 24,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 1,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 1,
+            "selection": {
+              "selected_count": 1,
+              "lifetime_gap": null,
+              "common_birth": 0.07361190766096115,
+              "common_death": 1.6038824319839478,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 1603,
+            "ambient_dimension": 8,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.07361190766096115,
+                1.6038824319839478
+              ]
+            ],
+            "direct_metric_control_max_error": 5.856426454897701e-15,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 8,
+          "retained_numerical_linear_span": 8,
+          "linear_span_relative_residual": 7.022758580155778e-16,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 24,
+          "overlap": {
+            "minimum_prefix_singular": 0.6360845690975054,
+            "overlap_relative_residual_quantiles": [
+              0.010538087964828656,
+              0.03181861744448225,
+              0.10654891639839971
+            ]
+          },
+          "atlas_min_gap": 0.5783502730959009,
+          "frame_anchor_error": 6.01749262136761e-16,
+          "frame_transfer_relative": 0.02795581928416452,
+          "frame_min_singular": 0.3884419647522983,
+          "frame_min_relative_singular": 1.0,
+          "integration": {
+            "fine_edges": 19796,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 19796,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.07509435437230813,
+            "fine_edge_length_quantiles": [
+              0.03517030168153433,
+              0.058099953219132375,
+              0.07509435437230813
+            ],
+            "path_stretch_quantiles": [
+              1.0316142999425129,
+              1.0749547293790114,
+              1.2643773296275864
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 19796,
+              "r": 1,
+              "valid_edge_count": 19796,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 1603,
+              "vertex_count": 1603,
+              "cover_radius": 0.4377765618264675,
+              "robust_cover_radius": 0.43777656182602975,
+              "coverage_margin": 4.377765618264675e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 19796,
+              "deepest_subdivision": 0,
+              "chart_transitions": 36415,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 1.6072303568560609e-16,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 30,
+                "residual_norm": 0.3275016108939433,
+                "normal_residual_norm": 2.371282687361819e-11,
+                "estimated_design_condition": 7.122539425578894
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.005825146254353682,
+            "weighted_projection_relative": 0.005825146254353682,
+            "raw_triangle_curl_rms": 0.00797856091559012,
+            "fitted_triangle_curl_max": 1.7763568394002505e-15,
+            "period_singular_values": [
+              10.516668161801961
+            ],
+            "period_condition": 1.0,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 2.220446049250313e-16
+          },
+          "encoder_field_duality_relative": 0.058975989185837914,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            -0.5798315638080428
+          ],
+          "train_phase_step_rmse": 0.004073541090862816,
+          "commutators": {
+            "pairs": [],
+            "source_probe_count": 0
+          },
+          "elapsed_fit_seconds": 2.791771173477173
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 1,
+          "supplied_frame_dimension": 1,
+          "selection": {
+            "selected_count": 1,
+            "lifetime_gap": null,
+            "common_birth": 0.07361190766096115,
+            "common_death": 1.6038824319839478,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 5.856426454897701e-15,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 55631,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 1,
+          "cover_radius": 0.4377765618264675,
+          "rips_threshold": 0.875553123652935,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "status": "unresolved_candidate_exception",
+        "exception_type": "ValueError",
+        "exception": "flow_outside_geometric_support",
+        "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/takers_original_sensor_pipeline.py\", line 121, in fit\n    gate=_training_gates(candidate);attempt['gates']=gate\n  File \"/private/tmp/takers_original_sensor_pipeline.py\", line 56, in _training_gates\n    reconstructed=core.inverse(model,model['phases'][take])\n  File \"/private/tmp/takers_original_e2e.py\", line 231, in inverse\n    states=flow(model,states,ph[:,j],j,step)\n  File \"/private/tmp/takers_original_e2e.py\", line 221, in flow\n    k3=phase_field(model,states+dt[:,None]*k2/2)[:,:,axis]\nValueError: flow_outside_geometric_support\n"
+      },
+      {
+        "lag": 8,
+        "neighbors": 48,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 1,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 1,
+            "selection": {
+              "selected_count": 1,
+              "lifetime_gap": null,
+              "common_birth": 0.07361190766096115,
+              "common_death": 1.6038824319839478,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 1603,
+            "ambient_dimension": 8,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.07361190766096115,
+                1.6038824319839478
+              ]
+            ],
+            "direct_metric_control_max_error": 5.856426454897701e-15,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 8,
+          "retained_numerical_linear_span": 8,
+          "linear_span_relative_residual": 7.022758580155778e-16,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 48,
+          "overlap": {
+            "minimum_prefix_singular": 0.692313418370483,
+            "overlap_relative_residual_quantiles": [
+              0.0020978376126027814,
+              0.0063911367025327615,
+              0.018779359304969413
+            ]
+          },
+          "atlas_min_gap": 0.9210891397616517,
+          "frame_anchor_error": 4.597513769571696e-16,
+          "frame_transfer_relative": 0.0072955327150910805,
+          "frame_min_singular": 0.5576479807176701,
+          "frame_min_relative_singular": 1.0,
+          "integration": {
+            "fine_edges": 19796,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 19796,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.07509435437230813,
+            "fine_edge_length_quantiles": [
+              0.03517030168153433,
+              0.058099953219132375,
+              0.07509435437230813
+            ],
+            "path_stretch_quantiles": [
+              1.0316142999425129,
+              1.0749547293790114,
+              1.2643773296275864
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 19796,
+              "r": 1,
+              "valid_edge_count": 19796,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 1603,
+              "vertex_count": 1603,
+              "cover_radius": 0.4377765618264675,
+              "robust_cover_radius": 0.43777656182602975,
+              "coverage_margin": 4.377765618264675e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 19796,
+              "deepest_subdivision": 0,
+              "chart_transitions": 36415,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 1.6186210534076617e-16,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 30,
+                "residual_norm": 0.10721883521837233,
+                "normal_residual_norm": 1.8037049341365308e-11,
+                "estimated_design_condition": 7.445867148703531
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.0022924583528353137,
+            "weighted_projection_relative": 0.0022924583528353137,
+            "raw_triangle_curl_rms": 0.002509140433651065,
+            "fitted_triangle_curl_max": 1.6653345369377348e-15,
+            "period_singular_values": [
+              8.746666911437812
+            ],
+            "period_condition": 1.0,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 2.220446049250313e-16
+          },
+          "encoder_field_duality_relative": 0.017036438613767507,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            -0.5798358306225802
+          ],
+          "train_phase_step_rmse": 0.0031173332667548924,
+          "commutators": {
+            "pairs": [],
+            "source_probe_count": 0
+          },
+          "elapsed_fit_seconds": 3.509922981262207
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 1,
+          "supplied_frame_dimension": 1,
+          "selection": {
+            "selected_count": 1,
+            "lifetime_gap": null,
+            "common_birth": 0.07361190766096115,
+            "common_death": 1.6038824319839478,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 5.856426454897701e-15,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 55631,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 1,
+          "cover_radius": 0.4377765618264675,
+          "rips_threshold": 0.875553123652935,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "gates": {
+          "core_status": "conditional_fields_first_model",
+          "passed": false,
+          "closed_projection_relative": 0.0022924583528353137,
+          "duality_rms": 0.017036438613767507,
+          "phase_step_rmse": 0.0031173332667548924,
+          "minimum_atlas_gap": 0.9210891397616517,
+          "checks": {
+            "closed_projection": true,
+            "duality": true,
+            "phase_step": true,
+            "atlas_gap": true,
+            "train_encoder_full_coverage": true,
+            "inverse": true,
+            "full_turn": false,
+            "flow_order": true
+          },
+          "inverse_window_relative": 0.03568912658758983,
+          "full_turn_relative": [
+            0.1902922036487143
+          ],
+          "flow_order_relative": 0.0,
+          "source_rms": 0.9992174609467387
+        }
+      },
+      {
+        "lag": 8,
+        "neighbors": 96,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 1,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 1,
+            "selection": {
+              "selected_count": 1,
+              "lifetime_gap": null,
+              "common_birth": 0.07361190766096115,
+              "common_death": 1.6038824319839478,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 1603,
+            "ambient_dimension": 8,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.07361190766096115,
+                1.6038824319839478
+              ]
+            ],
+            "direct_metric_control_max_error": 5.856426454897701e-15,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 8,
+          "retained_numerical_linear_span": 8,
+          "linear_span_relative_residual": 7.022758580155778e-16,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 96,
+          "overlap": {
+            "minimum_prefix_singular": 0.7091977365395994,
+            "overlap_relative_residual_quantiles": [
+              0.0007254604359950559,
+              0.002640737593016252,
+              0.006780545636587721
+            ]
+          },
+          "atlas_min_gap": 0.9943871208089236,
+          "frame_anchor_error": 1.3877787807814457e-17,
+          "frame_transfer_relative": 0.00129291150666504,
+          "frame_min_singular": 0.5998354376914502,
+          "frame_min_relative_singular": 1.0,
+          "integration": {
+            "fine_edges": 19796,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 19796,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.07509435437230813,
+            "fine_edge_length_quantiles": [
+              0.03517030168153433,
+              0.058099953219132375,
+              0.07509435437230813
+            ],
+            "path_stretch_quantiles": [
+              1.0316142999425129,
+              1.0749547293790114,
+              1.2643773296275864
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 19796,
+              "r": 1,
+              "valid_edge_count": 19796,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 1603,
+              "vertex_count": 1603,
+              "cover_radius": 0.4377765618264675,
+              "robust_cover_radius": 0.43777656182602975,
+              "coverage_margin": 4.377765618264675e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 19796,
+              "deepest_subdivision": 0,
+              "chart_transitions": 36415,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 1.5646129961499912e-16,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 30,
+                "residual_norm": 0.09460036855139586,
+                "normal_residual_norm": 1.6529463971552995e-11,
+                "estimated_design_condition": 7.534907376681854
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.0021014753126961196,
+            "weighted_projection_relative": 0.0021014753126961196,
+            "raw_triangle_curl_rms": 0.0022167103053732685,
+            "fitted_triangle_curl_max": 1.4432899320127035e-15,
+            "period_singular_values": [
+              8.42234190064643
+            ],
+            "period_condition": 1.0,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 2.220446049250313e-16
+          },
+          "encoder_field_duality_relative": 0.011395910242905405,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            -0.5798363064635179
+          ],
+          "train_phase_step_rmse": 0.002913416335265974,
+          "commutators": {
+            "pairs": [],
+            "source_probe_count": 0
+          },
+          "elapsed_fit_seconds": 2.9469919204711914
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 1,
+          "supplied_frame_dimension": 1,
+          "selection": {
+            "selected_count": 1,
+            "lifetime_gap": null,
+            "common_birth": 0.07361190766096115,
+            "common_death": 1.6038824319839478,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 5.856426454897701e-15,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 55631,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 1,
+          "cover_radius": 0.4377765618264675,
+          "rips_threshold": 0.875553123652935,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "gates": {
+          "core_status": "conditional_fields_first_model",
+          "passed": false,
+          "closed_projection_relative": 0.0021014753126961196,
+          "duality_rms": 0.011395910242905405,
+          "phase_step_rmse": 0.002913416335265974,
+          "minimum_atlas_gap": 0.9943871208089236,
+          "checks": {
+            "closed_projection": true,
+            "duality": true,
+            "phase_step": true,
+            "atlas_gap": true,
+            "train_encoder_full_coverage": true,
+            "inverse": true,
+            "full_turn": false,
+            "flow_order": true
+          },
+          "inverse_window_relative": 0.03888181502277508,
+          "full_turn_relative": [
+            0.10792505512772858
+          ],
+          "flow_order_relative": 0.0,
+          "source_rms": 0.9992174609467387
+        }
+      },
+      {
+        "lag": 16,
+        "neighbors": 24,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 1,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 1,
+            "selection": {
+              "selected_count": 1,
+              "lifetime_gap": null,
+              "common_birth": 0.0678899735212326,
+              "common_death": 1.6766245365142822,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 1595,
+            "ambient_dimension": 16,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.0678899735212326,
+                1.6766245365142822
+              ]
+            ],
+            "direct_metric_control_max_error": 4.440892098500626e-16,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 16,
+          "retained_numerical_linear_span": 16,
+          "linear_span_relative_residual": 8.518833385686189e-16,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 24,
+          "overlap": {
+            "minimum_prefix_singular": 0.8493658899159893,
+            "overlap_relative_residual_quantiles": [
+              0.008866320054245138,
+              0.019744430745698947,
+              0.04393226679062282
+            ]
+          },
+          "atlas_min_gap": 0.7076363338047136,
+          "frame_anchor_error": 2.7488437250953683e-16,
+          "frame_transfer_relative": 0.010432770055375627,
+          "frame_min_singular": 0.6745980566968629,
+          "frame_min_relative_singular": 1.0,
+          "integration": {
+            "fine_edges": 19593,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 19593,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.07501882502340747,
+            "fine_edge_length_quantiles": [
+              0.035493564612180256,
+              0.057123893345732216,
+              0.07501882502340747
+            ],
+            "path_stretch_quantiles": [
+              1.0408799952986627,
+              1.074762107953743,
+              1.1284726835971866
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 19593,
+              "r": 1,
+              "valid_edge_count": 19593,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 1595,
+              "vertex_count": 1595,
+              "cover_radius": 0.45310112088918686,
+              "robust_cover_radius": 0.4531011208887338,
+              "coverage_margin": 4.5310112088918686e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 19593,
+              "deepest_subdivision": 0,
+              "chart_transitions": 36190,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 1.6504888164192022e-16,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 27,
+                "residual_norm": 0.20001863553199706,
+                "normal_residual_norm": 7.922413064932402e-11,
+                "estimated_design_condition": 15.822768290108382
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.0041355704196593505,
+            "weighted_projection_relative": 0.0041355704196593505,
+            "raw_triangle_curl_rms": 0.004385599250075664,
+            "fitted_triangle_curl_max": 1.7763568394002505e-15,
+            "period_singular_values": [
+              9.133975157830308
+            ],
+            "period_condition": 1.0,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 2.220446049250313e-16
+          },
+          "encoder_field_duality_relative": 0.03533244855854094,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            0.5798287628640993
+          ],
+          "train_phase_step_rmse": 0.0018627054550420827,
+          "commutators": {
+            "pairs": [],
+            "source_probe_count": 0
+          },
+          "elapsed_fit_seconds": 4.670150995254517
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 1,
+          "supplied_frame_dimension": 1,
+          "selection": {
+            "selected_count": 1,
+            "lifetime_gap": null,
+            "common_birth": 0.0678899735212326,
+            "common_death": 1.6766245365142822,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 4.440892098500626e-16,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 56680,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 1,
+          "cover_radius": 0.45310112088918686,
+          "rips_threshold": 0.9062022417783737,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "status": "unresolved_candidate_exception",
+        "exception_type": "ValueError",
+        "exception": "flow_outside_geometric_support",
+        "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/takers_original_sensor_pipeline.py\", line 121, in fit\n    gate=_training_gates(candidate);attempt['gates']=gate\n  File \"/private/tmp/takers_original_sensor_pipeline.py\", line 56, in _training_gates\n    reconstructed=core.inverse(model,model['phases'][take])\n  File \"/private/tmp/takers_original_e2e.py\", line 231, in inverse\n    states=flow(model,states,ph[:,j],j,step)\n  File \"/private/tmp/takers_original_e2e.py\", line 222, in flow\n    k4=phase_field(model,states+dt[:,None]*k3)[:,:,axis]\nValueError: flow_outside_geometric_support\n"
+      },
+      {
+        "lag": 16,
+        "neighbors": 48,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 1,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 1,
+            "selection": {
+              "selected_count": 1,
+              "lifetime_gap": null,
+              "common_birth": 0.0678899735212326,
+              "common_death": 1.6766245365142822,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 1595,
+            "ambient_dimension": 16,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.0678899735212326,
+                1.6766245365142822
+              ]
+            ],
+            "direct_metric_control_max_error": 4.440892098500626e-16,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 16,
+          "retained_numerical_linear_span": 16,
+          "linear_span_relative_residual": 8.518833385686189e-16,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 48,
+          "overlap": {
+            "minimum_prefix_singular": 0.8703207094296842,
+            "overlap_relative_residual_quantiles": [
+              0.0020861173920281926,
+              0.004310620076499046,
+              0.009035953457889408
+            ]
+          },
+          "atlas_min_gap": 0.9672341285208488,
+          "frame_anchor_error": 8.224724317179759e-16,
+          "frame_transfer_relative": 0.0031920763783279196,
+          "frame_min_singular": 0.7691635392234052,
+          "frame_min_relative_singular": 1.0,
+          "integration": {
+            "fine_edges": 19593,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 19593,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.07501882502340747,
+            "fine_edge_length_quantiles": [
+              0.035493564612180256,
+              0.057123893345732216,
+              0.07501882502340747
+            ],
+            "path_stretch_quantiles": [
+              1.0408799952986627,
+              1.074762107953743,
+              1.1284726835971866
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 19593,
+              "r": 1,
+              "valid_edge_count": 19593,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 1595,
+              "vertex_count": 1595,
+              "cover_radius": 0.45310112088918686,
+              "robust_cover_radius": 0.4531011208887338,
+              "coverage_margin": 4.5310112088918686e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 19593,
+              "deepest_subdivision": 0,
+              "chart_transitions": 36190,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 1.4688958365825048e-16,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 28,
+                "residual_norm": 0.07984025751297916,
+                "normal_residual_norm": 6.4508070007162034e-12,
+                "estimated_design_condition": 16.20288157040362
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.0018312117602971392,
+            "weighted_projection_relative": 0.0018312117602971392,
+            "raw_triangle_curl_rms": 0.0017061360914438985,
+            "fitted_triangle_curl_max": 1.3322676295501878e-15,
+            "period_singular_values": [
+              8.23391260904771
+            ],
+            "period_condition": 1.0,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 1.1102230246251565e-16
+          },
+          "encoder_field_duality_relative": 0.009303105524030474,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            0.5798305882994276
+          ],
+          "train_phase_step_rmse": 0.001700542091025967,
+          "commutators": {
+            "pairs": [],
+            "source_probe_count": 0
+          },
+          "elapsed_fit_seconds": 4.752503156661987
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 1,
+          "supplied_frame_dimension": 1,
+          "selection": {
+            "selected_count": 1,
+            "lifetime_gap": null,
+            "common_birth": 0.0678899735212326,
+            "common_death": 1.6766245365142822,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 4.440892098500626e-16,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 56680,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 1,
+          "cover_radius": 0.45310112088918686,
+          "rips_threshold": 0.9062022417783737,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "gates": {
+          "core_status": "conditional_fields_first_model",
+          "passed": false,
+          "closed_projection_relative": 0.0018312117602971392,
+          "duality_rms": 0.009303105524030474,
+          "phase_step_rmse": 0.001700542091025967,
+          "minimum_atlas_gap": 0.9672341285208488,
+          "checks": {
+            "closed_projection": true,
+            "duality": true,
+            "phase_step": true,
+            "atlas_gap": true,
+            "train_encoder_full_coverage": true,
+            "inverse": true,
+            "full_turn": false,
+            "flow_order": true
+          },
+          "inverse_window_relative": 0.02266772286347655,
+          "full_turn_relative": [
+            0.13699811213670401
+          ],
+          "flow_order_relative": 0.0,
+          "source_rms": 0.9992799556517985
+        }
+      },
+      {
+        "lag": 16,
+        "neighbors": 96,
+        "dimension_strategy": "persistent_count",
+        "diagnostics": {
+          "dimension_selected": 1,
+          "dimension_hypothesis_supplied": false,
+          "dimension_diagnostic": {
+            "status": "conditional_torus_dimension_heuristic",
+            "selected_dimension": 1,
+            "selection": {
+              "selected_count": 1,
+              "lifetime_gap": null,
+              "common_birth": 0.0678899735212326,
+              "common_death": 1.6766245365142822,
+              "rank_certified_for_true_manifold": false,
+              "criterion": "largest lifetime gap among common-standard-range prefixes"
+            },
+            "states": 1595,
+            "ambient_dimension": 16,
+            "landmarks": 192,
+            "prime": 47,
+            "h1_diagram": [
+              [
+                0.0678899735212326,
+                1.6766245365142822
+              ]
+            ],
+            "direct_metric_control_max_error": 4.440892098500626e-16,
+            "model_assumption": "underlying smooth compact state manifold is T^r, so dimension equals b1",
+            "result_is_dimension_hypothesis_not_topology_or_noise_certificate": true,
+            "compact_torus_embedding_dimension_bound_satisfied": true,
+            "diagram_only_used": true,
+            "integer_cocycle_lifts_computed": false,
+            "integer_period_basis_computed": false,
+            "cocycle_representatives_used": false,
+            "initial_phase_coordinates_computed": false,
+            "harmonic_smoothing_computed": false,
+            "fields_or_frequencies_computed": false,
+            "mod_prime_representatives_internally_produced_by_persistence_constructor": true,
+            "period_basis_must_still_be_prepared_after_W": true
+          },
+          "all_fit_steps_use_readings_only": true,
+          "independent_initial_phases_computed": false,
+          "stages": [
+            "tangent_spaces_and_overlap_transfer",
+            "global_invariant_frame_fit",
+            "integer_full_period_basis_after_frame",
+            "dual_form_closed_projection_and_periods",
+            "integrate_field_derived_angles"
+          ],
+          "full_window_dimension": 16,
+          "retained_numerical_linear_span": 16,
+          "linear_span_relative_residual": 8.518833385686189e-16,
+          "span_rule": "train numerical span above relative cutoff 1e-10; weak directions below it may be lost; no energy-percentage rule",
+          "geometry_neighbors": 96,
+          "overlap": {
+            "minimum_prefix_singular": 0.8795341222801247,
+            "overlap_relative_residual_quantiles": [
+              0.0007382013764431924,
+              0.001618983535249561,
+              0.003651252128187906
+            ]
+          },
+          "atlas_min_gap": 0.9976906111931155,
+          "frame_anchor_error": 2.7336829645320826e-16,
+          "frame_transfer_relative": 0.0005017846665009951,
+          "frame_min_singular": 0.7936810719833262,
+          "frame_min_relative_singular": 1.0,
+          "integration": {
+            "fine_edges": 19593,
+            "quadrature_order": 3,
+            "curve_integration": true,
+            "curved_edges_with_convex_cover_homotopy_certificate": 19593,
+            "chord_fallback_edges": 0,
+            "maximum_fine_edge_length": 0.07501882502340747,
+            "fine_edge_length_quantiles": [
+              0.035493564612180256,
+              0.057123893345732216,
+              0.07501882502340747
+            ],
+            "path_stretch_quantiles": [
+              1.0408799952986627,
+              1.074762107953743,
+              1.1284726835971866
+            ],
+            "invalid_fine_chords_removed": 0,
+            "path_cover_and_class_check": {
+              "status": "finite_complex_chord_class_labels",
+              "fine_edges": 19593,
+              "r": 1,
+              "valid_edge_count": 19593,
+              "invalid_edge_count": 0,
+              "covered_vertex_count": 1595,
+              "vertex_count": 1595,
+              "cover_radius": 0.45310112088918686,
+              "robust_cover_radius": 0.4531011208887338,
+              "coverage_margin": 4.5310112088918686e-13,
+              "maximum_depth": 12,
+              "maximum_chart_transitions_on_one_chord": 2,
+              "failure_examples": [],
+              "midpoints_checked": 0,
+              "certified_chord_subsegments": 19593,
+              "deepest_subdivision": 0,
+              "chart_transitions": 36190,
+              "chord_coverage_rule": "one convex landmark ball contains both endpoints of every accepted subsegment",
+              "landmark_vertices_assigned_to_their_own_charts": true,
+              "label_orientation": "same tail->head orientation as supplied fineedges",
+              "periods_or_phases_used": false,
+              "true_manifold_homotopy_certified": false,
+              "certificate_scope": "integral H1 class in the supplied finite complex only",
+              "equality_to_coarse_integer_label_is_homology_not_general_pi1_certificate": true
+            },
+            "coarse_path_integer_class_defect_max": 0,
+            "reverse_path_integral_disagreement_relative": 1.6264957790757679e-16,
+            "path_homotopy_equivalence_to_true_manifold_certified": false
+          },
+          "periods": {
+            "solver": [
+              {
+                "coordinate": 0,
+                "stop": 2,
+                "iterations": 28,
+                "residual_norm": 0.07398542483036047,
+                "normal_residual_norm": 6.203451100927215e-12,
+                "estimated_design_condition": 16.297354815112094
+              }
+            ],
+            "gauge": "real integration potential at landmark 0 is zero",
+            "projection_relative": 0.0017295991868690672,
+            "weighted_projection_relative": 0.0017295991868690672,
+            "raw_triangle_curl_rms": 0.0015868156014658926,
+            "fitted_triangle_curl_max": 8.881784197001252e-16,
+            "period_singular_values": [
+              8.078700882651534
+            ],
+            "period_condition": 1.0,
+            "cochain_basis_is_full_primitive_finite_basis": true,
+            "true_manifold_period_lattice_certified": false,
+            "quadrature_bias_not_detectable_from_closure_alone": true,
+            "independent_circle_coordinates_used": false,
+            "node_potentials_are_not_automatically_equal_to_smooth_partition_phase_values": true,
+            "normalized_integer_period_decomposition_max": 2.220446049250313e-16
+          },
+          "encoder_field_duality_relative": 0.008697124367704687,
+          "train_encoder_coverage": 1.0,
+          "phase_step": [
+            0.5798307243253089
+          ],
+          "train_phase_step_rmse": 0.0015538870559190902,
+          "commutators": {
+            "pairs": [],
+            "source_probe_count": 0
+          },
+          "elapsed_fit_seconds": 4.690425157546997
+        },
+        "period_complex_diagnostics": {
+          "selected_topological_count": 1,
+          "supplied_frame_dimension": 1,
+          "selection": {
+            "selected_count": 1,
+            "lifetime_gap": null,
+            "common_birth": 0.0678899735212326,
+            "common_death": 1.6766245365142822,
+            "rank_certified_for_true_manifold": false,
+            "criterion": "largest lifetime gap among common-standard-range prefixes"
+          },
+          "direct_metric_control_max_error": 4.440892098500626e-16,
+          "no_initial_circle_coordinates_computed": true,
+          "no_harmonic_coordinate_smoothing_computed": true,
+          "topology_used_only_for_integer_period_basis": true,
+          "true_manifold_topology_certified": false,
+          "integer_repairs": [
+            {
+              "class_index": 0,
+              "defect_before": 0,
+              "repair_used": false
+            }
+          ],
+          "integer_closure": {
+            "triangle_count": 56680,
+            "maximum_integer_closure_defect": 0,
+            "all_triangles_streamed": true
+          },
+          "active_b1_mod_prime": 1,
+          "cover_radius": 0.45310112088918686,
+          "rips_threshold": 0.9062022417783737,
+          "train_uncovered_count": 0,
+          "float32_float64_filtration_disagreements": 0,
+          "coordinate_scale_equals_bar_endpoint": false
+        },
+        "gates": {
+          "core_status": "conditional_fields_first_model",
+          "passed": true,
+          "closed_projection_relative": 0.0017295991868690672,
+          "duality_rms": 0.008697124367704687,
+          "phase_step_rmse": 0.0015538870559190902,
+          "minimum_atlas_gap": 0.9976906111931155,
+          "checks": {
+            "closed_projection": true,
+            "duality": true,
+            "phase_step": true,
+            "atlas_gap": true,
+            "train_encoder_full_coverage": true,
+            "inverse": true,
+            "full_turn": true,
+            "flow_order": true
+          },
+          "inverse_window_relative": 0.025351918747248795,
+          "full_turn_relative": [
+            0.04916797512701805
+          ],
+          "flow_order_relative": 0.0,
+          "source_rms": 0.9992799556517985
+        }
+      }
+    ],
+    "selected_lag": 16,
+    "dimension_strategy": "persistent_count",
+    "neighbor_candidates": [
+      24,
+      48,
+      96
+    ],
+    "gates": {
+      "closed_projection_relative": 0.05,
+      "duality_rms": 0.15,
+      "phase_step_rmse": 0.05,
+      "inverse_window_relative": 0.05,
+      "full_turn_relative": 0.05,
+      "flow_order_relative": 0.05,
+      "minimum_atlas_gap": 0.1,
+      "query_projection_relative": 0.1
+    },
+    "provenance": {
+      "takers_original_e2e.py": "9a667dcd87845db530dde35dbe5aab8179eb5e18b58a61ae3b5057f3d32557d2",
+      "takers_direct_frame_probe.py": "3ef22d504790183317e6512883f7270083c7e5baedc1e58aabb8fdbe9a65dec2",
+      "takers_tangent_atlas.py": "59f0859cf07da27c113b3e979e4c2de7a49cee2359fb05ff47e2b20323656004",
+      "takers_original_periods.py": "2a95fd5fdc02370bc9738b10a984357beb9f2de2e02fd2843b7de68ba2375b37",
+      "takers_path_class_check.py": "7dad56f13c4144a8a60a79c181d3832dcb872cca1d3afc93a6bd285dec01f8f3",
+      "takers_sensor_preprocess.py": "3edc722cb2b2b55a04dd6b9747881155d991d7989a929ddefa095fc613811a59",
+      "takers_original_sensor_pipeline.py": "f5644d30966ccf5848a885da82d8e2fc1414368225aae5d6c2803ad98c06bab2",
+      "takers_sensor_cases.py": "9e4a23d47384ac95fbf8cac6f527ab846c692066a0a80a87c40df8ef16b59f7a"
+    },
+    "elapsed_fit_seconds": 31.893709897994995,
+    "scope": {
+      "inputs_are_readings_only": true,
+      "phase_initialization_used": false,
+      "regression_decoder_used": false,
+      "physical_trend_identified": false,
+      "reconstruction_mode": "conditioning on observed query block; not forecasting",
+      "acceptance_is_empirical_not_global_certificate": true,
+      "source_span_rule": "all source singular directions above relative threshold 1e-10; finite cutoff, not an exact full-span guarantee"
+    }
+  },
+  "transform_status": "transformed_conditionally",
+  "prediction_frozen_before_truth_evaluation": true,
+  "generator_metadata": {
+    "case": "scalarcircle",
+    "seed": 31,
+    "noise_level": 0.05,
+    "trend": "linear",
+    "trend_strength": 0.3,
+    "phase_mode": "rigid",
+    "rate_profile": "default",
+    "sigma_calibration_count": 1800,
+    "rigid_rotation_clean_model": false,
+    "regime": "outside stationary rigid-torus model / stress",
+    "phase_truth_scope": "generator phases; use only after model freeze",
+    "legacy_rational_sampling_resonance": false
+  },
+  "nominal_snr_db": 26.020599913279625,
+  "transform": {
+    "raw_time_first": 1895,
+    "raw_time_last": 2304,
+    "retained_snapshot_count": 410,
+    "retained_window_count": 395,
+    "diagnostics": {
+      "query_projection_relative": 8.474952763187723e-16,
+      "encoder_coverage": 1.0,
+      "minimum_atlas_gap": 0.9979279537321197,
+      "prefold_overlap_relative": 0.02394423516319209,
+      "query_residual_window_relative": 0.027674737450229355,
+      "encoder_field_duality_rms": 0.008452467154724896,
+      "phase_step_rmse_against_frozen_training_step": 0.0016645544957168065,
+      "flow_domain": {
+        "maximum_nearest_distance": 0.02531171605562319,
+        "minimum_atlas_gap": 0.997563887296881,
+        "minimum_frame_singular": 0.793604174719765
+      }
+    }
+  },
+  "reconstruction_against_clean_total": {
+    "train_channel_std_normalized_rmse": 0.012497027666026552,
+    "per_channel_train_std_normalized_rmse": [
+      0.012497027666026552
+    ],
+    "raw_relative_error": 0.0033853957597218213
+  },
+  "reconstruction_against_noisy_observations": {
+    "train_channel_std_normalized_rmse": 0.0491637843292515,
+    "per_channel_train_std_normalized_rmse": [
+      0.0491637843292515
+    ],
+    "raw_relative_error": 0.013300983377721695
+  },
+  "preprocessed_against_clean_total": {
+    "train_channel_std_normalized_rmse": 0.017055810881355098,
+    "per_channel_train_std_normalized_rmse": [
+      0.017055810881355098
+    ],
+    "raw_relative_error": 0.004620352245304389
+  },
+  "train_phase_evaluation": {
+    "winding_candidate": [
+      [
+        1
+      ]
+    ],
+    "absolute_determinant": 1,
+    "candidate_is_finite_character_match_not_global_certificate": true,
+    "origins": [
+      2.92166849711292
+    ],
+    "phase_mae_rad": 0.00531871048797554,
+    "phase_max_abs_rad": 0.02236614542182491,
+    "coherence": [
+      0.999976961078147
+    ]
+  },
+  "test_phase_evaluation": {
+    "mean_absolute_rad": 0.004749140461950336,
+    "per_coordinate_mean_absolute_rad": [
+      0.004749140461950336
+    ],
+    "per_coordinate_rmse_rad": [
+      0.005948115358925639
+    ],
+    "maximum_absolute_rad": 0.016606999252836634
+  }
+}

@@ -1,0 +1,211 @@
+Use case: scientific-educational.
+Create ONE new academic infographic in Russian explaining a finite-data tangent-transport phase reconstruction pipeline. Use the supplied earlier illustration ONLY as a reference for its visual language (navy serif mathematics, white space, pale blue geometry, purple arrows). Replace its content with the new eight-stage procedure below. This is a new illustration, not a preservation edit.
+
+FORMAT AND STYLE
+One large, tall portrait textbook plate, approximately 2048 x 3520, highest supported resolution. Very spacious. Pure white, sharp mathematical typesetting, dark navy text, pale blue schematic surfaces, thin purple arrows. Muted ochre highlights ONLY the added numerical procedures. No texture, gradients, shadows, 3D plastic, decoration, logos or watermarks. Generous margins, generous gaps around equations, strong alignment, consistent type sizes. Never crowd or shrink the mathematics to fit.
+Layout: three horizontal bands with paired panels (1,2), (3,4), (5,6); then a spacious full-width panel 7; then a compact full-width panel 8. Thin pale-blue dividers. Exactly eight numbered headings. Reading order is ordinary row order. Main content must be understandable through the drawings, short captions and a few equations; no paragraphs. All math is properly typeset, not raw LaTeX commands.
+
+TITLE, exact:
+"От показаний к фазам и обратно"
+Small subtitle:
+"Конечные данные. Касательный перенос и поля."
+Small notation strip:
+"m — датчики; L — снимков в окне; D — линейные координаты; r — число фаз."
+Tiny ochre legend:
+"Охра — численные дополнения к PDF."
+
+1. "Подготовка окон"
+Draw a few synchronized sensor time traces with faint gray measurement fluctuations and a slow component. A clean arrow separates them into a blue oscillating residual and a small gray slow curve. Caption in ochre: "MSSA · медленная компонента".
+Then show one stacked window x_n, followed by its reduced coordinates xi_n.
+Equation:
+x_n in R^{mL}  -->  xi_n = U^T x_n in R^D
+U in R^{mL x D}.
+Small caption: "Окна нормированного остатка".
+Use a tiny label near the traces: "Края отброшены".
+These are normalized residual windows; the slow curve is retained for the final reconstruction.
+
+2. "Размерность и касательные"
+Draw a small persistence barcode as a visual count of persistent independent loops, WITHOUT any angular coordinates. Caption: "r — по устойчивым циклам". Immediately underneath: "Предположение: тор".
+Next draw a pale-blue curved cloud of window coordinates, highlight one small neighborhood and a fitted tangent plane with a frame Q_n at xi_n.
+Equation:
+Q_n in R^{D x r}.
+Ochre caption: "Локальная полиномиальная поверхность".
+Do not claim the finite cloud proves torus topology. Do not show phase circles or known generator angles in this panel.
+
+3. "Перенос через перекрытие"
+Show adjacent window columns with the common readings pale blue. The nonshared first block of the left window and nonshared last block of the right window are gray.
+In a clear separate part, show tangent velocity v at xi_n, transported to v' at xi_{n+1}, joined by a purple arrow labelled estimated D T_n (put a hat over the derivative of calligraphic T). This is the estimated tangent transfer in reduced R^D coordinates.
+Essential equations:
+v in span Q_n,     v' in span Q_{n+1},
+P_0 U v' approximately equals P_1 U v.
+Small caption:
+"P_0: без последнего снимка; P_1: без первого."
+The tangent restriction must be present; overlap alone is not the complete construction. Keep labels away from the window columns.
+
+4. "Согласованный базис"
+Draw several sample locations on a schematic pale-blue manifold sheet, with smoothly varying frame arrows W_1,...,W_r, aligned through the estimated transport. Mark one anchor xi_0.
+Equations:
+W(xi) in R^{D x r},       W_0 = Q_0,
+W_{n+1} approximately equals estimated D T_n W_n.
+Use the same hatted derivative of calligraphic T as in panel 3.
+Ochre caption:
+"Общая подгонка с регуляризацией".
+Small explanatory label:
+"По всей обучающей записи".
+Important: this is one smooth fitted frame; invariance is approximate. Do not draw an exact equality for its transfer, and do not imply orthogonal W columns.
+
+5. "Интегралы и полные периоды"
+Start with clear concise mathematics:
+v = W(xi) a,       beta_xi(v) = a in R^r.
+Small label: "Коэффициенты скорости".
+Draw a sparse schematic triangular complex with closed purple paths gamma_1,...,gamma_r. These represent a checked full integer basis of loop classes of the FINITE complex, not arbitrary repeated loops or generator circles. No filled disk spanning a nontrivial loop.
+Caption: "Базис обходов конечного комплекса".
+An ochre arrow from raw beta integrals to corrected edge integrals:
+"Согласование интегралов"
+and a short condition:
+"По каждому треугольнику: сумма = 0".
+Outputs, spacious and distinct:
+Pi in R^{r x r}              f_ell in R^r
+with the labels:
+"Полные периоды"              "Узловые интегралы".
+The projection makes a FINITE edge cochain closed; it does not make the original continuous beta exactly closed. Do not print d beta = 0. Do not imply diagonal Pi. Construct this period basis only AFTER panel 4.
+
+6. "Фазовые координаты"
+Use a clean vertical normalization diagram rather than a two-dimensional parallelogram.
+First line: f_ell in R^r, label "Узловые интегралы".
+Down arrow labelled Pi^{-1}.
+Second line: Pi^{-1} f_ell, label "Доли оборотов".
+Down arrow labelled "2pi, mod 2pi".
+Third line:
+phi_ell^{node} = 2pi Pi^{-1} f_ell (mod 2pi).
+Then a visibly separate small ochre arrow:
+"Гладкое продолжение"
+leading to
+phi_n = Phi(xi_n) in T^r.
+Below, two circle glyphs separated by multiplication and ellipsis, labelled phi_1,...,phi_r: a GENERAL product of r circles, not a claim r=2.
+Do not equate the actual smooth Phi exactly to a raw path integral, or exactly to its nodal potentials. Independent initial angular coordinates are NOT computed anywhere upstream.
+
+7. "Восстановление потоками"
+Make this full-width section generously tall.
+Main equation across its top:
+E(xi) = [E_1(xi),...,E_r(xi)] = (1/(2pi)) W(xi) Pi.
+Each E_j is a vector in R^D. Concise label: "Меняем углы по одному".
+On the left draw one path on a schematic pale-blue surface: xi_0 followed along E_1, then ellipsis, then E_r, ending at reconstructed xi_hat_n. Use several visibly connected curved segments ON the sheet, not an ambient straight shortcut.
+On the right:
+d xi / d tau = E_j(xi),       j=1,...,r.
+Small label: "tau — приращение выбранного угла".
+Ochre small label: "RK4".
+Bottom of this band, show a concrete short reconstruction chain:
+xi_hat_n  -->  x_hat_n = U xi_hat_n
+then small stacked columns of ALL reconstructed windows;
+arrow caption "Масштабирование и усреднение перекрытий";
+then a plus sign and a small slow curve captioned "Медленная часть наблюдений";
+then output Y_hat_I in R^{|I| x m}.
+Small final caption: "I — сохранённые моменты".
+U produces normalized full windows; physical scaling is restored before averaging and adding the slow part.
+Do not show a regression decoder, matrix exponentials for general nonlinear fields, or Psi = Phi^{-1} as an exact theorem. These are actual numerical ODE flows of E.
+
+8. "Численные проверки"
+Full-width, clearly separated footer panel. Use a restrained four-item checklist:
+"Восстановление окон"
+"Возврат за полный оборот"
+"Порядок потоков"
+"Постоянство фазового шага"
+Also show the compact compatibility check:
+D Phi(xi) E(xi) approximately equals I_r.
+Tiny label: "I_r — единичная матрица".
+A short caption:
+"L и окрестность — по обучающим проверкам".
+Two modest output branches:
+"Проверки пройдены: результат"
+"Пороги не пройдены: отказ".
+No claim that passing these finite checks proves a global inverse.
+
+BOTTOM NOTE, exact concise:
+"Согласованность проверяется численно. Геометрия показана схематически."
+
+ACCURACY AND LEGIBILITY
+Exactly one coherent image with all eight stages. The core order is tangent transfer -> fitted frame -> beta and periods -> phases -> actual field flows. All stages apply to general r and nonlinear sensor signals. Distinguish calligraphic T shift, T^r phase torus, transpose superscript, Greek xi and phi. Preserve index/subscript correctness. NO original latent theta, known frequencies, or analytic two-wave quadratic equations. NO independent circular-coordinate initialization. NO exact closed-beta or exact-inverse claims. Do not invent extra text or marketing phrases. Avoid label overlap and excessive arrows. White space and readable mathematics take precedence over decorative content.
+
+
+Generation mode: built-in image_gen.imagegen (no CLI/API fallback).
+Style reference: research/figures/phase_ssa_overview_1_7.png
+Final asset: research/figures/fields_first_pipeline_overview.png
+
+=== FOLLOW-UP EDIT 1 ===
+Edit this new eight-stage infographic, preserving its academic style, all eight numbered headings, palette, equation legibility, layout, and all unmentioned correct content. This is a precision correction of several mathematical drawings. Do not squeeze text; modestly enlarge the canvas/spacing if needed. Do not add paragraphs.
+
+CORRECTION 1 — PANEL 1, DATA SPLIT AND WINDOWS:
+The current blue oscillatory residual must NOT point into the slow component as if the latter were derived from the former. Use a genuine branch from filtered observations to TWO separate outputs: "Нормированный остаток" (blue oscillations) and "Медленная компонента" (gray smooth curves). Remove every arrow from residual to slow component.
+The x_n window is a stack of m-dimensional SNAPSHOTS, not a length-L vector of scalar coordinates. Relabel its four visible blocks as y_n, y_{n+1}, ..., y_{n+L-1}. Add a small clean definition near it:
+"y_n in R^m — снимок нормированного остатка".
+Keep x_n in R^{mL}, xi_n in R^D, xi_n=U^T x_n, U in R^{mL x D} exactly as properly typeset mathematics.
+
+CORRECTION 2 — PANEL 2, PERSISTENCE DISPLAY:
+Replace the current birth/death-looking graphic with a standard simple persistence BARCODE: several horizontal intervals along one horizontal axis labelled "масштаб"; long navy intervals and a few very short pale-gray intervals. Include an ellipsis for general r. No vertical "рождение" or horizontal "смерть" axes. Keep the captions "r — по устойчивым циклам" and "Предположение: тор." No angles here.
+
+CORRECTION 3 — REBUILD PANEL 3 WINDOW DRAWING CORRECTLY:
+Left column heading x_n:
+  first block y_n: GRAY, nonshared;
+  next block y_{n+1}: PALE BLUE;
+  ellipsis: PALE BLUE;
+  last block y_{n+L-1}: PALE BLUE.
+Right column heading x_{n+1}:
+  first block y_{n+1}: PALE BLUE;
+  ellipsis: PALE BLUE;
+  next-to-last block y_{n+L-1}: PALE BLUE;
+  last block y_{n+L}: GRAY, nonshared.
+The shared L-1 snapshots are bottom L-1 blocks on the LEFT and top L-1 blocks on the RIGHT.
+Under the LEFT window write P_1 x_n.
+Under the RIGHT window write P_0 x_{n+1}.
+Use short connecting highlight/brackets only if they are correctly aligned with the common blocks. Never label P_0 as selecting the shared portion of the left window or P_1 as selecting the shared portion of the right window.
+Keep the small operator definitions:
+"P_0: без последнего снимка; P_1: без первого."
+In the right-side tangent drawing, REMOVE the undefined labels T_{xi_n}M and T_{xi_{n+1}}M. Label the planes "span Q_n" and "span Q_{n+1}" instead. Keep xi_n, xi_{n+1}, velocity v, velocity v', and the hatted estimated calligraphic time-shift derivative arrow.
+Keep the tangent restrictions and the overlap formula:
+v in span Q_n,   v' in span Q_{n+1},
+P_0 U v' approximately equals P_1 U v.
+
+CORRECTION 4 — PANEL 4 INDEX:
+Change the rightmost point/frame indices from xi_K,W_K to xi_{K-1},W_{K-1}. Use a small notation definition "K — число окон" in a clear position, or the top notation strip with sufficient space. Preserve the approximate invariance equation and the anchor W_0=Q_0.
+
+CORRECTION 5 — PANEL 5 NONTRIVIAL LOOPS:
+The currently drawn purple loops sitting inside filled triangles would be contractible and have zero period after closure. Replace that mesh drawing with a schematic finite triangular complex with CLEAR WHITE HOLES. Purple directed cycles run along edge paths encircling the white holes; no filled faces span those cycles. Show gamma_1 and gamma_r with an ellipsis between them for general r. Each cycle must visibly encircle a missing region, NOT lie inside a single filled triangle. Keep the nearby triangles to explain the local closure condition.
+Preserve all captions and equations in panel 5, including:
+v=W(xi)a, beta_xi(v)=a in R^r,
+"Базис обходов конечного комплекса",
+"Согласование интегралов",
+"По каждому треугольнику: сумма = 0",
+Pi in R^{r x r}, f_ell in R^r.
+This is a schematic illustration of nontrivial finite loop classes, not a claim that a planar mesh is the true general-r torus.
+
+CORRECTION 6 — PANEL 8 CHECK LANGUAGE:
+In check 2 replace the apparently exact return formula by the short phrase:
+"Отклонение после 2pi мало".
+In check 3 replace the vague formula about agreed fields by:
+"Два порядка дают близкие окна".
+These are empirical tests, not exact equalities.
+
+INVARIANTS:
+Keep panels 6 and 7, their formulas, actual RK4 reconstruction, observed slow addback, output Y_hat_I in R^{|I| x m}, and I definition unchanged.
+Keep the distinction between nodal integrals/angles and actual smooth Phi.
+Keep the bottom note, the approximate D Phi E check, the accept/refuse branches and the ochre numerical-addition highlights.
+No exact closed-beta or inverse theorem; no initial generator phases or separate circular-coordinate initialization.
+Keep very sharp, spacious typeset math and clean Russian text. Exactly ONE final portrait image.
+
+=== FOLLOW-UP EDIT 2 ===
+Make a FINAL precise cleanup of this infographic. Preserve the full canvas, all eight panels, every unmentioned formula, all plots, spacing, palette, sharpness and typography. Change ONLY the following small items:
+
+1. In panel 8, the first ochre check card has a formula that mixes the reduced xi and full x coordinates. Remove that formula completely. Keep its heading "1. Восстановление окон" and put the short plain text "Ошибка мала." beneath it. No other mathematical symbols in this card.
+
+2. At the bottom of panel 8, REMOVE the blue horizontal arrow connecting the green result box to the red refusal box. They are TWO ALTERNATIVE outcomes, not a sequence. Keep the small branch from the centered caption above to each box independently. Keep the exact box text:
+green: "Проверки пройдены: результат."
+red: "Пороги не пройдены: отказ."
+No arrow or line may go from one box into the other.
+
+3. In panel 3, REMOVE ALL curly braces, side brackets and the duplicated labels "общая часть" around the two window columns. They are redundant and one brace has the wrong extent. Preserve the columns and their colors EXACTLY:
+left x_n: gray y_n, blue y_{n+1}, blue ellipsis, blue y_{n+L-1};
+right x_{n+1}: blue y_{n+1}, blue ellipsis, blue y_{n+L-1}, gray y_{n+L}.
+Preserve the labels P_1 x_n below the LEFT column, P_0 x_{n+1} below the RIGHT column, and the operator definitions and tangent-transfer equations. Add only a tiny single clean caption near these columns if useful: "Синим — общие снимки".
+
+Absolutely no other changes. Do not reflow or regenerate the content of other panels. Final output remains ONE polished academic Russian infographic.

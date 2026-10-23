@@ -1,0 +1,77 @@
+[
+  {
+    "original": "results/fields_first_curved_noise_fix_2026_10_22/noise00.json",
+    "archived": "data/noise00.json",
+    "sha256": "8281e806358b7c1aa7d7d68a8759c8434395579c4b2141706b02f56f1ce64dca"
+  },
+  {
+    "original": "results/fields_first_curved_noise_fix_2026_10_22/noise01.json",
+    "archived": "data/noise01.json",
+    "sha256": "09a112587d47d2cc3c998dbc717ff5da7ee8bf53021678a14310d0d1d418fa77"
+  },
+  {
+    "original": "results/fields_first_curved_noise_fix_2026_10_22/noise05.json",
+    "archived": "data/noise05.json",
+    "sha256": "2371cebd98bf3c635a8614acb53dda642cae0bbb4667edc53ec1798121b14224"
+  },
+  {
+    "original": "results/fields_first_curved_noise_fix_2026_10_22/noise10.json",
+    "archived": "data/noise10.json",
+    "sha256": "72108d3f45155b046b4f3e42113f86201e013fc9f8fddfc1e86120b1f0535814"
+  },
+  {
+    "original": "results/fields_first_curved_noise_fix_2026_10_22/regression/scalar_noise10.json",
+    "archived": "data/scalar_noise10.json",
+    "sha256": "641fbfe0d26472cc32491b89eadd3852a28d30754911e073a2f9bc040e55bd92"
+  },
+  {
+    "original": "results/fields_first_curved_noise_fix_2026_10_22/regression/two_waves.json",
+    "archived": "data/two_waves.json",
+    "sha256": "8a50972e0e6b28957bf7c4c5f1af617cca302d4662104fa7ff222f7840108453"
+  },
+  {
+    "original": "results/fields_first_curved_noise_fix_2026_10_22/flow_verification.json",
+    "archived": "data/flow_verification.json",
+    "sha256": "3421dce9aa23cb7f077afaf00175555c7b09a88444fd813c9f11bf2b53d7e1ab"
+  },
+  {
+    "original": "results/article_experiments_2026_10_23/provenance_audit.json",
+    "archived": "data/provenance_audit.json",
+    "sha256": "3f54bbb6876257e1c28e8149f44a86337ea4c6bcc9ac119863ba68e14a0a8997"
+  },
+  {
+    "original": "results/article_experiments_2026_10_23/baseline_compatibility.json",
+    "archived": "data/baseline_compatibility.json",
+    "sha256": "d79e04a69b88197fa464bde4ed454d4e1415d7268b672018545797c1981870f3"
+  },
+  {
+    "original": "results/fields_first_debug_2026_10_22/baselines/scalar_noise10_c62b9edc.baselines.json",
+    "archived": "data/baselines/scalar_noise10.baselines.json",
+    "sha256": "c2792a95c4624bff7abc9aae4d41de873759fb2fa7279364a62128db6a10f6dd"
+  },
+  {
+    "original": "results/fields_first_debug_2026_10_22/baselines/two_waves_82055dfd.baselines.json",
+    "archived": "data/baselines/two_waves.baselines.json",
+    "sha256": "88ae0d4808d2a86f23bf220fe7954a207f9199a3f21051544fbc8aabc1545b5f"
+  },
+  {
+    "original": "results/fields_first_debug_2026_10_22/validation/scalar_noise10.json",
+    "archived": "data/baselines/scalar_prior_run.json",
+    "sha256": "c62b9edccc89a6b126dc8e01aa9cb48675af4696fe43e83a40735db2ca433715"
+  },
+  {
+    "original": "results/fields_first_debug_2026_10_22/validation/two_waves.json",
+    "archived": "data/baselines/two_waves_prior_run.json",
+    "sha256": "82055dfd20ce3588c2092033e136664a04a51d262e54283374c1ab627185c622"
+  },
+  {
+    "original": "results/fields_first_debug_2026_10_22/phase_advantage_audit/circular_cdf_diagnostic.json",
+    "archived": "data/baselines/circular_cdf_diagnostic.json",
+    "sha256": "c3f4f9d0bac2af37ead5962934a094ea85b1109afb341af20b9b64a0e6678216"
+  },
+  {
+    "original": "results/fields_first_debug_2026_10_22/phase_advantage_audit/multifactor_marginal_cdf_diagnostic.json",
+    "archived": "data/baselines/multifactor_marginal_cdf_diagnostic.json",
+    "sha256": "cf98b5e74d76e801b7d89526c382506231625ceba5969b751fdc3aad7d3c6c1a"
+  }
+]

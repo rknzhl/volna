@@ -1,0 +1,11 @@
+............../Users/rknza/research/Takers/code/lag_ssa/check_fields_first_flow_geometry.py:142: RuntimeWarning: divide by zero encountered in matmul
+  states = joint @ vh[singular > singular[0] * 1e-10].T
+/Users/rknza/research/Takers/code/lag_ssa/check_fields_first_flow_geometry.py:142: RuntimeWarning: overflow encountered in matmul
+  states = joint @ vh[singular > singular[0] * 1e-10].T
+/Users/rknza/research/Takers/code/lag_ssa/check_fields_first_flow_geometry.py:142: RuntimeWarning: invalid value encountered in matmul
+  states = joint @ vh[singular > singular[0] * 1e-10].T
+.......
+----------------------------------------------------------------------
+Ran 21 tests in 0.543s
+
+OK

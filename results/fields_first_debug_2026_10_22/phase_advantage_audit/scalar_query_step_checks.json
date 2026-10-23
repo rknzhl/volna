@@ -1,0 +1,14 @@
+[
+  {
+    "name": "scalar_clean",
+    "ours_query_phase_step_rmse": 0.006212629690152441,
+    "native_query_phase_step_rmse": 0.288789109057652,
+    "cdf_query_phase_step_rmse": 0.0017673509551466911
+  },
+  {
+    "name": "scalar_noise10",
+    "ours_query_phase_step_rmse": 0.005702183525160921,
+    "native_query_phase_step_rmse": 0.27079704212183886,
+    "cdf_query_phase_step_rmse": 0.007689778992840098
+  }
+]
